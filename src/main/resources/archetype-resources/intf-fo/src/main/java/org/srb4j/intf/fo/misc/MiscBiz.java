@@ -1,6 +1,6 @@
-package org.srb4j.intf.fo.misc;
+package ${groupId}.intf.fo.misc;
 
-import org.srb4j.intf.fo.auth.FoAccessToken;
+import ${groupId}.intf.fo.auth.FoAccessToken;
 
 /**
  * non user-oriented interfaces. Sometimes you need these

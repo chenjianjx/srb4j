@@ -4,32 +4,32 @@
 	<modelVersion>4.0.0</modelVersion>
 
 	<parent>
-		<groupId>org.srb4j</groupId>
-		<artifactId>srb4j-parent</artifactId>
+		<groupId>${groupId}</groupId>
+		<artifactId>${artifactId}-parent</artifactId>
 		<version>1.0-SNAPSHOT</version>
 	</parent>
 
 
-	<artifactId>srb4j-impl</artifactId>
+	<artifactId>${artifactId}-impl</artifactId>
 	<packaging>jar</packaging>
 
 	<dependencies>
 
 
 		<dependency>
-			<groupId>org.srb4j</groupId>
-			<artifactId>srb4j-intf-fo</artifactId>
+			<groupId>${groupId}</groupId>
+			<artifactId>${artifactId}-intf-fo</artifactId>
 			<version>${project.parent.version}</version>
 		</dependency>
 		<dependency>
-			<groupId>org.srb4j</groupId>
-			<artifactId>srb4j-intf-bo</artifactId>
+			<groupId>${groupId}</groupId>
+			<artifactId>${artifactId}-intf-bo</artifactId>
 			<version>${project.parent.version}</version>
 		</dependency>
 
 		<dependency>
-			<groupId>org.srb4j</groupId>
-			<artifactId>srb4j-intf-pso</artifactId>
+			<groupId>${groupId}</groupId>
+			<artifactId>${artifactId}-intf-pso</artifactId>
 			<version>1.0</version>
 		</dependency>
 

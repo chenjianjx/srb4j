@@ -1,4 +1,4 @@
-package org.srb4j.webapp.fo.rest.support;
+package ${groupId}.webapp.fo.rest.support;
 
 import javax.ws.rs.container.ContainerRequestContext;
 

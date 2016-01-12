@@ -1,4 +1,4 @@
-package org.srb4j.impl.biz.common;
+package ${groupId}.impl.biz.common;
 
 import java.util.Calendar;
 

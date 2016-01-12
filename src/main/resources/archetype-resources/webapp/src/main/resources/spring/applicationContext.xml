@@ -7,12 +7,12 @@
 
 
 
-	<context:component-scan base-package="org.srb4j" />
+	<context:component-scan base-package="${groupId}" />
 
 
 
 	<bean id="propertyConfigurer"
-		class="org.srb4j.impl.util.spring.UserHomeFilePropertyPlaceholderConfigurer">
+		class="${groupId}.impl.util.spring.UserHomeFilePropertyPlaceholderConfigurer">
 		<property name="fileEncoding" value="utf-8" />
 		<property name="userHomeFiles">
 			<list>

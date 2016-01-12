@@ -1,6 +1,6 @@
-package org.srb4j.democlient.fo.rest.auth;
+package ${groupId}.democlient.fo.rest.auth;
 
-import static org.srb4j.democlient.util.DemoClientConstants.BACKEND_FO_REST_URL;
+import static ${groupId}.democlient.util.DemoClientConstants.BACKEND_FO_REST_URL;
 
 import java.io.File;
 
@@ -25,9 +25,9 @@ import org.apache.oltu.oauth2.common.exception.OAuthSystemException;
 import org.apache.oltu.oauth2.common.message.types.GrantType;
 import org.junit.Assert;
 import org.junit.Test;
-import org.srb4j.democlient.util.DemoClientConstants;
-import org.srb4j.democlient.util.DemoClientUtils;
-import org.srb4j.restclient.model.AuthTokenResult;
+import ${groupId}.democlient.util.DemoClientConstants;
+import ${groupId}.democlient.util.DemoClientUtils;
+import ${groupId}.restclient.model.AuthTokenResult;
 
 /**
  * 

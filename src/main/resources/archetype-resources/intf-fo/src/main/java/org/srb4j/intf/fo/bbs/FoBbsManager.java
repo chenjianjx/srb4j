@@ -1,8 +1,8 @@
-package org.srb4j.intf.fo.bbs;
+package ${groupId}.intf.fo.bbs;
 
 import java.util.List;
 
-import org.srb4j.intf.fo.basic.FoResponse;
+import ${groupId}.intf.fo.basic.FoResponse;
 
 /**
  * an exemplary manager

@@ -1,4 +1,4 @@
-package org.srb4j.webapp.infrahelper.rest;
+package ${groupId}.webapp.infrahelper.rest;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.ws.rs.core.MultivaluedMap;

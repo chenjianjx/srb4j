@@ -1,10 +1,10 @@
-package org.srb4j.impl.biz.user;
+package ${groupId}.impl.biz.user;
 
 import java.io.Serializable;
 import java.util.Arrays;
 import java.util.List;
 
-import org.srb4j.impl.biz.common.EntityBase;
+import ${groupId}.impl.biz.common.EntityBase;
 
 /**
  * 

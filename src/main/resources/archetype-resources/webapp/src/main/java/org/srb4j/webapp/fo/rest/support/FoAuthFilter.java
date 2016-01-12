@@ -1,7 +1,7 @@
-package org.srb4j.webapp.fo.rest.support;
+package ${groupId}.webapp.fo.rest.support;
 
-import static org.srb4j.webapp.fo.rest.support.FoResourceBase.RS_ACCESS_TOKEN;
-import static org.srb4j.webapp.fo.rest.support.FoResourceBase.RS_CURRENT_USER_ID;
+import static ${groupId}.webapp.fo.rest.support.FoResourceBase.RS_ACCESS_TOKEN;
+import static ${groupId}.webapp.fo.rest.support.FoResourceBase.RS_CURRENT_USER_ID;
 
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
@@ -25,9 +25,9 @@ import org.apache.oltu.oauth2.common.utils.OAuthUtils;
 import org.apache.oltu.oauth2.rs.request.OAuthAccessResourceRequest;
 import org.apache.oltu.oauth2.rs.response.OAuthRSResponse;
 import org.springframework.stereotype.Component;
-import org.srb4j.intf.fo.auth.FoAccessToken;
-import org.srb4j.intf.fo.auth.FoAuthManager;
-import org.srb4j.intf.fo.misc.MiscBiz;
+import ${groupId}.intf.fo.auth.FoAccessToken;
+import ${groupId}.intf.fo.auth.FoAuthManager;
+import ${groupId}.intf.fo.misc.MiscBiz;
 
 /**
  * A filter that serves as an OAuth2 resource end point

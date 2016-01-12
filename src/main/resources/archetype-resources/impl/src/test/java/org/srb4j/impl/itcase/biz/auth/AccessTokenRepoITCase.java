@@ -1,4 +1,4 @@
-package org.srb4j.impl.itcase.biz.auth;
+package ${groupId}.impl.itcase.biz.auth;
 
 import java.util.GregorianCalendar;
 
@@ -8,9 +8,9 @@ import org.junit.Assert;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.test.context.ContextConfiguration;
-import org.srb4j.impl.biz.auth.AccessToken;
-import org.srb4j.impl.biz.auth.AccessTokenRepo;
-import org.srb4j.impl.itcase.support.MySpringJunit4ClassRunner;
+import ${groupId}.impl.biz.auth.AccessToken;
+import ${groupId}.impl.biz.auth.AccessTokenRepo;
+import ${groupId}.impl.itcase.support.MySpringJunit4ClassRunner;
 
 /**
  * 

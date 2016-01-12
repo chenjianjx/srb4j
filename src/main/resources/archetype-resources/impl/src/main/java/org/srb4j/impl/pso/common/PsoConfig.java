@@ -1,4 +1,4 @@
-package org.srb4j.impl.pso.common;
+package ${groupId}.impl.pso.common;
 
 import org.apache.commons.lang.StringUtils;
 import org.apache.commons.lang.builder.ToStringBuilder;

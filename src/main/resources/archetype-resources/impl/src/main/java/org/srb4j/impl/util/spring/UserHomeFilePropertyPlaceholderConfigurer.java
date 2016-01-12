@@ -1,4 +1,4 @@
-package org.srb4j.impl.util.spring;
+package ${groupId}.impl.util.spring;
 
 import java.io.File;
 

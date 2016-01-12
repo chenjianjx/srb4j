@@ -1,4 +1,4 @@
-package org.srb4j.democlient.bo.portal;
+package ${groupId}.democlient.bo.portal;
 
 import javax.ws.rs.client.Client;
 import javax.ws.rs.client.ClientBuilder;
@@ -8,7 +8,7 @@ import javax.ws.rs.core.Response;
 
 import org.junit.Assert;
 import org.junit.Test;
-import org.srb4j.democlient.util.DemoClientConstants;
+import ${groupId}.democlient.util.DemoClientConstants;
 
 /**
  * 

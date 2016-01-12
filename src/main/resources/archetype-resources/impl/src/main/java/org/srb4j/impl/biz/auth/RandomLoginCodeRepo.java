@@ -1,4 +1,4 @@
-package org.srb4j.impl.biz.auth;
+package ${groupId}.impl.biz.auth;
 
 import java.sql.Timestamp;
 

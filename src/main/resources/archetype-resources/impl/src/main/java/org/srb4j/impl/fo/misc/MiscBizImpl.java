@@ -1,13 +1,13 @@
-package org.srb4j.impl.fo.misc;
+package ${groupId}.impl.fo.misc;
 
 import javax.annotation.Resource;
 
 import org.springframework.stereotype.Service;
-import org.srb4j.impl.biz.auth.AccessToken;
-import org.srb4j.impl.biz.auth.AccessTokenRepo;
-import org.srb4j.impl.util.tools.lang.MyLangUtils;
-import org.srb4j.intf.fo.auth.FoAccessToken;
-import org.srb4j.intf.fo.misc.MiscBiz;
+import ${groupId}.impl.biz.auth.AccessToken;
+import ${groupId}.impl.biz.auth.AccessTokenRepo;
+import ${groupId}.impl.util.tools.lang.MyLangUtils;
+import ${groupId}.intf.fo.auth.FoAccessToken;
+import ${groupId}.intf.fo.misc.MiscBiz;
 
 /**
  * 

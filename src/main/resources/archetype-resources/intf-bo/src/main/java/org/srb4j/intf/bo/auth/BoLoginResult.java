@@ -1,4 +1,4 @@
-package org.srb4j.intf.bo.auth;
+package ${groupId}.intf.bo.auth;
 
 /**
  * 

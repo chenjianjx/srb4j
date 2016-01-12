@@ -1,4 +1,4 @@
-package org.srb4j.intf.fo.auth;
+package ${groupId}.intf.fo.auth;
 
 import javax.validation.constraints.NotNull;
 

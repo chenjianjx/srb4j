@@ -1,9 +1,9 @@
-package org.srb4j.intf.fo.bbs;
+package ${groupId}.intf.fo.bbs;
 
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 
-import org.srb4j.intf.fo.basic.FoEntityBase;
+import ${groupId}.intf.fo.basic.FoEntityBase;
 
 /**
  * an exemplary fo entity

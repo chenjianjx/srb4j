@@ -9,7 +9,7 @@
        ">
 
 	<!-- all configs here are env-specific -->
-	<bean id="psoConfig" class="org.srb4j.impl.pso.common.PsoConfig">
+	<bean id="psoConfig" class="${groupId}.impl.pso.common.PsoConfig">
 		<property name="host" value="${psoRpcServerHost}" />
 		<property name="port" value="${psoRpcServerPort}" />
 	</bean>

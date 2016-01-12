@@ -1,4 +1,4 @@
-package org.srb4j.impl.biz.bbs;
+package ${groupId}.impl.biz.bbs;
 
 import java.util.List;
 

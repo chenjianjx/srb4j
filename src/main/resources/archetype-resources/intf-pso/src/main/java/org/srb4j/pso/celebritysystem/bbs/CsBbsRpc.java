@@ -1,4 +1,4 @@
-package org.srb4j.pso.celebritysystem.bbs;
+package ${groupId}.pso.celebritysystem.bbs;
 
 import java.util.List;
 

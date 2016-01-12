@@ -1,6 +1,6 @@
-package org.srb4j.democlient.fo.rest.auth;
+package ${groupId}.democlient.fo.rest.auth;
 
-import static org.srb4j.democlient.util.DemoClientConstants.BACKEND_FO_REST_URL;
+import static ${groupId}.democlient.util.DemoClientConstants.BACKEND_FO_REST_URL;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -15,8 +15,8 @@ import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 
 import org.junit.Assert;
-import org.srb4j.democlient.util.DemoClientConstants;
-import org.srb4j.restclient.model.GenRandomLoginCodeRequest;
+import ${groupId}.democlient.util.DemoClientConstants;
+import ${groupId}.restclient.model.GenRandomLoginCodeRequest;
 
 import com.github.scribejava.apis.GoogleApi20;
 import com.github.scribejava.apis.google.GoogleToken;

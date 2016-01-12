@@ -1,4 +1,4 @@
-package org.srb4j.webapp.bo.portal;
+package ${groupId}.webapp.bo.portal;
 
 import java.io.IOException;
 import java.util.List;
@@ -10,12 +10,12 @@ import javax.servlet.http.HttpServletResponse;
 
 import org.springframework.web.context.WebApplicationContext;
 import org.springframework.web.context.support.WebApplicationContextUtils;
-import org.srb4j.intf.bo.auth.BoAuthManager;
-import org.srb4j.intf.bo.auth.BoLocalLoginRequest;
-import org.srb4j.intf.bo.auth.BoLoginResult;
-import org.srb4j.intf.bo.bbs.BoBbsManager;
-import org.srb4j.intf.bo.bbs.BoPost;
-import org.srb4j.intf.fo.basic.FoResponse;
+import ${groupId}.intf.bo.auth.BoAuthManager;
+import ${groupId}.intf.bo.auth.BoLocalLoginRequest;
+import ${groupId}.intf.bo.auth.BoLoginResult;
+import ${groupId}.intf.bo.bbs.BoBbsManager;
+import ${groupId}.intf.bo.bbs.BoPost;
+import ${groupId}.intf.fo.basic.FoResponse;
 
 /**
  * a sample servlet for back office portal to show how bo-portal talks to

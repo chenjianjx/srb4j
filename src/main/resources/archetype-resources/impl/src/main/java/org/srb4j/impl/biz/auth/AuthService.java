@@ -1,7 +1,7 @@
-package org.srb4j.impl.biz.auth;
+package ${groupId}.impl.biz.auth;
 
-import static org.srb4j.impl.util.tools.lang.MyLangUtils.toUtf8Bytes;
-import static org.srb4j.intf.fo.basic.FoConstants.RANDOM_LOGIN_CODE_LIFESPAN;
+import static ${groupId}.impl.util.tools.lang.MyLangUtils.toUtf8Bytes;
+import static ${groupId}.intf.fo.basic.FoConstants.RANDOM_LOGIN_CODE_LIFESPAN;
 
 import java.security.SecureRandom;
 import java.util.Calendar;
@@ -15,11 +15,11 @@ import org.apache.commons.codec.digest.DigestUtils;
 import org.apache.commons.codec.digest.Sha2Crypt;
 import org.springframework.mail.SimpleMailMessage;
 import org.springframework.stereotype.Service;
-import org.srb4j.impl.biz.user.User;
-import org.srb4j.impl.support.config.AppProperties;
-import org.srb4j.impl.support.mail.MailEngine;
-import org.srb4j.impl.util.tools.lang.MyLangUtils;
-import org.srb4j.intf.fo.basic.FoConstants;
+import ${groupId}.impl.biz.user.User;
+import ${groupId}.impl.support.config.AppProperties;
+import ${groupId}.impl.support.mail.MailEngine;
+import ${groupId}.impl.util.tools.lang.MyLangUtils;
+import ${groupId}.intf.fo.basic.FoConstants;
 
 /**
  * 

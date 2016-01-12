@@ -1,4 +1,4 @@
-package org.srb4j.intf.fo.bbs;
+package ${groupId}.intf.fo.bbs;
 
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;

@@ -1,6 +1,6 @@
-package org.srb4j.intf.bo.bbs;
+package ${groupId}.intf.bo.bbs;
 
-import org.srb4j.intf.fo.bbs.FoPost;
+import ${groupId}.intf.fo.bbs.FoPost;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;

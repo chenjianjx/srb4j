@@ -1,4 +1,4 @@
-package org.srb4j.impl.fo.bbs;
+package ${groupId}.impl.fo.bbs;
 
 import java.util.List;
 
@@ -7,16 +7,16 @@ import javax.annotation.Resource;
 
 import org.apache.commons.lang.RandomStringUtils;
 import org.springframework.stereotype.Service;
-import org.srb4j.impl.biz.bbs.Post;
-import org.srb4j.impl.biz.bbs.PostRepo;
-import org.srb4j.impl.biz.user.User;
-import org.srb4j.impl.biz.user.UserRepo;
-import org.srb4j.impl.util.tools.lang.MyLangUtils;
-import org.srb4j.intf.fo.auth.FoAuthManager;
-import org.srb4j.intf.fo.auth.FoAuthTokenResult;
-import org.srb4j.intf.fo.auth.FoRegisterRequest;
-import org.srb4j.intf.fo.basic.FoResponse;
-import org.srb4j.intf.fo.bbs.FoPost;
+import ${groupId}.impl.biz.bbs.Post;
+import ${groupId}.impl.biz.bbs.PostRepo;
+import ${groupId}.impl.biz.user.User;
+import ${groupId}.impl.biz.user.UserRepo;
+import ${groupId}.impl.util.tools.lang.MyLangUtils;
+import ${groupId}.intf.fo.auth.FoAuthManager;
+import ${groupId}.intf.fo.auth.FoAuthTokenResult;
+import ${groupId}.intf.fo.auth.FoRegisterRequest;
+import ${groupId}.intf.fo.basic.FoResponse;
+import ${groupId}.intf.fo.bbs.FoPost;
 
 /**
  * 

@@ -1,4 +1,4 @@
-package org.srb4j.impl.itcase.support;
+package ${groupId}.impl.itcase.support;
 
 import java.io.FileNotFoundException;
 

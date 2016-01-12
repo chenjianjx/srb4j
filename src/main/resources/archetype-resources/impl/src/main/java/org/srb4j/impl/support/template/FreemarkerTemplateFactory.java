@@ -1,4 +1,4 @@
-package org.srb4j.impl.support.template;
+package ${groupId}.impl.support.template;
 
 import java.io.IOException;
 

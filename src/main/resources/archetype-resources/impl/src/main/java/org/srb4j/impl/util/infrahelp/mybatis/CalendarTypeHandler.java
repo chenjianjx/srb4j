@@ -1,4 +1,4 @@
-package org.srb4j.impl.util.infrahelp.mybatis;
+package ${groupId}.impl.util.infrahelp.mybatis;
 
 import java.sql.CallableStatement;
 import java.sql.PreparedStatement;

@@ -1,4 +1,4 @@
-package org.srb4j.impl.common;
+package ${groupId}.impl.common;
 
 
 /**

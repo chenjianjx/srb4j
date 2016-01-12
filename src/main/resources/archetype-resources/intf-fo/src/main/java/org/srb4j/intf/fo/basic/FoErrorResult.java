@@ -1,9 +1,9 @@
-package org.srb4j.intf.fo.basic;
+package ${groupId}.intf.fo.basic;
 
-import static org.srb4j.intf.fo.basic.FoConstants.ERROR_DESC_FN;
-import static org.srb4j.intf.fo.basic.FoConstants.ERROR_DESC_FOR_USER_FN;
-import static org.srb4j.intf.fo.basic.FoConstants.ERROR_FN;
-import static org.srb4j.intf.fo.basic.FoConstants.EXCEPTION_ID_FN;
+import static ${groupId}.intf.fo.basic.FoConstants.ERROR_DESC_FN;
+import static ${groupId}.intf.fo.basic.FoConstants.ERROR_DESC_FOR_USER_FN;
+import static ${groupId}.intf.fo.basic.FoConstants.ERROR_FN;
+import static ${groupId}.intf.fo.basic.FoConstants.EXCEPTION_ID_FN;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 

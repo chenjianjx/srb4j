@@ -1,4 +1,4 @@
-package org.srb4j.impl.biz.user;
+package ${groupId}.impl.biz.user;
 
 import org.apache.ibatis.annotations.Insert;
 import org.apache.ibatis.annotations.Select;

@@ -1,4 +1,4 @@
-package org.srb4j.impl.util.tools.lang;
+package ${groupId}.impl.util.tools.lang;
 
 import org.apache.commons.lang.builder.ToStringBuilder;
 import org.apache.commons.lang.builder.ToStringStyle;

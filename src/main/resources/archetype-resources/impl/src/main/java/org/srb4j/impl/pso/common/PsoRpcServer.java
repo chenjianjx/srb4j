@@ -1,4 +1,4 @@
-package org.srb4j.impl.pso.common;
+package ${groupId}.impl.pso.common;
 
 import java.net.InetSocketAddress;
 
@@ -11,7 +11,7 @@ import org.springframework.beans.BeansException;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.ApplicationContextAware;
 import org.springframework.stereotype.Component;
-import org.srb4j.impl.pso.celebritysystem.bbs.CsBbsRpcServlet;
+import ${groupId}.impl.pso.celebritysystem.bbs.CsBbsRpcServlet;
 
 /**
  * The class to initialize an embedded server to host rpc endpoints

@@ -1,4 +1,4 @@
-package org.srb4j.intf.fo.basic;
+package ${groupId}.intf.fo.basic;
 
 import org.apache.commons.lang.builder.ToStringBuilder;
 import org.apache.commons.lang.builder.ToStringStyle;

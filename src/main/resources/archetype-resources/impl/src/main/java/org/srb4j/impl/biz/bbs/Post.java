@@ -1,8 +1,8 @@
-package org.srb4j.impl.biz.bbs;
+package ${groupId}.impl.biz.bbs;
 
 import java.io.Serializable;
 
-import org.srb4j.impl.biz.common.EntityBase;
+import ${groupId}.impl.biz.common.EntityBase;
 
 /**
  * 

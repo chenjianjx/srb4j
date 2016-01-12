@@ -1,4 +1,4 @@
-package org.srb4j.intf.fo.basic;
+package ${groupId}.intf.fo.basic;
 
 /**
  * 

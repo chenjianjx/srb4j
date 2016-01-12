@@ -1,10 +1,9 @@
-package org.srb4j.restclient.model;
+package ${groupId}.restclient.model;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonValue;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
-import io.swagger.client.StringUtil;
 import java.util.Date;
 import java.util.Objects;
 

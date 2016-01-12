@@ -1,4 +1,4 @@
-package org.srb4j.pso.common;
+package ${groupId}.pso.common;
 
 import java.util.Calendar;
 

@@ -1,4 +1,4 @@
-package org.srb4j.impl.itcase.biz.user;
+package ${groupId}.impl.itcase.biz.user;
 
 import javax.annotation.Resource;
 
@@ -6,9 +6,9 @@ import org.junit.Assert;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.test.context.ContextConfiguration;
-import org.srb4j.impl.biz.user.User;
-import org.srb4j.impl.biz.user.UserRepo;
-import org.srb4j.impl.itcase.support.MySpringJunit4ClassRunner;
+import ${groupId}.impl.biz.user.User;
+import ${groupId}.impl.biz.user.UserRepo;
+import ${groupId}.impl.itcase.support.MySpringJunit4ClassRunner;
 
 /**
  * 

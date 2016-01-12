@@ -1,8 +1,8 @@
-package org.srb4j.democlient.util;
+package ${groupId}.democlient.util;
 
 import java.net.URLDecoder;
 
-import org.srb4j.restclient.model.ErrorResult;
+import ${groupId}.restclient.model.ErrorResult;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;

@@ -1,13 +1,13 @@
-package org.srb4j.webapp.fo.rest.bbs;
+package ${groupId}.webapp.fo.rest.bbs;
 
 import static javax.servlet.http.HttpServletResponse.SC_OK;
-import static org.srb4j.intf.fo.basic.FoConstants.ACCESS_TOKEN_HEADER_DEFAULT;
-import static org.srb4j.intf.fo.basic.FoConstants.ACCESS_TOKEN_HEADER_KEY;
-import static org.srb4j.intf.fo.basic.FoConstants.BIZ_ERR_TIP;
-import static org.srb4j.intf.fo.basic.FoConstants.FO_SC_BIZ_ERROR;
-import static org.srb4j.intf.fo.basic.FoConstants.OAUTH2_ACCESS_TOKEN_NAME_TIP;
-import static org.srb4j.intf.fo.basic.FoConstants.OAUTH2_ALLOW_ANONYMOUS_TIP;
-import static org.srb4j.intf.fo.basic.FoConstants.OK_TIP;
+import static ${groupId}.intf.fo.basic.FoConstants.ACCESS_TOKEN_HEADER_DEFAULT;
+import static ${groupId}.intf.fo.basic.FoConstants.ACCESS_TOKEN_HEADER_KEY;
+import static ${groupId}.intf.fo.basic.FoConstants.BIZ_ERR_TIP;
+import static ${groupId}.intf.fo.basic.FoConstants.FO_SC_BIZ_ERROR;
+import static ${groupId}.intf.fo.basic.FoConstants.OAUTH2_ACCESS_TOKEN_NAME_TIP;
+import static ${groupId}.intf.fo.basic.FoConstants.OAUTH2_ALLOW_ANONYMOUS_TIP;
+import static ${groupId}.intf.fo.basic.FoConstants.OK_TIP;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiImplicitParam;
 import io.swagger.annotations.ApiImplicitParams;
@@ -30,14 +30,14 @@ import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 
 import org.springframework.stereotype.Service;
-import org.srb4j.intf.fo.basic.FoErrorResult;
-import org.srb4j.intf.fo.basic.FoResponse;
-import org.srb4j.intf.fo.bbs.FoBbsManager;
-import org.srb4j.intf.fo.bbs.FoNewPostRequest;
-import org.srb4j.intf.fo.bbs.FoPost;
-import org.srb4j.intf.fo.bbs.FoUpdatePostRequest;
-import org.srb4j.webapp.fo.rest.support.FoResourceBase;
-import org.srb4j.webapp.fo.rest.support.FoRestUtils;
+import ${groupId}.intf.fo.basic.FoErrorResult;
+import ${groupId}.intf.fo.basic.FoResponse;
+import ${groupId}.intf.fo.bbs.FoBbsManager;
+import ${groupId}.intf.fo.bbs.FoNewPostRequest;
+import ${groupId}.intf.fo.bbs.FoPost;
+import ${groupId}.intf.fo.bbs.FoUpdatePostRequest;
+import ${groupId}.webapp.fo.rest.support.FoResourceBase;
+import ${groupId}.webapp.fo.rest.support.FoRestUtils;
 
 /**
  * rest resource for authentication

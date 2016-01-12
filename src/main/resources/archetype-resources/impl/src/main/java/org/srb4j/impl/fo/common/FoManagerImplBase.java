@@ -1,11 +1,11 @@
-package org.srb4j.impl.fo.common;
+package ${groupId}.impl.fo.common;
 
 import javax.annotation.Resource;
 
-import org.srb4j.impl.biz.user.User;
-import org.srb4j.impl.biz.user.UserRepo;
-import org.srb4j.intf.fo.basic.FoConstants;
-import org.srb4j.intf.fo.basic.FoResponse;
+import ${groupId}.impl.biz.user.User;
+import ${groupId}.impl.biz.user.UserRepo;
+import ${groupId}.intf.fo.basic.FoConstants;
+import ${groupId}.intf.fo.basic.FoResponse;
 
 /**
  * 

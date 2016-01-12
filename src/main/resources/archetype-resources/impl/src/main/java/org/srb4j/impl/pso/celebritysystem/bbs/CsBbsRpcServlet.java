@@ -1,4 +1,4 @@
-package org.srb4j.impl.pso.celebritysystem.bbs;
+package ${groupId}.impl.pso.celebritysystem.bbs;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -8,12 +8,12 @@ import java.util.Map;
 import javax.annotation.Resource;
 
 import org.apache.commons.lang.StringUtils;
-import org.srb4j.impl.biz.bbs.Post;
-import org.srb4j.impl.biz.bbs.PostRepo;
-import org.srb4j.impl.pso.common.PsoAbstractHessianServlet;
-import org.srb4j.impl.util.tools.lang.MyLangUtils;
-import org.srb4j.pso.celebritysystem.bbs.CsBbsRpc;
-import org.srb4j.pso.celebritysystem.bbs.CsPost;
+import ${groupId}.impl.biz.bbs.Post;
+import ${groupId}.impl.biz.bbs.PostRepo;
+import ${groupId}.impl.pso.common.PsoAbstractHessianServlet;
+import ${groupId}.impl.util.tools.lang.MyLangUtils;
+import ${groupId}.pso.celebritysystem.bbs.CsBbsRpc;
+import ${groupId}.pso.celebritysystem.bbs.CsPost;
 
 /**
  * 

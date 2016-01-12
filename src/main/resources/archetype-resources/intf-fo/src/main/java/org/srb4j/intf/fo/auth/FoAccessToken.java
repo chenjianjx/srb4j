@@ -1,8 +1,8 @@
-package org.srb4j.intf.fo.auth;
+package ${groupId}.intf.fo.auth;
 
 import java.util.Calendar;
 
-import org.srb4j.intf.fo.basic.FoEntityBase;
+import ${groupId}.intf.fo.basic.FoEntityBase;
 
 /**
  * 

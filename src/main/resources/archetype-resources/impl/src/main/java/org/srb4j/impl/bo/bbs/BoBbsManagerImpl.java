@@ -1,22 +1,22 @@
-package org.srb4j.impl.bo.bbs;
+package ${groupId}.impl.bo.bbs;
 
 import java.util.List;
 
 import javax.annotation.Resource;
 
 import org.springframework.stereotype.Service;
-import org.srb4j.impl.biz.bbs.Post;
-import org.srb4j.impl.biz.bbs.PostRepo;
-import org.srb4j.impl.biz.user.User;
-import org.srb4j.impl.biz.user.UserRepo;
-import org.srb4j.impl.fo.bbs.FoBbsManagerSupport;
-import org.srb4j.impl.fo.common.FoManagerImplBase;
-import org.srb4j.impl.util.tools.lang.MyLangUtils;
-import org.srb4j.intf.bo.bbs.BoBbsManager;
-import org.srb4j.intf.bo.bbs.BoPost;
-import org.srb4j.intf.fo.basic.FoConstants;
-import org.srb4j.intf.fo.basic.FoResponse;
-import org.srb4j.intf.fo.bbs.FoPost;
+import ${groupId}.impl.biz.bbs.Post;
+import ${groupId}.impl.biz.bbs.PostRepo;
+import ${groupId}.impl.biz.user.User;
+import ${groupId}.impl.biz.user.UserRepo;
+import ${groupId}.impl.fo.bbs.FoBbsManagerSupport;
+import ${groupId}.impl.fo.common.FoManagerImplBase;
+import ${groupId}.impl.util.tools.lang.MyLangUtils;
+import ${groupId}.intf.bo.bbs.BoBbsManager;
+import ${groupId}.intf.bo.bbs.BoPost;
+import ${groupId}.intf.fo.basic.FoConstants;
+import ${groupId}.intf.fo.basic.FoResponse;
+import ${groupId}.intf.fo.bbs.FoPost;
 
 /**
  * 

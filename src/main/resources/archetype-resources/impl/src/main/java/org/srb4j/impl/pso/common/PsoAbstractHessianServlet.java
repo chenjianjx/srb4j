@@ -1,4 +1,4 @@
-package org.srb4j.impl.pso.common;
+package ${groupId}.impl.pso.common;
 
 import javax.servlet.ServletConfig;
 import javax.servlet.ServletException;

@@ -1,4 +1,4 @@
-package org.srb4j.webapp.root;
+package ${groupId}.webapp.root;
 
 import java.io.IOException;
 import java.io.StringWriter;
@@ -13,8 +13,8 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.web.context.WebApplicationContext;
 import org.springframework.web.context.support.WebApplicationContextUtils;
-import org.srb4j.webapp.fo.rest.support.FoSwaggerJaxrsConfig;
-import org.srb4j.webapp.infrahelper.WebAppEnvProp;
+import ${groupId}.webapp.fo.rest.support.FoSwaggerJaxrsConfig;
+import ${groupId}.webapp.infrahelper.WebAppEnvProp;
 import org.swagger2html.Swagger2Html;
 
 /**

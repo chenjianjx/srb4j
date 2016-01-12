@@ -1,4 +1,4 @@
-package org.srb4j.democlient.fo.rest.biz;
+package ${groupId}.democlient.fo.rest.biz;
 
 import java.util.Arrays;
 import java.util.HashMap;
@@ -12,8 +12,8 @@ import javax.ws.rs.core.Response;
 
 import org.apache.commons.lang.builder.ToStringBuilder;
 import org.apache.commons.lang.builder.ToStringStyle;
-import org.srb4j.democlient.util.DemoClientUtils;
-import org.srb4j.restclient.model.ErrorResult;
+import ${groupId}.democlient.util.DemoClientUtils;
+import ${groupId}.restclient.model.ErrorResult;
 
 /**
  * The response object of visiting biz services ( OAuth2 resource point)

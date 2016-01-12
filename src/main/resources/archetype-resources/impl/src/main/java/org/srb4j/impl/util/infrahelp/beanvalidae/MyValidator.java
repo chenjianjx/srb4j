@@ -1,4 +1,4 @@
-package org.srb4j.impl.util.infrahelp.beanvalidae;
+package ${groupId}.impl.util.infrahelp.beanvalidae;
 
 /*
  * JBoss, Home of Professional Open Source

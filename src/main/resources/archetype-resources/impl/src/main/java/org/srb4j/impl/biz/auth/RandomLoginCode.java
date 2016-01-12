@@ -1,8 +1,8 @@
-package org.srb4j.impl.biz.auth;
+package ${groupId}.impl.biz.auth;
 
 import java.util.Calendar;
 
-import org.srb4j.impl.biz.common.EntityBase;
+import ${groupId}.impl.biz.common.EntityBase;
 
 /**
  * 

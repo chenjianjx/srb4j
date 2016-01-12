@@ -1,10 +1,10 @@
-package org.srb4j.pso.celebritysystem.bbs;
+package ${groupId}.pso.celebritysystem.bbs;
 
 import java.io.Serializable;
 import java.util.HashMap;
 import java.util.Map;
 
-import org.srb4j.pso.common.PsoEntityBase;
+import ${groupId}.pso.common.PsoEntityBase;
 
 /**
  * post for celebrity system. (An exemplary pso bean)

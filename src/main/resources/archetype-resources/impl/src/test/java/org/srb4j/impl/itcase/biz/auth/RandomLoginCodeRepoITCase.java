@@ -1,4 +1,4 @@
-package org.srb4j.impl.itcase.biz.auth;
+package ${groupId}.impl.itcase.biz.auth;
 
 import java.util.GregorianCalendar;
 
@@ -9,9 +9,9 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.dao.DuplicateKeyException;
 import org.springframework.test.context.ContextConfiguration;
-import org.srb4j.impl.biz.auth.RandomLoginCode;
-import org.srb4j.impl.biz.auth.RandomLoginCodeRepo;
-import org.srb4j.impl.itcase.support.MySpringJunit4ClassRunner;
+import ${groupId}.impl.biz.auth.RandomLoginCode;
+import ${groupId}.impl.biz.auth.RandomLoginCodeRepo;
+import ${groupId}.impl.itcase.support.MySpringJunit4ClassRunner;
 
 /**
  * 

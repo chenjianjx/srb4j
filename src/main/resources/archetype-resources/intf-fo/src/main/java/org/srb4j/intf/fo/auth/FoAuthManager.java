@@ -1,6 +1,6 @@
-package org.srb4j.intf.fo.auth;
+package ${groupId}.intf.fo.auth;
 
-import org.srb4j.intf.fo.basic.FoResponse;
+import ${groupId}.intf.fo.basic.FoResponse;
 
 /**
  * 

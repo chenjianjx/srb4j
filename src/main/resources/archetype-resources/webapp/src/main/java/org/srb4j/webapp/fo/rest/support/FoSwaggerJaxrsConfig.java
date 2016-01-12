@@ -1,4 +1,4 @@
-package org.srb4j.webapp.fo.rest.support;
+package ${groupId}.webapp.fo.rest.support;
 
 import io.swagger.jaxrs.config.BeanConfig;
 
@@ -10,8 +10,8 @@ import javax.servlet.http.HttpServlet;
 import org.apache.commons.io.IOUtils;
 import org.springframework.web.context.WebApplicationContext;
 import org.springframework.web.context.support.WebApplicationContextUtils;
-import org.srb4j.webapp.fo.rest.FrPlaceholder;
-import org.srb4j.webapp.infrahelper.WebAppEnvProp;
+import ${groupId}.webapp.fo.rest.FrPlaceholder;
+import ${groupId}.webapp.infrahelper.WebAppEnvProp;
 
 /**
  * 

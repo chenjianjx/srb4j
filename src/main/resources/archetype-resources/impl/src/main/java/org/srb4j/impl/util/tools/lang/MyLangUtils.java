@@ -1,4 +1,4 @@
-package org.srb4j.impl.util.tools.lang;
+package ${groupId}.impl.util.tools.lang;
 
 import java.io.UnsupportedEncodingException;
 import java.lang.reflect.Field;
