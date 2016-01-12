@@ -14,27 +14,30 @@ import org.springframework.stereotype.Repository;
  * @author chenjianjx@gmail.com
  *
  */
+
+#set($hashtag = '#')
+
 @Repository
 public interface AccessTokenRepo {
 
 	@Insert("insert into AccessToken(tokenStr, lifespan,  userId, expiresAt,refreshTokenStr, createdAt, createdBy) "
-			+ "values (#{tokenStr}, #{lifespan}, #{userId}, #{expiresAt}, #{refreshTokenStr}, #{createdAt}, #{createdBy})")
+			+ "values (${hashtag}{tokenStr}, ${hashtag}{lifespan}, ${hashtag}{userId}, ${hashtag}{expiresAt}, ${hashtag}{refreshTokenStr}, ${hashtag}{createdAt}, ${hashtag}{createdBy})")
 	@SelectKey(statement = "select last_insert_id() as id", keyProperty = "id", keyColumn = "id", before = false, resultType = long.class)
 	public void saveNewToken(AccessToken accessToken);
 
-	@Select("select * from AccessToken where  tokenStr = #{tokenStr}")
+	@Select("select * from AccessToken where  tokenStr = ${hashtag}{tokenStr}")
 	public AccessToken getByTokenStr(String tokenStr);
 
-	@Select("select * from AccessToken where  refreshTokenStr = #{refreshTokenStr}")
+	@Select("select * from AccessToken where  refreshTokenStr = ${hashtag}{refreshTokenStr}")
 	public AccessToken getByRefreshTokenStr(String refreshTokenStr);
 
-	@Delete("delete from AccessToken where  tokenStr = #{tokenStr}")
+	@Delete("delete from AccessToken where  tokenStr = ${hashtag}{tokenStr}")
 	public void deleteByTokenStr(String tokenStr);
 
-	@Delete("delete from AccessToken where  expiresAt < #{timestamp}")
+	@Delete("delete from AccessToken where  expiresAt < ${hashtag}{timestamp}")
 	public int deleteTokensExpiresBefore(Timestamp timestamp);
 
-	@Update("update AccessToken set tokenStr = #{tokenStr}, lifespan=#{lifespan}, expiresAt = #{expiresAt}, refreshTokenStr = #{refreshTokenStr} where id = #{id}")
+	@Update("update AccessToken set tokenStr = ${hashtag}{tokenStr}, lifespan=${hashtag}{lifespan}, expiresAt = ${hashtag}{expiresAt}, refreshTokenStr = ${hashtag}{refreshTokenStr} where id = ${hashtag}{id}")
 	public void updateAccessToken(AccessToken newToken);
 
 }

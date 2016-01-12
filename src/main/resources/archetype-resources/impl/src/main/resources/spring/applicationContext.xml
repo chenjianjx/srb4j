@@ -16,7 +16,7 @@
 		<property name="fileEncoding" value="utf-8" />
 		<property name="userHomeFiles">
 			<list>
-				<value>${artifactId}/app.properties
+				<value>${rootArtifactId}/app.properties
 				</value>
 			</list>
 		</property>

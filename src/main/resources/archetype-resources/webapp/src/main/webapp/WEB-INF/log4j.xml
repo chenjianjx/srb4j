@@ -11,7 +11,7 @@
 
 
 	<appender name="smtp-appender" class="org.apache.log4j.DailyRollingFileAppender">
-		<param name="file" value="${user.home}/logs/${artifactId}/smtp.log" />
+		<param name="file" value="${user.home}/logs/${rootArtifactId}/smtp.log" />
 		<param name="append" value="true" />
 		<param name="encoding" value="UTF-8" />
 		<layout class="org.apache.log4j.PatternLayout">
@@ -21,7 +21,7 @@
 
 
 	<appender name="auto-task-appender" class="org.apache.log4j.DailyRollingFileAppender">
-		<param name="file" value="${user.home}/logs/${artifactId}/robot.log" />
+		<param name="file" value="${user.home}/logs/${rootArtifactId}/robot.log" />
 		<param name="append" value="true" />
 		<param name="encoding" value="UTF-8" />
 		<layout class="org.apache.log4j.PatternLayout">
@@ -30,7 +30,7 @@
 	</appender>
 
 	<appender name="root-appender" class="org.apache.log4j.DailyRollingFileAppender">
-		<param name="file" value="${user.home}/logs/${artifactId}/root.log" />
+		<param name="file" value="${user.home}/logs/${rootArtifactId}/root.log" />
 		<param name="append" value="true" />
 		<param name="encoding" value="UTF-8" />
 		<layout class="org.apache.log4j.PatternLayout">
