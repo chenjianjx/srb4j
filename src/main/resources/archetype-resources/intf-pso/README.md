@@ -6,8 +6,8 @@
 ````
 
 	<parent>
-		<groupId>org.srb4j</groupId>
-		<artifactId>srb4j-intf-pso</artifactId>
+		<groupId>${groupId}</groupId>
+		<artifactId>${artifactId}-intf-pso</artifactId>
 		<version>1.0</version>
 	</parent>
 

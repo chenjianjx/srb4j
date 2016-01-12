@@ -17,9 +17,9 @@
 		class="org.apache.commons.dbcp.BasicDataSource">
 		<property name="driverClassName" value="com.mysql.jdbc.Driver" />
 		<property name="url"
-			value="jdbc:mysql://localhost:3306/srb4j_integration_test?characterEncoding=UTF-8" />
-		<property name="username" value="srb4j_test" />
-		<property name="password" value="srb4j_123" />
+			value="jdbc:mysql://localhost:3306/${artifactId}_integration_test?characterEncoding=UTF-8" />
+		<property name="username" value="${artifactId}_test" />
+		<property name="password" value="${artifactId}_123" />
 	</bean>
 
 	<!-- You can setup a local smtp server on your dev machine, such as postfix 

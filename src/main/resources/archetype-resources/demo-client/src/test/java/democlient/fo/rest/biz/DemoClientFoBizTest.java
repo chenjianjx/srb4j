@@ -38,7 +38,7 @@ public class DemoClientFoBizTest {
 
 		restRequest = restRequest.header("Authorization", "Bearer " + token);
 		NewPostRequest bizRequest = new NewPostRequest();
-		bizRequest.setContent("Hi, welcome to srb4j");
+		bizRequest.setContent("Hi, welcome");
 		Response restResponse = restRequest.post(Entity.entity(bizRequest,
 				MediaType.APPLICATION_JSON));
 		// parse the response
@@ -64,7 +64,7 @@ public class DemoClientFoBizTest {
 		restRequest = restRequest.header("Authorization", "Bearer "
 				+ "some-wrong-token");
 		NewPostRequest bizRequest = new NewPostRequest();
-		bizRequest.setContent("Hi, welcome to srb4j");
+		bizRequest.setContent("Hi, welcome");
 		Response restResponse = restRequest.post(Entity.entity(bizRequest,
 				MediaType.APPLICATION_JSON));
 
