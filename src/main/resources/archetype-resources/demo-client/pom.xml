@@ -5,14 +5,13 @@
 
 	<parent>
 		<groupId>${groupId}</groupId>
-		<artifactId>${artifactId}-parent</artifactId>
+		<artifactId>${rootArtifactId}-parent</artifactId>
 		<version>1.0-SNAPSHOT</version>
 	</parent>
 
 
-	<artifactId>${artifactId}-demo-client</artifactId>
+	<artifactId>${artifactId}</artifactId>
 	<packaging>jar</packaging>
-
 
 	<dependencyManagement>
 		<dependencies>
@@ -35,8 +34,8 @@
 
 		<dependency>
 			<groupId>${groupId}</groupId>
-			<artifactId>${artifactId}-intf-pso</artifactId>
-			<version>1.0</version>
+			<artifactId>${rootArtifactId}-intf-pso</artifactId>
+			<version>${project.parent.version}</version>
 		</dependency>
 
 		<dependency>
@@ -80,12 +79,6 @@
 		<dependency>
 			<groupId>io.swagger</groupId>
 			<artifactId>swagger-annotations</artifactId>
-		</dependency>
-
-		<dependency>
-			<groupId>${groupId}</groupId>
-			<artifactId>${artifactId}-intf-fo</artifactId>
-			<version>${parent.version}</version>
 		</dependency>
 
 		<dependency>

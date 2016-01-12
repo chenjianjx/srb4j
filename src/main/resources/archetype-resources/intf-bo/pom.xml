@@ -5,18 +5,18 @@
 
 	<parent>
 		<groupId>${groupId}</groupId>
-		<artifactId>${artifactId}-parent</artifactId>
+		<artifactId>${rootArtifactId}-parent</artifactId>
 		<version>1.0-SNAPSHOT</version>
 	</parent>
 
 
-	<artifactId>${artifactId}-intf-bo</artifactId>
+	<artifactId>${artifactId}</artifactId>
 	<packaging>jar</packaging>
 
 	<dependencies>
 		<dependency>
 			<groupId>${groupId}</groupId>
-			<artifactId>${artifactId}-intf-fo</artifactId>
+			<artifactId>${rootArtifactId}-intf-fo</artifactId>
 			<version>${project.parent.version}</version>
 		</dependency>
 	</dependencies>

@@ -18,7 +18,8 @@
 	</fileSets>
 
 	<modules>
-		<module id="intf-fo" dir="intf-fo" name="Front End Interfaces">
+		<module id="${rootArtifactId}-intf-fo" dir="intf-fo"
+			name="Front End Interfaces">
 			<fileSets>
 				<fileSet filtered="true" packaged="true" encoding="UTF-8">
 					<directory>src/main/java</directory>
@@ -34,7 +35,8 @@
 				</fileSet>
 			</fileSets>
 		</module>
-		<module id="intf-bo" dir="intf-bo" name="Back Office Interfaces">
+		<module id="${rootArtifactId}-intf-bo" dir="intf-bo"
+			name="Back Office Interfaces">
 			<fileSets>
 				<fileSet filtered="true" packaged="true" encoding="UTF-8">
 					<directory>src/main/java</directory>
@@ -50,7 +52,8 @@
 				</fileSet>
 			</fileSets>
 		</module>
-		<module id="intf-pso" dir="intf-pso" name="Partner System Oriented Iterfaces">
+		<module id="${rootArtifactId}-intf-pso" dir="intf-pso"
+			name="Partner System Oriented Iterfaces">
 			<fileSets>
 				<fileSet filtered="true" packaged="true" encoding="UTF-8">
 					<directory>src/main/java</directory>
@@ -66,7 +69,8 @@
 				</fileSet>
 			</fileSets>
 		</module>
-		<module id="impl" dir="impl" name="Implementation for all Interfaces">
+		<module id="${rootArtifactId}-impl" dir="impl"
+			name="Implementation for all Interfaces">
 			<fileSets>
 				<fileSet filtered="true" packaged="true" encoding="UTF-8">
 					<directory>src/main/java</directory>
@@ -82,7 +86,7 @@
 				</fileSet>
 			</fileSets>
 		</module>
-		<module id="webapp" dir="webapp" name="Webapp">
+		<module id="${rootArtifactId}-webapp" dir="webapp" name="Webapp">
 			<fileSets>
 				<fileSet filtered="true" packaged="true" encoding="UTF-8">
 					<directory>src/main/java</directory>
@@ -96,24 +100,25 @@
 				<fileSet encoding="UTF-8">
 					<directory>src/test/resources</directory>
 				</fileSet>
-			</fileSets>
-		</module>
-		<module id="demo-client" dir="demo-client" name="Demo Client">
-			<fileSets>
-				<fileSet filtered="true" packaged="true" encoding="UTF-8">
-					<directory>src/main/java</directory>
-				</fileSet>
-				<fileSet encoding="UTF-8">
-					<directory>src/main/resources</directory>
-				</fileSet>
-				<fileSet filtered="true" packaged="true" encoding="UTF-8">
-					<directory>src/test/java</directory>
-				</fileSet>
-				<fileSet encoding="UTF-8">
-					<directory>src/test/resources</directory>
-				</fileSet>
-				<fileSet encoding="UTF-8">
+				<fileSet filtered="true" encoding="UTF-8">
 					<directory>src/main/webapp</directory>
+				</fileSet>
+			</fileSets>
+		</module>
+		<module id="${rootArtifactId}-demo-client" dir="demo-client"
+			name="Demo Client">
+			<fileSets>
+				<fileSet filtered="true" packaged="true" encoding="UTF-8">
+					<directory>src/main/java</directory>
+				</fileSet>
+				<fileSet encoding="UTF-8">
+					<directory>src/main/resources</directory>
+				</fileSet>
+				<fileSet filtered="true" packaged="true" encoding="UTF-8">
+					<directory>src/test/java</directory>
+				</fileSet>
+				<fileSet encoding="UTF-8">
+					<directory>src/test/resources</directory>
 				</fileSet>
 			</fileSets>
 		</module>
