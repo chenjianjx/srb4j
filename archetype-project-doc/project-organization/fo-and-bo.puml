@@ -1,0 +1,23 @@
+@startuml
+!include fo-only.puml
+
+node webapp{
+	[webapp.bo.portal]
+}
+
+
+node intf_bo{
+	[intf.bo]
+}
+	
+node impl{
+	[impl.bo]
+}
+
+[webapp.bo.portal] -down-> [intf.bo]
+intf_bo -left-> intf_fo
+
+[impl.bo] -down-> [impl.biz]
+[impl.bo] .up.> [intf.bo] : implements
+
+@enduml

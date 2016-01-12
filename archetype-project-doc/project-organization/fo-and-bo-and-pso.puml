@@ -1,0 +1,16 @@
+@startuml
+!include fo-and-bo.puml
+
+node intf_pso{
+	[intf.pso]
+} 
+
+node impl{
+	[impl.pso]
+}
+
+[impl.pso] -down-> [impl.biz]
+[impl.pso] .up.> [intf.pso] : implements
+
+
+@enduml

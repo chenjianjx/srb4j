@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE configuration PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-config.dtd">
+
+<configuration>
+
+	<typeHandlers>
+		<typeHandler javaType="java.util.Calendar"
+			handler="org.srb4j.impl.util.infrahelp.mybatis.CalendarTypeHandler" />
+	</typeHandlers>
+
+	<plugins>
+		<plugin interceptor="org.srb4j.impl.support.aop.bizlayer.RepoInterceptor" />
+	</plugins>
+
+</configuration>

@@ -1,0 +1,22 @@
+@startuml
+node webapp{
+	[webapp.fo.rest]	 
+}
+
+
+node intf_fo{
+	[intf.fo]
+}
+
+ 
+
+node impl{
+	[impl.fo]
+	[impl.biz]
+}
+[impl.fo] -down-> [impl.biz]
+
+[webapp.fo.rest] -down-> [intf.fo]
+[impl.fo] .up.> [intf.fo] : implements
+ 
+@enduml

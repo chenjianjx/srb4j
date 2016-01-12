@@ -1,0 +1,32 @@
+#note: no whitespace before or after a value
+#note: the keys should look like a java variable
+
+
+dbHost=someHost
+dbPort=3306
+dbSchema=someDb
+dbUsername=some_name
+dbPassword=some_password
+
+smtpHost=someHost
+smtpPort=somePort
+smtpUsername=some_name
+smtpPassword=some_password
+#true or false
+smtpSmtpStarttlsEnable=false
+
+#the host of your app (not including the servlet context path)
+schemeAndHost=http://localhost:8080/
+#whether to enable swagger json
+enableSwagger=true
+
+#In what name will the emails be sent? 
+orgSupportDesk=Some Company Support Desk
+orgSupportEmail=Some Email
+
+
+#The Hessian server you use to provide partner-system oriented services
+psoRpcServerHost=localhost
+psoRpcServerPort=9090
+
+
