@@ -25,6 +25,8 @@ public class CsBbsRpcServlet extends PsoAbstractHessianServlet implements
 
 	private static final long serialVersionUID = 7698725957127177454L;
 
+#if( $includePso == "true" ||  $includePso == "y" ||  $includePso == "yes")		
+	
 	@Resource
 	PostRepo postRepo;
 
@@ -55,5 +57,5 @@ public class CsBbsRpcServlet extends PsoAbstractHessianServlet implements
 		}
 		return csList;
 	}
-
+#end
 }

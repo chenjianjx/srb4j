@@ -8,9 +8,11 @@
            http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-3.2.xsd
        ">
 
+#if( $includePso == "true" ||  $includePso == "y" ||  $includePso == "yes")
 	<!-- all configs here are env-specific -->
 	<bean id="psoConfig" class="${groupId}.impl.pso.common.PsoConfig">
 		<property name="host" value="${psoRpcServerHost}" />
 		<property name="port" value="${psoRpcServerPort}" />
 	</bean>
+#end	
 </beans>

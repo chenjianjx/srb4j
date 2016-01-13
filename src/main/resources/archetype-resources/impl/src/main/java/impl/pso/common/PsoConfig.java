@@ -11,6 +11,8 @@ import org.apache.commons.lang.builder.ToStringStyle;
  */
 public class PsoConfig {
 
+#if( $includePso == "true" ||  $includePso == "y" ||  $includePso == "yes")	
+
 	private String host;
 
 	private int port;
@@ -36,4 +38,6 @@ public class PsoConfig {
 		return ToStringBuilder.reflectionToString(this,
 				ToStringStyle.SHORT_PREFIX_STYLE);
 	}
+	
+#end	
 }

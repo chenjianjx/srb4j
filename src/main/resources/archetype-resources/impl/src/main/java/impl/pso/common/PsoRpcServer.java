@@ -13,15 +13,19 @@ import org.springframework.context.ApplicationContextAware;
 import org.springframework.stereotype.Component;
 import ${groupId}.impl.pso.celebritysystem.bbs.CsBbsRpcServlet;
 
+#if( $includePso == "true" ||  $includePso == "y" ||  $includePso == "yes")
 /**
  * The class to initialize an embedded server to host rpc endpoints
  * 
  * @author chenjianjx@gmail.com
  *
- */
+ */	
 @Component
+#end
 public class PsoRpcServer implements ApplicationContextAware {
 
+#if( $includePso == "true" ||  $includePso == "y" ||  $includePso == "yes")
+	
 	public static ApplicationContext contextDefinedInWebappProject;
 
 	@Resource
@@ -45,11 +49,16 @@ public class PsoRpcServer implements ApplicationContextAware {
 		server.setHandler(context);
 		server.start();
 	}
+#end		
 
 	@Override
 	public void setApplicationContext(ApplicationContext context)
 			throws BeansException {
+	
+#if( $includePso == "true" ||  $includePso == "y" ||  $includePso == "yes")	
 		contextDefinedInWebappProject = context;
+#end
 	}
+
 
 }

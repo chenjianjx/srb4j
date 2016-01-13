@@ -5,6 +5,8 @@ import java.util.Calendar;
 import org.apache.commons.lang.builder.ToStringBuilder;
 import org.apache.commons.lang.builder.ToStringStyle;
 
+
+#if( $includePso == "true" ||  $includePso == "y" ||  $includePso == "yes")
 /**
  * A mirror object of a biz entity, used in partner system oriented services. It is
  * suggested that the spelling of the properties names are exactly the same with
@@ -14,8 +16,11 @@ import org.apache.commons.lang.builder.ToStringStyle;
  * @author chenjianjx@gmail.com
  *
  */
+	
+#end	
 public abstract class PsoEntityBase {
 
+#if( $includePso == "true" ||  $includePso == "y" ||  $includePso == "yes")	
 	 
 	protected Long id;
 
@@ -54,4 +59,6 @@ public abstract class PsoEntityBase {
 		return ToStringBuilder.reflectionToString(this,
 				ToStringStyle.MULTI_LINE_STYLE);
 	}
+	
+#end	
 }

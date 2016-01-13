@@ -16,7 +16,7 @@ import com.caucho.hessian.client.HessianProxyFactory;
  *
  */
 public class DemoClientPsoRpcTest {
-
+#if( $includePso == "true" ||  $includePso == "y" ||  $includePso == "yes")
 	@Test
 	public void invokePso() throws MalformedURLException {
 		HessianProxyFactory factory = new HessianProxyFactory();
@@ -25,5 +25,5 @@ public class DemoClientPsoRpcTest {
 		List<CsPost> result = rpc.getPostsByCelebrity("tom");
 		System.out.println("Posts: " + result);
 	}
-
+#end
 }

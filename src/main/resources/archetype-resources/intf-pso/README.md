@@ -7,7 +7,7 @@
 
 	<parent>
 		<groupId>${groupId}</groupId>
-		<artifactId>${artifactId}-intf-pso</artifactId>
+		<artifactId>${rootArtifactId}-intf-pso</artifactId>
 		<version>1.0</version>
 	</parent>
 

@@ -6,17 +6,22 @@ import java.util.Map;
 
 import ${groupId}.pso.common.PsoEntityBase;
 
+#if( $includePso == "true" ||  $includePso == "y" ||  $includePso == "yes")
+
 /**
  * post for celebrity system. (An exemplary pso bean)
  * 
  * @author chenjianjx@gmail.com
  *
  */
+	
+#end	
 public class CsPost extends PsoEntityBase  implements Serializable{
 
  
 	private static final long serialVersionUID = 771086654014396291L;
 
+#if( $includePso == "true" ||  $includePso == "y" ||  $includePso == "yes")	
 	private Map<String, Integer> celebrityOccurenceMap = new HashMap<String, Integer>();
 
 	private String content;
@@ -42,4 +47,5 @@ public class CsPost extends PsoEntityBase  implements Serializable{
 		this.content = content;
 	}
 
+#end
 }
