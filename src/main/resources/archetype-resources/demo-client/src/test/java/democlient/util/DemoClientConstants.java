@@ -7,7 +7,7 @@ package ${groupId}.democlient.util;
  */
 public interface DemoClientConstants {
 
-	public static final String BACKEND_URL = "http://localhost:8080/${artifactId}-webapp";
+	public static final String BACKEND_URL = "http://localhost:8080";
 
 	public static final String BACKEND_FO_REST_URL = BACKEND_URL + "/fo/rest";
 	

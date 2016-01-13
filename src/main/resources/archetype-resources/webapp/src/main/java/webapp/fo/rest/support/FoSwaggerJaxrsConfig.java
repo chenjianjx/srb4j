@@ -88,16 +88,16 @@ public class FoSwaggerJaxrsConfig extends HttpServlet {
 	public static String getResourceBasePath(ServletConfig servletConfig,
 			WebAppEnvProp props) {
 		String contextPath = servletConfig.getServletContext().getContextPath();
-		if(contextPath.startsWith("/")){
-			contextPath = contextPath.substring(1);
+		String schemeAndHost = props.getSchemeAndHost();
+		String afterHost = StringUtils.replace(contextPath + "/fo/rest", "//",
+				"/");
+		if (afterHost.startsWith("/")) {
+			afterHost = afterHost.substring(1);
 		}
-		if(contextPath.endsWith("/")){
-			contextPath = contextPath.substring(0, contextPath.length() - 1);
-		}
-		return props.getSchemeAndHost()
-				+ contextPath
-				+ "/fo/rest";
+		String url = schemeAndHost + afterHost;
+		return url;
 	}
+
 
 	private String getDesc() {
 		try {

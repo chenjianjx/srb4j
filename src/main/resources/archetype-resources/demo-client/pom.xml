@@ -13,17 +13,6 @@
 	<artifactId>${artifactId}</artifactId>
 	<packaging>jar</packaging>
 
-	<dependencyManagement>
-		<dependencies>
-			<dependency>
-				<groupId>org.glassfish.jersey</groupId>
-				<artifactId>jersey-bom</artifactId>
-				<version>${jersey.version}</version>
-				<type>pom</type>
-				<scope>import</scope>
-			</dependency>
-		</dependencies>
-	</dependencyManagement>
 
 	<dependencies>
 
@@ -91,6 +80,11 @@
 			<artifactId>freebencher</artifactId>
 		</dependency>
 
+
+		<dependency>
+			<groupId>org.glassfish.jersey.core</groupId>
+			<artifactId>jersey-client</artifactId>
+		</dependency>
 	</dependencies>
 
 </project>
