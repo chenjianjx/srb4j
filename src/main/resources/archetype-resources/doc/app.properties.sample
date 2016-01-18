@@ -1,15 +1,17 @@
 #note: no whitespace before or after a value
 #note: the keys should look like a java variable
 
-
+#Please set DB properties before launching the system
 dbHost=someHost
 dbPort=3306
 dbSchema=someDb
 dbUsername=some_name
 dbPassword=some_password
 
+
+#If you haven't got any smtp account yet, use place holders.  Don't remove the following entries. 
 smtpHost=someHost
-smtpPort=somePort
+smtpPort=25
 smtpUsername=some_name
 smtpPassword=some_password
 #true or false
@@ -20,13 +22,12 @@ schemeAndHost=http://localhost:8080/
 #whether to enable swagger json
 enableSwagger=true
 
-#In what name will the emails be sent? 
+#In what name will the emails be sent?  Use place holders if you haven't figure out the values. 
 orgSupportDesk=Some Company Support Desk
 orgSupportEmail=Some Email
 
 
-#The Hessian server you use to provide partner-system oriented services
+#You must set the following properties if "-DincludePso=true". 
+#The Hessian server you use to provide partner-system oriented services. 
 psoRpcServerHost=localhost
 psoRpcServerPort=9090
-
-
