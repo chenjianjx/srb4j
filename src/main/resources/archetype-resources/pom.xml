@@ -108,7 +108,7 @@
 			<dependency>
 				<groupId>com.github.chenjianjx</groupId>
 				<artifactId>swagger2html</artifactId>
-				<version>1.0.6-SNAPSHOT</version>
+				<version>1.0.6</version>
 			</dependency>
 
 			<!-- Servlet -->
@@ -325,7 +325,7 @@
 			<dependency>
 				<groupId>com.github.scribejava</groupId>
 				<artifactId>scribejava-apis</artifactId>
-				<version>2.1.1-cjx-SNAPSHOT</version>
+				<version>2.1.1</version>
 				<scope>test</scope>
 			</dependency>
 
