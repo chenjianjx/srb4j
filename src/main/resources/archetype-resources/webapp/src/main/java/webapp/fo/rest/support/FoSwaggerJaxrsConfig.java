@@ -59,7 +59,7 @@ public class FoSwaggerJaxrsConfig extends HttpServlet {
 			}
 		}
 
-		String title = "Your Backend System's Name";
+		String title = "Your Backend System's Name (Please change me by editing " + this.getClass().getSimpleName() + ".java";
 		String email = "your-backend-developer@some-org.com";
 		String desc = getDesc();
 

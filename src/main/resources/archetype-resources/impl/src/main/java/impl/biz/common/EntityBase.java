@@ -5,6 +5,8 @@ import java.util.Calendar;
 import org.apache.commons.lang.builder.ToStringBuilder;
 import org.apache.commons.lang.builder.ToStringStyle;
 
+import com.google.common.base.Function;
+
 /**
  * Every entity bean will have these properties
  * 
@@ -53,14 +55,22 @@ public abstract class EntityBase {
 		this.createdAt = createdAt;
 	}
 
- 
-
 	public Calendar getUpdatedAt() {
 		return updatedAt;
 	}
 
 	public void setUpdatedAt(Calendar updatedAt) {
 		this.updatedAt = updatedAt;
+	}
+
+	public static class GetIdFunction<T extends EntityBase> implements
+			Function<T, Long> {
+
+		@Override
+		public Long apply(T t) {
+			return t.getId();
+		}
+
 	}
 
 	@Override
