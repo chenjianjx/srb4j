@@ -2,8 +2,8 @@
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>org.srb4j</groupId>
-	<artifactId>srb4j-parent</artifactId>
-	<version>0.991</version>
+	<artifactId>srb4j</artifactId>
+	<version>0.992</version>
 	<name>The archetype to generate code</name>
 	<url>http://maven.apache.org</url>
 </project>
