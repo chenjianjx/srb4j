@@ -1,4 +1,4 @@
-package ${groupId}.webapp.fo.rest.support;
+package ${groupId}.${rootArtifactId}.webapp.fo.rest.support;
 
 import java.util.Date;
 
@@ -15,8 +15,8 @@ import org.apache.commons.lang3.time.DateFormatUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Component;
-import ${groupId}.intf.fo.basic.FoConstants;
-import ${groupId}.intf.fo.basic.FoResponse;
+import ${groupId}.${rootArtifactId}.intf.fo.basic.FoConstants;
+import ${groupId}.${rootArtifactId}.intf.fo.basic.FoResponse;
 
 /**
  * catch all un-catched exceptions and turns it into error response

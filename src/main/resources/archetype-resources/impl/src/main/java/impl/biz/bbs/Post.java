@@ -1,8 +1,8 @@
-package ${groupId}.impl.biz.bbs;
+package ${groupId}.${rootArtifactId}.impl.biz.bbs;
 
 import java.io.Serializable;
 
-import ${groupId}.impl.biz.common.EntityBase;
+import ${groupId}.${rootArtifactId}.impl.biz.common.EntityBase;
 
 /**
  * 

@@ -1,12 +1,12 @@
-package ${groupId}.democlient.pso;
+package ${groupId}.${rootArtifactId}.democlient.pso;
 
 import java.net.MalformedURLException;
 import java.util.List;
 
 import org.junit.Test;
-import ${groupId}.democlient.util.DemoClientConstants;
-import ${groupId}.pso.celebritysystem.bbs.CsBbsRpc;
-import ${groupId}.pso.celebritysystem.bbs.CsPost;
+import ${groupId}.${rootArtifactId}.democlient.util.DemoClientConstants;
+import ${groupId}.${rootArtifactId}.pso.celebritysystem.bbs.CsBbsRpc;
+import ${groupId}.${rootArtifactId}.pso.celebritysystem.bbs.CsPost;
 
 import com.caucho.hessian.client.HessianProxyFactory;
 

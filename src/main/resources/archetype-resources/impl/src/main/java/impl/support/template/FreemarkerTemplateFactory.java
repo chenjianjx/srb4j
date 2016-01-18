@@ -1,4 +1,4 @@
-package ${groupId}.impl.support.template;
+package ${groupId}.${rootArtifactId}.impl.support.template;
 
 import java.io.IOException;
 

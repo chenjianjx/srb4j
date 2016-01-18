@@ -1,6 +1,6 @@
-package ${groupId}.intf.fo.misc;
+package ${groupId}.${rootArtifactId}.intf.fo.misc;
 
-import ${groupId}.intf.fo.auth.FoAccessToken;
+import ${groupId}.${rootArtifactId}.intf.fo.auth.FoAccessToken;
 
 /**
  * non user-oriented interfaces. Sometimes you need these

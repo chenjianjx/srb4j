@@ -1,4 +1,4 @@
-package ${groupId}.impl.pso.common;
+package ${groupId}.${rootArtifactId}.impl.pso.common;
 
 import java.net.InetSocketAddress;
 
@@ -11,7 +11,7 @@ import org.springframework.beans.BeansException;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.ApplicationContextAware;
 import org.springframework.stereotype.Component;
-import ${groupId}.impl.pso.celebritysystem.bbs.CsBbsRpcServlet;
+import ${groupId}.${rootArtifactId}.impl.pso.celebritysystem.bbs.CsBbsRpcServlet;
 
 #if( $includePso == "true" ||  $includePso == "y" ||  $includePso == "yes")
 /**

@@ -1,4 +1,4 @@
-package ${groupId}.impl.itcase.biz.user;
+package ${groupId}.${rootArtifactId}.impl.itcase.biz.user;
 
 import javax.annotation.Resource;
 
@@ -6,9 +6,9 @@ import org.junit.Assert;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.test.context.ContextConfiguration;
-import ${groupId}.impl.biz.user.User;
-import ${groupId}.impl.biz.user.UserRepo;
-import ${groupId}.impl.itcase.support.MySpringJunit4ClassRunner;
+import ${groupId}.${rootArtifactId}.impl.biz.user.User;
+import ${groupId}.${rootArtifactId}.impl.biz.user.UserRepo;
+import ${groupId}.${rootArtifactId}.impl.itcase.support.MySpringJunit4ClassRunner;
 
 /**
  * 

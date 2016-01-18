@@ -1,11 +1,11 @@
-package ${groupId}.impl.fo.common;
+package ${groupId}.${rootArtifactId}.impl.fo.common;
 
 import javax.annotation.Resource;
 
-import ${groupId}.impl.biz.user.User;
-import ${groupId}.impl.biz.user.UserRepo;
-import ${groupId}.intf.fo.basic.FoConstants;
-import ${groupId}.intf.fo.basic.FoResponse;
+import ${groupId}.${rootArtifactId}.impl.biz.user.User;
+import ${groupId}.${rootArtifactId}.impl.biz.user.UserRepo;
+import ${groupId}.${rootArtifactId}.intf.fo.basic.FoConstants;
+import ${groupId}.${rootArtifactId}.intf.fo.basic.FoResponse;
 
 /**
  * 

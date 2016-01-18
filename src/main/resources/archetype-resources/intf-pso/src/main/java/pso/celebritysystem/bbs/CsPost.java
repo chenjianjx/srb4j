@@ -1,10 +1,10 @@
-package ${groupId}.pso.celebritysystem.bbs;
+package ${groupId}.${rootArtifactId}.pso.celebritysystem.bbs;
 
 import java.io.Serializable;
 import java.util.HashMap;
 import java.util.Map;
 
-import ${groupId}.pso.common.PsoEntityBase;
+import ${groupId}.${rootArtifactId}.pso.common.PsoEntityBase;
 
 #if( $includePso == "true" ||  $includePso == "y" ||  $includePso == "yes")
 

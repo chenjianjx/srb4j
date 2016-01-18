@@ -1,4 +1,4 @@
-package ${groupId}.democlient.bo.portal;
+package ${groupId}.${rootArtifactId}.democlient.bo.portal;
 
 import javax.ws.rs.client.Client;
 import javax.ws.rs.client.ClientBuilder;
@@ -8,7 +8,7 @@ import javax.ws.rs.core.Response;
 
 import org.junit.Assert;
 import org.junit.Test;
-import ${groupId}.democlient.util.DemoClientConstants;
+import ${groupId}.${rootArtifactId}.democlient.util.DemoClientConstants;
 
 /**
  * 

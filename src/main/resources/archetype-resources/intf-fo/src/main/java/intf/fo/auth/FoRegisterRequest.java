@@ -1,4 +1,4 @@
-package ${groupId}.intf.fo.auth;
+package ${groupId}.${rootArtifactId}.intf.fo.auth;
 
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
@@ -8,7 +8,7 @@ import javax.validation.constraints.Pattern;
 
 import org.apache.commons.lang.builder.ToStringBuilder;
 import org.apache.commons.lang.builder.ToStringStyle;
-import ${groupId}.intf.fo.basic.FoConstants;
+import ${groupId}.${rootArtifactId}.intf.fo.basic.FoConstants;
 
 /**
  * 

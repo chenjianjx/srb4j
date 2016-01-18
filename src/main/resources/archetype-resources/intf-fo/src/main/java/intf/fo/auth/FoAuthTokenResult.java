@@ -1,4 +1,4 @@
-package ${groupId}.intf.fo.auth;
+package ${groupId}.${rootArtifactId}.intf.fo.auth;
 
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;

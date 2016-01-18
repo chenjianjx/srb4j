@@ -1,6 +1,6 @@
-package ${groupId}.democlient.fo.rest.biz;
+package ${groupId}.${rootArtifactId}.democlient.fo.rest.biz;
 
-import static ${groupId}.democlient.util.DemoClientConstants.BACKEND_FO_REST_URL;
+import static ${groupId}.${rootArtifactId}.democlient.util.DemoClientConstants.BACKEND_FO_REST_URL;
 
 import javax.ws.rs.client.Client;
 import javax.ws.rs.client.ClientBuilder;
@@ -11,10 +11,10 @@ import javax.ws.rs.core.Response;
 
 import org.junit.Assert;
 import org.junit.Test;
-import ${groupId}.democlient.fo.rest.auth.DemoClientFoAuthTest;
-import ${groupId}.democlient.util.DemoClientUtils;
-import ${groupId}.restclient.model.NewPostRequest;
-import ${groupId}.restclient.model.Post;
+import ${groupId}.${rootArtifactId}.democlient.fo.rest.auth.DemoClientFoAuthTest;
+import ${groupId}.${rootArtifactId}.democlient.util.DemoClientUtils;
+import ${groupId}.${rootArtifactId}.restclient.model.NewPostRequest;
+import ${groupId}.${rootArtifactId}.restclient.model.Post;
 
 /**
  * 

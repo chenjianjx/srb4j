@@ -1,4 +1,4 @@
-package ${groupId}.impl.support.mail;
+package ${groupId}.${rootArtifactId}.impl.support.mail;
 
 import java.io.IOException;
 import java.io.StringWriter;
@@ -20,7 +20,7 @@ import org.springframework.mail.SimpleMailMessage;
 import org.springframework.mail.javamail.JavaMailSenderImpl;
 import org.springframework.mail.javamail.MimeMessageHelper;
 import org.springframework.stereotype.Service;
-import ${groupId}.impl.support.template.FreemarkerTemplateFactory;
+import ${groupId}.${rootArtifactId}.impl.support.template.FreemarkerTemplateFactory;
 
 import freemarker.template.Template;
 import freemarker.template.TemplateException;

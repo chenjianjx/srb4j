@@ -1,4 +1,4 @@
-package ${groupId}.impl.util.infrahelp.beanvalidae;
+package ${groupId}.${rootArtifactId}.impl.util.infrahelp.beanvalidae;
 
 /*
  * JBoss, Home of Professional Open Source

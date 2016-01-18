@@ -1,4 +1,4 @@
-package ${groupId}.webapp.fo.rest;
+package ${groupId}.${rootArtifactId}.webapp.fo.rest;
 
 /**
  * just a hook to locate the package

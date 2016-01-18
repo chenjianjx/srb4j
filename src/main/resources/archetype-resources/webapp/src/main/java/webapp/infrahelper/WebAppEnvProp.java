@@ -1,4 +1,4 @@
-package ${groupId}.webapp.infrahelper;
+package ${groupId}.${rootArtifactId}.webapp.infrahelper;
 
 import org.apache.commons.lang.StringUtils;
 import org.springframework.beans.factory.annotation.Value;

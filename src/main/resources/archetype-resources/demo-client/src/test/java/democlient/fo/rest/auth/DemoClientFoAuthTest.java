@@ -1,6 +1,6 @@
-package ${groupId}.democlient.fo.rest.auth;
+package ${groupId}.${rootArtifactId}.democlient.fo.rest.auth;
 
-import static ${groupId}.democlient.util.DemoClientConstants.BACKEND_FO_REST_URL;
+import static ${groupId}.${rootArtifactId}.democlient.util.DemoClientConstants.BACKEND_FO_REST_URL;
 
 import java.io.File;
 
@@ -25,9 +25,9 @@ import org.apache.oltu.oauth2.common.exception.OAuthSystemException;
 import org.apache.oltu.oauth2.common.message.types.GrantType;
 import org.junit.Assert;
 import org.junit.Test;
-import ${groupId}.democlient.util.DemoClientConstants;
-import ${groupId}.democlient.util.DemoClientUtils;
-import ${groupId}.restclient.model.AuthTokenResult;
+import ${groupId}.${rootArtifactId}.democlient.util.DemoClientConstants;
+import ${groupId}.${rootArtifactId}.democlient.util.DemoClientUtils;
+import ${groupId}.${rootArtifactId}.restclient.model.AuthTokenResult;
 
 /**
  * 

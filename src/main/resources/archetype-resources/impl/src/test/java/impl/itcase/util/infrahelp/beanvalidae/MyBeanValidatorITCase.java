@@ -1,4 +1,4 @@
-package ${groupId}.impl.itcase.util.infrahelp.beanvalidae;
+package ${groupId}.${rootArtifactId}.impl.itcase.util.infrahelp.beanvalidae;
 
 import java.util.List;
 
@@ -9,8 +9,8 @@ import org.junit.Assert;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.test.context.ContextConfiguration;
-import ${groupId}.impl.itcase.support.MySpringJunit4ClassRunner;
-import ${groupId}.impl.util.infrahelp.beanvalidae.MyValidator;
+import ${groupId}.${rootArtifactId}.impl.itcase.support.MySpringJunit4ClassRunner;
+import ${groupId}.${rootArtifactId}.impl.util.infrahelp.beanvalidae.MyValidator;
 
 /**
  * 

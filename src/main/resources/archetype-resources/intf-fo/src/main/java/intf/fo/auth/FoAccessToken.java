@@ -1,8 +1,8 @@
-package ${groupId}.intf.fo.auth;
+package ${groupId}.${rootArtifactId}.intf.fo.auth;
 
 import java.util.Calendar;
 
-import ${groupId}.intf.fo.basic.FoEntityBase;
+import ${groupId}.${rootArtifactId}.intf.fo.basic.FoEntityBase;
 
 /**
  * 

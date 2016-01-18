@@ -1,4 +1,4 @@
-package ${groupId}.impl.util.tools.lang;
+package ${groupId}.${rootArtifactId}.impl.util.tools.lang;
 
 import java.io.UnsupportedEncodingException;
 import java.lang.reflect.Field;

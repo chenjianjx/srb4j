@@ -1,4 +1,4 @@
-package ${groupId}.restclient.model;
+package ${groupId}.${rootArtifactId}.restclient.model;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonValue;

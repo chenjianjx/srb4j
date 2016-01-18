@@ -1,11 +1,11 @@
-package ${groupId}.democlient.fo.rest.auth;
+package ${groupId}.${rootArtifactId}.democlient.fo.rest.auth;
 
 import javax.ws.rs.core.Response;
 
 import org.apache.commons.lang.builder.ToStringBuilder;
 import org.apache.commons.lang.builder.ToStringStyle;
-import ${groupId}.restclient.model.AuthTokenResult;
-import ${groupId}.restclient.model.ErrorResult;
+import ${groupId}.${rootArtifactId}.restclient.model.AuthTokenResult;
+import ${groupId}.${rootArtifactId}.restclient.model.ErrorResult;
 
 /**
  * The response object of visiting OAuth2 token point (login/register)

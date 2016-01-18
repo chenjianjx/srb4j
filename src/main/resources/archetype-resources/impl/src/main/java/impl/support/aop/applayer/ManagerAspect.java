@@ -1,10 +1,10 @@
-package ${groupId}.impl.support.aop.applayer;
+package ${groupId}.${rootArtifactId}.impl.support.aop.applayer;
 
 import org.aspectj.lang.JoinPoint;
 import org.aspectj.lang.annotation.Aspect;
 import org.aspectj.lang.annotation.Before;
 import org.springframework.stereotype.Component;
-import ${groupId}.impl.util.tools.lang.MyLangUtils;
+import ${groupId}.${rootArtifactId}.impl.util.tools.lang.MyLangUtils;
 
 /**
  * 

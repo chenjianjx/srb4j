@@ -1,4 +1,4 @@
-package ${groupId}.democlient.fo.rest.perf;
+package ${groupId}.${rootArtifactId}.democlient.fo.rest.perf;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -9,7 +9,7 @@ import org.freebencher.FbJobResult;
 import org.freebencher.FbTarget;
 import org.freebencher.Freebencher;
 import org.junit.Test;
-import ${groupId}.democlient.fo.rest.auth.DemoClientFoAuthTest;
+import ${groupId}.${rootArtifactId}.democlient.fo.rest.auth.DemoClientFoAuthTest;
 
 /**
  * 

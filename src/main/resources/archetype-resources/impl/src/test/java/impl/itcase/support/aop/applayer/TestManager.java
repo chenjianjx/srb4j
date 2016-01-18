@@ -1,4 +1,4 @@
-package ${groupId}.impl.itcase.support.aop.applayer;
+package ${groupId}.${rootArtifactId}.impl.itcase.support.aop.applayer;
 
 import org.springframework.stereotype.Service;
 

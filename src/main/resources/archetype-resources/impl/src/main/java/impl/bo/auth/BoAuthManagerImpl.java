@@ -1,19 +1,19 @@
-package ${groupId}.impl.bo.auth;
+package ${groupId}.${rootArtifactId}.impl.bo.auth;
 
-import static ${groupId}.intf.fo.basic.FoConstants.NULL_REQUEST_BEAN_TIP;
+import static ${groupId}.${rootArtifactId}.intf.fo.basic.FoConstants.NULL_REQUEST_BEAN_TIP;
 
 import javax.annotation.Resource;
 
 import org.springframework.stereotype.Service;
-import ${groupId}.impl.biz.auth.AuthService;
-import ${groupId}.impl.biz.user.User;
-import ${groupId}.impl.biz.user.UserRepo;
-import ${groupId}.impl.util.infrahelp.beanvalidae.MyValidator;
-import ${groupId}.intf.bo.auth.BoAuthManager;
-import ${groupId}.intf.bo.auth.BoLocalLoginRequest;
-import ${groupId}.intf.bo.auth.BoLoginResult;
-import ${groupId}.intf.fo.basic.FoConstants;
-import ${groupId}.intf.fo.basic.FoResponse;
+import ${groupId}.${rootArtifactId}.impl.biz.auth.AuthService;
+import ${groupId}.${rootArtifactId}.impl.biz.user.User;
+import ${groupId}.${rootArtifactId}.impl.biz.user.UserRepo;
+import ${groupId}.${rootArtifactId}.impl.util.infrahelp.beanvalidae.MyValidator;
+import ${groupId}.${rootArtifactId}.intf.bo.auth.BoAuthManager;
+import ${groupId}.${rootArtifactId}.intf.bo.auth.BoLocalLoginRequest;
+import ${groupId}.${rootArtifactId}.intf.bo.auth.BoLoginResult;
+import ${groupId}.${rootArtifactId}.intf.fo.basic.FoConstants;
+import ${groupId}.${rootArtifactId}.intf.fo.basic.FoResponse;
 
 /**
  * 

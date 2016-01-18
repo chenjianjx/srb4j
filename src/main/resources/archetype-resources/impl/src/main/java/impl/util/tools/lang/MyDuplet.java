@@ -1,4 +1,4 @@
-package ${groupId}.impl.util.tools.lang;
+package ${groupId}.${rootArtifactId}.impl.util.tools.lang;
 
 import org.apache.commons.lang.builder.ToStringBuilder;
 import org.apache.commons.lang.builder.ToStringStyle;

@@ -1,4 +1,4 @@
-package ${groupId}.impl.fo.bbs;
+package ${groupId}.${rootArtifactId}.impl.fo.bbs;
 
 import java.util.List;
 
@@ -7,16 +7,16 @@ import javax.annotation.Resource;
 
 import org.apache.commons.lang.RandomStringUtils;
 import org.springframework.stereotype.Service;
-import ${groupId}.impl.biz.bbs.Post;
-import ${groupId}.impl.biz.bbs.PostRepo;
-import ${groupId}.impl.biz.user.User;
-import ${groupId}.impl.biz.user.UserRepo;
-import ${groupId}.impl.util.tools.lang.MyLangUtils;
-import ${groupId}.intf.fo.auth.FoAuthManager;
-import ${groupId}.intf.fo.auth.FoAuthTokenResult;
-import ${groupId}.intf.fo.auth.FoRegisterRequest;
-import ${groupId}.intf.fo.basic.FoResponse;
-import ${groupId}.intf.fo.bbs.FoPost;
+import ${groupId}.${rootArtifactId}.impl.biz.bbs.Post;
+import ${groupId}.${rootArtifactId}.impl.biz.bbs.PostRepo;
+import ${groupId}.${rootArtifactId}.impl.biz.user.User;
+import ${groupId}.${rootArtifactId}.impl.biz.user.UserRepo;
+import ${groupId}.${rootArtifactId}.impl.util.tools.lang.MyLangUtils;
+import ${groupId}.${rootArtifactId}.intf.fo.auth.FoAuthManager;
+import ${groupId}.${rootArtifactId}.intf.fo.auth.FoAuthTokenResult;
+import ${groupId}.${rootArtifactId}.intf.fo.auth.FoRegisterRequest;
+import ${groupId}.${rootArtifactId}.intf.fo.basic.FoResponse;
+import ${groupId}.${rootArtifactId}.intf.fo.bbs.FoPost;
 
 /**
  * 

@@ -1,4 +1,4 @@
-package ${groupId}.webapp.infrahelper.rest;
+package ${groupId}.${rootArtifactId}.webapp.infrahelper.rest;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletRequestWrapper;

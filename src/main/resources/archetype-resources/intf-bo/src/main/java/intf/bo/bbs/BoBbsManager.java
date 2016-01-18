@@ -1,8 +1,8 @@
-package ${groupId}.intf.bo.bbs;
+package ${groupId}.${rootArtifactId}.intf.bo.bbs;
 
 import java.util.List;
 
-import ${groupId}.intf.fo.basic.FoResponse;
+import ${groupId}.${rootArtifactId}.intf.fo.basic.FoResponse;
 
 /**
  * an exemplary bo-intf manager

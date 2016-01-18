@@ -1,4 +1,4 @@
-package ${groupId}.impl.biz.user;
+package ${groupId}.${rootArtifactId}.impl.biz.user;
 
 import org.apache.ibatis.annotations.Insert;
 import org.apache.ibatis.annotations.Select;

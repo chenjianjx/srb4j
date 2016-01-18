@@ -1,4 +1,4 @@
-package ${groupId}.impl.pso.common;
+package ${groupId}.${rootArtifactId}.impl.pso.common;
 
 import javax.servlet.ServletConfig;
 import javax.servlet.ServletException;

@@ -3,7 +3,7 @@
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>com.github.chenjianjx</groupId>
 	<artifactId>srb4j</artifactId>
-	<version>0.994</version>
+	<version>0.995</version>
 	<name>The archetype to generate code</name>
 	<url>http://maven.apache.org</url>
 </project>

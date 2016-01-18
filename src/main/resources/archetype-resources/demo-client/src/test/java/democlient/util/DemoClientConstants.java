@@ -1,4 +1,4 @@
-package ${groupId}.democlient.util;
+package ${groupId}.${rootArtifactId}.democlient.util;
 
 /**
  * 

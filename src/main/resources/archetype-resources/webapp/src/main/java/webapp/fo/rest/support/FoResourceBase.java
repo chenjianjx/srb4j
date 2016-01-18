@@ -1,4 +1,4 @@
-package ${groupId}.webapp.fo.rest.support;
+package ${groupId}.${rootArtifactId}.webapp.fo.rest.support;
 
 import javax.ws.rs.container.ContainerRequestContext;
 

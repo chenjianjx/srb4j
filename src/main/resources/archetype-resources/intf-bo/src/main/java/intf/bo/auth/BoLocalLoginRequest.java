@@ -1,4 +1,4 @@
-package ${groupId}.intf.bo.auth;
+package ${groupId}.${rootArtifactId}.intf.bo.auth;
 
 import javax.validation.constraints.NotNull;
 

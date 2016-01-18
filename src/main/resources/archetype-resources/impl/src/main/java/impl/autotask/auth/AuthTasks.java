@@ -1,4 +1,4 @@
-package ${groupId}.impl.autotask.auth;
+package ${groupId}.${rootArtifactId}.impl.autotask.auth;
 
 import static org.apache.commons.lang.time.DateFormatUtils.format;
 
@@ -11,9 +11,9 @@ import javax.annotation.Resource;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Component;
-import ${groupId}.impl.biz.auth.AccessTokenRepo;
-import ${groupId}.impl.common.ImplConstants;
-import ${groupId}.impl.util.tools.lang.MyLangUtils;
+import ${groupId}.${rootArtifactId}.impl.biz.auth.AccessTokenRepo;
+import ${groupId}.${rootArtifactId}.impl.common.ImplConstants;
+import ${groupId}.${rootArtifactId}.impl.util.tools.lang.MyLangUtils;
 
 /**
  * auto tasks for auth module
