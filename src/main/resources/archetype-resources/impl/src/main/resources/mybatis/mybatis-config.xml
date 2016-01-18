@@ -6,11 +6,11 @@
 
 	<typeHandlers>
 		<typeHandler javaType="java.util.Calendar"
-			handler="${groupId}.impl.util.infrahelp.mybatis.CalendarTypeHandler" />
+			handler="${groupId}.${rootArtifactId}.impl.util.infrahelp.mybatis.CalendarTypeHandler" />
 	</typeHandlers>
 
 	<plugins>
-		<plugin interceptor="${groupId}.impl.support.aop.bizlayer.RepoInterceptor" />
+		<plugin interceptor="${groupId}.${rootArtifactId}.impl.support.aop.bizlayer.RepoInterceptor" />
 	</plugins>
 
 </configuration>

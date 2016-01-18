@@ -9,7 +9,7 @@ http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd"
 
 	<servlet>
 		<servlet-name>fo-rest-doc-servlet</servlet-name>
-		<servlet-class>${groupId}.webapp.root.FoRestDocServlet</servlet-class>
+		<servlet-class>${groupId}.${rootArtifactId}.webapp.root.FoRestDocServlet</servlet-class>
 	</servlet>
 
 	<servlet-mapping>
@@ -21,7 +21,7 @@ http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd"
 
 	<servlet>
 		<servlet-name>bo-portal-servlet</servlet-name>
-		<servlet-class>${groupId}.webapp.bo.portal.BoAllInOneServlet</servlet-class>
+		<servlet-class>${groupId}.${rootArtifactId}.webapp.bo.portal.BoAllInOneServlet</servlet-class>
 	</servlet>
 
 	<servlet-mapping>
@@ -38,7 +38,7 @@ http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd"
 			<param-name>jersey.config.server.provider.packages</param-name>
 			<param-value>
 				io.swagger.jaxrs.listing,
-				${groupId}.webapp.fo.rest
+				${groupId}.${rootArtifactId}.webapp.fo.rest
 			</param-value>
 		</init-param>
 		<load-on-startup>1</load-on-startup>
@@ -52,7 +52,7 @@ http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd"
 
 	<servlet>
 		<servlet-name>fo-rest-swagger-init</servlet-name>
-		<servlet-class>${groupId}.webapp.fo.rest.support.FoSwaggerJaxrsConfig</servlet-class>
+		<servlet-class>${groupId}.${rootArtifactId}.webapp.fo.rest.support.FoSwaggerJaxrsConfig</servlet-class>
 		<load-on-startup>2</load-on-startup>
 	</servlet>
 

@@ -29,7 +29,7 @@
 
 	</bean>
 
-	<mybatis:scan base-package="${groupId}.impl.biz" />
+	<mybatis:scan base-package="${groupId}.${rootArtifactId}.impl.biz" />
 
 
 </beans>
