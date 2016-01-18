@@ -1,4 +1,4 @@
-package ${groupId}.${rootArtifactId}.impl.pso.common;
+package ${package}.impl.pso.common;
 
 import org.apache.commons.lang.StringUtils;
 import org.apache.commons.lang.builder.ToStringBuilder;

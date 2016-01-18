@@ -1,8 +1,8 @@
-package ${groupId}.${rootArtifactId}.intf.fo.bbs;
+package ${package}.intf.fo.bbs;
 
 import java.util.List;
 
-import ${groupId}.${rootArtifactId}.intf.fo.basic.FoResponse;
+import ${package}.intf.fo.basic.FoResponse;
 
 /**
  * an exemplary manager

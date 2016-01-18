@@ -12,7 +12,7 @@
 
 
 	<bean id="propertyConfigurer"
-		class="${groupId}.${rootArtifactId}.impl.util.spring.UserHomeFilePropertyPlaceholderConfigurer">
+		class="${package}.impl.util.spring.UserHomeFilePropertyPlaceholderConfigurer">
 		<property name="fileEncoding" value="utf-8" />
 		<property name="userHomeFiles">
 			<list>

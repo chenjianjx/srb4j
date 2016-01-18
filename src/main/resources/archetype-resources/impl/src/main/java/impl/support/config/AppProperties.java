@@ -1,4 +1,4 @@
-package ${groupId}.${rootArtifactId}.impl.support.config;
+package ${package}.impl.support.config;
 
 import org.apache.commons.lang.builder.ToStringBuilder;
 import org.apache.commons.lang.builder.ToStringStyle;

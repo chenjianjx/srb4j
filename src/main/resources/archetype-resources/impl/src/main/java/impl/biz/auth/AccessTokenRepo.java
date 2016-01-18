@@ -1,4 +1,4 @@
-package ${groupId}.${rootArtifactId}.impl.biz.auth;
+package ${package}.impl.biz.auth;
 
 import java.sql.Timestamp;
 

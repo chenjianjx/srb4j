@@ -1,9 +1,9 @@
-package ${groupId}.${rootArtifactId}.intf.fo.bbs;
+package ${package}.intf.fo.bbs;
 
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 
-import ${groupId}.${rootArtifactId}.intf.fo.basic.FoEntityBase;
+import ${package}.intf.fo.basic.FoEntityBase;
 
 /**
  * an exemplary fo entity

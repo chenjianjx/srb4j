@@ -1,4 +1,4 @@
-package ${groupId}.${rootArtifactId}.impl.util.spring;
+package ${package}.impl.util.spring;
 
 import java.io.File;
 

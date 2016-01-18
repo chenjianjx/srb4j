@@ -1,4 +1,4 @@
-package ${groupId}.${rootArtifactId}.pso.celebritysystem.bbs;
+package ${package}.pso.celebritysystem.bbs;
 
 import java.util.List;
 

@@ -1,6 +1,6 @@
-package ${groupId}.${rootArtifactId}.intf.bo.bbs;
+package ${package}.intf.bo.bbs;
 
-import ${groupId}.${rootArtifactId}.intf.fo.bbs.FoPost;
+import ${package}.intf.fo.bbs.FoPost;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;

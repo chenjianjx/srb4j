@@ -1,4 +1,4 @@
-package ${groupId}.${rootArtifactId}.impl.itcase.bbs;
+package ${package}.impl.itcase.bbs;
 
 import javax.annotation.Resource;
 
@@ -6,9 +6,9 @@ import org.junit.Assert;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.test.context.ContextConfiguration;
-import ${groupId}.${rootArtifactId}.impl.biz.bbs.Post;
-import ${groupId}.${rootArtifactId}.impl.biz.bbs.PostRepo;
-import ${groupId}.${rootArtifactId}.impl.itcase.support.MySpringJunit4ClassRunner;
+import ${package}.impl.biz.bbs.Post;
+import ${package}.impl.biz.bbs.PostRepo;
+import ${package}.impl.itcase.support.MySpringJunit4ClassRunner;
 
 /**
  * An exemplary repository itcase

@@ -1,4 +1,4 @@
-package ${groupId}.${rootArtifactId}.impl.util.infrahelp.mybatis;
+package ${package}.impl.util.infrahelp.mybatis;
 
 import java.sql.CallableStatement;
 import java.sql.PreparedStatement;

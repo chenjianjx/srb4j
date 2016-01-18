@@ -1,8 +1,8 @@
-package ${groupId}.${rootArtifactId}.democlient.util;
+package ${package}.democlient.util;
 
 import java.net.URLDecoder;
 
-import ${groupId}.${rootArtifactId}.restclient.model.ErrorResult;
+import ${package}.restclient.model.ErrorResult;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;

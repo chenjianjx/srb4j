@@ -1,13 +1,13 @@
-package ${groupId}.${rootArtifactId}.impl.fo.misc;
+package ${package}.impl.fo.misc;
 
 import javax.annotation.Resource;
 
 import org.springframework.stereotype.Service;
-import ${groupId}.${rootArtifactId}.impl.biz.auth.AccessToken;
-import ${groupId}.${rootArtifactId}.impl.biz.auth.AccessTokenRepo;
-import ${groupId}.${rootArtifactId}.impl.util.tools.lang.MyLangUtils;
-import ${groupId}.${rootArtifactId}.intf.fo.auth.FoAccessToken;
-import ${groupId}.${rootArtifactId}.intf.fo.misc.MiscBiz;
+import ${package}.impl.biz.auth.AccessToken;
+import ${package}.impl.biz.auth.AccessTokenRepo;
+import ${package}.impl.util.tools.lang.MyLangUtils;
+import ${package}.intf.fo.auth.FoAccessToken;
+import ${package}.intf.fo.misc.MiscBiz;
 
 /**
  * 

@@ -1,4 +1,4 @@
-package ${groupId}.${rootArtifactId}.intf.fo.bbs;
+package ${package}.intf.fo.bbs;
 
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;

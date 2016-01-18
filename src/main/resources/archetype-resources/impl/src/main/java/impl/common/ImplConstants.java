@@ -1,4 +1,4 @@
-package ${groupId}.${rootArtifactId}.impl.common;
+package ${package}.impl.common;
 
 
 /**

@@ -1,6 +1,6 @@
-package ${groupId}.${rootArtifactId}.impl.fo.bbs;
+package ${package}.impl.fo.bbs;
 
-import static ${groupId}.${rootArtifactId}.intf.fo.basic.FoConstants.NULL_REQUEST_BEAN_TIP;
+import static ${package}.intf.fo.basic.FoConstants.NULL_REQUEST_BEAN_TIP;
 
 import java.util.Arrays;
 import java.util.List;
@@ -8,17 +8,17 @@ import java.util.List;
 import javax.annotation.Resource;
 
 import org.springframework.stereotype.Service;
-import ${groupId}.${rootArtifactId}.impl.biz.bbs.Post;
-import ${groupId}.${rootArtifactId}.impl.biz.bbs.PostRepo;
-import ${groupId}.${rootArtifactId}.impl.biz.user.User;
-import ${groupId}.${rootArtifactId}.impl.fo.common.FoManagerImplBase;
-import ${groupId}.${rootArtifactId}.impl.util.infrahelp.beanvalidae.MyValidator;
-import ${groupId}.${rootArtifactId}.intf.fo.basic.FoConstants;
-import ${groupId}.${rootArtifactId}.intf.fo.basic.FoResponse;
-import ${groupId}.${rootArtifactId}.intf.fo.bbs.FoBbsManager;
-import ${groupId}.${rootArtifactId}.intf.fo.bbs.FoNewPostRequest;
-import ${groupId}.${rootArtifactId}.intf.fo.bbs.FoPost;
-import ${groupId}.${rootArtifactId}.intf.fo.bbs.FoUpdatePostRequest;
+import ${package}.impl.biz.bbs.Post;
+import ${package}.impl.biz.bbs.PostRepo;
+import ${package}.impl.biz.user.User;
+import ${package}.impl.fo.common.FoManagerImplBase;
+import ${package}.impl.util.infrahelp.beanvalidae.MyValidator;
+import ${package}.intf.fo.basic.FoConstants;
+import ${package}.intf.fo.basic.FoResponse;
+import ${package}.intf.fo.bbs.FoBbsManager;
+import ${package}.intf.fo.bbs.FoNewPostRequest;
+import ${package}.intf.fo.bbs.FoPost;
+import ${package}.intf.fo.bbs.FoUpdatePostRequest;
 
 /**
  * 

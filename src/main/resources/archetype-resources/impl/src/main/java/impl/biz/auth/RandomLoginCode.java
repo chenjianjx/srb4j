@@ -1,8 +1,8 @@
-package ${groupId}.${rootArtifactId}.impl.biz.auth;
+package ${package}.impl.biz.auth;
 
 import java.util.Calendar;
 
-import ${groupId}.${rootArtifactId}.impl.biz.common.EntityBase;
+import ${package}.impl.biz.common.EntityBase;
 
 /**
  * 

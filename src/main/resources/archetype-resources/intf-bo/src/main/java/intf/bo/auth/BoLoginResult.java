@@ -1,4 +1,4 @@
-package ${groupId}.${rootArtifactId}.intf.bo.auth;
+package ${package}.intf.bo.auth;
 
 /**
  * 

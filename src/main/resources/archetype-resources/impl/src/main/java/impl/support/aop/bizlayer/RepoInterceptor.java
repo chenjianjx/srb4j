@@ -1,4 +1,4 @@
-package ${groupId}.${rootArtifactId}.impl.support.aop.bizlayer;
+package ${package}.impl.support.aop.bizlayer;
 
 import java.util.GregorianCalendar;
 import java.util.Properties;
@@ -11,7 +11,7 @@ import org.apache.ibatis.plugin.Intercepts;
 import org.apache.ibatis.plugin.Invocation;
 import org.apache.ibatis.plugin.Plugin;
 import org.apache.ibatis.plugin.Signature;
-import ${groupId}.${rootArtifactId}.impl.biz.common.EntityBase;
+import ${package}.impl.biz.common.EntityBase;
 
 /**
  * 

@@ -1,19 +1,19 @@
-package ${groupId}.${rootArtifactId}.impl.fo.user;
+package ${package}.impl.fo.user;
 
-import static ${groupId}.${rootArtifactId}.intf.fo.basic.FoConstants.NULL_REQUEST_BEAN_TIP;
+import static ${package}.intf.fo.basic.FoConstants.NULL_REQUEST_BEAN_TIP;
 
 import javax.annotation.Resource;
 
 import org.springframework.stereotype.Service;
-import ${groupId}.${rootArtifactId}.impl.biz.auth.AuthService;
-import ${groupId}.${rootArtifactId}.impl.biz.user.User;
-import ${groupId}.${rootArtifactId}.impl.biz.user.UserRepo;
-import ${groupId}.${rootArtifactId}.impl.fo.common.FoManagerImplBase;
-import ${groupId}.${rootArtifactId}.impl.util.infrahelp.beanvalidae.MyValidator;
-import ${groupId}.${rootArtifactId}.intf.fo.auth.FoChangePasswordRequest;
-import ${groupId}.${rootArtifactId}.intf.fo.auth.FoUserManager;
-import ${groupId}.${rootArtifactId}.intf.fo.basic.FoConstants;
-import ${groupId}.${rootArtifactId}.intf.fo.basic.FoResponse;
+import ${package}.impl.biz.auth.AuthService;
+import ${package}.impl.biz.user.User;
+import ${package}.impl.biz.user.UserRepo;
+import ${package}.impl.fo.common.FoManagerImplBase;
+import ${package}.impl.util.infrahelp.beanvalidae.MyValidator;
+import ${package}.intf.fo.auth.FoChangePasswordRequest;
+import ${package}.intf.fo.auth.FoUserManager;
+import ${package}.intf.fo.basic.FoConstants;
+import ${package}.intf.fo.basic.FoResponse;
 
 /**
  * 

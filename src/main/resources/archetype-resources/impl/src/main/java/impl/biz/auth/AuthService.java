@@ -1,7 +1,7 @@
-package ${groupId}.${rootArtifactId}.impl.biz.auth;
+package ${package}.impl.biz.auth;
 
-import static ${groupId}.${rootArtifactId}.impl.util.tools.lang.MyLangUtils.toUtf8Bytes;
-import static ${groupId}.${rootArtifactId}.intf.fo.basic.FoConstants.RANDOM_LOGIN_CODE_LIFESPAN;
+import static ${package}.impl.util.tools.lang.MyLangUtils.toUtf8Bytes;
+import static ${package}.intf.fo.basic.FoConstants.RANDOM_LOGIN_CODE_LIFESPAN;
 
 import java.security.SecureRandom;
 import java.util.Calendar;
@@ -15,11 +15,11 @@ import org.apache.commons.codec.digest.DigestUtils;
 import org.apache.commons.codec.digest.Sha2Crypt;
 import org.springframework.mail.SimpleMailMessage;
 import org.springframework.stereotype.Service;
-import ${groupId}.${rootArtifactId}.impl.biz.user.User;
-import ${groupId}.${rootArtifactId}.impl.support.config.AppProperties;
-import ${groupId}.${rootArtifactId}.impl.support.mail.MailEngine;
-import ${groupId}.${rootArtifactId}.impl.util.tools.lang.MyLangUtils;
-import ${groupId}.${rootArtifactId}.intf.fo.basic.FoConstants;
+import ${package}.impl.biz.user.User;
+import ${package}.impl.support.config.AppProperties;
+import ${package}.impl.support.mail.MailEngine;
+import ${package}.impl.util.tools.lang.MyLangUtils;
+import ${package}.intf.fo.basic.FoConstants;
 
 /**
  * 

@@ -1,4 +1,4 @@
-package ${groupId}.${rootArtifactId}.pso.common;
+package ${package}.pso.common;
 
 import java.util.Calendar;
 

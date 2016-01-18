@@ -1,4 +1,4 @@
-package ${groupId}.${rootArtifactId}.impl.biz.common;
+package ${package}.impl.biz.common;
 
 import java.util.Calendar;
 

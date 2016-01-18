@@ -1,4 +1,4 @@
-package ${groupId}.${rootArtifactId}.intf.fo.basic;
+package ${package}.intf.fo.basic;
 
 /**
  * 

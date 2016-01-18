@@ -1,8 +1,8 @@
-package ${groupId}.${rootArtifactId}.webapp.fo.rest.support;
+package ${package}.webapp.fo.rest.support;
 
 import static javax.servlet.http.HttpServletResponse.SC_OK;
-import static ${groupId}.${rootArtifactId}.intf.fo.basic.FoConstants.FEC_NOT_LOGIN_YET;
-import static ${groupId}.${rootArtifactId}.intf.fo.basic.FoConstants.FO_SC_BIZ_ERROR;
+import static ${package}.intf.fo.basic.FoConstants.FEC_NOT_LOGIN_YET;
+import static ${package}.intf.fo.basic.FoConstants.FO_SC_BIZ_ERROR;
 
 import javax.servlet.http.HttpServletResponse;
 import javax.ws.rs.container.ContainerRequestContext;
@@ -13,7 +13,7 @@ import org.apache.oltu.oauth2.common.error.OAuthError.ResourceResponse;
 import org.apache.oltu.oauth2.common.exception.OAuthSystemException;
 import org.apache.oltu.oauth2.common.message.OAuthResponse;
 import org.apache.oltu.oauth2.rs.response.OAuthRSResponse;
-import ${groupId}.${rootArtifactId}.intf.fo.basic.FoResponse;
+import ${package}.intf.fo.basic.FoResponse;
 
 /**
  * 

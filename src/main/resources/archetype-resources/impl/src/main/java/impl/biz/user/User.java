@@ -1,10 +1,10 @@
-package ${groupId}.${rootArtifactId}.impl.biz.user;
+package ${package}.impl.biz.user;
 
 import java.io.Serializable;
 import java.util.Arrays;
 import java.util.List;
 
-import ${groupId}.${rootArtifactId}.impl.biz.common.EntityBase;
+import ${package}.impl.biz.common.EntityBase;
 
 /**
  * 

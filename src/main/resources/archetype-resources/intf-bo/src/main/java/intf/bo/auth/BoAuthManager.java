@@ -1,6 +1,6 @@
-package ${groupId}.${rootArtifactId}.intf.bo.auth;
+package ${package}.intf.bo.auth;
 
-import ${groupId}.${rootArtifactId}.intf.fo.basic.FoResponse;
+import ${package}.intf.fo.basic.FoResponse;
 
 /**
  * 

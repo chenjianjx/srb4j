@@ -1,4 +1,4 @@
-package ${groupId}.${rootArtifactId}.impl.biz.bbs;
+package ${package}.impl.biz.bbs;
 
 import java.util.List;
 

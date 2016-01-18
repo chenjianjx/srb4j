@@ -1,4 +1,4 @@
-package ${groupId}.${rootArtifactId}.impl.itcase.support;
+package ${package}.impl.itcase.support;
 
 import java.io.FileNotFoundException;
 
