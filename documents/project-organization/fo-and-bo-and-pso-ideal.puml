@@ -1,0 +1,24 @@
+@startuml
+node webapp
+node intf_fo
+node intf_bo
+node intf_pso
+node impl_fo
+node impl_bo
+node impl_pso
+node biz
+
+webapp -down-> intf_fo
+webapp -down-> intf_bo
+
+
+impl_pso .up.> intf_pso : implements
+impl_bo .up.> intf_bo : implements
+impl_fo .up.> intf_fo : implements
+
+impl_pso -down-> biz
+impl_bo -down-> biz
+impl_fo -down-> biz
+
+
+@enduml

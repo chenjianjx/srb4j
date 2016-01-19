@@ -6,4 +6,31 @@
 	<version>1.0</version>
 	<name>The archetype to generate code</name>
 	<url>http://maven.apache.org</url>
+
+
+	<build>
+		<plugins>
+			<plugin>
+				<groupId>com.github.jeluard</groupId>
+				<artifactId>plantuml-maven-plugin</artifactId>
+				<version>1.1</version>
+				<configuration>
+					<sourceFiles>
+						<directory>documents/project-organization</directory>
+						<includes>
+							<include>**/*.puml</include>
+						</includes>
+					</sourceFiles>
+					<outputDirectory>documents/project-organization</outputDirectory>
+				</configuration>
+				<dependencies>
+					<dependency>
+						<groupId>net.sourceforge.plantuml</groupId>
+						<artifactId>plantuml</artifactId>
+						<version>7999</version>
+					</dependency>
+				</dependencies>
+			</plugin>
+		</plugins>
+	</build>
 </project>
