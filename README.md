@@ -105,40 +105,78 @@ now visit http://locahost:8080 to verify the startup
 3. Show them the sample code of invoking business web services
 
 ````
-		Builder restRequest = restClient.target("http://localhost:8080/fo/rest").path("/bbs/posts/new").request();
+		Builder restRequest = restClient
+				.target("http://localhost:8080" + "/fo/rest")
+				.path("/bbs/posts/new").request();
+
 		restRequest = restRequest.header("Authorization", "Bearer " + token);
 		NewPostRequest bizRequest = new NewPostRequest();
 		bizRequest.setContent("Hi, welcome");
-		Response restResponse = restRequest.post(Entity.entity(bizRequest,MediaType.APPLICATION_JSON));
-		Post post = restResponse.readEntity(Post.class);
-		System.out.println(post);
+		Response restResponse = restRequest.post(Entity.entity(bizRequest,
+				MediaType.APPLICATION_JSON));
+
+		if (restResponse.getStatus() == 200) {
+			Post post = restResponse.readEntity(Post.class);
+			System.out
+					.println("successful. the newly created post is :" + post);
+		}
+
+		if (Arrays.asList(400, 401, 403).contains(restResponse.getStatus())) {
+			String wwwAuthHeader = restResponse
+					.getHeaderString("www-authenticate");
+			Map<String, String> headerValues = decodeOAuthHeader(wwwAuthHeader);
+			System.err.println("OAuth2 Error");
+			System.err.println(headerValues.get("error"));
+			System.err.println(headerValues.get("error_description"));
+			System.err.println(headerValues.get("error_description_for_user"));
+			System.err.println("exception_id");
+		}
+
+		if (460 == restResponse.getStatus()) {
+			ErrorResult errorResult = restResponse.readEntity(ErrorResult.class);
+			System.err.println("Biz Error: " + errorResult);
+		}
 ````
 
-### 
+and the code of method decodeOAuthHeader()
 
-### Remove unwanted code
+````
+	private static Map<String, String> decodeOAuthHeader(String header) {
+		Map<String, String> headerValues = new HashMap<String, String>();
+		if (header != null) {
+			Matcher m = Pattern.compile("\\s*(\\w*)\\s+(.*)").matcher(header);
+			if (m.matches()) {
+				if ("Bearer".equalsIgnoreCase(m.group(1))) {
+					for (String nvp : m.group(2).split("\\s*,\\s*")) {
+						m = Pattern.compile("(\\S*)\\s*\\=\\s*\"([^\"]*)\"")
+								.matcher(nvp);
+						if (m.matches()) {
+							String name = DemoClientUtils.urlDecode(m.group(1));
+							String value = DemoClientUtils
+									.urlDecode(m.group(2));
+							headerValues.put(name, value);
+						}
+					}
+				}
+			}
+		}
+		return headerValues;
+	}
 
-A business web service called "bbs" is also generated to show case how to develop based on srb4j.  After creating your own business web service you can choose to remove it by deleting 
+````
 
-1. Package: yourpackage.webapp.fo.rest.bbs (Actually you only need to delete this entry package. Delete the following ones too if you are obsessed with code you don't need) 
-2. Package: yourpackage.intf.fo.bbs 
-3. Package: yourpackage.impl.fo.bbs
-4. Package: yourpackage.impl.biz.bbs
-5. Table: Post 
-6. Package:  
+### Create your own business module
 
+A business module called "bbs" is generated to demonstrate how to develop biz logic in srb4j. You can create your own by referring to the following code files:  
 
-
-
+1. Table 'Post' in ddl.sql
+2. Biz entity and repository(DAO) classes in package 'yourpackage.impl.biz.bbs' 
+3. App-layer beans and managers in package 'yourpackage.intf.fo.bbs' and  'yourpackage.impl.fo.bbs'
+4. Restful Resources in package 'yourpackage.webapp.fo.rest.bbs'  
 
 ## OAuth2-based login flow with grant_type = password
 
-### User login with username/password
-
-
- 
-
-
+### User login with username/password 
 
 
 For more details, see [this demo](https://github.com/chenjianjx/srb4jfullsample/blob/master/demo-client/src/test/java/com/github/chenjianjx/srb4jfullsample/democlient/fo/rest/auth/DemoClientFoAuthTest.java). 
