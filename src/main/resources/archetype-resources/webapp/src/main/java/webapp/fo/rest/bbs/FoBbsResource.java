@@ -40,7 +40,7 @@ import ${package}.webapp.fo.rest.support.FoResourceBase;
 import ${package}.webapp.fo.rest.support.FoRestUtils;
 
 /**
- * rest resource for authentication
+ * An exemplary rest resource.
  * 
  * @author chenjianjx@gmail.com
  *
