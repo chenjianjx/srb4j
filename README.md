@@ -38,7 +38,17 @@ mvn jetty:run
 
 ````
 
-now visit http://locahost:8080
+now visit http://locahost:8080 and http://localhost:8080/fo/rest/swagger.json
 
 
-## Features
+## Summary of Features
+
+1. Registration/login based on standard OAuth2 'password' flow
+2. Social account login support (Google, Facebook etc.)
+3. Password resetting/random code login support  
+4. Swagger-based document generation and client stub generation
+5. Popular J2EE Stack: Jersey2 + Spring + MyBatis + MySQL
+6. Modularized structure design, with an out-of-box back office web portal 
+
+
+## 
