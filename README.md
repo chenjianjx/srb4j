@@ -3,7 +3,7 @@
 #srbj4j
 
 
-__srb4j__ (pronounced "sreb for J"), is an open-source jax-rs backend code skeleton with full-fledged authentication support based on OAuth2. With __srb4j__ you can quickly launch a restful java backend from zero and focus on your business logic.
+__srb4j__ (pronounced "sreb for J") is an open-source jax-rs back end code-skeleton with full-fledged authentication support based on OAuth2. With __srb4j__ you can quickly launch a restful java back end from zero and focus on your business logic.
 
 
 ## Summary of Features
@@ -13,7 +13,10 @@ __srb4j__ (pronounced "sreb for J"), is an open-source jax-rs backend code skele
 3. Password resetting/random code login support  
 4. Swagger-based document generation and client stub generation
 5. Popular J2EE Stack: Jersey2 + Spring + MyBatis + MySQL
-6. Modularized structure design, with an out-of-box back office web portal 
+6. Modularized structure design 
+7. An out-of-box back office web portal.
+8. (Optional) An out-of-box Intranet RPC service provider.
+
 
 ## Quick Start
 
@@ -75,8 +78,7 @@ now visit http://locahost:8080 to verify the startup
 
 		OAuthClient oAuthClient = new OAuthClient(new URLConnectionClient());
 
-		OAuthJSONAccessTokenResponse response = oAuthClient
-				.accessToken(request);
+		OAuthJSONAccessTokenResponse response = oAuthClient.accessToken(request);
 
 		System.out.println("access token:" + response.getAccessToken());
 		System.out.println("refresh token:" + response.getRefreshToken());
@@ -112,18 +114,15 @@ now visit http://locahost:8080 to verify the startup
 		restRequest = restRequest.header("Authorization", "Bearer " + token);
 		NewPostRequest bizRequest = new NewPostRequest();
 		bizRequest.setContent("Hi, welcome");
-		Response restResponse = restRequest.post(Entity.entity(bizRequest,
-				MediaType.APPLICATION_JSON));
+		Response restResponse = restRequest.post(Entity.entity(bizRequest, MediaType.APPLICATION_JSON));
 
 		if (restResponse.getStatus() == 200) {
 			Post post = restResponse.readEntity(Post.class);
-			System.out
-					.println("successful. the newly created post is :" + post);
+			System.out.println("successful. the newly created post is :" + post);
 		}
 
 		if (Arrays.asList(400, 401, 403).contains(restResponse.getStatus())) {
-			String wwwAuthHeader = restResponse
-					.getHeaderString("www-authenticate");
+			String wwwAuthHeader = restResponse.getHeaderString("www-authenticate");
 			Map<String, String> headerValues = decodeOAuthHeader(wwwAuthHeader);
 			System.err.println("OAuth2 Error");
 			System.err.println(headerValues.get("error"));
@@ -165,6 +164,9 @@ and the code of method decodeOAuthHeader()
 
 ````
 
+All client sample code can be found in generated "yourArtifactId-demo-client" project.
+
+
 ### Create your own business module
 
 A business module called "bbs" is generated to demonstrate how to develop biz logic in srb4j. You can create your own by referring to the following code files:  
@@ -174,14 +176,18 @@ A business module called "bbs" is generated to demonstrate how to develop biz lo
 3. App-layer beans and managers in package 'yourpackage.intf.fo.bbs' and  'yourpackage.impl.fo.bbs'
 4. Restful Resources in package 'yourpackage.webapp.fo.rest.bbs'  
 
-## OAuth2-based login flow with grant_type = password
-
-### User login with username/password 
+Note: You are suggested to delete package 'yourpackage.impl.biz.bbs' if you don't it any more.  
 
 
-For more details, see [this demo](https://github.com/chenjianjx/srb4jfullsample/blob/master/demo-client/src/test/java/com/github/chenjianjx/srb4jfullsample/democlient/fo/rest/auth/DemoClientFoAuthTest.java). 
+## Introduction to the features
 
-### Login with Google/Facebook account
+### OAuth2-based login flow with grant_type = password
+
+#### User login with username/password 
+1. Username is email
+2. Both registration and login are treated as OAuth2 token request as shown above.  
+
+#### Login with Google/Facebook account
 
 Login with social account is also an OAuth2 process with grant_type=password. 
 
@@ -190,22 +196,20 @@ Login with social account is also an OAuth2 process with grant_type=password.
 3. The srb4j backend will verify the token with google/facebook, create a user account with the returned email if it is a new user, and finally returns an access token srb4j-hosted to the client.    
 4. The client will then talk to the srb4j backend using this srb4j-hosted access token.
 
-For sample client code, see [this demo](https://github.com/chenjianjx/srb4jfullsample/blob/master/demo-client/src/test/java/com/github/chenjianjx/srb4jfullsample/democlient/fo/rest/auth/DemoClientFoAuthUiMain.java). 
+For a client-side code sample, see [this demo](https://github.com/chenjianjx/srb4jfullsample/blob/master/demo-client/src/test/java/com/github/chenjianjx/srb4jfullsample/democlient/fo/rest/auth/DemoClientFoAuthUiMain.java). 
 
 
-### Source of user
+#### Source of user
 
 Every user has a property called "source" depending on where this user is from, such as "google", "facebook" and "local", meaning the user is registered on the srb4j backend.
 
-### Other authentication features
+#### Other authentication features
 See [FoAuthTokenResource] (https://github.com/chenjianjx/srb4jfullsample/blob/master/webapp/src/main/java/com/github/chenjianjx/srb4jfullsample/webapp/fo/rest/auth/FoAuthTokenResource.java ) for more authentication features, such as token refreshing, password resetting and random code login. 
 
-#### Token Refresh
-
-Please note that a refresh token can be used only once.
+Note: A refresh token can be used only once.
 
 
-## API documentation and client support
+### API documentation and client support
 
 Thanks to [swagger](http://swagger.io/), you can check the API document of your restful web services (swagger-ui), generate client stubs(swagger-codegen) and test the services with a web-ui(swagger-ui). 
 
@@ -218,11 +222,5 @@ It may be vulnerable to expose the API doc or testing-web-ui in a PROD system. Y
 enableSwagger=false
 ```` 
 
-## An embedded back office web portal
-
-The URL is http://localhost:8080/bo/portal . It's not a really "useful" back end, but serves a guide line of 
-
-
-
-## Code Organization
+### Code organization, back office portal and Intranet RPC service provider 
 
