@@ -176,7 +176,16 @@ Note all client sample code can be found in the generated "yourArtifactId-demo-c
 
 ## The code organization
 
+* The layers:
+
+![layering](documents/project-organization/layering.png)
+
+
+* And you get several maven projects: 
+
 ![code org](documents/project-organization/fo-and-bo.png)
+
+Note: webapp has "runtime" dependency on "impl"
 
 
 ## Create your own business module
