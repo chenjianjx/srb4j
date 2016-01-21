@@ -28,7 +28,7 @@ With __srb4j__ you can quickly launch a restful back end with several minutes.
 ````bash
 cd /path/to/your/workspace
 
-mvn -X archetype:generate \ 
+mvn -X archetype:generate \
 -DarchetypeGroupId=com.github.chenjianjx -DarchetypeArtifactId=srb4j -DarchetypeVersion=1.0 \
 -DgroupId=your.groupId  \
 -DartifactId=yourArtifactid \
