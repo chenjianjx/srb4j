@@ -15,7 +15,7 @@ node impl{
 }
 
 [webapp.bo.portal] -down-> [intf.bo]
-intf_bo -left-> intf_fo
+
 
 [impl.bo] -down-> [impl.biz]
 [impl.bo] .up.> [intf.bo] : implements

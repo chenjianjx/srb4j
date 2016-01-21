@@ -2,7 +2,7 @@
 !include fo-and-bo.puml
 
  
-node cross_layer_constants
+ 
 
 node intf_pso{
 	[intf.pso]
