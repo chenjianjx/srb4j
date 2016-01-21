@@ -178,14 +178,17 @@ Note all client sample code can be found in the generated "yourArtifactId-demo-c
 
 * The layers:
 
-![layering](documents/project-organization/layering.png)
+![layering](documents/project-organization/layering.jpg)
 
 
 * And you get several maven projects: 
 
 ![code org](documents/project-organization/fo-and-bo.png)
 
-Note: webapp has "runtime" dependency on "impl"
+* Notes 
+  * "webapp" has "runtime" dependency on "impl"
+  * The [explanation](http://www.chenjianjx.com/myblog/entry/layering-in-java-webapps-final) of the layering  
+
 
 
 ## Create your own business module
