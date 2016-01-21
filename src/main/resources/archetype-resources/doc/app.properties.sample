@@ -12,7 +12,7 @@ dbPassword=some_password
 #If you haven't got any smtp account yet, use place holders.  Don't remove the following entries. 
 smtpHost=someHost
 smtpPort=25
-smtpUsername=some_name
+smtpUsername=some-email@non-existing.com
 smtpPassword=some_password
 #true or false
 smtpSmtpStarttlsEnable=false
@@ -24,6 +24,5 @@ enableSwagger=true
 
 #In what name will the emails be sent?  Use place holders if you haven't figure out the values. 
 orgSupportDesk=Some Company Support Desk
-orgSupportEmail=Some Email
-
+orgSupportEmail=some-email@non-existing.com
  
