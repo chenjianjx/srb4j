@@ -176,7 +176,7 @@ Note all client sample code can be found in the generated "yourArtifactId-demo-c
 
 ## The code organization
 
-![code org](documents/project-organzation/fo-and-bo.png)
+![code org](documents/project-organization/fo-and-bo.png)
 
 
 ## Create your own business module
