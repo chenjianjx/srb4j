@@ -26,7 +26,7 @@ public interface DemoClientConstants {
 	public static final String RANDOM_CODE_LOGIN_URL = "/token/new/by-random-code/local";
 	public static final String REFRESH_TOKEN_URL = "/token/refresh";
 
-	public static final String PSO_TEST_URL = "http://localhost:9090/pso/cs/bbs";
+
 	
 	public static final String BACKEND_BO_PORTAL_URL = BACKEND_URL + "/bo/portal";
 	public static final String BO_LOGIN_PATH = "/login";

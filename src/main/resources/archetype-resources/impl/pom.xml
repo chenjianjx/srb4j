@@ -26,13 +26,7 @@
 			<version>${project.parent.version}</version>
 		</dependency>
 
-		<dependency>
-			<groupId>${groupId}</groupId>
-			<artifactId>${rootArtifactId}-intf-pso</artifactId>
-			<version>${project.parent.version}</version>
-		</dependency>
-
-
+ 
 
 		<dependency>
 			<groupId>javax.mail</groupId>

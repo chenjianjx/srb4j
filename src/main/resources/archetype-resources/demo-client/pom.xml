@@ -21,11 +21,6 @@
 			<artifactId>hessian</artifactId>
 		</dependency>
 
-		<dependency>
-			<groupId>${groupId}</groupId>
-			<artifactId>${rootArtifactId}-intf-pso</artifactId>
-			<version>${project.parent.version}</version>
-		</dependency>
 
 		<dependency>
 			<groupId>junit</groupId>

@@ -40,12 +40,7 @@
 		</property>
 	</bean>
 
-
-	<bean id="psoConfig" class="${package}.impl.pso.common.PsoConfig">
-		<property name="host" value="localhost" />
-		<property name="port" value="7070" />
-	</bean>
-
+ 
 
 	<import resource="classpath*:spring/spring-impl.xml" />
 

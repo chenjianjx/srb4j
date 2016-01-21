@@ -20,8 +20,7 @@
 	<modules>
 		<module>impl</module>
 		<module>intf-fo</module>
-		<module>intf-bo</module>
-		<module>intf-pso</module>
+		<module>intf-bo</module>		
 		<module>webapp</module>
 		<module>demo-client</module>
 	</modules>
@@ -178,7 +177,7 @@
 				<version>1.8.6</version>
 			</dependency>
 
-			<!-- embedded jetty for pso -->
+		 
 			<dependency>
 				<groupId>org.eclipse.jetty</groupId>
 				<artifactId>jetty-servlet</artifactId>

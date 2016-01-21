@@ -5,11 +5,7 @@
 	xsi:schemaLocation="http://maven.apache.org/plugins/maven-archetype-plugin/archetype-descriptor/1.0.0 http://maven.apache.org/xsd/archetype-descriptor-1.0.0.xsd"
 	name="srb4j">
 
-	<requiredProperties>
-		<requiredProperty key="includePso">
-			<defaultValue>false</defaultValue>
-		</requiredProperty>
-	</requiredProperties>
+ 
 
 	<fileSets>
 		<fileSet filtered="true" encoding="UTF-8">
@@ -58,23 +54,7 @@
 				</fileSet>
 			</fileSets>
 		</module>
-		<module id="${rootArtifactId}-intf-pso" dir="intf-pso"
-			name="Partner System Oriented Iterfaces">
-			<fileSets>
-				<fileSet filtered="true" packaged="true" encoding="UTF-8">
-					<directory>src/main/java</directory>
-				</fileSet>
-				<fileSet filtered="true" encoding="UTF-8">
-					<directory>src/main/resources</directory>
-				</fileSet>
-				<fileSet filtered="true" packaged="true" encoding="UTF-8">
-					<directory>src/test/java</directory>
-				</fileSet>
-				<fileSet filtered="true" encoding="UTF-8">
-					<directory>src/test/resources</directory>
-				</fileSet>
-			</fileSets>
-		</module>
+ 
 		<module id="${rootArtifactId}-impl" dir="impl"
 			name="Implementation for all Interfaces">
 			<fileSets>

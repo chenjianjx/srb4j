@@ -26,8 +26,4 @@ enableSwagger=true
 orgSupportDesk=Some Company Support Desk
 orgSupportEmail=Some Email
 
-
-#You must set the following properties if "-DincludePso=true", or else you must delete them.
-#The Hessian server you use to provide partner-system oriented services. 
-psoRpcServerHost=localhost
-psoRpcServerPort=9090
+ 
