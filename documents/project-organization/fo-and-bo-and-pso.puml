@@ -1,6 +1,9 @@
 @startuml
 !include fo-and-bo.puml
 
+ 
+node cross_layer_constants
+
 node intf_pso{
 	[intf.pso]
 } 
@@ -11,6 +14,8 @@ node impl{
 
 [impl.pso] -down-> [impl.biz]
 [impl.pso] .up.> [intf.pso] : implements
+
+
 
 
 @enduml

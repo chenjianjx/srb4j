@@ -15,7 +15,6 @@ __srb4j__ (pronounced "sreb for J") is an open-source jax-rs back end code-skele
 5. Popular J2EE Stack: Jersey2 + Spring + MyBatis + MySQL
 6. Modularized structure design 
 7. An out-of-box back office web portal.
-8. (Optional) An out-of-box Intranet RPC service provider.
 
 
 ## Quick Start
@@ -166,6 +165,10 @@ and the code of method decodeOAuthHeader()
 
 All client sample code can be found in generated "yourArtifactId-demo-client" project.
 
+### The code organization
+
+![documents/project-organzation/fo-and-bo.png]
+
 
 ### Create your own business module
 
@@ -222,5 +225,4 @@ It may be vulnerable to expose the API doc or testing-web-ui in a PROD system. Y
 enableSwagger=false
 ```` 
 
-### Code organization, back office portal and Intranet RPC service provider 
 
