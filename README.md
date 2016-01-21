@@ -181,7 +181,7 @@ Note all client sample code can be found in the generated "yourArtifactId-demo-c
   * Front End:   Encapsulate use case-specific logic from business services. The users are common users such customers.
   * Back Office: Encapsulate use case-specific logic from business services. The users are administrators, staff and so on.
 
-![layering](documents/project-organization/layering-ppt/Slide2.jpg)
+![layering](documents/project-organization/layering-ppt/ultimate-layering/Slide2.jpg)
 
  
 
