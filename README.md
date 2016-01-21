@@ -34,7 +34,7 @@ mvn -X archetype:generate \
 -DartifactId=yourArtifactid \
 -Dpackage=your.package.name \
 -Dversion=1.0-SNAPSHOT \
--DarchetypeRepository=https://jitpack.io \
+-DarchetypeRepository=https://jitpack.io
 
 
 mkdir ~/yourArtifactId
