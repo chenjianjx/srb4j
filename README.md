@@ -37,16 +37,19 @@ mvn -X archetype:generate \
 -DarchetypeRepository=https://jitpack.io
 
 
-mkdir ~/yourArtifactId
-cd ~/yourArtifactId
-
-wget https://raw.githubusercontent.com/chenjianjx/srb4j/master/src/main/resources/archetype-resources/doc/app.properties.sample -O app.properties
-
 ````
 
-Please edit app.properties according to your environment.
+Create a MySQL db schema with default charset "utf8".
+Run the [ddl](https://github.com/chenjianjx/srb4j/blob/master/src/main/resources/archetype-resources/doc/sql/ddl.sql) in the db you created.  
 
-You will need to set up a MySQL Database. After creation, run the [ddl](https://github.com/chenjianjx/srb4j/blob/master/src/main/resources/archetype-resources/doc/sql/ddl.sql). 
+
+````bash
+mkdir ~/yourArtifactId
+cd ~/yourArtifactId
+wget https://raw.githubusercontent.com/chenjianjx/srb4j/master/src/main/resources/archetype-resources/doc/app.properties.sample -O app.properties
+````
+
+Edit app.properties according to your environment.
  
 ````bash
 cd /path/to/your/workspace/yourArtifactid
