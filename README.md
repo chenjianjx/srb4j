@@ -65,11 +65,11 @@ now visit http://locahost:8080 to verify the startup
 
 ### Give instructions to your client-side developer 
 
-1. Give them the __API doc__. 
+#### Give them the __API doc__. 
 
 Go to http://localhost:8080/fo-rest-doc, download this html file and give it to your client-side counterpart.
 
-2. Show them the __sample code for registration and login__:
+#### Show them the __sample code for registration and login__:
 
 ````java
 		//registration: To login with a password, you must do registration first, which is implemented as OAuth2 login flow with grant_type = password. This demo uses apache oltu OAuth2 library.
@@ -110,7 +110,7 @@ Go to http://localhost:8080/fo-rest-doc, download this html file and give it to 
 
 ```` 
 
-3. Show them the sample code of invoking business web services
+#### Show them the sample code of invoking business web services
 
 ````
 		Builder restRequest = restClient
@@ -174,7 +174,7 @@ All client sample code can be found in generated "yourArtifactId-demo-client" pr
 
 ### The code organization
 
-![documents/project-organzation/fo-and-bo.png]
+[!documents/project-organzation/fo-and-bo.png]
 
 
 ### Create your own business module
