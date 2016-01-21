@@ -3,23 +3,28 @@
 #srbj4j
 
 
-__srb4j__ (pronounced "sreb for J") is an open-source jax-rs back end code-skeleton with full-fledged authentication support based on OAuth2. With __srb4j__ you can quickly launch a restful java back end from zero and focus on your business logic.
+__srb4j__ (pronounced "sreb for J") is an open-source jax-rs back end code-skeleton,with full-fledged authentication support based on OAuth2. With __srb4j__ you can quickly launch a restful java back end from zero,and then focus on your business logic.
 
 
 ## Summary of Features
 
 1. Registration/login based on standard OAuth2 with grant_type = 'password'
-2. Social account login support (Google, Facebook etc.)
-3. Password resetting/random code login support  
-4. Swagger-based document generation and client stub generation
+2. Social account login support (Google,Facebook...)
+3. Password resetting and  random code login  
+4. [Swagger](http://swagger.io/)-based document generation and client stub generation
 5. Popular J2EE Stack: Jersey2 + Spring + MyBatis + MySQL
-6. Modularized structure design 
-7. An out-of-box back office web portal.
+6. Modularized structure design enforcing loose coupling between components
+7. An out-of-box back office web portal
+8. (Optional) An out-of-box RPC service provider to trusted partner systems
 
+## Prerequisites
+1. JDK 7+
+2. Servlet 3.0+ Container such as Tomcat 7
+3. MySQL Server
 
 ## Quick Start
 
-````
+````bash
 cd /path/to/your/workspace
 
 mvn -X archetype:generate \ 
@@ -40,9 +45,9 @@ wget https://raw.githubusercontent.com/chenjianjx/srb4j/master/src/main/resource
 
 Please edit app.properties according to your environment.
 
-Then you must set up a db according to the config in app.properties. After creating database run the [ddl](https://github.com/chenjianjx/srb4j/blob/master/src/main/resources/archetype-resources/doc/sql/ddl.sql). 
+You will need to set up a MySQL Database. After creation, run the [ddl](https://github.com/chenjianjx/srb4j/blob/master/src/main/resources/archetype-resources/doc/sql/ddl.sql). 
  
-````
+````bash
 cd /path/to/your/workspace/yourArtifactid
 
 mvn install -DskipTests
@@ -58,11 +63,13 @@ now visit http://locahost:8080 to verify the startup
 
 ## What's next
 
-### Instruct the client-side developer 
+### Give instructions to your client-side developer 
 
-1. Submit the API doc.  Go to http://localhost:8080/fo-rest-doc, download this html file and give it to the developer of the client of this restful back end.
+1. Give them the __API doc__. 
 
-2. Show them the sample code for registration and login:
+Go to http://localhost:8080/fo-rest-doc, download this html file and give it to your client-side counterpart.
+
+2. Show them the __sample code for registration and login__:
 
 ````java
 		//registration: To login with a password, you must do registration first, which is implemented as OAuth2 login flow with grant_type = password. This demo uses apache oltu OAuth2 library.
