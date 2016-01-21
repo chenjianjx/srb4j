@@ -64,7 +64,7 @@ now visit http://locahost:8080 to verify the startup
 
 2. Show them the sample code for registration and login:
 
-````
+````java
 		//registration: To login with a password, you must do registration first, which is implemented as OAuth2 login flow with grant_type = password. This demo uses apache oltu OAuth2 library.
 				
 		OAuthClientRequest request = OAuthClientRequest
