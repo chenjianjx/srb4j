@@ -6,7 +6,7 @@
 __srb4j__ (pronounced "sreb for J") is an open-source jax-rs back end code-skeleton,with full-fledged authentication support based on OAuth2. With __srb4j__ you can quickly launch a restful java back end from zero,and then focus on your business logic.
 
 
-## Summary of Features
+# Summary of Features
 
 1. Registration/login based on standard OAuth2 with grant_type = 'password'
 2. Social account login support (Google,Facebook...)
@@ -17,12 +17,12 @@ __srb4j__ (pronounced "sreb for J") is an open-source jax-rs back end code-skele
 7. An out-of-box back office web portal
 8. (Optional) An out-of-box RPC service provider to trusted partner systems
 
-## Prerequisites
+# Prerequisites
 1. JDK 7+
 2. Servlet 3.0+ Container such as Tomcat 7
 3. MySQL Server
 
-## Quick Start
+# Quick Start
 
 ````bash
 cd /path/to/your/workspace
@@ -61,15 +61,15 @@ mvn jetty:run
 now visit http://locahost:8080 to verify the startup
 
 
-## What's next
+# What's next
 
-### Give instructions to your client-side developer 
+## Give instructions to your client-side developer 
 
-#### Give them the __API doc__. 
+### Give them the __API doc__. 
 
 Go to http://localhost:8080/fo-rest-doc, download this html file and give it to your client-side counterpart.
 
-#### Show them the __sample code for registration and login__:
+### Show them the __sample code for registration and login__:
 
 ````java
 		//registration: To login with a password, you must do registration first, which is implemented as OAuth2 login flow with grant_type = password. This demo uses apache oltu OAuth2 library.
@@ -110,7 +110,7 @@ Go to http://localhost:8080/fo-rest-doc, download this html file and give it to 
 
 ```` 
 
-#### Show them the sample code of invoking business web services
+### Show them the sample code of invoking business web services
 
 ````
 		Builder restRequest = restClient
@@ -172,12 +172,12 @@ and the code of method decodeOAuthHeader()
 
 All client sample code can be found in generated "yourArtifactId-demo-client" project.
 
-### The code organization
+## The code organization
 
 [!documents/project-organzation/fo-and-bo.png]
 
 
-### Create your own business module
+## Create your own business module
 
 A business module called "bbs" is generated to demonstrate how to develop biz logic in srb4j. You can create your own by referring to the following code files:  
 
@@ -189,15 +189,15 @@ A business module called "bbs" is generated to demonstrate how to develop biz lo
 Note: You are suggested to delete package 'yourpackage.impl.biz.bbs' if you don't it any more.  
 
 
-## Introduction to the features
+# Introduction to the features
 
-### OAuth2-based login flow with grant_type = password
+## OAuth2-based login flow with grant_type = password
 
-#### User login with username/password 
+### User login with username/password 
 1. Username is email
 2. Both registration and login are treated as OAuth2 token request as shown above.  
 
-#### Login with Google/Facebook account
+### Login with Google/Facebook account
 
 Login with social account is also an OAuth2 process with grant_type=password. 
 
@@ -209,17 +209,17 @@ Login with social account is also an OAuth2 process with grant_type=password.
 For a client-side code sample, see [this demo](https://github.com/chenjianjx/srb4jfullsample/blob/master/demo-client/src/test/java/com/github/chenjianjx/srb4jfullsample/democlient/fo/rest/auth/DemoClientFoAuthUiMain.java). 
 
 
-#### Source of user
+### Source of user
 
 Every user has a property called "source" depending on where this user is from, such as "google", "facebook" and "local", meaning the user is registered on the srb4j backend.
 
-#### Other authentication features
+### Other authentication features
 See [FoAuthTokenResource] (https://github.com/chenjianjx/srb4jfullsample/blob/master/webapp/src/main/java/com/github/chenjianjx/srb4jfullsample/webapp/fo/rest/auth/FoAuthTokenResource.java ) for more authentication features, such as token refreshing, password resetting and random code login. 
 
 Note: A refresh token can be used only once.
 
 
-### API documentation and client support
+## API documentation and client support
 
 Thanks to [swagger](http://swagger.io/), you can check the API document of your restful web services (swagger-ui), generate client stubs(swagger-codegen) and test the services with a web-ui(swagger-ui). 
 
