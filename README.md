@@ -3,7 +3,7 @@
 #srbj4j
 
 
-__srb4j__ (pronounced "sreb for J") is an open-source jax-rs back end code skeleton, with full-fledged authentication support based on OAuth2. 
+__srb4j__ (pronounced "/srəb/ for J") is an open-source jax-rs back end code skeleton, with full-fledged authentication support based on OAuth2. 
 
 With __srb4j__ you can quickly launch a restful back end with several minutes.
 
