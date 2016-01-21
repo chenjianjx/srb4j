@@ -3,7 +3,9 @@
 #srbj4j
 
 
-__srb4j__ (pronounced "sreb for J") is an open-source jax-rs back end code-skeleton,with full-fledged authentication support based on OAuth2. With __srb4j__ you can quickly launch a restful java back end from zero,and then focus on your business logic.
+__srb4j__ (pronounced "sreb for J") is an open-source jax-rs back end code skeleton, with full-fledged authentication support based on OAuth2. 
+
+With __srb4j__ you can quickly launch a restful back end with several minutes.
 
 
 # Summary of Features
@@ -176,11 +178,12 @@ Note all client sample code can be found in the generated "yourArtifactId-demo-c
 ## The code organization
 
 * The layers:
+  * Front End:   Encapsulate use case-specific logic from business services. The users are common users such customers.
+  * Back Office: Encapsulate use case-specific logic from business services. The users are administrators, staff and so on.
 
 ![layering](documents/project-organization/layering-ppt/Slide2.jpg)
 
-  * Front End:   Encapsulate use case-specific logic from business services. The users are common users such customers.
-  * Back Office: Encapsulate use case-specific logic from business services. The users are administrators, staff and so on. 
+ 
 
 * And you get these maven projects: 
 
