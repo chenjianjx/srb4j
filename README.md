@@ -178,7 +178,7 @@ Note all client sample code can be found in the generated "yourArtifactId-demo-c
 
 * The layers:
 
-![layering](documents/project-organization/layering.jpg)
+![layering](documents/project-organization/layering-ppt/Slide2.jpg)
 
 
 * And you get several maven projects: 
