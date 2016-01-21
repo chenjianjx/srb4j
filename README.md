@@ -72,7 +72,9 @@ Go to http://localhost:8080/fo-rest-doc, download this html file and give it to 
 * Show them the __sample code for registration and login__:
 
 ````java
-		//registration: To login with a password, you must do registration first, which is implemented as OAuth2 login flow with grant_type = password. This demo uses apache oltu OAuth2 library.
+		//Registration in srb4j is implemented as OAuth2 login flow with grant_type = password. 
+		//After registration you are automatically logged in.
+		//This demo uses apache oltu OAuth2 library.
 				
 		OAuthClientRequest request = OAuthClientRequest
 				.tokenLocation(
@@ -93,8 +95,8 @@ Go to http://localhost:8080/fo-rest-doc, download this html file and give it to 
 ````
   
 
-````
-		//now log in.
+````java
+		//log in.
 		OAuthClientRequest request = OAuthClientRequest
 				.tokenLocation("http://localhost:8080/fo/rest/token/new/local")
 				.setGrantType(GrantType.PASSWORD).setClientId(null)
@@ -110,11 +112,11 @@ Go to http://localhost:8080/fo-rest-doc, download this html file and give it to 
 
 ```` 
 
-* Show them the sample code of invoking business web services
+* Show them the __sample code of invoking business web services__
 
-````
+````java
 		Builder restRequest = restClient
-				.target("http://localhost:8080" + "/fo/rest")
+				.target("http://localhost:8080/fo/rest")
 				.path("/bbs/posts/new").request();
 
 		restRequest = restRequest.header("Authorization", "Bearer " + token);
@@ -143,9 +145,9 @@ Go to http://localhost:8080/fo-rest-doc, download this html file and give it to 
 		}
 ````
 
-and the code of method decodeOAuthHeader()
+and the code of method decodeOAuthHeader() is
 
-````
+````java
 	private static Map<String, String> decodeOAuthHeader(String header) {
 		Map<String, String> headerValues = new HashMap<String, String>();
 		if (header != null) {
@@ -170,11 +172,11 @@ and the code of method decodeOAuthHeader()
 
 ````
 
-All client sample code can be found in generated "yourArtifactId-demo-client" project.
+Note all client sample code can be found in the generated "yourArtifactId-demo-client" project.
 
 ## The code organization
 
-[!documents/project-organzation/fo-and-bo.png]
+![code org](documents/project-organzation/fo-and-bo.png)
 
 
 ## Create your own business module
