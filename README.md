@@ -255,6 +255,9 @@ enableSwagger=false
 
 ## The back office code
 
-The back office code is just a way to demonstrate how a back office web portal can interact with the app layer. It enforces the code organization so that back-office code is separated from front end code. If you don't need it, please delete the following 
-1. BoAllInOneServlet.java
-2. Its occurrence in web.xml 
+The back office code is just a way to demonstrate how a back office web portal can interact with the app layer. It enforces the code organization so that back-office code is separated from front end code. 
+
+If you don't need the back office web portal, please delete the following content: 
+ 
+* BoAllInOneServlet.java
+* Its occurrence in web.xml 
