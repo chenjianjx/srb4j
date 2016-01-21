@@ -32,7 +32,7 @@ mvn -X archetype:generate \
 -DarchetypeGroupId=com.github.chenjianjx -DarchetypeArtifactId=srb4j -DarchetypeVersion=1.0 \
 -DgroupId=your.groupId  \
 -DartifactId=yourArtifactid \
--Dpackage=your.package.name \
+-Dpackage=your.pkg.name \
 -Dversion=1.0-SNAPSHOT \
 -DarchetypeRepository=https://jitpack.io
 
