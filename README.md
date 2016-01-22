@@ -1,9 +1,9 @@
 #srbj4j
 
 
-__srb4j__ (pronounced "/srəb/ for J") is an open-source jax-rs back end code skeleton, with full-fledged authentication support based on OAuth2. 
+__srb4j__ (pronounced "/srəb/ for J") is an open-source jax-rs backend code skeleton, with full-fledged authentication support based on OAuth2. 
 
-With __srb4j__ you can quickly launch a restful back end with several minutes.
+With __srb4j__ you can quickly launch a restful backend with several minutes.
 
 
 # Summary of Features
@@ -221,16 +221,16 @@ Note: You can delete package 'yourpackage.impl.biz.bbs' if you don't it any more
 Login with social account is also an OAuth2 process with grant_type=password. 
 
 1. Your client logs in with google/facebook sdk and obtain an OpenId token (Google) or an access token
-2. Your client then logs in srb4j back end using the social token obtain above, with username = the-social-token and password = anything
-3. The srb4j back end will verify the token by calling google/facebook, then create a user account with the returned email if it is a new user, and finally returns a srb4j-hosted access token to the client.    
-4. The client will then talk to the srb4j back end using srb4j-hosted token.
+2. Your client then logs in srb4j backend using the social token obtain above, with username = the-social-token and password = anything
+3. The srb4j backend will verify the token by calling google/facebook, then create a user account with the returned email if it is a new user, and finally returns a srb4j-hosted access token to the client.    
+4. The client will then talk to the srb4j backend using srb4j-hosted token.
 
 For client-side samples, see [this demo](https://github.com/chenjianjx/srb4jfullsample/blob/master/demo-client/src/test/java/com/github/chenjianjx/srb4jfullsample/democlient/fo/rest/auth/DemoClientFoAuthUiMain.java). The samples are for java desktop client, but android/ios clients will be similar.  
 
 
 ### Source of user
 
-Every user has a property called "source" decided by where this user is from, such as "google", "facebook" and "local". "local" means the user is registered on the srb4j back end.
+Every user has a property called "source" decided by where this user is from, such as "google", "facebook" and "local". "local" means the user is registered on the srb4j backend.
 
 ### Other authentication features
 See [FoAuthTokenResource] (https://github.com/chenjianjx/srb4jfullsample/blob/master/webapp/src/main/java/com/github/chenjianjx/srb4jfullsample/webapp/fo/rest/auth/FoAuthTokenResource.java ) for more authentication features, such as token refreshing, password resetting and random code login. 
