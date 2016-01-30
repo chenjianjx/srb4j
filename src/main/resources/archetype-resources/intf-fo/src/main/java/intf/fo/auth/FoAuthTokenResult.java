@@ -13,7 +13,6 @@ import com.fasterxml.jackson.annotation.JsonProperty;
  */
 @ApiModel(value = "AuthTokenResult", description = "It's compatible with OAuth2 Token Response")
 public class FoAuthTokenResult {
-		
 
 	@ApiModelProperty("access_token")
 	@JsonProperty("access_token")
@@ -30,6 +29,10 @@ public class FoAuthTokenResult {
 	@ApiModelProperty("token_type")
 	@JsonProperty("token_type")
 	private String tokenType;
+
+	@ApiModelProperty("user_principal")
+	@JsonProperty("user_principal")
+	private String userPrincipal;
 
 	public String getRefreshToken() {
 		return refreshToken;
@@ -66,6 +69,14 @@ public class FoAuthTokenResult {
 	public void defaultTokenType() {
 		this.setTokenType("Bearer");
 
+	}
+
+	public String getUserPrincipal() {
+		return userPrincipal;
+	}
+
+	public void setUserPrincipal(String userPrincipal) {
+		this.userPrincipal = userPrincipal;
 	}
 
 }

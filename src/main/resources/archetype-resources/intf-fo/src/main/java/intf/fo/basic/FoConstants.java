@@ -35,6 +35,7 @@ public interface FoConstants {
 
 	/* Other fields */
 	public static final String LONG_SESSION_PARAM = "long_session";
+	public static final String SOCIAL_SITE_SOURCE_PARAM = "source";
 
 	/* biz error http code */
 	public static final int FO_SC_BIZ_ERROR = 460;
@@ -69,8 +70,9 @@ public interface FoConstants {
 	public static final int RANDOM_LOGIN_CODE_LIFESPAN = 3600 / 2;
 
 	/* some validation constants */
-	public static final String PASSWORD_PATTERN = "((?=.*\\d)(?=.*[a-zA-Z]).{6,20})";
-	public static final String PASSWORD_ERR_TIP = "Password should contain at least 1 digit and 1 English letter, 6-20 characters long and should only digits, English letters and punctuations.";
+	public static final String PASSWORD_PATTERN = "((?=.*\\d)(?=.*[a-zA-Z]).{6,20})";	
+	//public static final String PASSWORD_ERR_TIP = "Password should contain at least 1 digit and 1 English letter, 6-20 characters long and should only digits, English letters and punctuations.";
+	public static final String PASSWORD_ERR_TIP = "Password too weak.";
 	public static final String NULL_REQUEST_BEAN_TIP = "Please input the required fields.";
 
 }

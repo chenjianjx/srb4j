@@ -18,7 +18,6 @@ import org.junit.Assert;
 
 import ${package}.democlient.util.DemoClientConstants;
 import ${package}.restclient.model.GenRandomLoginCodeRequest;
-
 import com.github.scribejava.apis.GoogleApi20;
 import com.github.scribejava.apis.google.GoogleToken;
 import com.github.scribejava.core.builder.ServiceBuilder;
@@ -29,7 +28,7 @@ import com.github.scribejava.core.model.OAuthConfig;
 import com.github.scribejava.core.model.OAuthConstants;
 import com.github.scribejava.core.model.Token;
 import com.github.scribejava.core.model.Verifier;
-import com.github.scribejava.core.oauth.OAuth20ServiceImpl;
+import com.github.scribejava.core.oauth.OAuth20Service;
 import com.github.scribejava.core.utils.OAuthEncoder;
 import com.github.scribejava.core.utils.Preconditions;
 
@@ -45,9 +44,15 @@ public class DemoClientFoAuthUiMain {
 
 	public static void main(String[] args) throws Exception {
 
-		googleLoginFlow();
+		facebookLoginByTokenFlow();
+		googleLoginByTokenFlow();
+
+		/**
+		 * for social login by code, see <a
+		 * href="https://github.com/chenjianjx/srb4j-desktop-client">here</a>
+		 */
+
 		randomCodeLoginFlow();
-		facebookLoginFlow();
 
 	}
 
@@ -109,7 +114,7 @@ public class DemoClientFoAuthUiMain {
 
 	}
 
-	private static void googleLoginFlow() throws IOException {
+	private static void googleLoginByTokenFlow() throws IOException {
 		BufferedReader consoleInput = new BufferedReader(new InputStreamReader(
 				System.in));
 
@@ -119,12 +124,14 @@ public class DemoClientFoAuthUiMain {
 		System.out.print("Please input your google client screct: \r\n >>");
 		String googleClientSecret = consoleInput.readLine();
 
-		final OAuth20ServiceImpl service = (OAuth20ServiceImpl) new ServiceBuilder()
-				.provider(GoogleApi20.class).apiKey(googleClientId)
-				.apiSecret(googleClientSecret).scope("email")
-				.callback("urn:ietf:wg:oauth:2.0:oob").build();
+		final OAuth20Service service = new ServiceBuilder()
+				.apiKey(googleClientId).apiSecret(googleClientSecret)
+				.scope("email")
+				// replace with desired scope
+				.callback("urn:ietf:wg:oauth:2.0:oob")
+				.build(GoogleApi20.instance());
 
-		final String authorizationUrl = service.getAuthorizationUrl(null);
+		final String authorizationUrl = service.getAuthorizationUrl();
 		System.out
 				.println("Please copy the following url and visit it on your browser. Copy the code on the page and paste it here");
 		System.out.println(authorizationUrl);
@@ -132,13 +139,14 @@ public class DemoClientFoAuthUiMain {
 		final Verifier verifier = new Verifier(consoleInput.readLine());
 		System.out.println();
 
-		final GoogleToken accessToken = (GoogleToken) service.getAccessToken(
-				null, verifier);
+		final GoogleToken accessToken = (GoogleToken) service
+				.getAccessToken(verifier);
 		String googleIdToken = accessToken.getOpenIdToken();
 		System.out.println("the idToken is: " + googleIdToken);
 
-		WebTarget target = restClient.target(BACKEND_FO_REST_URL).path(
-				DemoClientConstants.GOOGLE_LOGIN_URL);
+		WebTarget target = restClient.target(BACKEND_FO_REST_URL)
+				.path(DemoClientConstants.SOCIAL_LOGIN_BY_TOKEN_URL_PREFIX
+						+ "google");
 		Form form = new Form();
 		form.param("grant_type", "password");
 		form.param("username", googleIdToken);
@@ -156,7 +164,7 @@ public class DemoClientFoAuthUiMain {
 
 	}
 
-	private static void facebookLoginFlow() throws IOException {
+	private static void facebookLoginByTokenFlow() throws IOException {
 		BufferedReader consoleInput = new BufferedReader(new InputStreamReader(
 				System.in));
 
@@ -166,28 +174,29 @@ public class DemoClientFoAuthUiMain {
 		System.out.print("Please input your facebook app screct: \r\n >>");
 		String clientSecret = consoleInput.readLine();
 
-		final OAuth20ServiceImpl service = (OAuth20ServiceImpl) new ServiceBuilder()
-				.provider(DemoClientFacebookApi.class)
+		final OAuth20Service service = new ServiceBuilder()
 				.apiKey(clientId)
 				.apiSecret(clientSecret)
 				.scope("email")
+				// replace with desired scope
 				.callback("https://www.facebook.com/connect/login_success.html")
-				.build();
+				.build(new DemoClientFacebookApi());
 
-		final String authorizationUrl = service.getAuthorizationUrl(null);
+		final String authorizationUrl = service.getAuthorizationUrl();
 		System.out
 				.println("Now open your browser and show the 'inspect' window to monitor the url redirection");
 		System.out
-		.println("Copy the following url and visit it on your browser. And then extract the code accoring to\n https://raw.githubusercontent.com/chenjianjx/srb4j/master/src/main/resources/archetype-resources/demo-client/doc/fo/extract-facebook-code.png: ");
+				.println("Copy the following url and visit it on your browser. And then extract the code accoring to\n https://raw.githubusercontent.com/chenjianjx/srb4j/master/src/main/resources/archetype-resources/demo-client/doc/fo/extract-facebook-code.png: ");
 		System.out.println(authorizationUrl);
 		System.out.print(">>");
 		Verifier verifier = new Verifier(consoleInput.readLine());
-		Token accessToken = service.getAccessToken(null, verifier);
+		Token accessToken = service.getAccessToken(verifier);
 
 		System.out.println("the access token is: " + accessToken.getToken());
 
 		WebTarget target = restClient.target(BACKEND_FO_REST_URL).path(
-				DemoClientConstants.FACEBOOK_LOGIN_URL);
+				DemoClientConstants.SOCIAL_LOGIN_BY_TOKEN_URL_PREFIX
+						+ "facebook");
 		Form form = new Form();
 		form.param("grant_type", "password");
 		form.param("username", accessToken.getToken());

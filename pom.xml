@@ -5,7 +5,7 @@
 	<artifactId>srb4j</artifactId>
 	<name>The archetype to generate code</name>
 	<url>http://maven.apache.org</url>
-
+	<version>1.1</version>
 
 	<build>
 		<plugins>
@@ -32,5 +32,5 @@
 			</plugin>
 		</plugins>
 	</build>
-	<version>1.0</version>
+	
 </project>

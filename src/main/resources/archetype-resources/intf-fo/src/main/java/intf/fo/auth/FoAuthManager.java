@@ -29,7 +29,16 @@ public interface FoAuthManager {
 	 * @param request
 	 * @return
 	 */
-	public FoResponse<FoAuthTokenResult> socialLogin(FoSocialLoginRequest request);
+	public FoResponse<FoAuthTokenResult> socialLoginByToken(FoSocialLoginByTokenRequest request);
+	
+	
+	/**
+	 * login using social site's authorization code. Will return OAuth2 tokens.
+	 * 
+	 * @param request
+	 * @return
+	 */
+	public FoResponse<FoAuthTokenResult> socialLoginByAuthCode(FoSocialAuthCodeLoginRequest request);	
 
 	/**
 	 * refresh token

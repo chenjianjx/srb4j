@@ -1,10 +1,11 @@
 package ${package}.restclient.model;
 
-import com.fasterxml.jackson.annotation.JsonProperty;
-import com.fasterxml.jackson.annotation.JsonValue;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
+
 import java.util.Objects;
+
+import com.fasterxml.jackson.annotation.JsonProperty;
 
 
 
@@ -13,13 +14,14 @@ import java.util.Objects;
  **/
 
 @ApiModel(description = "It's compatible with OAuth2 Token Response")
-@javax.annotation.Generated(value = "class io.swagger.codegen.languages.JavaClientCodegen", date = "2016-01-08T20:25:00.614+08:00")
+@javax.annotation.Generated(value = "class io.swagger.codegen.languages.JavaClientCodegen", date = "2016-01-27T19:43:25.580+08:00")
 public class AuthTokenResult   {
   
   private String accessToken = null;
   private String refreshToken = null;
   private Long expiresIn = null;
   private String tokenType = null;
+  private String userPrincipal = null;
 
   
   /**
@@ -78,6 +80,20 @@ public class AuthTokenResult   {
   }
 
   
+  /**
+   * user_principal
+   **/
+  
+  @ApiModelProperty(value = "user_principal")
+  @JsonProperty("user_principal")
+  public String getUserPrincipal() {
+    return userPrincipal;
+  }
+  public void setUserPrincipal(String userPrincipal) {
+    this.userPrincipal = userPrincipal;
+  }
+
+  
 
   @Override
   public boolean equals(Object o) {
@@ -91,12 +107,13 @@ public class AuthTokenResult   {
     return Objects.equals(accessToken, authTokenResult.accessToken) &&
         Objects.equals(refreshToken, authTokenResult.refreshToken) &&
         Objects.equals(expiresIn, authTokenResult.expiresIn) &&
-        Objects.equals(tokenType, authTokenResult.tokenType);
+        Objects.equals(tokenType, authTokenResult.tokenType) &&
+        Objects.equals(userPrincipal, authTokenResult.userPrincipal);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(accessToken, refreshToken, expiresIn, tokenType);
+    return Objects.hash(accessToken, refreshToken, expiresIn, tokenType, userPrincipal);
   }
 
   @Override
@@ -108,6 +125,7 @@ public class AuthTokenResult   {
     sb.append("    refreshToken: ").append(toIndentedString(refreshToken)).append("\n");
     sb.append("    expiresIn: ").append(toIndentedString(expiresIn)).append("\n");
     sb.append("    tokenType: ").append(toIndentedString(tokenType)).append("\n");
+    sb.append("    userPrincipal: ").append(toIndentedString(userPrincipal)).append("\n");
     sb.append("}");
     return sb.toString();
   }

@@ -25,6 +25,7 @@ import org.apache.oltu.oauth2.common.exception.OAuthSystemException;
 import org.apache.oltu.oauth2.common.message.types.GrantType;
 import org.junit.Assert;
 import org.junit.Test;
+
 import ${package}.democlient.util.DemoClientConstants;
 import ${package}.democlient.util.DemoClientUtils;
 import ${package}.restclient.model.AuthTokenResult;
@@ -140,7 +141,8 @@ public class DemoClientFoAuthTest {
 	}
 
 	@Test
-	public void testLocalLogin_UsingOAuth2Library() throws OAuthSystemException {
+	public void testLocalLogin_UsingOAuth2Library()
+			throws OAuthSystemException, OAuthProblemException {
 
 		// register one first
 		String username = RandomStringUtils.randomAlphanumeric(10)
@@ -159,20 +161,49 @@ public class DemoClientFoAuthTest {
 
 		OAuthClient oAuthClient = new OAuthClient(new URLConnectionClient());
 
+		OAuthJSONAccessTokenResponse response = oAuthClient
+				.accessToken(request);
+
+		assertOauth2LibraryResponseSuccessful(response);
+
+	}
+
+	@Test
+	public void testLocalLogin_WrongPassword_UsingOAuth2Library()
+			throws OAuthSystemException {
+
+		// register one first
+		String username = RandomStringUtils.randomAlphanumeric(10)
+				+ "@nonexist.com";
+		String password = "abc123";
+		doRegister(username, password);
+
+		OAuthClientRequest request = OAuthClientRequest
+				.tokenLocation(
+						BACKEND_FO_REST_URL
+								+ DemoClientConstants.LOCAL_LOGIN_URL)
+				.setGrantType(GrantType.PASSWORD).setClientId(null)
+				.setClientSecret(null).setUsername(username)
+				.setPassword("wrong-password")
+				.setParameter("long_session", "false").buildBodyMessage();
+
+		OAuthClient oAuthClient = new OAuthClient(new URLConnectionClient());
+
 		try {
+			@SuppressWarnings("unused")
 			OAuthJSONAccessTokenResponse response = oAuthClient
 					.accessToken(request);
-
-			assertOauth2LibraryResponseSuccessful(response);
-
+			Assert.fail();
 		} catch (OAuthProblemException e) {
 			System.out.println("error(the code): " + e.getError());
 			System.out
 					.println("error_description (error message  for client developer): "
 							+ e.getDescription());
+			// TODO: this will not work because oltu client throws away any
+			// non-standard information. it sucks.
 			System.out.println("error_description_for_user:"
 					+ e.get("error_description_for_user"));
-			Assert.fail();
+
 		}
 
 	}
@@ -237,39 +268,6 @@ public class DemoClientFoAuthTest {
 
 	}
 
-	@Test
-	public void testRefreshToken_UsingOauth2Library() throws Exception {
-
-		// register to get tokens
-		String refreshToken = doRegisterAndReturnRefreshToken();
-
-		OAuthClientRequest request = OAuthClientRequest
-				.tokenLocation(
-						BACKEND_FO_REST_URL
-								+ DemoClientConstants.REFRESH_TOKEN_URL)
-				.setGrantType(GrantType.REFRESH_TOKEN).setClientId(null)
-				.setClientSecret(null).setRefreshToken(refreshToken)
-				.buildBodyMessage();
-
-		OAuthClient oAuthClient = new OAuthClient(new URLConnectionClient());
-
-		try {
-			OAuthJSONAccessTokenResponse response = oAuthClient
-					.accessToken(request);
-
-			assertOauth2LibraryResponseSuccessful(response);
-
-		} catch (OAuthProblemException e) {
-			System.out.println("error(the code): " + e.getError());
-			System.out
-					.println("error_description (error message  for client developer): "
-							+ e.getDescription());
-			System.out.println("error_description_for_user:"
-					+ e.get("error_description_for_user"));
-
-		}
-	}
-
 	private void assertOauth2LibraryResponseSuccessful(
 			OAuthJSONAccessTokenResponse response) {
 		System.out.println("access token:" + response.getAccessToken());
@@ -279,7 +277,7 @@ public class DemoClientFoAuthTest {
 		Assert.assertNotNull(response.getAccessToken());
 		Assert.assertNotNull(response.getRefreshToken());
 		Assert.assertTrue(response.getExpiresIn() > 0);
-
+		Assert.assertNotNull(response.getParam("user_principal"));
 		Assert.assertEquals(200, tryProctedResource(response.getAccessToken()));
 	}
 
@@ -295,6 +293,7 @@ public class DemoClientFoAuthTest {
 		Assert.assertNotNull(clientResponse.tokenResult);
 		Assert.assertNotNull(clientResponse.tokenResult.getAccessToken());
 		Assert.assertNotNull(clientResponse.tokenResult.getRefreshToken());
+		Assert.assertNotNull(clientResponse.tokenResult.getUserPrincipal());
 		Assert.assertEquals(200,
 				tryProctedResource(clientResponse.tokenResult.getAccessToken()));
 	}
