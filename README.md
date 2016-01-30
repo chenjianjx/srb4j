@@ -29,7 +29,7 @@ If you have any question, feel free to write to __chenjianjx@gmail.com__ .
 cd /path/to/your/workspace
 
 mvn -X archetype:generate \
--DarchetypeGroupId=com.github.chenjianjx -DarchetypeArtifactId=srb4j -DarchetypeVersion=1.0 \
+-DarchetypeGroupId=com.github.chenjianjx -DarchetypeArtifactId=srb4j -DarchetypeVersion=1.1.1 \
 -DgroupId=your.groupId  \
 -DartifactId=yourArtifactid \
 -Dpackage=your.pkg.name \
