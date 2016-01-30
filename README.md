@@ -9,7 +9,7 @@ With __srb4j__ you can quickly launch a restful backend with several minutes.
 # Summary of Features
 
 1. Registration/login based on standard OAuth2 with grant_type = 'password'
-2. Social account login support (Google,Facebook...)
+2. Social account login support (Google,Facebook...) 
 3. Password resetting and  random code login  
 4. [Swagger](http://swagger.io/)-based document generation and client stub generation
 5. Popular J2EE Stack: Jersey2 + Spring + MyBatis + MySQL
@@ -93,6 +93,7 @@ Go to http://localhost:8080/fo-rest-doc, download this html file and give it to 
 		System.out.println("access token:" + response.getAccessToken());
 		System.out.println("refresh token:" + response.getRefreshToken());
 		System.out.println("expire in:" + response.getExpiresIn());
+		System.out.println("the user's principal:" + response.getParam("user_principal"));
 
 ````
   
@@ -111,6 +112,7 @@ Go to http://localhost:8080/fo-rest-doc, download this html file and give it to 
 		System.out.println("access token:" + response.getAccessToken());
 		System.out.println("refresh token:" + response.getRefreshToken());
 		System.out.println("expire in:" + response.getExpiresIn());
+		System.out.println("the user's principal:" + response.getParam("user_principal"));		
 
 ```` 
 
@@ -217,16 +219,25 @@ Note: You can delete package 'yourpackage.impl.biz.bbs' if you don't it any more
 2. Both registration and login are treated as OAuth2 token request as shown above.  
 
 ### Login with Google/Facebook account
+Logging in with social account is also an OAuth2 process with grant_type=password. 
 
-Login with social account is also an OAuth2 process with grant_type=password. 
+#### Login with social sites's tokens (suitable for mobile clients)
 
 1. Your client logs in with google/facebook sdk and obtain an OpenId token (Google) or an access token
-2. Your client then logs in srb4j backend using the social token obtain above, with username = the-social-token and password = anything
+2. Your client then logs in srb4j backend using the social token obtained above, with username = the-social-token and password = anything
 3. The srb4j backend will verify the token by calling google/facebook, then create a user account with the returned email if it is a new user, and finally returns a srb4j-hosted access token to the client.    
 4. The client will then talk to the srb4j backend using srb4j-hosted token.
 
-For client-side samples, see [this demo](https://github.com/chenjianjx/srb4jfullsample/blob/master/demo-client/src/test/java/com/github/chenjianjx/srb4jfullsample/democlient/fo/rest/auth/DemoClientFoAuthUiMain.java). The samples are for java desktop client, but android/ios clients will be similar.  
+For client-side samples, see [this demo](https://github.com/chenjianjx/srb4jfullsample/blob/master/demo-client/src/test/java/com/github/chenjianjx/srb4jfullsample/democlient/fo/rest/auth/DemoClientFoAuthUiMain.java).
 
+#### Login with social sites's auth codes (suitable for desktop clients) 
+
+1. Your client starts an OAuth2 code flow with the social sites, launch a webview and finally obtain an authoration code.
+2. Your client then logs in srb4j backend using the auth code above, with username = code and password = anything
+3. The srb4j backend will exchange the code with a token by calling google/facebook, then create a user account with the returned email if it is a new user, and finally returns a srb4j-hosted access token to the client.    
+4. The client will then talk to the srb4j backend using srb4j-hosted token.
+
+For client-side samples, see [this demo](https://github.com/chenjianjx/srb4j-desktop-client). 
 
 ### Source of user
 
