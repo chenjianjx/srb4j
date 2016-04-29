@@ -25,7 +25,7 @@ If you have any question, feel free to write to __chenjianjx@gmail.com__ .
 
 # Quick Start
 
-## Generate a Java project
+### Generate a Java project
 
 ````bash
 cd /path/to/your/workspace
@@ -40,9 +40,9 @@ mvn -X archetype:generate \
 
 ````
 
-## Create a MySQL database and its tables
+### Create a MySQL database and its tables
 
-Create db and user
+Create a db and a user
 
 ````SQL
 	mysql> create database yourdb default character set utf8;	 ## Has to be utf8
@@ -50,24 +50,29 @@ Create db and user
 	mysql> grant all privileges on yourdb.* to 'your_user'@'localhost' with grant option;	
 ````
 
- 
-Run the [ddl]
+Create tables
 ````bash
 cd /some/dir
-wget https://github.com/chenjianjx/srb4j/blob/master/src/main/resources/archetype-resources/doc/sql/ddl.sql 
+wget https://raw.githubusercontent.com/chenjianjx/srb4j/master/src/main/resources/archetype-resources/doc/sql/ddl.sql  #Download this file with a browser if you are using windows
 ````
 ````SQL
-mysql> source /some/dir/ddl.sql
+mysql> use yourdb;
+mysql> source /some/dir/ddl.sql;
 ````  
 
+### Setup Env-specific properties 
 ````bash
-mkdir ~/yourArtifactId
+mkdir ~/yourArtifactId  #For windows, replace "~" with your user's home directory
 cd ~/yourArtifactId
-wget https://raw.githubusercontent.com/chenjianjx/srb4j/master/src/main/resources/archetype-resources/doc/app.properties.sample -O app.properties
+wget https://raw.githubusercontent.com/chenjianjx/srb4j/master/src/main/resources/archetype-resources/doc/app.properties.sample -O app.properties  #Download this file with a browser and renmae it to app.properties if you are using windows
 ````
 
-Edit app.properties according to your environment.
+Then edit app.properties according to your environment.
+````bash
+vi app.properties
+````
  
+### Build the Java project 
 ````bash
 cd /path/to/your/workspace/yourArtifactid
 
@@ -79,7 +84,9 @@ mvn jetty:run
 
 ````
 
-now visit http://locahost:8080 to verify the startup
+### Verify the installation
+
+Open http://locahost:8080 in a browser to verify the startup
 
 
 # What's next
