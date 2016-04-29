@@ -25,6 +25,8 @@ If you have any question, feel free to write to __chenjianjx@gmail.com__ .
 
 # Quick Start
 
+1. Generate a Java project
+
 ````bash
 cd /path/to/your/workspace
 
@@ -36,10 +38,16 @@ mvn -X archetype:generate \
 -Dversion=1.0-SNAPSHOT \
 -DarchetypeRepository=https://jitpack.io
 
-
 ````
 
-Create a MySQL db schema with default charset "utf8".
+2. Create a MySQL database and its tables
+````SQL
+	create database yourdb default character set utf8;	 ## Has to be utf8
+	create user 'your_user'@'localhost' identified by 'your_password';
+	grant all privileges on yourdb.* to 'your_user'@'localhost' with grant option;	
+````
+
+ 
 Run the [ddl](https://github.com/chenjianjx/srb4j/blob/master/src/main/resources/archetype-resources/doc/sql/ddl.sql) in the db you created.  
 
 
