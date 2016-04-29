@@ -25,7 +25,7 @@ If you have any question, feel free to write to __chenjianjx@gmail.com__ .
 
 # Quick Start
 
-1. Generate a Java project
+## Generate a Java project
 
 ````bash
 cd /path/to/your/workspace
@@ -40,7 +40,10 @@ mvn -X archetype:generate \
 
 ````
 
-2. Create a MySQL database and its tables
+## Create a MySQL database and its tables
+
+Create db and user
+
 ````SQL
 	create database yourdb default character set utf8;	 ## Has to be utf8
 	create user 'your_user'@'localhost' identified by 'your_password';
@@ -48,8 +51,14 @@ mvn -X archetype:generate \
 ````
 
  
-Run the [ddl](https://github.com/chenjianjx/srb4j/blob/master/src/main/resources/archetype-resources/doc/sql/ddl.sql) in the db you created.  
-
+Run the [ddl]
+````bash
+cd /some/dir
+wget https://github.com/chenjianjx/srb4j/blob/master/src/main/resources/archetype-resources/doc/sql/ddl.sql 
+````
+````SQL
+source /some/dir/ddl.sql
+````  
 
 ````bash
 mkdir ~/yourArtifactId
