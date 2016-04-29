@@ -1,18 +1,16 @@
 #srbj4j
 
 
-__srb4j__ (pronounced "/srəb/ for J") is an open-source jax-rs backend code skeleton, with full-fledged authentication support based on OAuth2. 
+__Srb4j__ (pronounced "/srəb/ for J") is an open-source jax-rs backend code skeleton, with full-fledged authentication support based on OAuth2. 
 
-With __srb4j__ you can quickly launch a restful backend with several minutes.
-
-If you have any question, feel free to write to __chenjianjx@gmail.com__ . 
-
+With __srb4j__ you can quickly launch a restful backend in several minutes.
+ 
 
 # Summary of Features
 
 1. Registration/login based on standard OAuth2 with grant_type = 'password'
 2. Social account login support (Google,Facebook...) 
-3. Password resetting and  random code login  
+3. Password resetting and random code login  
 4. [Swagger](http://swagger.io/)-based document generation and client stub generation
 5. Popular J2EE Stack: Jersey2 + Spring + MyBatis + MySQL
 6. Modularized structure design enforcing loose coupling between components
@@ -86,7 +84,7 @@ mvn jetty:run -Djetty.port=yourPort
 
 ### Verify the installation
 
-Open [http://locahost:yourPort] in a browser to verify the startup
+Open http://locahost:yourPort in a browser to verify the startup
 
 
 # What's next
