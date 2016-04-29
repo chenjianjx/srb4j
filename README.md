@@ -45,9 +45,9 @@ mvn -X archetype:generate \
 Create db and user
 
 ````SQL
-	create database yourdb default character set utf8;	 ## Has to be utf8
-	create user 'your_user'@'localhost' identified by 'your_password';
-	grant all privileges on yourdb.* to 'your_user'@'localhost' with grant option;	
+	mysql> create database yourdb default character set utf8;	 ## Has to be utf8
+	mysql> create user 'your_user'@'localhost' identified by 'your_password';
+	mysql> grant all privileges on yourdb.* to 'your_user'@'localhost' with grant option;	
 ````
 
  
@@ -57,7 +57,7 @@ cd /some/dir
 wget https://github.com/chenjianjx/srb4j/blob/master/src/main/resources/archetype-resources/doc/sql/ddl.sql 
 ````
 ````SQL
-source /some/dir/ddl.sql
+mysql> source /some/dir/ddl.sql
 ````  
 
 ````bash
