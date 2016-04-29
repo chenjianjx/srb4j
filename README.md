@@ -80,13 +80,13 @@ mvn install -DskipTests
 
 cd webapp
 
-mvn jetty:run
+mvn jetty:run -Djetty.port=yourPort
 
 ````
 
 ### Verify the installation
 
-Open http://locahost:8080 in a browser to verify the startup
+Open [http://locahost:yourPort] in a browser to verify the startup
 
 
 # What's next
