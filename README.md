@@ -1,10 +1,13 @@
 #Srbj4j
 
 
-__Srb4j__ (pronounced "/srəb/ for J") is an open-source jax-rs backend code skeleton, with full-fledged authentication support based on OAuth2. 
+__Srb4j__ (pronounced "/srəb/ for J") is a Java RESTFul backend code skeleton, with common response data structures, __user/access-token persistence__, social login support and __API document generation__.
 
-With __srb4j__ you can quickly launch a restful backend in several minutes.
- 
+It can collaborate with __html clients__, __mobile clients__ and other types of clients such as __desktop applications__.  
+
+__With Srb4j you can launch a restful backend in several minutes.__ 
+
+__Checkout a demo client right away__ at http://srb4jclient.chenjianjx.com:8000/#/ , or download an __Android__ client on https://github.com/chenjianjx/Srb4jAndroidClient, or download a __desktop__ client on https://github.com/chenjianjx/srb4j-desktop-client .
 
 # Summary of Features
 
