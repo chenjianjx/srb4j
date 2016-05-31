@@ -267,7 +267,12 @@ Check out more code [here](https://github.com/chenjianjx/srb4j-desktop-client) o
 
 # Things the Backend Developers should Know
 
-## How to create a business module 
+## User Model
+
+1. Every user has a "source" property to indicate where this user is from. "local" means the user registers here, "facebook" means the user is created when he logged into the backend with a facebook account.
+2. source + email make up of a username, the business key.
+
+## Create a business module 
 
 A business module called "bbs" is already there to demonstrate how to develop biz logic in srb4j. You can create your own by referring to "bbs" code files:  
 
@@ -302,47 +307,25 @@ Note:
 
 # Social Login Integration (For Backend and Client Developers)
 
+## Basic Flow
 
-# Introduction to the features
+1. The client obtains an auth code or an access token/id token from the social website
+2. The client then exchanges this code or token with the backend for srb4j's access token
+3. The backend will verify the code or token against the social website's server, before it sends an access token to the client
 
-## OAuth2-based login flow with grant_type = password
+## Integrate with this or that social site 
 
-### User login with username/password 
-1. Username is email
-2. Both registration and login are treated as OAuth2 token request as shown above.  
+* [Google + Mobile Client](userguide/social-integration/google_mobile.md)
+* [Google + Html Client](userguide/social-integration/google_mobile.md)
+* [Google + Desktop Client](userguide/social-integration/google_mobile.md)
+* [Facebook + Mobile Client](userguide/social-integration/google_mobile.md)
+* [Facebook + Html Client](userguide/social-integration/google_mobile.md)
+* [Facebook + Desktop Client](userguide/social-integration/google_mobile.md)
+* ...
+* [Integrate a new social site](userguide/social-integration/google_mobile.md)
+ 
 
-### Login with Google/Facebook account
-Logging in with social account is also an OAuth2 process with grant_type=password. 
-
-#### Login with social sites's tokens (suitable for mobile clients)
-
-1. Your client logs in with google/facebook sdk and obtain an OpenId token (Google) or an access token
-2. Your client then logs in srb4j backend using the social token obtained above, with username = the-social-token and password = anything
-3. The srb4j backend will verify the token by calling google/facebook, then create a user account with the returned email if it is a new user, and finally returns a srb4j-hosted access token to the client.    
-4. The client will then talk to the srb4j backend using srb4j-hosted token.
-
-For client-side samples, see [this demo](https://github.com/chenjianjx/srb4jfullsample/blob/master/demo-client/src/test/java/com/github/chenjianjx/srb4jfullsample/democlient/fo/rest/auth/DemoClientFoAuthUiMain.java).
-
-#### Login with social sites's auth codes (suitable for desktop clients) 
-
-1. Your client starts an OAuth2 code flow with the social sites, launch a webview and finally obtain an authoration code.
-2. Your client then logs in srb4j backend using the auth code above, with username = code and password = anything
-3. The srb4j backend will exchange the code with a token by calling google/facebook, then create a user account with the returned email if it is a new user, and finally returns a srb4j-hosted access token to the client.    
-4. The client will then talk to the srb4j backend using srb4j-hosted token.
-
-For client-side samples, see [this demo](https://github.com/chenjianjx/srb4j-desktop-client). 
-
-### Source of user
-
-Every user has a property called "source" decided by where this user is from, such as "google", "facebook" and "local". "local" means the user is registered on the srb4j backend.
-
-### Other authentication features
-See [FoAuthTokenResource] (https://github.com/chenjianjx/srb4jfullsample/blob/master/webapp/src/main/java/com/github/chenjianjx/srb4jfullsample/webapp/fo/rest/auth/FoAuthTokenResource.java ) for more authentication features, such as token refreshing, password resetting and random code login. 
-
-Note: A refresh token can be used only once.
-
-
-## API documentation and client support
+# API documentation and client support
 
 Thanks to [swagger](http://swagger.io/), you can have a WSDL-like API document of your restful web services with [swagger-ui](https://github.com/swagger-api/swagger-ui), generate client stubs[swagger-codegen](https://github.com/swagger-api/swagger-codegen) and test the services with a web-ui[swagger-ui](https://github.com/swagger-api/swagger-ui). 
 
@@ -355,7 +338,7 @@ It may be vulnerable to expose the API doc or testing-web-ui in a PROD system. Y
 enableSwagger=false
 ```` 
 
-## The back office code
+# The back office code
 
 The back office code is just a way to demonstrate how a back office web portal can interact with the app layer. It enforces the code organization so that back-office code is separated from front end code. 
 
