@@ -265,6 +265,21 @@ import com.mashape.unirest.http.Unirest;
 Check out more code [here](https://github.com/chenjianjx/srb4j-desktop-client) or [here](https://github.com/chenjianjx/Srb4jAndroidClient) . 
 
 
+# Things the Backend Developers should Know
+
+## How to create a business module 
+
+A business module called "bbs" is already there to demonstrate how to develop biz logic in srb4j. You can create your own by referring to "bbs" code files:  
+
+1. Table 'Post' in ddl.sql
+2. Biz entity and repository(DAO) classes in package 'yourpackage.impl.biz.bbs' 
+3. App-layer beans and managers in package 'yourpackage.intf.fo.bbs' and  'yourpackage.impl.fo.bbs'
+4. RESTFul Resources in package 'yourpackage.webapp.fo.rest.bbs'  
+
+
+Note: 
+1. You can delete package 'yourpackage.impl.biz.bbs' if you don't it any more.
+2. For layers and maven artifacts in srb4j, see below.  
 
 ## The code organization
 
@@ -274,7 +289,7 @@ Check out more code [here](https://github.com/chenjianjx/srb4j-desktop-client) o
 
 ![layering](documents/project-organization/layering-ppt/ultimate-layering/Slide2.jpg)
 
- 
+
 
 * And you get these maven projects: 
 
@@ -285,17 +300,7 @@ Check out more code [here](https://github.com/chenjianjx/srb4j-desktop-client) o
   * "intf.bo" depends on "intf.fo" since back office users also need common-user perspectives.
   * Check full explanation [here](http://www.chenjianjx.com/myblog/entry/layering-in-java-webapps-final)   
 
-
-## Now create your own business module
-
-A business module called "bbs" is generated to demonstrate how to develop biz logic in srb4j. You can create your own by referring to "bbs" code files:  
-
-1. Table 'Post' in ddl.sql
-2. Biz entity and repository(DAO) classes in package 'yourpackage.impl.biz.bbs' 
-3. App-layer beans and managers in package 'yourpackage.intf.fo.bbs' and  'yourpackage.impl.fo.bbs'
-4. RESTFul Resources in package 'yourpackage.webapp.fo.rest.bbs'  
-
-Note: You can delete package 'yourpackage.impl.biz.bbs' if you don't it any more.  
+# Social Login Integration (For Backend and Client Developers)
 
 
 # Introduction to the features
