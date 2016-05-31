@@ -26,6 +26,9 @@ __You can also see its out-of-box RESTFul APIs [here](https://srb4jdemo.chenjian
 2. Servlet 3.0+ Container such as Tomcat 7
 3. MySQL Server
 
+
+<!-- toc -->
+
 # Quick Start for Backend Developers
 
 ### Generate a Java project
