@@ -11,6 +11,36 @@ __Checkout a demo client right away__ at http://srb4jclient.chenjianjx.com:8000/
 
 __You can also see its out-of-box RESTFul APIs [here](https://srb4jdemo.chenjianjx.com/fo-rest-doc) .__
 
+
+Table of Contents
+=================
+
+  * [Srbj4j](#srbj4j)
+  * [Table of Contents](#table-of-contents)
+  * [Summary of Features](#summary-of-features)
+  * [Prerequisites](#prerequisites)
+  * [Quick Start for Backend Developers](#quick-start-for-backend-developers)
+      * [Generate a Java project](#generate-a-java-project)
+      * [Create a MySQL database and its tables](#create-a-mysql-database-and-its-tables)
+      * [Setup Env\-specific properties](#setup-env-specific-properties)
+      * [Build the Java project](#build-the-java-project)
+      * [Verify the installation](#verify-the-installation)
+  * [Quick Start for Client\-Side Developers](#quick-start-for-client-side-developers)
+    * [Refer to the API doc](#refer-to-the-api-doc)
+    * [Sample Code For HTML and Javascript Developers](#sample-code-for-html-and-javascript-developers)
+    * [Sample Code For Desktop and Mobile Developers](#sample-code-for-desktop-and-mobile-developers)
+  * [Things the Backend Developers should Know](#things-the-backend-developers-should-know)
+    * [User Model](#user-model)
+    * [Create a business module](#create-a-business-module)
+    * [The code organization](#the-code-organization)
+  * [Social Login Integration (For Backend and Client Developers)](#social-login-integration-for-backend-and-client-developers)
+    * [Basic Flow](#basic-flow)
+    * [Integrate with this or that social site](#integrate-with-this-or-that-social-site)
+  * [API documentation and client support](#api-documentation-and-client-support)
+  * [The back office code](#the-back-office-code)
+ 
+ 
+
 # Summary of Features
 
 1. Registration/login based on standard OAuth2 password flow (access tokens, refresh tokens, etc.)
@@ -101,7 +131,7 @@ Open http://locahost:yourPort in a browser to verify the startup
 
 The API doc has been generated on your backend at https://your-backend/fo-rest-doc 
 
-## Sample Code For HTML/Javascript Developers
+## Sample Code For HTML and Javascript Developers
 
 ````javascript		 
 	    	//login
@@ -188,7 +218,7 @@ The API doc has been generated on your backend at https://your-backend/fo-rest-d
 Check out more code [here](https://github.com/chenjianjx/srb4j-html-client) .
 
 
-## Sample Code For Desktop/Mobile Developers
+## Sample Code For Desktop and Mobile Developers
  
 ````java
 
@@ -349,3 +379,8 @@ If you don't need the back office web portal, please delete the following conten
  
 * BoAllInOneServlet.java
 * Its occurrence in web.xml 
+
+
+
+
+
