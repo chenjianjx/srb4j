@@ -1,4 +1,4 @@
-#Srbj4j
+#Srb4j
 
 
 __Srb4j__ (pronounced "/srəb/ for J") is an open-source jax-rs backend code skeleton, with full-fledged authentication support based on OAuth2. 
