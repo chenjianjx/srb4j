@@ -15,6 +15,7 @@ import org.apache.commons.lang3.time.DateFormatUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Component;
+
 import ${package}.intf.fo.basic.FoConstants;
 import ${package}.intf.fo.basic.FoResponse;
 
@@ -37,7 +38,11 @@ public class FoRestExceptionMapper implements ExceptionMapper<Throwable> {
 	public Response toResponse(Throwable ex) {
 
 		if (ex instanceof javax.ws.rs.NotFoundException) {// do not log for 404
-			return Response.status(Status.NOT_FOUND).build();
+			FoResponse<Void> foResponse = FoResponse.devErrResponse(
+					FoConstants.FEC_UNKNOWN_SERVER_ERROR,
+					"This restful resource doesn't exist", null);
+			return FoRestUtils.fromFoResponse(foResponse,
+					Status.NOT_FOUND.getStatusCode());
 		}
 
 		String exceptionId = Thread.currentThread().getName() + "-"

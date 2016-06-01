@@ -1,18 +1,35 @@
 #Srb4j
 
 
-__Srb4j__ (pronounced "/srəb/ for J") is an open-source jax-rs backend code skeleton, with full-fledged authentication support based on OAuth2. 
+__Srb4j__ (pronounced "/srəb/ for J") is a Java RESTFul backend code skeleton, with __common response data structures__, __user/password/access-token support__, __social login__ and __API document generation__.
 
-With __srb4j__ you can quickly launch a restful backend in several minutes.
- 
+It can collaborate with __html clients__, __mobile clients__ and other types of clients such as __desktop applications__ at the same time.  
+
+__With Srb4j you can launch a restful backend in several minutes.__ 
+
+__Checkout a demo client right away__ at http://srb4jclient.chenjianjx.com:8000/ , or install an __Android__ client on https://github.com/chenjianjx/Srb4jAndroidClient, or download a __desktop__ client on https://github.com/chenjianjx/srb4j-desktop-client .
+
+__You can also see its out-of-box RESTFul APIs [here](https://srb4jdemo.chenjianjx.com/fo-rest-doc) .__
+
+
+Table of Contents
+=================
+  * [Summary of Features](#summary-of-features)
+  * [Prerequisites](#prerequisites)
+  * [Quick Start for Backend Developers](#quick-start-for-backend-developers)
+  * [Quick Start for Client\-Side Developers](#quick-start-for-client-side-developers)
+  * [Things the Backend Developers should Know](#things-the-backend-developers-should-know)
+  * [Social Login Integration](#social-login-integration)
+  * [API Documentation and Client Stub Generation and Online Testing](#api-documentation-and-client-stub-generation-and-online-testing)
+  * [The Back Office](#the-back-office)
 
 # Summary of Features
 
-1. Registration/login based on standard OAuth2 with grant_type = 'password'
+1. Registration/login based on standard OAuth2 password flow (access tokens, refresh tokens, etc.)
 2. Social account login support (Google,Facebook...) 
 3. Password resetting and random code login  
-4. [Swagger](http://swagger.io/)-based document generation and client stub generation
-5. Popular J2EE Stack: Jersey2 + Spring + MyBatis + MySQL
+4. [Swagger](http://swagger.io/)-based API document generation and client stub generation
+5. Popular J2EE Stack: JAX-RS + Spring + MyBatis + MySQL
 6. Modularized structure design enforcing loose coupling between components
 7. An out-of-box back office web portal
 
@@ -21,7 +38,10 @@ With __srb4j__ you can quickly launch a restful backend in several minutes.
 2. Servlet 3.0+ Container such as Tomcat 7
 3. MySQL Server
 
-# Quick Start
+
+<!-- toc -->
+
+# Quick Start for Backend Developers
 
 ### Generate a Java project
 
@@ -29,7 +49,7 @@ With __srb4j__ you can quickly launch a restful backend in several minutes.
 cd /path/to/your/workspace
 
 mvn -X archetype:generate \
--DarchetypeGroupId=com.github.chenjianjx -DarchetypeArtifactId=srb4j -DarchetypeVersion=1.1.1 \
+-DarchetypeGroupId=com.github.chenjianjx -DarchetypeArtifactId=srb4j -DarchetypeVersion=1.2.0 \
 -DgroupId=your.groupId  \
 -DartifactId=yourArtifactid \
 -Dpackage=your.pkg.name \
@@ -87,130 +107,211 @@ mvn jetty:run -Djetty.port=yourPort
 Open http://locahost:yourPort in a browser to verify the startup
 
 
-# What's next
+# Quick Start for Client-Side Developers 
 
-## Give instructions to your client-side developer 
+## Refer to the API doc 
 
-* Give them the __API doc__. 
+The API doc has been generated on your backend at http://your-backend/fo-rest-doc 
 
-Go to http://localhost:8080/fo-rest-doc, download this html file and give it to your client-side counterpart.
+## Sample Code For HTML and Javascript Developers
 
-* Show them the __sample code for registration and login__:
+````javascript		 
+	    	//login
+			$.ajax({
+				async: false,
+				url: "http://localhost:8080/fo/rest/token/new/local",
+				type: "POST",
+				contentType: 'application/x-www-form-urlencoded',				
+				data: "grant_type=password&username=chenjianjx@gmail.com&password=abc123",
+				success: function(data, statusText, xhr){					
+					console.log(data.access_token); //You can save this token to cookie or LocalStorage
+					console.log(data.refresh_token);
+					console.log(data.expires_in);
+					console.log(data.user_principal); // the full user name			
+					 
+					
+				},
+				error: function(xhr,statusText, e){
+					console.log(xhr.status)										
+					var response = $.parseJSON(xhr.responseText);
+					console.log(response.error); // "the error code"
+					console.log(response.error_description); // "the error description for developers"
+					console.log(response.error_description_for_user); // "user-friendly error desc for users"
+					console.log(response.exception_id); // "the server side developer can use this id to do troubleshooting"
+				}				
+			});
 
-````java
-		//Registration in srb4j is implemented as OAuth2 login flow with grant_type = password. 
-		//After registration you are automatically logged in.
-		//This demo uses apache oltu OAuth2 library.
+			...
+			
+			// call a business web service
+			$.ajax({
+				async: false,
+				url: "http://localhost:8080/fo/rest/bbs/posts/new",
+				type: "POST",
+				contentType: 'application/json',
+				headers: {					 
+					'Authorization': "Bearer " + accessToken
+				},				  
+				data: JSON.stringify({content:"my-first-post"}),
+				success: function(data, statusText, xhr){					
+					console.log(data); 
+				},
+				error: function(xhr,statusText, e){
+					console.log(xhr.status);
+					
+					if(xhr.status == 400 || xhr.status == 401 || xhr.status == 403){// "token error"						 
+						var authHeader = xhr.getResponseHeader("WWW-Authenticate");// "See https://tools.ietf.org/html/rfc6750#page-7"
+						console.log(authHeader); 
+						//in this case, you can redirect the user to login 
+					}
+					else if (xhr.status == 460) { // "biz error"
+						var response = $.parseJSON(xhr.responseText);
+						console.log(response.error); // "the error code"
+						console.log(response.error_description); // "the error description for developers"
+						console.log(response.error_description_for_user); // "user-friendly error desc for users"
+						console.log(response.exception_id); // "the server side developer can use this id to do troubleshooting"
+					}else{
+						console.log(xhr.responseText);
+					}
+						
+				}
+					
+					
 				
-		OAuthClientRequest request = OAuthClientRequest
-				.tokenLocation(
-						"http://localhost:8080/fo/rest/token/new/by-register/local")
-				.setGrantType(GrantType.PASSWORD).setClientId(null)
-				.setClientSecret(null)
-				.setUsername(emailYouAreGoingToRegisterWith)
-				.setPassword(password).buildBodyMessage();
-
-		OAuthClient oAuthClient = new OAuthClient(new URLConnectionClient());
-
-		OAuthJSONAccessTokenResponse response = oAuthClient.accessToken(request);
-
-		System.out.println("access token:" + response.getAccessToken());
-		System.out.println("refresh token:" + response.getRefreshToken());
-		System.out.println("expire in:" + response.getExpiresIn());
-		System.out.println("the user's principal:" + response.getParam("user_principal"));
-
-````
-  
-
-````java
-		//log in.
-		OAuthClientRequest request = OAuthClientRequest
-				.tokenLocation("http://localhost:8080/fo/rest/token/new/local")
-				.setGrantType(GrantType.PASSWORD).setClientId(null)
-				.setClientSecret(null).setUsername(emailYouRegisterWith)
-				.setPassword(password).buildBodyMessage();
-		OAuthClient oAuthClient = new OAuthClient(new URLConnectionClient());
-
-		OAuthJSONAccessTokenResponse response = oAuthClient.accessToken(request);
-
-		System.out.println("access token:" + response.getAccessToken());
-		System.out.println("refresh token:" + response.getRefreshToken());
-		System.out.println("expire in:" + response.getExpiresIn());
-		System.out.println("the user's principal:" + response.getParam("user_principal"));		
-
+			});
+			
+			...
+			
+			//logout
+			$.ajax({
+				async: false,
+				url: "http://localhost:8080/fo/rest/token/delete",
+				type: "POST",
+				contentType: 'application/json',
+				headers: {					 
+					'Authorization': "Bearer " + accessToken
+				}				  				 								
+			});			
+			
+		});			
+			
 ```` 
 
-* Show them the __sample code of invoking business web services__
+Check out more code [here](https://github.com/chenjianjx/srb4j-html-client) .
 
+
+## Sample Code For Desktop and Mobile Developers
+ 
 ````java
-		Builder restRequest = restClient
-				.target("http://localhost:8080/fo/rest")
-				.path("/bbs/posts/new").request();
 
-		restRequest = restRequest.header("Authorization", "Bearer " + token);
+import com.mashape.unirest.http.HttpResponse;
+import com.mashape.unirest.http.JsonNode;
+import com.mashape.unirest.http.Unirest;
+...
+
+		// do login
+		HttpResponse<JsonNode> loginResponse = Unirest
+				.post("http://localhost:8080/fo/rest/token/new/local")
+				.header("Content-Type", "application/x-www-form-urlencoded")
+				.field("grant_type", "password")
+				.field("username", "chenjianjx@gmail.com")
+				.field("password", "abc123").asJson();
+
+		if (loginResponse.getStatus() == 200) {
+			JSONObject token = loginResponse.getBody().getObject();
+			System.out.println(token.get("access_token")); //You can save the token for later use
+			System.out.println(token.get("refresh_token"));
+			System.out.println(token.get("expires_in"));
+			System.out.println(token.get("user_principal")); // "the full user name"			
+		} else {
+			System.out.println(loginResponse.getStatus());
+			System.out.println(loginResponse.getStatusText());
+			JSONObject error = loginResponse.getBody().getObject();
+			System.out.println(error.get("error")); // "the error code"
+			System.out.println(error.get("error_description")); // "the error description for developers"
+			System.out.println(error.get("error_description_for_user")); // "user-friendly error desc for users"
+			System.out.println(error.get("exception_id")); // "the server side developer can use this id to do troubleshooting"
+		}
+		...
+		
+		
+		// call a business web service
 		NewPostRequest bizRequest = new NewPostRequest();
-		bizRequest.setContent("Hi, welcome");
-		Response restResponse = restRequest.post(Entity.entity(bizRequest, MediaType.APPLICATION_JSON));
+		bizRequest.setContent("my-first-post");
+		HttpResponse<String> bizResponse = Unirest
+				.post("http://localhost:8080/fo/rest/bbs/posts/new")
+				.header("Content-Type", "application/json")
+				.header("Authorization", "Bearer " + accessToken)
+				.body(toJson(bizRequest)).asString();
 
-		if (restResponse.getStatus() == 200) {
-			Post post = restResponse.readEntity(Post.class);
-			System.out.println("successful. the newly created post is :" + post);
+		if (bizResponse.getStatus() == 200) {
+			Post post = fromJson(bizResponse.getBody(), Post.class);
+			System.out.println(post);
 		}
 
-		if (Arrays.asList(400, 401, 403).contains(restResponse.getStatus())) {
-			String wwwAuthHeader = restResponse.getHeaderString("www-authenticate");
-			Map<String, String> headerValues = decodeOAuthHeader(wwwAuthHeader);
-			System.err.println("OAuth2 Error");
-			System.err.println(headerValues.get("error"));
-			System.err.println(headerValues.get("error_description"));
-			System.err.println(headerValues.get("error_description_for_user"));
-			System.err.println("exception_id");
+		else if (Arrays.asList(400, 401, 403).contains(bizResponse.getStatus())) { // "token error"
+			String authHeader = bizResponse.getHeaders()
+					.get("WWW-Authenticate").get(0);// "See https://tools.ietf.org/html/rfc6750#page-7"			
+			System.out.println(bizResponse.getStatus());
+			System.out.println(authHeader); //You can also further parse auth header if needed. Search "decodeOAuthHeader" in this repository.  
+			//You should then redirect the user to login UI
 		}
 
-		if (460 == restResponse.getStatus()) {
-			ErrorResult errorResult = restResponse.readEntity(ErrorResult.class);
-			System.err.println("Biz Error: " + errorResult);
+		else if (bizResponse.getStatus() == 460) { // "biz error"
+			JSONObject error = new JSONObject(bizResponse.getBody());
+			System.out.println(error.get("error")); // "the error code"
+			System.out.println(error.get("error_description")); // "the error description for developers"
+			System.out.println(error.get("error_description_for_user")); // "user-friendly error desc for users"
+			System.out.println(error.get("exception_id")); // "the server side developer can use this id to do troubleshooting"
+		} else {
+			System.out.println(bizResponse.getStatus());
+			System.out.println(bizResponse.getBody());
 		}
-````
+		
+		...
 
-and the code of method decodeOAuthHeader() is
-
-````java
-	private static Map<String, String> decodeOAuthHeader(String header) {
-		Map<String, String> headerValues = new HashMap<String, String>();
-		if (header != null) {
-			Matcher m = Pattern.compile("\\s*(\\w*)\\s+(.*)").matcher(header);
-			if (m.matches()) {
-				if ("Bearer".equalsIgnoreCase(m.group(1))) {
-					for (String nvp : m.group(2).split("\\s*,\\s*")) {
-						m = Pattern.compile("(\\S*)\\s*\\=\\s*\"([^\"]*)\"")
-								.matcher(nvp);
-						if (m.matches()) {
-							String name = DemoClientUtils.urlDecode(m.group(1));
-							String value = DemoClientUtils
-									.urlDecode(m.group(2));
-							headerValues.put(name, value);
-						}
-					}
-				}
-			}
-		}
-		return headerValues;
-	}
+		// logout
+		Unirest.post("http://localhost:8080/fo/rest/bbs/posts/delete")
+				.header("Content-Type", "application/json")
+				.header("Authorization", "Bearer " + accessToken).asJson();
 
 ````
 
-Note all client sample code can be found in the generated "yourArtifactId-demo-client" project.
+Check out more code [here](https://github.com/chenjianjx/srb4j-desktop-client) or [here](https://github.com/chenjianjx/Srb4jAndroidClient) . 
+
+
+# Things the Backend Developers should Know
+
+## User Model
+
+1. Every user has a "source" property to indicate where this user is from. "local" means the user registers here, "facebook" means the user is created when he logged into the backend with a facebook account.
+2. source + email make up of a username, the business key.
+
+## Create a business module 
+
+A business module called "bbs" is already there to demonstrate how to develop biz logic in srb4j. You can create your own by referring to "bbs" code files:  
+
+1. Table 'Post' in ddl.sql
+2. Biz entity and repository(DAO) classes in package 'yourpackage.impl.biz.bbs' 
+3. App-layer beans and managers in package 'yourpackage.intf.fo.bbs' and  'yourpackage.impl.fo.bbs'
+4. RESTFul Resources in package 'yourpackage.webapp.fo.rest.bbs'  
+
+
+Note: 
+1. You can delete package 'yourpackage.impl.biz.bbs' if you don't it any more.
+2. For layers and maven artifacts in srb4j, see below.  
 
 ## The code organization
 
 * The layers:
+  
+![layering](documents/project-organization/layering-ppt/ultimate-layering/Slide2.jpg)
+
+* Notes:
   * Front End:   Encapsulate use case-specific logic from business services. The users are common users such customers.
   * Back Office: Encapsulate use case-specific logic from business services. The users are administrators, staff and so on.
 
-![layering](documents/project-organization/layering-ppt/ultimate-layering/Slide2.jpg)
 
- 
 
 * And you get these maven projects: 
 
@@ -221,76 +322,43 @@ Note all client sample code can be found in the generated "yourArtifactId-demo-c
   * "intf.bo" depends on "intf.fo" since back office users also need common-user perspectives.
   * Check full explanation [here](http://www.chenjianjx.com/myblog/entry/layering-in-java-webapps-final)   
 
+# Social Login Integration
 
-## Now create your own business module
+## Basic Flow
 
-A business module called "bbs" is generated to demonstrate how to develop biz logic in srb4j. You can create your own by referring to "bbs" code files:  
+1. The client obtains an auth code or an access token/id token from the social website after the user has loggged into a social website
+2. The client then exchanges this code or token with the backend for srb4j's access token
+3. The backend will verify the code or token against the social website's server, before it sends an access token to the client
 
-1. Table 'Post' in ddl.sql
-2. Biz entity and repository(DAO) classes in package 'yourpackage.impl.biz.bbs' 
-3. App-layer beans and managers in package 'yourpackage.intf.fo.bbs' and  'yourpackage.impl.fo.bbs'
-4. RESTFul Resources in package 'yourpackage.webapp.fo.rest.bbs'  
+## Integrate with this or that social site 
 
-Note: You can delete package 'yourpackage.impl.biz.bbs' if you don't it any more.  
+* [Google + Html Client](documents/userguide/social-integration/google_html.md)
+* [Google + Mobile Client](documents/userguide/social-integration/google_mobile.md)
+* [Google + Desktop Client](documents/userguide/social-integration/google_desktop.md)
+* [Facebook + Html Client](documents/userguide/social-integration/facebook_html.md)
+* [Facebook + Mobile Client](documents/userguide/social-integration/facebook_mobile.md)
+* [Facebook + Desktop Client](documents/userguide/social-integration/facebook_desktop.md)
+* ...
+* [Integrate a new social site](documents/userguide/social-integration/new_site.md) 
 
+# API Documentation and Client Stub Generation and Online Testing
 
-# Introduction to the features
+Thanks to [swagger](http://swagger.io/), you can have a WSDL-like API document of your restful web services with [swagger-ui](https://github.com/swagger-api/swagger-ui), generate client stubs with [swagger-codegen](https://github.com/swagger-api/swagger-codegen) and test the services with a [web-ui](https://github.com/swagger-api/swagger-ui). 
 
-## OAuth2-based login flow with grant_type = password
+Srb4j has embedded swagger support. The document endpoint is http://your-backend/fo/rest/swagger.json . If you know swagger well, you know what to do.
 
-### User login with username/password 
-1. Username is email
-2. Both registration and login are treated as OAuth2 token request as shown above.  
-
-### Login with Google/Facebook account
-Logging in with social account is also an OAuth2 process with grant_type=password. 
-
-#### Login with social sites's tokens (suitable for mobile clients)
-
-1. Your client logs in with google/facebook sdk and obtain an OpenId token (Google) or an access token
-2. Your client then logs in srb4j backend using the social token obtained above, with username = the-social-token and password = anything
-3. The srb4j backend will verify the token by calling google/facebook, then create a user account with the returned email if it is a new user, and finally returns a srb4j-hosted access token to the client.    
-4. The client will then talk to the srb4j backend using srb4j-hosted token.
-
-For client-side samples, see [this demo](https://github.com/chenjianjx/srb4jfullsample/blob/master/demo-client/src/test/java/com/github/chenjianjx/srb4jfullsample/democlient/fo/rest/auth/DemoClientFoAuthUiMain.java).
-
-#### Login with social sites's auth codes (suitable for desktop clients) 
-
-1. Your client starts an OAuth2 code flow with the social sites, launch a webview and finally obtain an authoration code.
-2. Your client then logs in srb4j backend using the auth code above, with username = code and password = anything
-3. The srb4j backend will exchange the code with a token by calling google/facebook, then create a user account with the returned email if it is a new user, and finally returns a srb4j-hosted access token to the client.    
-4. The client will then talk to the srb4j backend using srb4j-hosted token.
-
-For client-side samples, see [this demo](https://github.com/chenjianjx/srb4j-desktop-client). 
-
-### Source of user
-
-Every user has a property called "source" decided by where this user is from, such as "google", "facebook" and "local". "local" means the user is registered on the srb4j backend.
-
-### Other authentication features
-See [FoAuthTokenResource] (https://github.com/chenjianjx/srb4jfullsample/blob/master/webapp/src/main/java/com/github/chenjianjx/srb4jfullsample/webapp/fo/rest/auth/FoAuthTokenResource.java ) for more authentication features, such as token refreshing, password resetting and random code login. 
-
-Note: A refresh token can be used only once.
-
-
-## API documentation and client support
-
-Thanks to [swagger](http://swagger.io/), you can have a WSDL-like API document of your restful web services with [swagger-ui](https://github.com/swagger-api/swagger-ui), generate client stubs[swagger-codegen](https://github.com/swagger-api/swagger-codegen) and test the services with a web-ui[swagger-ui](https://github.com/swagger-api/swagger-ui). 
-
-Srb4j has embedded swagger support. The document endpoint is http://localhost:8080/fo/rest/swagger.json . If you know swagger well, you know what to do.
-
-If you just want to see a download-able API doc, check http://localhost:8080/fo-rest-doc , which is generated by [swagger2html] (https://github.com/chenjianjx/swagger2html).    
+If you just want to see a download-able API doc, check http://your-backend/fo-rest-doc , which is generated by [swagger2html] (https://github.com/chenjianjx/swagger2html).    
 
 It may be vulnerable to expose the API doc or testing-web-ui in a PROD system. You can disable swagger (and the API doc) by editing app.properties and restart:  
 ````
 enableSwagger=false
 ```` 
 
-## The back office code
+# The Back Office
 
 The back office code is just a way to demonstrate how a back office web portal can interact with the app layer. It enforces the code organization so that back-office code is separated from front end code. 
 
 If you don't need the back office web portal, please delete the following content: 
  
 * BoAllInOneServlet.java
-* Its occurrence in web.xml 
+* Its occurrence in web.xml

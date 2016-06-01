@@ -90,7 +90,7 @@ public class DemoClientFoBizResponse<T> {
 
 		if (OAUTH2_HTTP_ERROR_CODES.contains(restResponse.getStatus())) {
 			String wwwAuthHeader = restResponse
-					.getHeaderString("www-authenticate");
+					.getHeaderString("WWW-Authenticate");
 			Map<String, String> headerValues = decodeOAuthHeader(wwwAuthHeader);
 			result.oauth2Error = new ErrorResult();
 			result.oauth2Error.setError(headerValues.get("error"));

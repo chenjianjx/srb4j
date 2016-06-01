@@ -28,7 +28,18 @@ enableSwagger=true
 
 
 #IF you want to let the client login with social sites' auth code, enable the following; otherwise, leave them as they are
+##for desktop clients (non-web, non-mobile)
 googleClientId=placeholder
 googleClientSecret=placeholder
+
+
+##for web clients which uses Google Sign-in's javascript SDK
+googleWebClientId=placeholder
+googleWebClientSecret=placeholder
+
 facebookClientId=placeholder
 facebookClientSecret=placeholder
+
+#The header of "Access-Control-Allow-Origin" to allow ajax access from html clients.
+#Set it as "*" if you allow access from everywhere. If you don't allow cors, leave this value empty
+corsOriginHeader= 

@@ -3,7 +3,11 @@ package ${package}.webapp.fo.rest.auth;
 import static ${package}.intf.fo.basic.FoConstants.ACCESS_TOKEN_HEADER_DEFAULT;
 import static ${package}.intf.fo.basic.FoConstants.ACCESS_TOKEN_HEADER_KEY;
 import static ${package}.intf.fo.basic.FoConstants.BIZ_ERR_TIP;
+import static ${package}.intf.fo.basic.FoConstants.CLIENT_TYPE_PARAM;
+import static ${package}.intf.fo.basic.FoConstants.FACEBOOK_REDIRECT_URI_LOGIN_SUCCESS;
 import static ${package}.intf.fo.basic.FoConstants.FO_SC_BIZ_ERROR;
+import static ${package}.intf.fo.basic.FoConstants.GOOGLE_REDIRECT_URI_OOB;
+import static ${package}.intf.fo.basic.FoConstants.GOOGLE_REDIRECT_URI_POSTMESSAGE;
 import static ${package}.intf.fo.basic.FoConstants.LONG_SESSION_PARAM;
 import static ${package}.intf.fo.basic.FoConstants.LONG_SESSION_TIP;
 import static ${package}.intf.fo.basic.FoConstants.OAUTH2_ACCESS_TOKEN_NAME_TIP;
@@ -12,6 +16,9 @@ import static ${package}.intf.fo.basic.FoConstants.OAUTH2_GRANT_TYPE_TIP;
 import static ${package}.intf.fo.basic.FoConstants.OAUTH2_TOKEN_ENDPOINT_ERR_TIP;
 import static ${package}.intf.fo.basic.FoConstants.OAUTH2_TOKEN_ENDPOINT_TIP;
 import static ${package}.intf.fo.basic.FoConstants.OK_TIP;
+import static ${package}.intf.fo.basic.FoConstants.REDIRECT_URI_PARAM;
+import static ${package}.intf.fo.basic.FoConstants.SOCIAL_LOGIN_CLIENT_TYPE_TIP;
+import static ${package}.intf.fo.basic.FoConstants.SOCIAL_LOGIN_SOURCE_TIP;
 import static ${package}.intf.fo.basic.FoConstants.SOCIAL_SITE_SOURCE_PARAM;
 import static javax.servlet.http.HttpServletResponse.SC_BAD_REQUEST;
 import static javax.servlet.http.HttpServletResponse.SC_OK;
@@ -38,6 +45,7 @@ import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.MultivaluedMap;
 import javax.ws.rs.core.Response;
 
+import org.apache.commons.lang.StringUtils;
 import org.apache.oltu.oauth2.as.request.OAuthUnauthenticatedTokenRequest;
 import org.apache.oltu.oauth2.as.response.OAuthASResponse;
 import org.apache.oltu.oauth2.common.OAuth;
@@ -123,7 +131,7 @@ public class FoAuthTokenResource extends FoResourceBase {
 	}
 
 	@POST
-	@Path("/new/social/by-token/{source}")
+	@Path("/new/social/by-token/{source}/{clientType}")
 	@Consumes(MediaType.APPLICATION_FORM_URLENCODED)
 	@ApiOperation(value = OAUTH2_TOKEN_ENDPOINT_TIP
 			+ " login with social sites's token. The backend will verify this token and obtain the user's email. Mainly used for mobile clients which can obtain token directly. "
@@ -136,9 +144,10 @@ public class FoAuthTokenResource extends FoResourceBase {
 	@ApiResponses(value = {
 			@ApiResponse(code = SC_OK, message = OK_TIP, response = FoAuthTokenResult.class),
 			@ApiResponse(code = SC_BAD_REQUEST, message = OAUTH2_TOKEN_ENDPOINT_ERR_TIP, response = FoErrorResult.class) })
-	public Response facebookLogin(
+	public Response socialLoginByToken(
 			@Context HttpServletRequest rawRequest,
-			final @ApiParam(required = true, value = "Currently it supports: 'google' and 'facebook' . For google, plaease pass the id token; for facebook, please pass the access token") @PathParam(SOCIAL_SITE_SOURCE_PARAM) String source,
+			final @ApiParam(required = true, value = SOCIAL_LOGIN_SOURCE_TIP + "For google, plaease pass the id token; for facebook, please pass the access token") @PathParam(SOCIAL_SITE_SOURCE_PARAM) String source,
+			final @ApiParam(required = true, value = SOCIAL_LOGIN_CLIENT_TYPE_TIP) @PathParam(CLIENT_TYPE_PARAM) String clientType,
 			MultivaluedMap<String, String> form) throws OAuthSystemException {
 
 		OAuth2RequestWrapper servletRequest = new OAuth2RequestWrapper(
@@ -156,6 +165,7 @@ public class FoAuthTokenResource extends FoResourceBase {
 				foRequest.setToken(oltuRequest.getUsername());
 				foRequest.setLongSession(longSession);
 				foRequest.setSource(source);
+				foRequest.setClientType(clientType);
 				FoResponse<FoAuthTokenResult> foResponse = foAuthManager
 						.socialLoginByToken(foRequest);
 				return foResponse;
@@ -167,24 +177,30 @@ public class FoAuthTokenResource extends FoResourceBase {
 	}
 
 	@POST
-	@Path("/new/social/by-auth-code/{source}")
+	@Path("/new/social/by-auth-code/{source}/{clientType}")
 	@Consumes(MediaType.APPLICATION_FORM_URLENCODED)
 	@ApiOperation(value = OAUTH2_TOKEN_ENDPOINT_TIP
 			+ " login with social sites authorization code. The backend will exchange the code for access token, and extracts the user's email. "
-			+ " This is mainly used for desktop clients where there are no corresponding login SDK. "
+			+ " This is mainly used for desktop clients and web clients. "
 			+ " Note that you must set up social clientId/clientSecret on the backend, and set up social clientId on the client side "
 			+ "", notes = OAUTH2_FLOW_TIP)
 	@ApiImplicitParams({
 			@ApiImplicitParam(name = "grant_type", value = OAUTH2_GRANT_TYPE_TIP, required = true, dataType = "string", paramType = "form", defaultValue = "password"),
 			@ApiImplicitParam(name = "username", value = "The authorization code you obtained from social sites after an OAuth2 code flow with them", required = true, dataType = "string", paramType = "form"),
 			@ApiImplicitParam(name = "password", value = "anything but null", required = true, dataType = "string", paramType = "form"),
-			@ApiImplicitParam(name = LONG_SESSION_PARAM, value = LONG_SESSION_TIP, required = true, dataType = "boolean", paramType = "form") })
+			@ApiImplicitParam(name = LONG_SESSION_PARAM, value = LONG_SESSION_TIP, required = true, dataType = "boolean", paramType = "form"), 
+			@ApiImplicitParam(name = "redirectUri", value = "The redirect uri for this social login. \n "
+					+ "1. For google + desktop, it CAN be '"+ GOOGLE_REDIRECT_URI_OOB + "' \n"
+					+ "2. For google + web, it MUST be '" + GOOGLE_REDIRECT_URI_POSTMESSAGE +"' \n "
+					+ "3. For facebook + desktop, it CAN be '" + FACEBOOK_REDIRECT_URI_LOGIN_SUCCESS + "' \n"
+					+ "4. For facebook + web, it is a url of your html client", required = true, dataType = "string", paramType = "form") })
 	@ApiResponses(value = {
 			@ApiResponse(code = SC_OK, message = OK_TIP, response = FoAuthTokenResult.class),
 			@ApiResponse(code = SC_BAD_REQUEST, message = OAUTH2_TOKEN_ENDPOINT_ERR_TIP, response = FoErrorResult.class) })
 	public Response socialLoginByAuthCode(
 			@Context HttpServletRequest rawRequest,
-			final @ApiParam(required = true, value = "Currently it supports: 'google' and 'facebook' ") @PathParam(SOCIAL_SITE_SOURCE_PARAM) String source,
+			final @ApiParam(required = true, value = SOCIAL_LOGIN_SOURCE_TIP) @PathParam(SOCIAL_SITE_SOURCE_PARAM) String source,
+			final @ApiParam(required = true, value = SOCIAL_LOGIN_CLIENT_TYPE_TIP) @PathParam(CLIENT_TYPE_PARAM) String clientType,
 			MultivaluedMap<String, String> form) throws OAuthSystemException {
 
 		OAuth2RequestWrapper servletRequest = new OAuth2RequestWrapper(
@@ -198,10 +214,13 @@ public class FoAuthTokenResource extends FoResourceBase {
 					OAuthUnauthenticatedTokenRequest oltuRequest) {
 				boolean longSession = Boolean.TRUE.toString().equals(
 						servletRequest.getParameter(LONG_SESSION_PARAM));
+				String redirectUri = StringUtils.trimToNull(servletRequest.getParameter(REDIRECT_URI_PARAM));
 				FoSocialAuthCodeLoginRequest foRequest = new FoSocialAuthCodeLoginRequest();
 				foRequest.setAuthCode(oltuRequest.getUsername());
 				foRequest.setLongSession(longSession);
 				foRequest.setSource(source);
+				foRequest.setClientType(clientType);
+				foRequest.setRedirectUri(redirectUri);
 				FoResponse<FoAuthTokenResult> foResponse = foAuthManager
 						.socialLoginByAuthCode(foRequest);
 				return foResponse;

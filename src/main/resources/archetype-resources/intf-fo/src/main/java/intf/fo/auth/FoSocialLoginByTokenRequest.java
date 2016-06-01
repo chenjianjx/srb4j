@@ -20,8 +20,10 @@ public class FoSocialLoginByTokenRequest {
 	@NotNull(message = "social site token cannot be empty")
 	private String token;
 
+	private String clientType;
+
 	private Boolean longSession;
- 
+
 	public String getSource() {
 		return source;
 	}
@@ -49,6 +51,14 @@ public class FoSocialLoginByTokenRequest {
 
 	public void setLongSession(Boolean longSession) {
 		this.longSession = longSession;
+	}
+
+	public String getClientType() {
+		return clientType;
+	}
+
+	public void setClientType(String clientType) {
+		this.clientType = clientType;
 	}
 
 	@Override
