@@ -1,26 +1,27 @@
-#Srbj4j
+#Srb4j
 
 
-__Srb4j__ (pronounced "/srəb/ for J") is a Java RESTFul backend code skeleton, with common response data structures, __user/password/access-token support__, social login and __API document generation__.
+__Srb4j__ (pronounced "/srəb/ for J") is a Java RESTFul backend code skeleton, with __common response data structures__, __user/password/access-token support__, __social login__ and __API document generation__.
 
 It can collaborate with __html clients__, __mobile clients__ and other types of clients such as __desktop applications__ at the same time.  
 
 __With Srb4j you can launch a restful backend in several minutes.__ 
 
-__Checkout a demo client right away__ at http://srb4jclient.chenjianjx.com:8000/ , or download an __Android__ client on https://github.com/chenjianjx/Srb4jAndroidClient, or download a __desktop__ client on https://github.com/chenjianjx/srb4j-desktop-client .
+__Checkout a demo client right away__ at http://srb4jclient.chenjianjx.com:8000/ , or install an __Android__ client on https://github.com/chenjianjx/Srb4jAndroidClient, or download a __desktop__ client on https://github.com/chenjianjx/srb4j-desktop-client .
 
 __You can also see its out-of-box RESTFul APIs [here](https://srb4jdemo.chenjianjx.com/fo-rest-doc) .__
 
 
 Table of Contents
 =================
+  * [Summary of Features](#summary-of-features)
   * [Prerequisites](#prerequisites)
   * [Quick Start for Backend Developers](#quick-start-for-backend-developers)
   * [Quick Start for Client\-Side Developers](#quick-start-for-client-side-developers)
   * [Things the Backend Developers should Know](#things-the-backend-developers-should-know)
   * [Social Login Integration (For Backend and Client Developers)](#social-login-integration-for-backend-and-client-developers)
   * [API Documentation and Client Stub Generation](#api-documentation-and-client-stub-generation)
-  * [The Back Office](#the-back-office) 
+  * [The Back Office](#the-back-office)
  
 
 # Summary of Features
@@ -111,7 +112,7 @@ Open http://locahost:yourPort in a browser to verify the startup
 
 ## Refer to the API doc 
 
-The API doc has been generated on your backend at https://your-backend/fo-rest-doc 
+The API doc has been generated on your backend at http://your-backend/fo-rest-doc 
 
 ## Sample Code For HTML and Javascript Developers
 
@@ -304,10 +305,12 @@ Note:
 ## The code organization
 
 * The layers:
-  * Front End:   Encapsulate use case-specific logic from business services. The users are common users such customers.
-  * Back Office: Encapsulate use case-specific logic from business services. The users are administrators, staff and so on.
-
+  
 ![layering](documents/project-organization/layering-ppt/ultimate-layering/Slide2.jpg)
+
+Notes:
+    * Front End:   Encapsulate use case-specific logic from business services. The users are common users such customers.
+    * Back Office: Encapsulate use case-specific logic from business services. The users are administrators, staff and so on.
 
 
 
@@ -324,20 +327,20 @@ Note:
 
 ## Basic Flow
 
-1. The client obtains an auth code or an access token/id token from the social website
+1. The client obtains an auth code or an access token/id token from the social website after the user has loggged into a social website
 2. The client then exchanges this code or token with the backend for srb4j's access token
 3. The backend will verify the code or token against the social website's server, before it sends an access token to the client
 
 ## Integrate with this or that social site 
 
-* [Google + Html Client](documents/social-integration/google_html.md)
-* [Google + Mobile Client](documents/social-integration/google_mobile.md)
-* [Google + Desktop Client](documents/social-integration/google_desktop.md)
-* [Facebook + Html Client](documents/social-integration/facebook_html.md)
-* [Facebook + Mobile Client](documents/social-integration/facebook_mobile.md)
-* [Facebook + Desktop Client](documents/social-integration/facebook_desktop.md)
+* [Google + Html Client](documents/userguide/social-integration/google_html.md)
+* [Google + Mobile Client](documents/userguide/social-integration/google_mobile.md)
+* [Google + Desktop Client](documents/userguide/social-integration/google_desktop.md)
+* [Facebook + Html Client](documents/userguide/social-integration/facebook_html.md)
+* [Facebook + Mobile Client](documents/userguide/social-integration/facebook_mobile.md)
+* [Facebook + Desktop Client](documents/userguide/social-integration/facebook_desktop.md)
 * ...
-* [Integrate a new social site](documents/social-integration/new_site.md) 
+* [Integrate a new social site](documents/userguide/social-integration/new_site.md) 
 
 # API Documentation and Client Stub Generation
 
