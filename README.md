@@ -330,15 +330,14 @@ Note:
 
 ## Integrate with this or that social site 
 
+* [Google + Html Client](userguide/social-integration/google_html.md)
 * [Google + Mobile Client](userguide/social-integration/google_mobile.md)
-* [Google + Html Client](userguide/social-integration/google_mobile.md)
-* [Google + Desktop Client](userguide/social-integration/google_mobile.md)
-* [Facebook + Mobile Client](userguide/social-integration/google_mobile.md)
-* [Facebook + Html Client](userguide/social-integration/google_mobile.md)
-* [Facebook + Desktop Client](userguide/social-integration/google_mobile.md)
+* [Google + Desktop Client](userguide/social-integration/google_desktop.md)
+* [Facebook + Html Client](userguide/social-integration/facebook_html.md)
+* [Facebook + Mobile Client](userguide/social-integration/facebook_mobile.md)
+* [Facebook + Desktop Client](userguide/social-integration/facebook_desktop.md)
 * ...
-* [Integrate a new social site](userguide/social-integration/google_mobile.md)
- 
+* [Integrate a new social site](userguide/social-integration/new_site.md) 
 
 # API Documentation and Client Stub Generation
 
