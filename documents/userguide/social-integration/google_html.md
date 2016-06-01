@@ -5,4 +5,4 @@ You will obtain Google's OAuth2 code according to [Google Sign-in's Server Side 
 # Notes 
 
 * You can refer to [index.html](https://github.com/chenjianjx/srb4j-html-client/blob/master/index.html) and [SocialLoginGoogleController](https://github.com/chenjianjx/srb4j-html-client/blob/master/home.js) for client-side code
-* [getEmailFromToken](https://github.com/chenjianjx/srb4jfullsample/blob/master/impl/src/main/java/com/github/chenjianjx/srb4jfullsample/impl/fo/auth/socialsite/FoGoogleAuthHelper.java) is the server-side code. You don't have to change it, but you will set "googleWebClientId" and "googleWebClientSecret" on app.properties.
+* [getEmailFromCode](https://github.com/chenjianjx/srb4jfullsample/blob/master/impl/src/main/java/com/github/chenjianjx/srb4jfullsample/impl/fo/auth/socialsite/FoGoogleAuthHelper.java) is the server-side code. You don't have to change it, but you will set "googleWebClientId" and "googleWebClientSecret" on app.properties.
