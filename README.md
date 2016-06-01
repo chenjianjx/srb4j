@@ -307,9 +307,9 @@ Note:
   
 ![layering](documents/project-organization/layering-ppt/ultimate-layering/Slide2.jpg)
 
-Notes:
-    * Front End:   Encapsulate use case-specific logic from business services. The users are common users such customers.
-    * Back Office: Encapsulate use case-specific logic from business services. The users are administrators, staff and so on.
+* Notes:
+  * Front End:   Encapsulate use case-specific logic from business services. The users are common users such customers.
+  * Back Office: Encapsulate use case-specific logic from business services. The users are administrators, staff and so on.
 
 
 
