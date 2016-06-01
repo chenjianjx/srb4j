@@ -344,7 +344,7 @@ Notes:
 
 # API Documentation and Client Stub Generation
 
-Thanks to [swagger](http://swagger.io/), you can have a WSDL-like API document of your restful web services with [swagger-ui](https://github.com/swagger-api/swagger-ui), generate client stubs[swagger-codegen](https://github.com/swagger-api/swagger-codegen) and test the services with a web-ui[swagger-ui](https://github.com/swagger-api/swagger-ui). 
+Thanks to [swagger](http://swagger.io/), you can have a WSDL-like API document of your restful web services with [swagger-ui](https://github.com/swagger-api/swagger-ui), generate client stubs with [swagger-codegen](https://github.com/swagger-api/swagger-codegen) and test the services with a [web-ui](https://github.com/swagger-api/swagger-ui). 
 
 Srb4j has embedded swagger support. The document endpoint is http://localhost:8080/fo/rest/swagger.json . If you know swagger well, you know what to do.
 
