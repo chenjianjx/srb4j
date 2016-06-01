@@ -14,31 +14,13 @@ __You can also see its out-of-box RESTFul APIs [here](https://srb4jdemo.chenjian
 
 Table of Contents
 =================
-
-  * [Srbj4j](#srbj4j)
-  * [Table of Contents](#table-of-contents)
-  * [Summary of Features](#summary-of-features)
   * [Prerequisites](#prerequisites)
   * [Quick Start for Backend Developers](#quick-start-for-backend-developers)
-      * [Generate a Java project](#generate-a-java-project)
-      * [Create a MySQL database and its tables](#create-a-mysql-database-and-its-tables)
-      * [Setup Env\-specific properties](#setup-env-specific-properties)
-      * [Build the Java project](#build-the-java-project)
-      * [Verify the installation](#verify-the-installation)
   * [Quick Start for Client\-Side Developers](#quick-start-for-client-side-developers)
-    * [Refer to the API doc](#refer-to-the-api-doc)
-    * [Sample Code For HTML and Javascript Developers](#sample-code-for-html-and-javascript-developers)
-    * [Sample Code For Desktop and Mobile Developers](#sample-code-for-desktop-and-mobile-developers)
   * [Things the Backend Developers should Know](#things-the-backend-developers-should-know)
-    * [User Model](#user-model)
-    * [Create a business module](#create-a-business-module)
-    * [The code organization](#the-code-organization)
   * [Social Login Integration (For Backend and Client Developers)](#social-login-integration-for-backend-and-client-developers)
-    * [Basic Flow](#basic-flow)
-    * [Integrate with this or that social site](#integrate-with-this-or-that-social-site)
-  * [API documentation and client support](#api-documentation-and-client-support)
-  * [The back office code](#the-back-office-code)
- 
+  * [API Documentation and Client Stub Generation](#api-documentation-and-client-stub-generation)
+  * [The Back Office](#the-back-office) 
  
 
 # Summary of Features
@@ -358,7 +340,7 @@ Note:
 * [Integrate a new social site](userguide/social-integration/google_mobile.md)
  
 
-# API documentation and client support
+# API Documentation and Client Stub Generation
 
 Thanks to [swagger](http://swagger.io/), you can have a WSDL-like API document of your restful web services with [swagger-ui](https://github.com/swagger-api/swagger-ui), generate client stubs[swagger-codegen](https://github.com/swagger-api/swagger-codegen) and test the services with a web-ui[swagger-ui](https://github.com/swagger-api/swagger-ui). 
 
@@ -371,16 +353,11 @@ It may be vulnerable to expose the API doc or testing-web-ui in a PROD system. Y
 enableSwagger=false
 ```` 
 
-# The back office code
+# The Back Office
 
 The back office code is just a way to demonstrate how a back office web portal can interact with the app layer. It enforces the code organization so that back-office code is separated from front end code. 
 
 If you don't need the back office web portal, please delete the following content: 
  
 * BoAllInOneServlet.java
-* Its occurrence in web.xml 
-
-
-
-
-
+* Its occurrence in web.xml
