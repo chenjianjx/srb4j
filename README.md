@@ -49,7 +49,7 @@ Table of Contents
 cd /path/to/your/workspace
 
 mvn -X archetype:generate \
--DarchetypeGroupId=com.github.chenjianjx -DarchetypeArtifactId=srb4j -DarchetypeVersion=1.1.2 \
+-DarchetypeGroupId=com.github.chenjianjx -DarchetypeArtifactId=srb4j -DarchetypeVersion=1.2.0 \
 -DgroupId=your.groupId  \
 -DartifactId=yourArtifactid \
 -Dpackage=your.pkg.name \

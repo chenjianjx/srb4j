@@ -18,7 +18,7 @@ import ${package}.democlient.util.DemoClientConstants;
 public class DemoClientBoPortalTest {
 
 	private static final String BBSADMIN_EMAIL = "bbsadmin@nonexist.com";
-	private static Client mockClient = ClientBuilder.newClient();
+	private static Client mockClient = DemoClientUtils.createRestClient();
 
 	@Test
 	public void loginFormTest() {

@@ -22,6 +22,18 @@ public class FoSocialAuthCodeLoginRequest {
 
 	private Boolean longSession;
 
+	private String clientType;
+
+	private String redirectUri;
+
+	public String getClientType() {
+		return clientType;
+	}
+
+	public void setClientType(String clientType) {
+		this.clientType = clientType;
+	}
+
 	public String getSource() {
 		return source;
 	}
@@ -40,6 +52,14 @@ public class FoSocialAuthCodeLoginRequest {
 
 	public void setAuthCode(String authCode) {
 		this.authCode = authCode;
+	}
+
+	public String getRedirectUri() {
+		return redirectUri;
+	}
+
+	public void setRedirectUri(String redirectUri) {
+		this.redirectUri = redirectUri;
 	}
 
 	@JsonIgnore
