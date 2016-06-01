@@ -11,6 +11,6 @@ You will obtain Facebook's OAuth2 code according to [Manually Build a Login Flow
 * Follow [the manual flow](https://developers.facebook.com/docs/facebook-login/manually-build-a-login-flow), and check out our sample code.  
     * Make a simple button
     * See [facebookCodeLoginBtn.addActionListener()](https://github.com/chenjianjx/srb4j-desktop-client/blob/master/src/main/java/org/srb4j/desktopclient/view/MainForm.java). You will construct the facebook auth url, launch it with a web view inside your client application.  
-    * After the user has signed in, he will land onto the redirected URL inside your html client. Extract the code from the redirected URL and send it to srb4j's backend. See [SocialLoginByFbCodeController](https://github.com/chenjianjx/srb4j-html-client/blob/master/home.js)
+    * See [WebEngineChangeListener.changed()](https://github.com/chenjianjx/srb4j-desktop-client/blob/master/src/main/java/org/srb4j/desktopclient/view/auth/SocialLoginBrowser.java). You will monitor the browser's URL until you get the auth code, and then send the code to srb4j's back end.
 * [getEmailFromCode](https://github.com/chenjianjx/srb4jfullsample/blob/master/impl/src/main/java/com/github/chenjianjx/srb4jfullsample/impl/fo/auth/socialsite/FoFacebookAuthHelper.java) is the server-side code. You don't have to change it, but you will set "facebookClientId" and "facebookClientId" on app.properties.
   

@@ -1,6 +1,6 @@
 # Facebook Login for Mobile Clients
 
-You will integrate Google's Android/IOS SDK, get the access token after user has signed-in, and send the token to http://your-backend/token/new/social/by-token/google/mobile 
+You will integrate Facebook's Android/IOS SDK, get the access token after user has signed-in, and send the token to http://your-backend/token/new/social/by-token/google/mobile 
 
 
 # Steps for Android
