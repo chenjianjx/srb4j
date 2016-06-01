@@ -1,6 +1,6 @@
 # Google Login for Html Clients
 
-You will obtain Google's OAuth2 code according to [Google Sign-in's Server Side Flow](https://developers.google.com/identity/sign-in/web/server-side-flow#implementing_the_one-time-code_flow) and send it to http://your-backend/token/new/social/by-auth-code/google/web
+You will obtain Google's OAuth2 code according to [Google Sign-in's Server Side Flow](https://developers.google.com/identity/sign-in/web/server-side-flow#implementing_the_one-time-code_flow) and send the code to http://your-backend/token/new/social/by-auth-code/google/web
 
 # Notes 
 

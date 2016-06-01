@@ -14,11 +14,11 @@ You will integrate Google's Android/IOS SDK, get the id token after user has sig
 
 
 ## Not Working during Development?
-The previous setup if for the release-version of your Android APP. You will encounter "unknown status code: 12501" (or 12500) errors during development, because you are running a debug version. 
+The previous setup is for the release version of your Android APP. You will encounter "unknown status code: 12501" (or 12500) errors during development, because you are running a debug version. 
 
 To get your debug version running,
-1. Find out the sha-1 fingerprint for debug. ````keytool -exportcert -list -v -alias androiddebugkey -keystore ~/.android/debug.keystore````, input “android” as the password.
-2. Go to the google developer’s console, create another clientId under the same project, input the debug fingerprint for it, and update the client-id and fingerprint on the google-services.json accordingly. See the comments in the [sample code](https://github.com/chenjianjx/Srb4jAndroidClient/blob/master/app/google-services.json). 
+* Find out the sha-1 fingerprint for debug. ````keytool -exportcert -list -v -alias androiddebugkey -keystore ~/.android/debug.keystore````, input “android” as the password.
+* Go to the google developer’s console, create another clientId under the same project, input the debug fingerprint for it, and update the client-id and fingerprint on the google-services.json accordingly. See the comments in the [sample code](https://github.com/chenjianjx/Srb4jAndroidClient/blob/master/app/google-services.json). 
 
 # Steps for IOS
 
