@@ -23,7 +23,7 @@ import ${package}.restclient.model.Post;
  */
 public class DemoClientFoBizTest {
 	private static final String BIZ_RESOURCE_URL = "/bbs/posts/new";
-	private Client restClient = ClientBuilder.newClient();
+	private Client restClient = DemoClientUtils.createRestClient();
 
 	@Test
 	public void bizTest() {

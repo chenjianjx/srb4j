@@ -1,7 +1,6 @@
 package ${package}.democlient.bo.portal;
 
 import javax.ws.rs.client.Client;
-import javax.ws.rs.client.ClientBuilder;
 import javax.ws.rs.client.Entity;
 import javax.ws.rs.core.Form;
 import javax.ws.rs.core.Response;
@@ -9,6 +8,7 @@ import javax.ws.rs.core.Response;
 import org.junit.Assert;
 import org.junit.Test;
 import ${package}.democlient.util.DemoClientConstants;
+import ${package}.democlient.util.DemoClientUtils;
 
 /**
  * 
@@ -18,7 +18,7 @@ import ${package}.democlient.util.DemoClientConstants;
 public class DemoClientBoPortalTest {
 
 	private static final String BBSADMIN_EMAIL = "bbsadmin@nonexist.com";
-	private static Client mockClient = ClientBuilder.newClient();
+	private static Client mockClient = DemoClientUtils.createRestClient();
 
 	@Test
 	public void loginFormTest() {

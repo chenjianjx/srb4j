@@ -2,15 +2,11 @@ package ${package}.impl.fo.auth;
 
 import static ${package}.intf.fo.basic.FoConstants.NULL_REQUEST_BEAN_TIP;
 
-import java.io.IOException;
-import java.security.GeneralSecurityException;
-
 import javax.annotation.Resource;
 
 import org.apache.commons.lang.StringUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 
 import ${package}.impl.biz.auth.AccessToken;
@@ -18,8 +14,10 @@ import ${package}.impl.biz.auth.AccessTokenRepo;
 import ${package}.impl.biz.auth.AuthService;
 import ${package}.impl.biz.auth.RandomLoginCode;
 import ${package}.impl.biz.auth.RandomLoginCodeRepo;
+import ${package}.impl.biz.client.Client;
 import ${package}.impl.biz.user.User;
 import ${package}.impl.biz.user.UserRepo;
+import ${package}.impl.fo.auth.socialsite.FoSocialSiteAuthHelper;
 import ${package}.impl.fo.common.FoManagerImplBase;
 import ${package}.impl.util.infrahelp.beanvalidae.MyValidator;
 import ${package}.impl.util.tools.lang.MyDuplet;
@@ -34,23 +32,6 @@ import ${package}.intf.fo.auth.FoSocialAuthCodeLoginRequest;
 import ${package}.intf.fo.auth.FoSocialLoginByTokenRequest;
 import ${package}.intf.fo.basic.FoConstants;
 import ${package}.intf.fo.basic.FoResponse;
-import com.github.scribejava.apis.FacebookApi;
-import com.github.scribejava.apis.GoogleApi20;
-import com.github.scribejava.apis.google.GoogleToken;
-import com.github.scribejava.core.builder.ServiceBuilder;
-import com.github.scribejava.core.model.Token;
-import com.github.scribejava.core.model.Verifier;
-import com.github.scribejava.core.oauth.OAuth20Service;
-import com.google.api.client.googleapis.auth.oauth2.GoogleIdToken;
-import com.google.api.client.googleapis.auth.oauth2.GoogleIdTokenVerifier;
-import com.google.api.client.http.HttpTransport;
-import com.google.api.client.http.apache.ApacheHttpTransport;
-import com.google.api.client.json.JsonFactory;
-import com.google.api.client.json.jackson2.JacksonFactory;
-import com.restfb.DefaultFacebookClient;
-import com.restfb.FacebookClient;
-import com.restfb.Parameter;
-import com.restfb.Version;
 
 /**
  * 
@@ -79,14 +60,8 @@ public class FoAuthManagerImpl extends FoManagerImplBase implements
 	@Resource
 	AuthService authService;
 
-	HttpTransport googleHttpTransport = new ApacheHttpTransport();
-	JsonFactory googleJsonFactory = new JacksonFactory();
-
-	private String googleClientId;
-	private String googleClientSecret;
-
-	private String facebookClientId;
-	private String facebookClientSecret;
+	@Resource
+	FoSocialSiteAuthHelper.Factory socialSiteAuthHelperFactory;
 
 	@Override
 	public FoResponse<FoAuthTokenResult> localOauth2Login(
@@ -305,8 +280,10 @@ public class FoAuthManagerImpl extends FoManagerImplBase implements
 		boolean longSession = request.isLongSession();
 
 		String socialToken = request.getToken();
-		MyDuplet<String, FoResponse<FoAuthTokenResult>> emailOrErrResp = getEmailFromSocialSiteToken(
-				source, socialToken);
+		FoSocialSiteAuthHelper helper = this.socialSiteAuthHelperFactory
+				.getHelper(source);
+		MyDuplet<String, FoResponse<FoAuthTokenResult>> emailOrErrResp = helper
+				.getEmailFromToken(socialToken, request.getClientType());
 		return handleSocialSiteEmailResult(source, longSession, emailOrErrResp);
 	}
 
@@ -327,11 +304,22 @@ public class FoAuthManagerImpl extends FoManagerImplBase implements
 					"unsupported source: " + source, null);
 		}
 
+		String clientType = request.getClientType();
+		if (!Client.isValidClientType(clientType)) {
+			return FoResponse.devErrResponse(
+					FoConstants.FEC_OAUTH2_INVALID_REQUEST,
+					"unsupported client type: " + clientType, null);
+		}
+
+		String redirectUri = request.getRedirectUri();
+
 		boolean longSession = request.isLongSession();
 
 		String authCode = request.getAuthCode();
-		MyDuplet<String, FoResponse<FoAuthTokenResult>> emailOrErrResp = getEmailFromSocialSiteAuthCode(
-				source, authCode);
+		FoSocialSiteAuthHelper helper = this.socialSiteAuthHelperFactory
+				.getHelper(source);
+		MyDuplet<String, FoResponse<FoAuthTokenResult>> emailOrErrResp = helper
+				.getEmailFromCode(authCode, clientType, redirectUri);
 		return handleSocialSiteEmailResult(source, longSession, emailOrErrResp);
 	}
 
@@ -357,140 +345,6 @@ public class FoAuthManagerImpl extends FoManagerImplBase implements
 		}
 		// ok, do the token
 		return buildAuthTokenResponse(existingUser, longSession);
-	}
-
-	/**
-	 * 
-	 * @param source
-	 * @param socialToken
-	 *            left = email, right = error response if any
-	 * @return
-	 */
-	private MyDuplet<String, FoResponse<FoAuthTokenResult>> getEmailFromSocialSiteToken(
-			String source, String socialToken) {
-
-		if (User.SOURCE_GOOGLE.equals(source)) {
-			return getEmailFromGoogleToken(socialToken);
-		}
-
-		if (User.SOURCE_FACEBOOK.equals(source)) {
-			return getEmailFromFacebookToken(socialToken);
-		}
-
-		throw new IllegalStateException("Unreachable code");
-	}
-
-	/**
-	 * 
-	 * @param source
-	 * @param authCode
-	 *            left = email, right = error response if any
-	 * @return
-	 */
-	private MyDuplet<String, FoResponse<FoAuthTokenResult>> getEmailFromSocialSiteAuthCode(
-			String source, String authCode) {
-		if (User.SOURCE_GOOGLE.equals(source)) {
-			return getEmailFromGoogleAuthCode(authCode);
-		}
-
-		if (User.SOURCE_FACEBOOK.equals(source)) {
-			return getEmailFromFacebookAuthCode(authCode);
-		}
-
-		throw new IllegalStateException("Unreachable code");
-	}
-
-	private MyDuplet<String, FoResponse<FoAuthTokenResult>> getEmailFromFacebookAuthCode(
-			String authCode) {
-
-		// exchange the code for token
-		final OAuth20Service service = new ServiceBuilder()
-				.apiKey(facebookClientId)
-				.apiSecret(facebookClientSecret)
-				.scope("email")
-				.callback("https://www.facebook.com/connect/login_success.html")
-				.build(FacebookApi.instance());
-		Token facebookTokenObj = service.getAccessToken(new Verifier(authCode));
-		String token = facebookTokenObj.getToken();
-		// get email by token
-		return this.getEmailFromFacebookToken(token);
-
-	}
-
-	private MyDuplet<String, FoResponse<FoAuthTokenResult>> getEmailFromFacebookToken(
-			String socialToken) {
-		FacebookClient facebookClient = new DefaultFacebookClient(socialToken,
-				Version.VERSION_2_5);
-		com.restfb.types.User user = facebookClient.fetchObject("me",
-				com.restfb.types.User.class,
-				Parameter.with("fields", "id,name,email"));
-		if (user == null) {
-			FoResponse<FoAuthTokenResult> errResp = FoResponse.devErrResponse(
-					FoConstants.FEC_OAUTH2_INVALID_REQUEST,
-					"invalid facebook access token", null);
-			return MyDuplet.newInstance(null, errResp);
-		}
-
-		String email = user.getEmail();
-		if (email == null) {
-			FoResponse<FoAuthTokenResult> errResp = FoResponse
-					.devErrResponse(
-							FoConstants.FEC_OAUTH2_INVALID_REQUEST,
-							"cannot extract email from this facebook access token. please check the scope used for facebook connect",
-							null);
-			return MyDuplet.newInstance(null, errResp);
-		}
-		return MyDuplet.newInstance(email, null);
-	}
-
-	private MyDuplet<String, FoResponse<FoAuthTokenResult>> getEmailFromGoogleToken(
-			String idToken) {
-		GoogleIdTokenVerifier verifier = new GoogleIdTokenVerifier.Builder(
-				googleHttpTransport, googleJsonFactory).build();
-		GoogleIdToken git = verifyGoogleIdToken(verifier, idToken);
-		if (git == null) {
-			FoResponse<FoAuthTokenResult> errResp = FoResponse.devErrResponse(
-					FoConstants.FEC_OAUTH2_INVALID_REQUEST,
-					"invalid google open id token", null);
-			return MyDuplet.newInstance(null, errResp);
-		}
-		String email = git.getPayload().getEmail();
-		if (email == null) {
-			FoResponse<FoAuthTokenResult> errResp = FoResponse
-					.devErrResponse(
-							FoConstants.FEC_OAUTH2_INVALID_REQUEST,
-							"cannot extract email from this open id token. please check the scope used for google sign-in",
-							null);
-			return MyDuplet.newInstance(null, errResp);
-		}
-		return MyDuplet.newInstance(email, null);
-	}
-
-	private MyDuplet<String, FoResponse<FoAuthTokenResult>> getEmailFromGoogleAuthCode(
-			String authCode) {
-		// exchange the code for token
-		final OAuth20Service service = new ServiceBuilder()
-				.apiKey(googleClientId).apiSecret(googleClientSecret)
-				.scope("email")
-				// replace with desired scope
-				.callback("urn:ietf:wg:oauth:2.0:oob")
-				.build(GoogleApi20.instance());
-		GoogleToken googleTokenObj = (GoogleToken) service
-				.getAccessToken(new Verifier(authCode));
-		String idToken = googleTokenObj.getOpenIdToken();
-		// get email by token
-		return this.getEmailFromGoogleToken(idToken);
-	}
-
-	private GoogleIdToken verifyGoogleIdToken(GoogleIdTokenVerifier verifier,
-			String idToken) {
-		try {
-			return verifier.verify(idToken);
-		} catch (IOException e) {
-			throw new RuntimeException(e);
-		} catch (GeneralSecurityException e) {
-			throw new RuntimeException(e);
-		}
 	}
 
 	@Override
@@ -526,24 +380,4 @@ public class FoAuthManagerImpl extends FoManagerImplBase implements
 
 	}
 
-	@Value("${googleClientId}")
-	public void setGoogleClientId(String googleClientId) {
-		this.googleClientId = StringUtils.trimToNull(googleClientId);
-	}
-
-	@Value("${googleClientSecret}")
-	public void setGoogleClientSecret(String googleClientSecret) {
-		this.googleClientSecret = StringUtils.trimToNull(googleClientSecret);
-	}
-
-	@Value("${facebookClientId}")
-	public void setFacebookClientId(String facebookClientId) {
-		this.facebookClientId = StringUtils.trimToNull(facebookClientId);
-	}
-
-	@Value("${facebookClientSecret}")
-	public void setFacebookClientSecret(String facebookClientSecret) {
-		this.facebookClientSecret = StringUtils
-				.trimToNull(facebookClientSecret);
-	}
 }

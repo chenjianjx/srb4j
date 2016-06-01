@@ -62,7 +62,7 @@ public class FoRestUtils {
 
  
 
-	private static <T> Response fromFoResponse(FoResponse<T> foResponse,
+	public static <T> Response fromFoResponse(FoResponse<T> foResponse,
 			int statusCodeIfErr) {
 		if (foResponse == null) {
 			return null;

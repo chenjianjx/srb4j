@@ -5,8 +5,6 @@
 http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd"
 	version="3.0">
 
-
-
 	<servlet>
 		<servlet-name>fo-rest-doc-servlet</servlet-name>
 		<servlet-class>${package}.webapp.root.FoRestDocServlet</servlet-class>
@@ -31,6 +29,8 @@ http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd"
 
 
 
+
+
 	<servlet>
 		<servlet-name>fo-rest</servlet-name>
 		<servlet-class>org.glassfish.jersey.servlet.ServletContainer</servlet-class>
@@ -41,6 +41,10 @@ http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd"
 				${package}.webapp.fo.rest
 			</param-value>
 		</init-param>
+		<init-param>
+		    <param-name>javax.ws.rs.Application</param-name>
+		    <param-value>${package}.webapp.fo.rest.support.FoRestApplication</param-value>
+		</init-param>		
 		<load-on-startup>1</load-on-startup>
 	</servlet>
 

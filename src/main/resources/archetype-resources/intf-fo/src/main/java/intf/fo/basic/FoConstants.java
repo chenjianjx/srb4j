@@ -34,8 +34,16 @@ public interface FoConstants {
 	public static final String ERROR_DESC_FN = "error_description";
 
 	/* Other fields */
-	public static final String LONG_SESSION_PARAM = "long_session";
+	public static final String LONG_SESSION_PARAM = "long_session";	
 	public static final String SOCIAL_SITE_SOURCE_PARAM = "source";
+	public static final String CLIENT_TYPE_PARAM = "clientType";
+	public static final String REDIRECT_URI_PARAM = "redirectUri";
+	
+	/*social login redirect uris*/
+	public static final String GOOGLE_REDIRECT_URI_POSTMESSAGE = "postmessage";
+	public static final String GOOGLE_REDIRECT_URI_OOB = "urn:ietf:wg:oauth:2.0:oob";
+	public static final String FACEBOOK_REDIRECT_URI_LOGIN_SUCCESS = "https://www.facebook.com/connect/login_success.html";
+	
 
 	/* biz error http code */
 	public static final int FO_SC_BIZ_ERROR = 460;
@@ -51,6 +59,8 @@ public interface FoConstants {
 	public static final String FEC_INVALID_INPUT = "INVALID_INPUT";
 
 	public static final String FEC_RECORD_ALREADY_EXISTS = "RECORD_ALREADY_EXISTS";
+	
+	public static final String FEC_ERR_BUT_CAN_RETRY = "ERR_BUT_CAN_RETRY";
 
 	/**
 	 * won't be visible to restful users because an oauth2 response will be sent
@@ -74,5 +84,7 @@ public interface FoConstants {
 	//public static final String PASSWORD_ERR_TIP = "Password should contain at least 1 digit and 1 English letter, 6-20 characters long and should only digits, English letters and punctuations.";
 	public static final String PASSWORD_ERR_TIP = "Password too weak.";
 	public static final String NULL_REQUEST_BEAN_TIP = "Please input the required fields.";
+	public static final String SOCIAL_LOGIN_CLIENT_TYPE_TIP = "The client type, including 'desktop', 'web' and 'mobile'.";
+	public static final String SOCIAL_LOGIN_SOURCE_TIP = "Currently it supports: 'google' and 'facebook' .";
 
 }

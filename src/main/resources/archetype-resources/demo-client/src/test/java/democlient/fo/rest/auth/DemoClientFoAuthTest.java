@@ -37,7 +37,7 @@ import ${package}.restclient.model.AuthTokenResult;
  */
 public class DemoClientFoAuthTest {
 
-	private static Client restClient = ClientBuilder.newClient();
+	private static Client restClient = DemoClientUtils.createRestClient();
 
 	@Test
 	public void testProtectedResourceWithoutLogin() {
@@ -45,7 +45,7 @@ public class DemoClientFoAuthTest {
 				.path(DemoClientConstants.PROCTED_RESOURCE_URL)
 				.request(MediaType.APPLICATION_JSON_TYPE).get();
 		Assert.assertEquals(400, restResponse.getStatus());
-		Assert.assertNotNull(restResponse.getHeaderString("www-authenticate"));
+		Assert.assertNotNull(restResponse.getHeaderString("WWW-Authenticate"));
 	}
 
 	@Test
