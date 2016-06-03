@@ -1,4 +1,4 @@
-#Srb4j
+#Srb4j = Simple RESTFul Backend for Java
 
 
 __Srb4j__ (pronounced "/srəb/ for J") is a Java RESTFul backend code skeleton, with __common response data structures__, __user/password/access-token support__, __social login__ and __API document generation__.
