@@ -297,7 +297,8 @@ A business module called "bbs" is already there to demonstrate how to develop bi
 4. RESTFul Resources in package 'yourpackage.webapp.fo.rest.bbs'  
 
 
-Note: 
+Notes:
+ 
 1. You can delete package 'yourpackage.impl.biz.bbs' if you don't it any more.
 2. For layers and maven artifacts in srb4j, see below.  
 
