@@ -5,6 +5,7 @@ You will obtain Facebook's OAuth2 code according to [Manually Build a Login Flow
 # Steps
 
 * [Create a facebook APP](https://developers.facebook.com/apps/) if you haven't got one. 
+* Add "Facebook Login" to your APP. 
 * Follow [the manual flow](https://developers.facebook.com/docs/facebook-login/manually-build-a-login-flow), and check out our sample code.  
     * Make a [button](https://github.com/chenjianjx/srb4j-html-client/blob/master/dashboard.html)
     * See [$scope.facebookLogin()](https://github.com/chenjianjx/srb4j-html-client/blob/master/home.js) to go to facebook dialog page. You will create a facebook url inside your html client, and add it to "Valid OAuth redirect URIs" on [facebook's app center](https://developers.facebook.com/apps/).
