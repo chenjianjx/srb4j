@@ -48,7 +48,7 @@ Table of Contents
 ````bash
 cd /path/to/your/workspace
 
-mvn -X archetype:generate \
+mvn -X org.apache.maven.plugins:maven-archetype-plugin:2.4:generate  \
 -DarchetypeGroupId=com.github.chenjianjx -DarchetypeArtifactId=srb4j -DarchetypeVersion=1.2.0 \
 -DgroupId=your.groupId  \
 -DartifactId=yourArtifactid \
