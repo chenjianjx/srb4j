@@ -71,8 +71,9 @@ Create a db and a user
 Create tables
 ```bash
 cd /some/dir
-wget https://raw.githubusercontent.com/chenjianjx/srb4j/master/src/main/resources/archetype-resources/doc/sql/ddl.sql 
 # Download this url manually if you are using windows
+wget https://raw.githubusercontent.com\
+/chenjianjx/srb4j/master/src/main/resources/archetype-resources/doc/sql/ddl.sql 
 ```
 ```SQL
 mysql> use yourdb;
@@ -83,8 +84,10 @@ mysql> source /some/dir/ddl.sql;
 ```bash
 mkdir ~/yourArtifactId  #For windows, replace "~" with your user's home directory
 cd ~/yourArtifactId
-wget https://raw.githubusercontent.com/chenjianjx/srb4j/master/src/main/resources/archetype-resources/doc/app.properties.sample -O app.properties  
 #Download this file manually and rename it to app.properties if you are using windows
+wget https://raw.githubusercontent.com\
+/chenjianjx/srb4j/master/src/main/resources/archetype-resources/doc/app.properties.sample -O app.properties  
+
 ```
 
 Then edit app.properties according to your environment.
@@ -139,7 +142,8 @@ $.ajax({
 		console.log(response.error); // "the error code"
 		console.log(response.error_description); // "the error description for developers"
 		console.log(response.error_description_for_user); // "user-friendly error desc for users"
-		console.log(response.exception_id); // "the server side developer can use this id to do troubleshooting"
+		// "the server side developer can use this id to do troubleshooting"
+		console.log(response.exception_id); 
 	}				
 });
 
@@ -161,8 +165,9 @@ $.ajax({
 	error: function(xhr,statusText, e){
 		console.log(xhr.status);
 		
-		if(xhr.status == 400 || xhr.status == 401 || xhr.status == 403){// "token error"						 
-			var authHeader = xhr.getResponseHeader("WWW-Authenticate");// "See https://tools.ietf.org/html/rfc6750#page-7"
+		if(xhr.status == 400 || xhr.status == 401 || xhr.status == 403){// "token error"
+		    // "See https://tools.ietf.org/html/rfc6750#page-7"						 
+			var authHeader = xhr.getResponseHeader("WWW-Authenticate");
 			console.log(authHeader); 
 			//in this case, you can redirect the user to login 
 		}
@@ -171,7 +176,8 @@ $.ajax({
 			console.log(response.error); // "the error code"
 			console.log(response.error_description); // "the error description for developers"
 			console.log(response.error_description_for_user); // "user-friendly error desc for users"
-			console.log(response.exception_id); // "the server side developer can use this id to do troubleshooting"
+			// "the server side developer can use this id to do troubleshooting"
+			console.log(response.exception_id); 
 		}else{
 			console.log(xhr.responseText);
 		}
@@ -229,7 +235,8 @@ if (loginResponse.getStatus() == 200) {
 	System.out.println(error.get("error")); // "the error code"
 	System.out.println(error.get("error_description")); // "the error description for developers"
 	System.out.println(error.get("error_description_for_user")); // "user-friendly error desc for users"
-	System.out.println(error.get("exception_id")); // "the server side developer can use this id to do troubleshooting"
+	// "the server side developer can use this id to do troubleshooting"
+	System.out.println(error.get("exception_id")); 
 }
 ...
 
@@ -252,7 +259,10 @@ else if (Arrays.asList(400, 401, 403).contains(bizResponse.getStatus())) { // "t
 	String authHeader = bizResponse.getHeaders()
 			.get("WWW-Authenticate").get(0);// "See https://tools.ietf.org/html/rfc6750#page-7"			
 	System.out.println(bizResponse.getStatus());
-	System.out.println(authHeader); //You can also further parse auth header if needed. Search "decodeOAuthHeader" in this repository.  
+	
+	//You can also further parse auth header if needed. Search "decodeOAuthHeader" in this repository.
+	System.out.println(authHeader);   
+	
 	//You should then redirect the user to login UI
 }
 
@@ -261,7 +271,8 @@ else if (bizResponse.getStatus() == 460) { // "biz error"
 	System.out.println(error.get("error")); // "the error code"
 	System.out.println(error.get("error_description")); // "the error description for developers"
 	System.out.println(error.get("error_description_for_user")); // "user-friendly error desc for users"
-	System.out.println(error.get("exception_id")); // "the server side developer can use this id to do troubleshooting"
+	// "the server side developer can use this id to do troubleshooting"
+	System.out.println(error.get("exception_id")); 
 } else {
 	System.out.println(bizResponse.getStatus());
 	System.out.println(bizResponse.getBody());
