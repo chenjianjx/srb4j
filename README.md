@@ -1,4 +1,4 @@
-#Srb4j = Simple RESTFul Backend for Java
+# Srb4j = Simple RESTFul Backend for Java
 
 
 __Srb4j__ (pronounced "/srəb/ for J") is a Java RESTFul backend code skeleton, with __common response data structures__, __user/password/access-token support__, __social login__ and __API document generation__.
@@ -45,7 +45,7 @@ Table of Contents
 
 ### Generate a Java project
 
-````bash
+```bash
 cd /path/to/your/workspace
 
 mvn -X org.apache.maven.plugins:maven-archetype-plugin:2.4:generate  \
@@ -56,42 +56,44 @@ mvn -X org.apache.maven.plugins:maven-archetype-plugin:2.4:generate  \
 -Dversion=1.0-SNAPSHOT \
 -DarchetypeRepository=https://jitpack.io
 
-````
+```
 
 ### Create a MySQL database and its tables
 
 Create a db and a user
 
-````SQL
+```SQL
 	mysql> create database yourdb default character set utf8;	 ## Has to be utf8
 	mysql> create user 'your_user'@'localhost' identified by 'your_password';
 	mysql> grant all privileges on yourdb.* to 'your_user'@'localhost' with grant option;	
-````
+```
 
 Create tables
-````bash
+```bash
 cd /some/dir
-wget https://raw.githubusercontent.com/chenjianjx/srb4j/master/src/main/resources/archetype-resources/doc/sql/ddl.sql  #Download this file with a browser if you are using windows
-````
-````SQL
+wget https://raw.githubusercontent.com/chenjianjx/srb4j/master/src/main/resources/archetype-resources/doc/sql/ddl.sql 
+# Download this url manually if you are using windows
+```
+```SQL
 mysql> use yourdb;
 mysql> source /some/dir/ddl.sql;
-````  
+```  
 
 ### Setup Env-specific properties 
-````bash
+```bash
 mkdir ~/yourArtifactId  #For windows, replace "~" with your user's home directory
 cd ~/yourArtifactId
-wget https://raw.githubusercontent.com/chenjianjx/srb4j/master/src/main/resources/archetype-resources/doc/app.properties.sample -O app.properties  #Download this file with a browser and renmae it to app.properties if you are using windows
-````
+wget https://raw.githubusercontent.com/chenjianjx/srb4j/master/src/main/resources/archetype-resources/doc/app.properties.sample -O app.properties  
+#Download this file manually and rename it to app.properties if you are using windows
+```
 
 Then edit app.properties according to your environment.
-````bash
+```bash
 vi app.properties
-````
+```
  
 ### Build the Java project 
-````bash
+```bash
 cd /path/to/your/workspace/yourArtifactid
 
 mvn install -DskipTests
@@ -100,7 +102,7 @@ cd webapp
 
 mvn jetty:run -Djetty.port=yourPort
 
-````
+```
 
 ### Verify the installation
 
@@ -115,167 +117,164 @@ The API doc has been generated on your backend at http://your-backend/fo-rest-do
 
 ## Sample Code For HTML and Javascript Developers
 
-````javascript		 
-	    	//login
-			$.ajax({
-				async: false,
-				url: "http://localhost:8080/fo/rest/token/new/local",
-				type: "POST",
-				contentType: 'application/x-www-form-urlencoded',				
-				data: "grant_type=password&username=chenjianjx@gmail.com&password=abc123",
-				success: function(data, statusText, xhr){					
-					console.log(data.access_token); //You can save this token to cookie or LocalStorage
-					console.log(data.refresh_token);
-					console.log(data.expires_in);
-					console.log(data.user_principal); // the full user name			
-					 
-					
-				},
-				error: function(xhr,statusText, e){
-					console.log(xhr.status)										
-					var response = $.parseJSON(xhr.responseText);
-					console.log(response.error); // "the error code"
-					console.log(response.error_description); // "the error description for developers"
-					console.log(response.error_description_for_user); // "user-friendly error desc for users"
-					console.log(response.exception_id); // "the server side developer can use this id to do troubleshooting"
-				}				
-			});
+```javascript		 
+//login
+$.ajax({
+	async: false,
+	url: "http://localhost:8080/fo/rest/token/new/local",
+	type: "POST",
+	contentType: 'application/x-www-form-urlencoded',				
+	data: "grant_type=password&username=chenjianjx@gmail.com&password=abc123",
+	success: function(data, statusText, xhr){					
+		console.log(data.access_token); //You can save this token to cookie or LocalStorage
+		console.log(data.refresh_token);
+		console.log(data.expires_in);
+		console.log(data.user_principal); // the full user name			
+		 
+		
+	},
+	error: function(xhr,statusText, e){
+		console.log(xhr.status)										
+		var response = $.parseJSON(xhr.responseText);
+		console.log(response.error); // "the error code"
+		console.log(response.error_description); // "the error description for developers"
+		console.log(response.error_description_for_user); // "user-friendly error desc for users"
+		console.log(response.exception_id); // "the server side developer can use this id to do troubleshooting"
+	}				
+});
 
-			...
+...
+
+// call a business web service
+$.ajax({
+	async: false,
+	url: "http://localhost:8080/fo/rest/bbs/posts/new",
+	type: "POST",
+	contentType: 'application/json',
+	headers: {					 
+		'Authorization': "Bearer " + accessToken
+	},				  
+	data: JSON.stringify({content:"my-first-post"}),
+	success: function(data, statusText, xhr){					
+		console.log(data); 
+	},
+	error: function(xhr,statusText, e){
+		console.log(xhr.status);
+		
+		if(xhr.status == 400 || xhr.status == 401 || xhr.status == 403){// "token error"						 
+			var authHeader = xhr.getResponseHeader("WWW-Authenticate");// "See https://tools.ietf.org/html/rfc6750#page-7"
+			console.log(authHeader); 
+			//in this case, you can redirect the user to login 
+		}
+		else if (xhr.status == 460) { // "biz error"
+			var response = $.parseJSON(xhr.responseText);
+			console.log(response.error); // "the error code"
+			console.log(response.error_description); // "the error description for developers"
+			console.log(response.error_description_for_user); // "user-friendly error desc for users"
+			console.log(response.exception_id); // "the server side developer can use this id to do troubleshooting"
+		}else{
+			console.log(xhr.responseText);
+		}
 			
-			// call a business web service
-			$.ajax({
-				async: false,
-				url: "http://localhost:8080/fo/rest/bbs/posts/new",
-				type: "POST",
-				contentType: 'application/json',
-				headers: {					 
-					'Authorization': "Bearer " + accessToken
-				},				  
-				data: JSON.stringify({content:"my-first-post"}),
-				success: function(data, statusText, xhr){					
-					console.log(data); 
-				},
-				error: function(xhr,statusText, e){
-					console.log(xhr.status);
-					
-					if(xhr.status == 400 || xhr.status == 401 || xhr.status == 403){// "token error"						 
-						var authHeader = xhr.getResponseHeader("WWW-Authenticate");// "See https://tools.ietf.org/html/rfc6750#page-7"
-						console.log(authHeader); 
-						//in this case, you can redirect the user to login 
-					}
-					else if (xhr.status == 460) { // "biz error"
-						var response = $.parseJSON(xhr.responseText);
-						console.log(response.error); // "the error code"
-						console.log(response.error_description); // "the error description for developers"
-						console.log(response.error_description_for_user); // "user-friendly error desc for users"
-						console.log(response.exception_id); // "the server side developer can use this id to do troubleshooting"
-					}else{
-						console.log(xhr.responseText);
-					}
-						
-				}
-					
-					
-				
-			});
+	}
+		
+		
+	
+});
+
+...
+
+//logout
+$.ajax({
+	async: false,
+	url: "http://localhost:8080/fo/rest/token/delete",
+	type: "POST",
+	contentType: 'application/json',
+	headers: {					 
+		'Authorization': "Bearer " + accessToken
+	}				  				 											
+});			
 			
-			...
-			
-			//logout
-			$.ajax({
-				async: false,
-				url: "http://localhost:8080/fo/rest/token/delete",
-				type: "POST",
-				contentType: 'application/json',
-				headers: {					 
-					'Authorization': "Bearer " + accessToken
-				}				  				 								
-			});			
-			
-		});			
-			
-```` 
+``` 
 
 Check out more code [here](https://github.com/chenjianjx/srb4j-html-client) .
 
 
 ## Sample Code For Desktop and Mobile Developers
  
-````java
+```java
 
 import com.mashape.unirest.http.HttpResponse;
 import com.mashape.unirest.http.JsonNode;
 import com.mashape.unirest.http.Unirest;
 ...
+// do login
+HttpResponse<JsonNode> loginResponse = Unirest
+		.post("http://localhost:8080/fo/rest/token/new/local")
+		.header("Content-Type", "application/x-www-form-urlencoded")
+		.field("grant_type", "password")
+		.field("username", "chenjianjx@gmail.com")
+		.field("password", "abc123").asJson();
 
-		// do login
-		HttpResponse<JsonNode> loginResponse = Unirest
-				.post("http://localhost:8080/fo/rest/token/new/local")
-				.header("Content-Type", "application/x-www-form-urlencoded")
-				.field("grant_type", "password")
-				.field("username", "chenjianjx@gmail.com")
-				.field("password", "abc123").asJson();
+if (loginResponse.getStatus() == 200) {
+	JSONObject token = loginResponse.getBody().getObject();
+	System.out.println(token.get("access_token")); //You can save the token for later use
+	System.out.println(token.get("refresh_token"));
+	System.out.println(token.get("expires_in"));
+	System.out.println(token.get("user_principal")); // "the full user name"			
+} else {
+	System.out.println(loginResponse.getStatus());
+	System.out.println(loginResponse.getStatusText());
+	JSONObject error = loginResponse.getBody().getObject();
+	System.out.println(error.get("error")); // "the error code"
+	System.out.println(error.get("error_description")); // "the error description for developers"
+	System.out.println(error.get("error_description_for_user")); // "user-friendly error desc for users"
+	System.out.println(error.get("exception_id")); // "the server side developer can use this id to do troubleshooting"
+}
+...
 
-		if (loginResponse.getStatus() == 200) {
-			JSONObject token = loginResponse.getBody().getObject();
-			System.out.println(token.get("access_token")); //You can save the token for later use
-			System.out.println(token.get("refresh_token"));
-			System.out.println(token.get("expires_in"));
-			System.out.println(token.get("user_principal")); // "the full user name"			
-		} else {
-			System.out.println(loginResponse.getStatus());
-			System.out.println(loginResponse.getStatusText());
-			JSONObject error = loginResponse.getBody().getObject();
-			System.out.println(error.get("error")); // "the error code"
-			System.out.println(error.get("error_description")); // "the error description for developers"
-			System.out.println(error.get("error_description_for_user")); // "user-friendly error desc for users"
-			System.out.println(error.get("exception_id")); // "the server side developer can use this id to do troubleshooting"
-		}
-		...
-		
-		
-		// call a business web service
-		NewPostRequest bizRequest = new NewPostRequest();
-		bizRequest.setContent("my-first-post");
-		HttpResponse<String> bizResponse = Unirest
-				.post("http://localhost:8080/fo/rest/bbs/posts/new")
-				.header("Content-Type", "application/json")
-				.header("Authorization", "Bearer " + accessToken)
-				.body(toJson(bizRequest)).asString();
 
-		if (bizResponse.getStatus() == 200) {
-			Post post = fromJson(bizResponse.getBody(), Post.class);
-			System.out.println(post);
-		}
+// call a business web service
+NewPostRequest bizRequest = new NewPostRequest();
+bizRequest.setContent("my-first-post");
+HttpResponse<String> bizResponse = Unirest
+		.post("http://localhost:8080/fo/rest/bbs/posts/new")
+		.header("Content-Type", "application/json")
+		.header("Authorization", "Bearer " + accessToken)
+		.body(toJson(bizRequest)).asString();
 
-		else if (Arrays.asList(400, 401, 403).contains(bizResponse.getStatus())) { // "token error"
-			String authHeader = bizResponse.getHeaders()
-					.get("WWW-Authenticate").get(0);// "See https://tools.ietf.org/html/rfc6750#page-7"			
-			System.out.println(bizResponse.getStatus());
-			System.out.println(authHeader); //You can also further parse auth header if needed. Search "decodeOAuthHeader" in this repository.  
-			//You should then redirect the user to login UI
-		}
+if (bizResponse.getStatus() == 200) {
+	Post post = fromJson(bizResponse.getBody(), Post.class);
+	System.out.println(post);
+}
 
-		else if (bizResponse.getStatus() == 460) { // "biz error"
-			JSONObject error = new JSONObject(bizResponse.getBody());
-			System.out.println(error.get("error")); // "the error code"
-			System.out.println(error.get("error_description")); // "the error description for developers"
-			System.out.println(error.get("error_description_for_user")); // "user-friendly error desc for users"
-			System.out.println(error.get("exception_id")); // "the server side developer can use this id to do troubleshooting"
-		} else {
-			System.out.println(bizResponse.getStatus());
-			System.out.println(bizResponse.getBody());
-		}
-		
-		...
+else if (Arrays.asList(400, 401, 403).contains(bizResponse.getStatus())) { // "token error"
+	String authHeader = bizResponse.getHeaders()
+			.get("WWW-Authenticate").get(0);// "See https://tools.ietf.org/html/rfc6750#page-7"			
+	System.out.println(bizResponse.getStatus());
+	System.out.println(authHeader); //You can also further parse auth header if needed. Search "decodeOAuthHeader" in this repository.  
+	//You should then redirect the user to login UI
+}
 
-		// logout
-		Unirest.post("http://localhost:8080/fo/rest/bbs/posts/delete")
-				.header("Content-Type", "application/json")
-				.header("Authorization", "Bearer " + accessToken).asJson();
+else if (bizResponse.getStatus() == 460) { // "biz error"
+	JSONObject error = new JSONObject(bizResponse.getBody());
+	System.out.println(error.get("error")); // "the error code"
+	System.out.println(error.get("error_description")); // "the error description for developers"
+	System.out.println(error.get("error_description_for_user")); // "user-friendly error desc for users"
+	System.out.println(error.get("exception_id")); // "the server side developer can use this id to do troubleshooting"
+} else {
+	System.out.println(bizResponse.getStatus());
+	System.out.println(bizResponse.getBody());
+}
 
-````
+...
+
+// logout
+Unirest.post("http://localhost:8080/fo/rest/bbs/posts/delete")
+		.header("Content-Type", "application/json")
+		.header("Authorization", "Bearer " + accessToken).asJson();
+
+```
 
 Check out more code [here](https://github.com/chenjianjx/srb4j-desktop-client) or [here](https://github.com/chenjianjx/Srb4jAndroidClient) . 
 
