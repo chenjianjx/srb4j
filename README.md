@@ -53,7 +53,7 @@ mvn -X org.apache.maven.plugins:maven-archetype-plugin:2.4:generate  \
 -DgroupId=your.groupId  \
 -DartifactId=yourArtifactid \
 -Dpackage=your.pkg.name \
--Dversion=1.0-SNAPSHOT \
+-Dversion=1.0-SNAPSHOT 
 
 ```
 
