@@ -227,12 +227,13 @@ if (loginResponse.getStatus() == 200) {
 	System.out.println(loginResponse.getStatusText());
 	JSONObject error = loginResponse.getBody().getObject();
 	System.out.println(error.get("error")); // "the error code"
-	System.out.println(error.get("error_description")); // "the error description for developers"
-	System.out.println(error.get("error_description_for_user")); // "user-friendly error desc for users"
+	// "the error description for developers"
+	System.out.println(error.get("error_description")); 
+	// "user-friendly error desc for users"
+	System.out.println(error.get("error_description_for_user")); 
 	// "the server side developer can use this id to do troubleshooting"
 	System.out.println(error.get("exception_id")); 
 }
-
 
 // call a business web service
 NewPostRequest bizRequest = new NewPostRequest();
@@ -250,11 +251,13 @@ if (bizResponse.getStatus() == 200) {
 
 else if (Arrays.asList(400, 401, 403).contains(bizResponse.getStatus())) { // "token error"
 	String authHeader = bizResponse.getHeaders()
-			.get("WWW-Authenticate").get(0);// "See https://tools.ietf.org/html/rfc6750#page-7"			
+			// "See https://tools.ietf.org/html/rfc6750#page-7"
+			.get("WWW-Authenticate").get(0);
 	System.out.println(bizResponse.getStatus());
 	
-	//You can also further parse auth header if needed. Search "decodeOAuthHeader" in this repository.
-	System.out.println(authHeader);   
+	//You can also further parse auth header if needed. 
+	//Search "decodeOAuthHeader" in this repository.
+	System.out.println(authHeader);  
 	
 	//You should then redirect the user to login UI
 }
@@ -263,7 +266,8 @@ else if (bizResponse.getStatus() == 460) { // "biz error"
 	JSONObject error = new JSONObject(bizResponse.getBody());
 	System.out.println(error.get("error")); // "the error code"
 	System.out.println(error.get("error_description")); // "the error description for developers"
-	System.out.println(error.get("error_description_for_user")); // "user-friendly error desc for users"
+	// "user-friendly error desc for users"
+	System.out.println(error.get("error_description_for_user")); 
 	// "the server side developer can use this id to do troubleshooting"
 	System.out.println(error.get("exception_id")); 
 } else {
