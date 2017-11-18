@@ -1,8 +1,8 @@
 #note: no whitespace before or after a value
 #note: the keys should look like a java variable
-#note: don't remove any placeholder even if you don't the configuration
+#note: don't remove any placeholder even if you don't need the configuration
 
-dbHost=someHost
+dbHost=localhost
 dbPort=3306
 dbSchema=someDb
 dbUsername=some_name
@@ -10,7 +10,7 @@ dbPassword=some_password
 
 #smtp setup is required for "forget password flow". You can leave them as they are if you are just eager to start up the system.
 smtpHost=someHost
-smtpPort=somePort
+smtpPort=25
 smtpUsername=some_name
 smtpPassword=some_password
 #true or false
