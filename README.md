@@ -147,7 +147,41 @@ $.ajax({
 	}				
 });
 
-
+//call a business web service
+$.ajax({
+	async: false,
+	url: "http://localhost:8080/fo/rest/bbs/posts/new",
+	type: "POST",
+	contentType: 'application/json',
+	headers: {					 
+		'Authorization': "Bearer " + accessToken
+	},				  
+	data: JSON.stringify({content:"my-first-post"}),
+	success: function(data, statusText, xhr){					
+		console.log(data); 
+	},
+	error: function(xhr,statusText, e){
+		console.log(xhr.status);
+		
+		if(xhr.status == 400 || xhr.status == 401 || xhr.status == 403){// "token error"
+		    // "See https://tools.ietf.org/html/rfc6750#page-7"						 
+			var authHeader = xhr.getResponseHeader("WWW-Authenticate");
+			console.log(authHeader); 
+			//in this case, you can redirect the user to login 
+		}
+		else if (xhr.status == 460) { // "biz error"
+			var response = $.parseJSON(xhr.responseText);
+			console.log(response.error); // "the error code"
+			console.log(response.error_description); // "the error description for developers"
+			console.log(response.error_description_for_user); // "user-friendly error desc for users"
+			// "the server side developer can use this id to do troubleshooting"
+			console.log(response.exception_id); 
+		}else{
+			console.log(xhr.responseText);
+		}
+			
+	}
+});
 			
 ``` 
 
