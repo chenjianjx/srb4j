@@ -183,7 +183,17 @@ $.ajax({
 	}
 });
 
-	
+//logout
+$.ajax({
+	async: false,
+	url: "http://localhost:8080/fo/rest/token/delete",
+	type: "POST",
+	contentType: 'application/json',
+	headers: {
+		'Authorization': "Bearer " + accessToken
+	}
+});
+			
 ``` 
 
 Check out more code [here](https://github.com/chenjianjx/srb4j-html-client) .
