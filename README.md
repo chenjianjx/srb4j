@@ -182,6 +182,17 @@ $.ajax({
 			
 	}
 });
+
+//logout
+$.ajax({
+	async: false,
+	url: "http://localhost:8080/fo/rest/token/delete",
+	type: "POST",
+	contentType: 'application/json',
+	headers: {					 
+		'Authorization': "Bearer " + accessToken
+	}				  				 											
+});		
 			
 ``` 
 
@@ -195,7 +206,8 @@ Check out more code [here](https://github.com/chenjianjx/srb4j-html-client) .
 import com.mashape.unirest.http.HttpResponse;
 import com.mashape.unirest.http.JsonNode;
 import com.mashape.unirest.http.Unirest;
-...
+
+
 // do login
 HttpResponse<JsonNode> loginResponse = Unirest
 		.post("http://localhost:8080/fo/rest/token/new/local")
@@ -220,7 +232,6 @@ if (loginResponse.getStatus() == 200) {
 	// "the server side developer can use this id to do troubleshooting"
 	System.out.println(error.get("exception_id")); 
 }
-...
 
 
 // call a business web service
@@ -260,7 +271,6 @@ else if (bizResponse.getStatus() == 460) { // "biz error"
 	System.out.println(bizResponse.getBody());
 }
 
-...
 
 // logout
 Unirest.post("http://localhost:8080/fo/rest/bbs/posts/delete")
