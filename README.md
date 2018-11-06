@@ -34,7 +34,7 @@ Table of Contents
 7. An out-of-box back office web portal
 
 # Prerequisites
-1. JDK 7+
+1. JDK 8+
 2. Servlet 3.0+ Container such as Tomcat 7
 3. MySQL Server
 
