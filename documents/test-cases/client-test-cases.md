@@ -6,12 +6,14 @@ mvn initialize flyway:migrate -f data-migration/pom.xml
 Then run it again
 
 # System startup 
-## env=dev, dataMigrationOnStartup=fase, run in IDE
+## dev
+env=dev, credentials are hardcoded, dataMigrationOnStartup=fase, run in IDE
 Expect
 * No data migration was run
 * System started up successfully
 
-## env=an env other than "dev", credentials are from system variables, dataMigrationOnStartup=true, run in a uber jar
+## productionn/test
+env=an env other than "dev", credentials are from system variables, dataMigrationOnStartup=true, run in a uber jar
 Expect
 * Data migration was run 
 * System started up successfully
