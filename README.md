@@ -35,9 +35,8 @@ Table of Contents
 
 # Prerequisites
 1. JDK 8+
-2. Maven 3.0+
-3. Servlet 3.0+ Container such as Tomcat 7
-4. MySQL Server
+2. Maven 3.1+
+3. MySQL Server
 
 
 <!-- toc -->
