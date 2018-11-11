@@ -12,7 +12,7 @@ Expect
 * No data migration was run
 * System started up successfully
 
-## productionn/test
+## other envs
 env=an env other than "dev", credentials are from system variables, dataMigrationOnStartup=true, run in a uber jar
 Expect
 * Data migration was run 
@@ -62,3 +62,11 @@ Expect: the verification status is true
   * Expectation: User redirected to login UI
 
 * Try Protected Resource after Logging in
+
+# Other aspects of security
+## CORS from html clients
+You can use http://srb4jclient.chenjianjx.com:8000 as the html client 
+* Set the allowed domains as *
+* Set the allowed domains as empty string
+* Set the allowed domains as http://foo.com
+* Set the allowed domains as http://srb4jclient.chenjianjx.com:8000 and http://foo.com
