@@ -36,7 +36,7 @@ Table of Contents
 # Prerequisites
 1. JDK 8+
 2. Maven 3.1+
-3. MySQL Server
+3. MySQL Server 5.6.5+
 
 
 <!-- toc -->
