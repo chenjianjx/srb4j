@@ -28,17 +28,17 @@ Expect
 
 ### Registration
 * Empty input
-** Both empty
-** Username empty
-** Password empty
+  * Both empty
+  * Username empty
+  * Password empty
 * Email pattern wrong
 * Password pattern wrong
 
 ### Local Login
 * Empty input
-** Both empty
-** Username empty
-** Password empty
+  * Both empty
+  * Username empty
+  * Password empty
 * Email invalid
 * Password invalid
 
@@ -99,9 +99,9 @@ You can use http://srb4jclient.chenjianjx.com:8000 as the html client
 
 ## Log in
 * Empty input
-** Both empty
-** Username empty
-** Password empty
+  * Both empty
+  * Username empty
+  * Password empty
 * Wrong username 
 * Wrong password
 * Correct input
@@ -115,10 +115,10 @@ Try it
 
 ## Change password
 * Empty input
-** All empty
-** Fill current password only
-** Fill new password only 
-** Fill confirmation password only
+  * All empty
+  * Fill current password only
+  * Fill new password only 
+  * Fill confirmation password only
 * Wrong current password
 * New password do not match the pattern
 * New passwords don't match 
