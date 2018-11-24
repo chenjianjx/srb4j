@@ -74,6 +74,7 @@ You can use http://srb4jclient.chenjianjx.com:8000 as the html client
 # Back Office Test Cases
 
 ## Username/password generation 
+* Input empty username
 * Input valid username
 * Input invalid username
 
@@ -81,6 +82,7 @@ You can use http://srb4jclient.chenjianjx.com:8000 as the html client
 * After logging in, check the prompt message about why you should reset password
 * Go to the users page without changing password
 * Go to the users page after changing password
+ 
 
 ## Log in
 * Empty input
@@ -107,6 +109,7 @@ Try it
 * Wrong current password
 * New password do not match the pattern
 * New passwords don't match 
+* New password is the same with the current one
 
 ## Front Users page
 * Check when there is no user
