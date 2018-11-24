@@ -70,3 +70,45 @@ You can use http://srb4jclient.chenjianjx.com:8000 as the html client
 * Set the allowed domains as empty string
 * Set the allowed domains as http://foo.com
 * Set the allowed domains as http://srb4jclient.chenjianjx.com:8000 and http://foo.com
+
+# Back Office Test Cases
+
+## Username/password generation 
+* Input valid username
+* Input invalid username
+
+## First time log in 
+* After logging in, check the prompt message about why you should reset password
+* Go to the users page without changing password
+* Go to the users page after changing password
+
+## Log in
+* Empty input
+** Both empty
+** Username empty
+** Password empty
+* Wrong username 
+* Wrong password
+* Correct input
+* Correct input with spaces around
+* Go to password changing page without logging in 
+* Go to user list page without logging in 
+* Hit "log out" url without logging in 
+
+## Log out 
+Try it 
+
+## Change password
+* Empty input
+** All empty
+** Fill current password only
+** Fill new password only 
+** Fill confirmation password only
+* Wrong current password
+* New password do not match the pattern
+* New passwords don't match 
+
+## Front Users page
+* Check when there is no user
+* Check when there are a few users
+* Check when there are enough users that paginantion is possible
