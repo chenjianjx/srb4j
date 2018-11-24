@@ -19,6 +19,9 @@ Expect
 * Data migration was run 
 * System started up successfully
 
+# Configurations test
+* enable/disable back office
+* enable/disable swagger 
 
 # Client-Side Test Cases
 
