@@ -21,7 +21,6 @@ Expect
 
 # Configurations test
 * enable/disable back office
-* enable/disable swagger 
 
 # Client-Side Test Cases
 
