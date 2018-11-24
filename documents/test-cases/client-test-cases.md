@@ -8,6 +8,7 @@ Then run it again
 # System startup 
 ## dev
 env=dev, credentials are hardcoded, dataMigrationOnStartup=fase, run in IDE
+
 Expect
 * No data migration was run
 * System started up successfully
@@ -26,8 +27,20 @@ Expect
 ## Authentication
 
 ### Registration
+* Empty input
+** Both empty
+** Username empty
+** Password empty
+* Email pattern wrong
+* Password pattern wrong
 
 ### Local Login
+* Empty input
+** Both empty
+** Username empty
+** Password empty
+* Email invalid
+* Password invalid
 
 ### Social Login
 * Google
