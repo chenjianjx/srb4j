@@ -58,6 +58,22 @@ Expect
 * Facebook login with an account, then do goole login with an account associated with the same email.  Expecting failure.
 * Facebook login with an account, then do registration with the same email. Expecting failure. 
 
+### Random code login
+#### Reqeust a code
+* Email empty
+* Email not existing
+* Email belongs to a google/facebook user
+* Positive case
+
+#### User a code to login
+* Email empty
+* Email not existing
+* Email belongs to a google/facebook user
+* Wrong random code
+* Positive case
+* Random code is right but has expired
+
+
 ## Email verification 
 ### Register with email/password
 Expect: the verification status is false
