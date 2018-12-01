@@ -65,7 +65,7 @@ Expect
 * Email belongs to a google/facebook user
 * Positive case
 
-#### User a code to login
+#### Use a code to login
 * Email empty
 * Email not existing
 * Email belongs to a google/facebook user
@@ -74,20 +74,32 @@ Expect
 * Random code is right but has expired
 
 
-## Email verification 
-### Register with email/password
+### Email verification 
+#### Register with email/password
 Expect: the verification status is false
-### Register with a social account
+#### Register with a social account
 Expect: the verification status is true
-### Ask for verification link
+#### Ask for verification link
 * Email not verified.      Expect receiving an email. 
 * Email has been verified. Expect an error message
 * Email not verified and have received an email.  Expect receiving a new email. 
-### Do verification 
+#### Do verification 
 * Email not verified.  Expect verification successful
 * Email has been verified.  Expect verification successful
 * An invalid link.  Expect error message. 
 * A valid but expired link.  Expect error message. 
+
+### Change password
+* Empty input
+  * All empty
+  * Fill current password only
+  * Fill new password only 
+  * Fill confirmation password only
+* Wrong current password
+* New password do not match the pattern
+* New passwords don't match 
+* New password is the same with the current one
+
 
 ## Invoke Business
 
