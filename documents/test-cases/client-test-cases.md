@@ -43,6 +43,8 @@ Expect
   * Password empty
 * Email invalid
 * Password invalid
+* Normal login
+* Try to login if you are already a facebook/google user
 
 ### Social Login
 * Google
