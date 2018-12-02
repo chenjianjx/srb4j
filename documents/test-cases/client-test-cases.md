@@ -98,7 +98,7 @@ Expect: the verification status is true
 * Wrong current password
 * New password do not match the pattern
 * New passwords don't match 
-* New password is the same with the current one
+* Try to change the password as a social loginning user
 
 
 ## Invoke Business
