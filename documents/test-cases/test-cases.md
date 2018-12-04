@@ -58,6 +58,33 @@ Expect
 * Facebook login with an account, then do goole login with an account associated with the same email.  Expecting failure.
 * Facebook login with an account, then do registration with the same email. Expecting failure. 
 
+
+### Forget password
+#### Reqeust a verification code
+* Email empty
+* Email not existing
+* Email belongs to a google/facebook user
+* Positive case
+
+#### Validate the verification code
+* Email empty
+* Email not existing
+* Email belongs to a google/facebook user
+* Wrong verification code
+* Positive case
+* Verification code is right but has expired
+* Request a verification code twice and use the first one
+
+#### Reset password after valdiation
+
+* Empty input
+  * All empty
+  * Fill new password only 
+  * Fill confirmation password only
+* New password do not match the pattern
+* New passwords don't match 
+* Positive case. Login after the resetting. 
+
 ### Random code login
 #### Reqeust a code
 * Email empty
@@ -72,7 +99,7 @@ Expect
 * Wrong random code
 * Positive case
 * Random code is right but has expired
-* Request a random codes twice and use the first one to log in
+* Request a random code twice and use the first one to log in
 
 
 ### Email verification 
