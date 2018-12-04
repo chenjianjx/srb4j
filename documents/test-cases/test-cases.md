@@ -72,6 +72,7 @@ Expect
 * Wrong random code
 * Positive case
 * Random code is right but has expired
+* Request a random codes twice and use the first one to log in
 
 
 ### Email verification 
