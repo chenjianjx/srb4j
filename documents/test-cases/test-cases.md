@@ -132,8 +132,6 @@ Expect: the verification status is true
 ## Invoke Business
 
 * Try Protected Resource without Logging in
-  * Expectation: User redirected to login UI
-
 * Try Protected Resource after Logging in
 
 # Other aspects of security
