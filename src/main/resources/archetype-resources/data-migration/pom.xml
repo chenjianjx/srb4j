@@ -4,12 +4,12 @@
     <modelVersion>4.0.0</modelVersion>
 
     <parent>
-        <groupId>com.github.chenjianjx</groupId>
-        <artifactId>srb4jfullsample-parent</artifactId>
+        <groupId>${groupId}</groupId>
+        <artifactId>${artifactId}-parent</artifactId>
         <version>1.0-SNAPSHOT</version>
     </parent>
 
-    <artifactId>srb4jfullsample-data-migration</artifactId>
+    <artifactId>${artifactId}-data-migration</artifactId>
     <packaging>jar</packaging>
 
     <dependencies>
@@ -24,14 +24,14 @@
         </dependency>
 
         <dependency>
-            <groupId>com.github.chenjianjx</groupId>
-            <artifactId>srb4jfullsample-intf-bo</artifactId>
+            <groupId>${groupId}</groupId>
+            <artifactId>${artifactId}-intf-bo</artifactId>
             <version>${project.parent.version}</version>
         </dependency>
 
         <dependency>
-            <groupId>com.github.chenjianjx</groupId>
-            <artifactId>srb4jfullsample-utils</artifactId>
+            <groupId>${groupId}</groupId>
+            <artifactId>${artifactId}-utils</artifactId>
             <version>${project.parent.version}</version>
         </dependency>
 

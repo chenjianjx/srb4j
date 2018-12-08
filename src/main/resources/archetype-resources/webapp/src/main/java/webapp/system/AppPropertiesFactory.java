@@ -23,7 +23,7 @@ public class AppPropertiesFactory implements FactoryBean<Properties> {
     private static final Logger logger = LoggerFactory.getLogger(AppPropertiesFactory.class);
 
     private static String environment;
-    private static final String ENVIRONMENT_KEY = "srb4jfullsample_environment";
+    private static final String ENVIRONMENT_KEY = "${artifactId}_environment";
     private static final String DEFAULT_ENV = "dev";
 
     private Properties properties;

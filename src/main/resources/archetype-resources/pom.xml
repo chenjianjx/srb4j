@@ -3,8 +3,8 @@
 
     <modelVersion>4.0.0</modelVersion>
 
-    <groupId>com.github.chenjianjx</groupId>
-    <artifactId>srb4jfullsample-parent</artifactId>
+    <groupId>${groupId}</groupId>
+    <artifactId>${artifactId}-parent</artifactId>
     <packaging>pom</packaging>
     <version>1.0-SNAPSHOT</version>
     <name>Simple RESTFul Backend for Java</name>
@@ -162,7 +162,7 @@
             </dependency>
 
             <dependency>
-                <groupId>com.github.chenjianjx</groupId>
+                <groupId>${groupId}</groupId>
                 <artifactId>swagger2html</artifactId>
                 <version>2.0.0</version>
             </dependency>
@@ -402,7 +402,7 @@
             </dependency>
 
             <dependency>
-                <groupId>com.github.chenjianjx</groupId>
+                <groupId>${groupId}</groupId>
                 <artifactId>freebencher</artifactId>
                 <version>2.0.0</version>
                 <scope>test</scope>

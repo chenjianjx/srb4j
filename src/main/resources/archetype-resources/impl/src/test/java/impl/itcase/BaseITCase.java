@@ -31,10 +31,10 @@ import java.util.Optional;
  */
 public class BaseITCase {
 
-    private static final String MYSQL_CONTAINER_NAME = "srb4jfullsample_db_container";
+    private static final String MYSQL_CONTAINER_NAME = "${artifactId}_db_container";
     private static Logger logger;
     private static final int MYSQL_PORT = 10603;
-    private static final String MYSQL_SCHEMA = "srb4jfullsample_integration_test";
+    private static final String MYSQL_SCHEMA = "${artifactId}_integration_test";
     public static final String MYSQL_JDBC_URL =
             String.format("jdbc:mysql://localhost:%s/%s?characterEncoding=UTF-8", MYSQL_PORT, MYSQL_SCHEMA);
     public static final String MYSQL_ROOT_PASSWORD = "root";

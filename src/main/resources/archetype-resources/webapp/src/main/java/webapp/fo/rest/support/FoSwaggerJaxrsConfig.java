@@ -54,8 +54,8 @@ public class FoSwaggerJaxrsConfig extends HttpServlet {
 			}
 		}
 
-		String title = "srb4jfullsample";
-		String email = "srb4jfullsample@gmail.com";
+		String title = "${artifactId}";
+		String email = "${artifactId}@gmail.com";
 		String desc = getDesc();
 
 		swaggerConfig.setSchemes(new String[] { scheme });
