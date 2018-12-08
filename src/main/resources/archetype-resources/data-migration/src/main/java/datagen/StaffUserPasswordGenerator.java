@@ -1,8 +1,8 @@
-package com.github.chenjianjx.srb4jfullsample.datagen;
+package ${package}.datagen;
 
 
-import com.github.chenjianjx.srb4jfullsample.intf.bo.staffuser.BoStaffUserManager;
-import com.github.chenjianjx.srb4jfullsample.utils.lang.MyCodecUtils;
+import ${package}.intf.bo.staffuser.BoStaffUserManager;
+import ${package}.utils.lang.MyCodecUtils;
 import org.apache.commons.lang3.RandomStringUtils;
 import org.apache.commons.lang3.RandomUtils;
 import org.apache.commons.lang3.StringUtils;

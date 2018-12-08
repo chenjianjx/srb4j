@@ -1,4 +1,4 @@
-package com.github.chenjianjx.srb4jfullsample.webapp.bo.portal.support;
+package ${package}.webapp.bo.portal.support;
 
 
 public interface BoPortalConstants {

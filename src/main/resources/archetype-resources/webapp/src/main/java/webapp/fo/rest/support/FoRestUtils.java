@@ -1,21 +1,21 @@
-package com.github.chenjianjx.srb4jfullsample.webapp.fo.rest.support;
+package ${package}.webapp.fo.rest.support;
 
 import static javax.servlet.http.HttpServletResponse.SC_OK;
-import static com.github.chenjianjx.srb4jfullsample.intf.fo.basic.FoConstants.FEC_NOT_LOGIN_YET;
-import static com.github.chenjianjx.srb4jfullsample.intf.fo.basic.FoConstants.FO_SC_BIZ_ERROR;
+import static ${package}.intf.fo.basic.FoConstants.FEC_NOT_LOGIN_YET;
+import static ${package}.intf.fo.basic.FoConstants.FO_SC_BIZ_ERROR;
 
 import javax.servlet.http.HttpServletResponse;
 import javax.ws.rs.container.ContainerRequestContext;
 import javax.ws.rs.core.Response;
 
-import com.github.chenjianjx.srb4jfullsample.webapp.system.WebAppEnvProp;
+import ${package}.webapp.system.WebAppEnvProp;
 import org.apache.commons.lang3.StringUtils;
 import org.apache.oltu.oauth2.common.OAuth;
 import org.apache.oltu.oauth2.common.error.OAuthError.ResourceResponse;
 import org.apache.oltu.oauth2.common.exception.OAuthSystemException;
 import org.apache.oltu.oauth2.common.message.OAuthResponse;
 import org.apache.oltu.oauth2.rs.response.OAuthRSResponse;
-import com.github.chenjianjx.srb4jfullsample.intf.fo.basic.FoResponse;
+import ${package}.intf.fo.basic.FoResponse;
 
 /**
  * 

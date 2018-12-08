@@ -1,4 +1,4 @@
-package com.github.chenjianjx.srb4jfullsample.intf.fo.basic;
+package ${package}.intf.fo.basic;
 
 import io.swagger.annotations.ApiModelProperty;
 

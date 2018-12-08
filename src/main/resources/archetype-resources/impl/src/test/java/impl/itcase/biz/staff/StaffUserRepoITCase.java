@@ -1,10 +1,10 @@
-package com.github.chenjianjx.srb4jfullsample.impl.itcase.biz.staff;
+package ${package}.impl.itcase.biz.staff;
 
 
-import com.github.chenjianjx.srb4jfullsample.impl.biz.staff.StaffUser;
-import com.github.chenjianjx.srb4jfullsample.impl.biz.staff.StaffUserRepo;
-import com.github.chenjianjx.srb4jfullsample.impl.itcase.BaseITCase;
-import com.github.chenjianjx.srb4jfullsample.utils.lang.MyLangUtils;
+import ${package}.impl.biz.staff.StaffUser;
+import ${package}.impl.biz.staff.StaffUserRepo;
+import ${package}.impl.itcase.BaseITCase;
+import ${package}.utils.lang.MyLangUtils;
 import org.junit.Assert;
 import org.junit.Test;
 import org.junit.runner.RunWith;

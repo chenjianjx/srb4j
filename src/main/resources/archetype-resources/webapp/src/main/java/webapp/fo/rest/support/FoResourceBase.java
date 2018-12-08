@@ -1,4 +1,4 @@
-package com.github.chenjianjx.srb4jfullsample.webapp.fo.rest.support;
+package ${package}.webapp.fo.rest.support;
 
 import javax.ws.rs.container.ContainerRequestContext;
 

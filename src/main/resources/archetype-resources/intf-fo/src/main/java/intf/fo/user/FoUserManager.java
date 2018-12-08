@@ -1,7 +1,7 @@
-package com.github.chenjianjx.srb4jfullsample.intf.fo.user;
+package ${package}.intf.fo.user;
 
 
-import com.github.chenjianjx.srb4jfullsample.intf.fo.basic.FoResponse;
+import ${package}.intf.fo.basic.FoResponse;
 
 /**
  * 

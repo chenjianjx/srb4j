@@ -1,6 +1,6 @@
-package com.github.chenjianjx.srb4jfullsample.intf.bo.staffuser;
+package ${package}.intf.bo.staffuser;
 
-import com.github.chenjianjx.srb4jfullsample.intf.bo.basic.BoResponse;
+import ${package}.intf.bo.basic.BoResponse;
 
 /**
  * @author chenjianjx@gmail.com

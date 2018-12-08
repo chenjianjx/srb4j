@@ -1,4 +1,4 @@
-package com.github.chenjianjx.srb4jfullsample.impl.support.template;
+package ${package}.impl.support.template;
 
 import java.io.IOException;
 

@@ -1,19 +1,19 @@
-package com.github.chenjianjx.srb4jfullsample.impl.fo.auth;
+package ${package}.impl.fo.auth;
 
-import com.github.chenjianjx.srb4jfullsample.impl.biz.auth.*;
-import com.github.chenjianjx.srb4jfullsample.impl.biz.client.Client;
-import com.github.chenjianjx.srb4jfullsample.impl.biz.user.User;
-import com.github.chenjianjx.srb4jfullsample.impl.biz.user.UserRepo;
-import com.github.chenjianjx.srb4jfullsample.impl.common.ImplHelper;
-import com.github.chenjianjx.srb4jfullsample.impl.fo.auth.socialsite.FoSocialSiteAuthHelper;
-import com.github.chenjianjx.srb4jfullsample.impl.fo.common.FoManagerImplBase;
-import com.github.chenjianjx.srb4jfullsample.impl.support.beanvalidate.MyValidator;
-import com.github.chenjianjx.srb4jfullsample.impl.support.beanvalidate.ValidationError;
-import com.github.chenjianjx.srb4jfullsample.intf.fo.auth.*;
-import com.github.chenjianjx.srb4jfullsample.intf.fo.basic.FoConstants;
-import com.github.chenjianjx.srb4jfullsample.intf.fo.basic.FoResponse;
-import com.github.chenjianjx.srb4jfullsample.utils.lang.MyCodecUtils;
-import com.github.chenjianjx.srb4jfullsample.utils.lang.MyDuplet;
+import ${package}.impl.biz.auth.*;
+import ${package}.impl.biz.client.Client;
+import ${package}.impl.biz.user.User;
+import ${package}.impl.biz.user.UserRepo;
+import ${package}.impl.common.ImplHelper;
+import ${package}.impl.fo.auth.socialsite.FoSocialSiteAuthHelper;
+import ${package}.impl.fo.common.FoManagerImplBase;
+import ${package}.impl.support.beanvalidate.MyValidator;
+import ${package}.impl.support.beanvalidate.ValidationError;
+import ${package}.intf.fo.auth.*;
+import ${package}.intf.fo.basic.FoConstants;
+import ${package}.intf.fo.basic.FoResponse;
+import ${package}.utils.lang.MyCodecUtils;
+import ${package}.utils.lang.MyDuplet;
 import org.apache.commons.lang3.StringUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -21,7 +21,7 @@ import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
 
-import static com.github.chenjianjx.srb4jfullsample.intf.fo.basic.FoConstants.NULL_REQUEST_BEAN_TIP;
+import static ${package}.intf.fo.basic.FoConstants.NULL_REQUEST_BEAN_TIP;
 
 /**
  * @author chenjianjx@gmail.com

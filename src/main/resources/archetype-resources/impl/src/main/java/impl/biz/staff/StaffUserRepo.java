@@ -1,4 +1,4 @@
-package com.github.chenjianjx.srb4jfullsample.impl.biz.staff;
+package ${package}.impl.biz.staff;
 
 
 import org.apache.ibatis.annotations.Insert;

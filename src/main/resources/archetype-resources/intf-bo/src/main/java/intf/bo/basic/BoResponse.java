@@ -1,7 +1,7 @@
-package com.github.chenjianjx.srb4jfullsample.intf.bo.basic;
+package ${package}.intf.bo.basic;
 
-import com.github.chenjianjx.srb4jfullsample.intf.fo.basic.ErrorResult;
-import com.github.chenjianjx.srb4jfullsample.intf.fo.basic.FoResponse;
+import ${package}.intf.fo.basic.ErrorResult;
+import ${package}.intf.fo.basic.FoResponse;
 
 import java.util.Map;
 

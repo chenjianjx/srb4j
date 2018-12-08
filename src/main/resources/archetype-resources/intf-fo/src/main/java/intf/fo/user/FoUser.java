@@ -1,7 +1,7 @@
-package com.github.chenjianjx.srb4jfullsample.intf.fo.user;
+package ${package}.intf.fo.user;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
-import com.github.chenjianjx.srb4jfullsample.intf.fo.basic.FoEntityBase;
+import ${package}.intf.fo.basic.FoEntityBase;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 

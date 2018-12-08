@@ -1,4 +1,4 @@
-package com.github.chenjianjx.srb4jfullsample.webapp.fo.rest.support;
+package ${package}.webapp.fo.rest.support;
 
 import java.util.Date;
 
@@ -16,8 +16,8 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Component;
 
-import com.github.chenjianjx.srb4jfullsample.intf.fo.basic.FoConstants;
-import com.github.chenjianjx.srb4jfullsample.intf.fo.basic.FoResponse;
+import ${package}.intf.fo.basic.FoConstants;
+import ${package}.intf.fo.basic.FoResponse;
 
 /**
  * catch all un-catched exceptions and turns it into error response

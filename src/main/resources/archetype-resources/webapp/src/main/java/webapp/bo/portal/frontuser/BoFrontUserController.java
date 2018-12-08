@@ -1,10 +1,10 @@
-package com.github.chenjianjx.srb4jfullsample.webapp.bo.portal.frontuser;
+package ${package}.webapp.bo.portal.frontuser;
 
 
-import com.github.chenjianjx.srb4jfullsample.intf.bo.basic.BoResponse;
-import com.github.chenjianjx.srb4jfullsample.intf.bo.frontuser.BoFrontUserManager;
-import com.github.chenjianjx.srb4jfullsample.intf.fo.user.FoUser;
-import com.github.chenjianjx.srb4jfullsample.webapp.bo.portal.support.BoMvcModel;
+import ${package}.intf.bo.basic.BoResponse;
+import ${package}.intf.bo.frontuser.BoFrontUserManager;
+import ${package}.intf.fo.user.FoUser;
+import ${package}.webapp.bo.portal.support.BoMvcModel;
 import org.glassfish.jersey.server.mvc.Viewable;
 import org.springframework.stereotype.Controller;
 
@@ -19,8 +19,8 @@ import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
 
-import static com.github.chenjianjx.srb4jfullsample.webapp.bo.portal.support.BoResourcePaths.FRONT_USER_LIST;
-import static com.github.chenjianjx.srb4jfullsample.webapp.bo.portal.support.BoSessionHelper.getSessionStaffUserId;
+import static ${package}.webapp.bo.portal.support.BoResourcePaths.FRONT_USER_LIST;
+import static ${package}.webapp.bo.portal.support.BoSessionHelper.getSessionStaffUserId;
 
 @Path("/")
 @Controller

@@ -1,6 +1,6 @@
-package com.github.chenjianjx.srb4jfullsample.intf.fo.user;
+package ${package}.intf.fo.user;
 
-import com.github.chenjianjx.srb4jfullsample.intf.fo.basic.FoConstants;
+import ${package}.intf.fo.basic.FoConstants;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import org.apache.commons.lang3.builder.ToStringBuilder;

@@ -1,13 +1,13 @@
-package com.github.chenjianjx.srb4jfullsample.webapp.bo.portal.support;
+package ${package}.webapp.bo.portal.support;
 
-import com.github.chenjianjx.srb4jfullsample.intf.fo.basic.ErrorResult;
+import ${package}.intf.fo.basic.ErrorResult;
 
 import javax.servlet.http.HttpServletRequest;
 import java.util.LinkedHashMap;
 
-import static com.github.chenjianjx.srb4jfullsample.webapp.bo.portal.support.BoPortalConstants.BO_PORTAL_URL_BASE;
-import static com.github.chenjianjx.srb4jfullsample.webapp.bo.portal.support.BoPortalConstants.MVC_KEY_ERR;
-import static com.github.chenjianjx.srb4jfullsample.webapp.bo.portal.support.BoPortalConstants.MVC_KEY_RELATIVE_URL;
+import static ${package}.webapp.bo.portal.support.BoPortalConstants.BO_PORTAL_URL_BASE;
+import static ${package}.webapp.bo.portal.support.BoPortalConstants.MVC_KEY_ERR;
+import static ${package}.webapp.bo.portal.support.BoPortalConstants.MVC_KEY_RELATIVE_URL;
 
 /**
  * Please always use this class for the mvc model, instead of a plain Map

@@ -1,13 +1,13 @@
-package com.github.chenjianjx.srb4jfullsample.impl.bo.frontuser;
+package ${package}.impl.bo.frontuser;
 
-import com.github.chenjianjx.srb4jfullsample.impl.biz.staff.StaffUser;
-import com.github.chenjianjx.srb4jfullsample.impl.biz.user.User;
-import com.github.chenjianjx.srb4jfullsample.impl.biz.user.UserRepo;
-import com.github.chenjianjx.srb4jfullsample.impl.bo.common.BoManagerImplBase;
-import com.github.chenjianjx.srb4jfullsample.utils.lang.MyLangUtils;
-import com.github.chenjianjx.srb4jfullsample.intf.bo.basic.BoResponse;
-import com.github.chenjianjx.srb4jfullsample.intf.bo.frontuser.BoFrontUserManager;
-import com.github.chenjianjx.srb4jfullsample.intf.fo.user.FoUser;
+import ${package}.impl.biz.staff.StaffUser;
+import ${package}.impl.biz.user.User;
+import ${package}.impl.biz.user.UserRepo;
+import ${package}.impl.bo.common.BoManagerImplBase;
+import ${package}.utils.lang.MyLangUtils;
+import ${package}.intf.bo.basic.BoResponse;
+import ${package}.intf.bo.frontuser.BoFrontUserManager;
+import ${package}.intf.fo.user.FoUser;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;

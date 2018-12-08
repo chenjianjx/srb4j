@@ -1,16 +1,16 @@
-package com.github.chenjianjx.srb4jfullsample.webapp.bo.portal.auth;
+package ${package}.webapp.bo.portal.auth;
 
 
-import com.github.chenjianjx.srb4jfullsample.intf.bo.auth.BoAuthManager;
-import com.github.chenjianjx.srb4jfullsample.intf.bo.auth.BoLoginRequest;
-import com.github.chenjianjx.srb4jfullsample.intf.bo.auth.BoLoginResult;
-import com.github.chenjianjx.srb4jfullsample.intf.bo.basic.BoConstants;
-import com.github.chenjianjx.srb4jfullsample.intf.fo.basic.ErrorResult;
-import com.github.chenjianjx.srb4jfullsample.intf.fo.basic.FoResponse;
-import com.github.chenjianjx.srb4jfullsample.webapp.bo.portal.staffuser.BoChangePasswordReason;
-import com.github.chenjianjx.srb4jfullsample.webapp.bo.portal.support.BoMvcModel;
-import com.github.chenjianjx.srb4jfullsample.webapp.bo.portal.support.BoSessionHelper;
-import com.github.chenjianjx.srb4jfullsample.webapp.bo.portal.support.BoSessionStaffUser;
+import ${package}.intf.bo.auth.BoAuthManager;
+import ${package}.intf.bo.auth.BoLoginRequest;
+import ${package}.intf.bo.auth.BoLoginResult;
+import ${package}.intf.bo.basic.BoConstants;
+import ${package}.intf.fo.basic.ErrorResult;
+import ${package}.intf.fo.basic.FoResponse;
+import ${package}.webapp.bo.portal.staffuser.BoChangePasswordReason;
+import ${package}.webapp.bo.portal.support.BoMvcModel;
+import ${package}.webapp.bo.portal.support.BoSessionHelper;
+import ${package}.webapp.bo.portal.support.BoSessionStaffUser;
 import org.glassfish.jersey.server.mvc.Viewable;
 import org.springframework.stereotype.Controller;
 
@@ -28,11 +28,11 @@ import javax.ws.rs.core.Response;
 import java.net.MalformedURLException;
 import java.net.URISyntaxException;
 
-import static com.github.chenjianjx.srb4jfullsample.webapp.bo.portal.support.BoResourcePaths.CHANGE_PASSWORD;
-import static com.github.chenjianjx.srb4jfullsample.webapp.bo.portal.support.BoResourcePaths.DASHBOARD;
-import static com.github.chenjianjx.srb4jfullsample.webapp.bo.portal.support.BoResourcePaths.LOGIN;
-import static com.github.chenjianjx.srb4jfullsample.webapp.bo.portal.support.BoResourcePaths.LOGOUT;
-import static com.github.chenjianjx.srb4jfullsample.webapp.bo.portal.support.BoUrlHelper.path2URI;
+import static ${package}.webapp.bo.portal.support.BoResourcePaths.CHANGE_PASSWORD;
+import static ${package}.webapp.bo.portal.support.BoResourcePaths.DASHBOARD;
+import static ${package}.webapp.bo.portal.support.BoResourcePaths.LOGIN;
+import static ${package}.webapp.bo.portal.support.BoResourcePaths.LOGOUT;
+import static ${package}.webapp.bo.portal.support.BoUrlHelper.path2URI;
 
 @Path("/")
 @Controller

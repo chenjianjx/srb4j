@@ -1,9 +1,9 @@
-package com.github.chenjianjx.srb4jfullsample.impl.fo.common;
+package ${package}.impl.fo.common;
 
-import com.github.chenjianjx.srb4jfullsample.impl.biz.user.User;
-import com.github.chenjianjx.srb4jfullsample.impl.biz.user.UserRepo;
-import com.github.chenjianjx.srb4jfullsample.intf.fo.basic.FoConstants;
-import com.github.chenjianjx.srb4jfullsample.intf.fo.basic.FoResponse;
+import ${package}.impl.biz.user.User;
+import ${package}.impl.biz.user.UserRepo;
+import ${package}.intf.fo.basic.FoConstants;
+import ${package}.intf.fo.basic.FoResponse;
 
 import javax.annotation.Resource;
 

@@ -1,6 +1,6 @@
-package com.github.chenjianjx.srb4jfullsample.intf.fo.misc;
+package ${package}.intf.fo.misc;
 
-import com.github.chenjianjx.srb4jfullsample.intf.fo.auth.FoAccessToken;
+import ${package}.intf.fo.auth.FoAccessToken;
 
 /**
  * non user-oriented interfaces. Sometimes you need these

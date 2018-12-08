@@ -1,10 +1,10 @@
-package com.github.chenjianjx.srb4jfullsample.impl.biz.user;
+package ${package}.impl.biz.user;
 
 import java.io.Serializable;
 import java.util.Arrays;
 import java.util.List;
 
-import com.github.chenjianjx.srb4jfullsample.impl.biz.common.EntityBase;
+import ${package}.impl.biz.common.EntityBase;
 
 /**
  * 

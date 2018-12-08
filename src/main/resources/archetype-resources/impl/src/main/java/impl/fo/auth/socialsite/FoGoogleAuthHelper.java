@@ -1,10 +1,10 @@
-package com.github.chenjianjx.srb4jfullsample.impl.fo.auth.socialsite;
+package ${package}.impl.fo.auth.socialsite;
 
-import com.github.chenjianjx.srb4jfullsample.impl.biz.client.Client;
-import com.github.chenjianjx.srb4jfullsample.utils.lang.MyDuplet;
-import com.github.chenjianjx.srb4jfullsample.intf.fo.auth.FoAuthTokenResult;
-import com.github.chenjianjx.srb4jfullsample.intf.fo.basic.FoConstants;
-import com.github.chenjianjx.srb4jfullsample.intf.fo.basic.FoResponse;
+import ${package}.impl.biz.client.Client;
+import ${package}.utils.lang.MyDuplet;
+import ${package}.intf.fo.auth.FoAuthTokenResult;
+import ${package}.intf.fo.basic.FoConstants;
+import ${package}.intf.fo.basic.FoResponse;
 import com.github.scribejava.apis.GoogleApi20;
 import com.github.scribejava.apis.openid.OpenIdOAuth2AccessToken;
 import com.github.scribejava.core.builder.ServiceBuilder;

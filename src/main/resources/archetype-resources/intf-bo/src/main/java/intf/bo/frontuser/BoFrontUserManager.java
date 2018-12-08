@@ -1,7 +1,7 @@
-package com.github.chenjianjx.srb4jfullsample.intf.bo.frontuser;
+package ${package}.intf.bo.frontuser;
 
-import com.github.chenjianjx.srb4jfullsample.intf.bo.basic.BoResponse;
-import com.github.chenjianjx.srb4jfullsample.intf.fo.user.FoUser;
+import ${package}.intf.bo.basic.BoResponse;
+import ${package}.intf.fo.user.FoUser;
 
 import java.util.List;
 

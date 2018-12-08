@@ -6,7 +6,7 @@
 
     <typeHandlers>
         <typeHandler javaType="java.util.Calendar"
-                     handler="com.github.chenjianjx.srb4jfullsample.utils.infrahelp.mybatis.CalendarTypeHandler"/>
+                     handler="${package}.utils.infrahelp.mybatis.CalendarTypeHandler"/>
     </typeHandlers>
 
 </configuration>

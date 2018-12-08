@@ -1,8 +1,8 @@
-package com.github.chenjianjx.srb4jfullsample.intf.fo.basic;
+package ${package}.intf.fo.basic;
 
 import org.junit.Test;
 
-import static com.github.chenjianjx.srb4jfullsample.intf.fo.basic.FoConstants.PASSWORD_PATTERN;
+import static ${package}.intf.fo.basic.FoConstants.PASSWORD_PATTERN;
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
 

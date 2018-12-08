@@ -1,4 +1,4 @@
-package com.github.chenjianjx.srb4jfullsample.impl.support.mail;
+package ${package}.impl.support.mail;
 
 import java.io.IOException;
 import java.io.StringWriter;
@@ -20,7 +20,7 @@ import org.springframework.mail.SimpleMailMessage;
 import org.springframework.mail.javamail.JavaMailSenderImpl;
 import org.springframework.mail.javamail.MimeMessageHelper;
 import org.springframework.stereotype.Service;
-import com.github.chenjianjx.srb4jfullsample.impl.support.template.FreemarkerTemplateFactory;
+import ${package}.impl.support.template.FreemarkerTemplateFactory;
 
 import freemarker.template.Template;
 import freemarker.template.TemplateException;

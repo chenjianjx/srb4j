@@ -1,7 +1,7 @@
-package com.github.chenjianjx.srb4jfullsample.webapp.fo.rest.support;
+package ${package}.webapp.fo.rest.support;
 
-import com.github.chenjianjx.srb4jfullsample.webapp.fo.rest.FrPackageAnchor;
-import com.github.chenjianjx.srb4jfullsample.webapp.system.WebAppEnvProp;
+import ${package}.webapp.fo.rest.FrPackageAnchor;
+import ${package}.webapp.system.WebAppEnvProp;
 import io.swagger.jaxrs.config.BeanConfig;
 import org.apache.commons.io.IOUtils;
 import org.springframework.web.context.WebApplicationContext;

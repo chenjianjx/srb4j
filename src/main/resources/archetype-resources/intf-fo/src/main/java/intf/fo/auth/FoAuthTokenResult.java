@@ -1,4 +1,4 @@
-package com.github.chenjianjx.srb4jfullsample.intf.fo.auth;
+package ${package}.intf.fo.auth;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 import io.swagger.annotations.ApiModel;

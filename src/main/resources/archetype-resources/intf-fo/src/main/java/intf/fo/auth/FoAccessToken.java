@@ -1,8 +1,8 @@
-package com.github.chenjianjx.srb4jfullsample.intf.fo.auth;
+package ${package}.intf.fo.auth;
 
 import java.util.Calendar;
 
-import com.github.chenjianjx.srb4jfullsample.intf.fo.basic.FoEntityBase;
+import ${package}.intf.fo.basic.FoEntityBase;
 
 /**
  * 

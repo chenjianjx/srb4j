@@ -29,7 +29,7 @@
 
 	</bean>
 
-	<mybatis:scan base-package="com.github.chenjianjx.srb4jfullsample.impl.biz" />
+	<mybatis:scan base-package="${package}.impl.biz" />
 
 
 </beans>

@@ -1,4 +1,4 @@
-package com.github.chenjianjx.srb4jfullsample.datamigration;
+package ${package}.datamigration;
 
 import org.flywaydb.core.Flyway;
 import org.slf4j.Logger;

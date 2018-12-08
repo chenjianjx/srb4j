@@ -1,9 +1,9 @@
-package com.github.chenjianjx.srb4jfullsample.impl.bo.common;
+package ${package}.impl.bo.common;
 
-import com.github.chenjianjx.srb4jfullsample.impl.biz.staff.StaffUser;
-import com.github.chenjianjx.srb4jfullsample.impl.biz.staff.StaffUserRepo;
-import com.github.chenjianjx.srb4jfullsample.intf.bo.basic.BoConstants;
-import com.github.chenjianjx.srb4jfullsample.intf.bo.basic.BoResponse;
+import ${package}.impl.biz.staff.StaffUser;
+import ${package}.impl.biz.staff.StaffUserRepo;
+import ${package}.intf.bo.basic.BoConstants;
+import ${package}.intf.bo.basic.BoResponse;
 
 import javax.annotation.Resource;
 

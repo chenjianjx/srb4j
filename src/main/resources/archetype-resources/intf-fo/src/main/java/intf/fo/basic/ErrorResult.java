@@ -1,4 +1,4 @@
-package com.github.chenjianjx.srb4jfullsample.intf.fo.basic;
+package ${package}.intf.fo.basic;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 import io.swagger.annotations.ApiModel;
@@ -8,12 +8,12 @@ import org.apache.commons.lang3.builder.ToStringStyle;
 
 import java.util.Map;
 
-import static com.github.chenjianjx.srb4jfullsample.intf.fo.basic.FoConstants.ERROR_DESC_FN;
-import static com.github.chenjianjx.srb4jfullsample.intf.fo.basic.FoConstants.ERROR_DESC_FOR_USER_FN;
-import static com.github.chenjianjx.srb4jfullsample.intf.fo.basic.FoConstants.ERROR_FN;
-import static com.github.chenjianjx.srb4jfullsample.intf.fo.basic.FoConstants.EXCEPTION_ID_FN;
-import static com.github.chenjianjx.srb4jfullsample.intf.fo.basic.FoConstants.FIELD_ERRORS_FOR_USER_FN;
-import static com.github.chenjianjx.srb4jfullsample.intf.fo.basic.FoConstants.NON_FIELD_ERROR_FOR_USER_FN;
+import static ${package}.intf.fo.basic.FoConstants.ERROR_DESC_FN;
+import static ${package}.intf.fo.basic.FoConstants.ERROR_DESC_FOR_USER_FN;
+import static ${package}.intf.fo.basic.FoConstants.ERROR_FN;
+import static ${package}.intf.fo.basic.FoConstants.EXCEPTION_ID_FN;
+import static ${package}.intf.fo.basic.FoConstants.FIELD_ERRORS_FOR_USER_FN;
+import static ${package}.intf.fo.basic.FoConstants.NON_FIELD_ERROR_FOR_USER_FN;
 
 /**
  * the error object for front office interfaces. Its error fields are compatible

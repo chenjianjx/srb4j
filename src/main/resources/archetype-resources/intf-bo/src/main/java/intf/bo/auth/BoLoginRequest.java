@@ -1,4 +1,4 @@
-package com.github.chenjianjx.srb4jfullsample.intf.bo.auth;
+package ${package}.intf.bo.auth;
 
 import javax.validation.constraints.NotNull;
 

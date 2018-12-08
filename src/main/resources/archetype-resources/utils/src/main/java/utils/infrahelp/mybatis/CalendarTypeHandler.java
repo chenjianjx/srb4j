@@ -1,4 +1,4 @@
-package com.github.chenjianjx.srb4jfullsample.utils.infrahelp.mybatis;
+package ${package}.utils.infrahelp.mybatis;
 
 import org.apache.ibatis.type.BaseTypeHandler;
 import org.apache.ibatis.type.JdbcType;

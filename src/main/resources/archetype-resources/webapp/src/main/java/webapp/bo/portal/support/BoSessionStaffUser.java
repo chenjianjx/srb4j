@@ -1,7 +1,7 @@
-package com.github.chenjianjx.srb4jfullsample.webapp.bo.portal.support;
+package ${package}.webapp.bo.portal.support;
 
 
-import com.github.chenjianjx.srb4jfullsample.webapp.bo.portal.staffuser.BoChangePasswordReason;
+import ${package}.webapp.bo.portal.staffuser.BoChangePasswordReason;
 import org.apache.commons.lang3.builder.ToStringBuilder;
 import org.apache.commons.lang3.builder.ToStringStyle;
 

@@ -1,4 +1,4 @@
-package com.github.chenjianjx.srb4jfullsample.impl.itcase.support.aop.applayer;
+package ${package}.impl.itcase.support.aop.applayer;
 
 import org.springframework.stereotype.Service;
 

@@ -1,4 +1,4 @@
-package com.github.chenjianjx.srb4jfullsample.webapp.system;
+package ${package}.webapp.system;
 
 import org.apache.commons.configuration2.CombinedConfiguration;
 import org.apache.commons.configuration2.ConfigurationConverter;

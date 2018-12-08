@@ -1,10 +1,10 @@
-package com.github.chenjianjx.srb4jfullsample.impl.support.aop.applayer;
+package ${package}.impl.support.aop.applayer;
 
 import org.aspectj.lang.JoinPoint;
 import org.aspectj.lang.annotation.Aspect;
 import org.aspectj.lang.annotation.Before;
 import org.springframework.stereotype.Component;
-import com.github.chenjianjx.srb4jfullsample.utils.lang.MyLangUtils;
+import ${package}.utils.lang.MyLangUtils;
 
 /**
  * 

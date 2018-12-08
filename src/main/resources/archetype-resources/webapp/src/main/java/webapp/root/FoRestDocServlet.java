@@ -1,7 +1,7 @@
-package com.github.chenjianjx.srb4jfullsample.webapp.root;
+package ${package}.webapp.root;
 
-import com.github.chenjianjx.srb4jfullsample.webapp.fo.rest.support.FoRestUtils;
-import com.github.chenjianjx.srb4jfullsample.webapp.system.WebAppEnvProp;
+import ${package}.webapp.fo.rest.support.FoRestUtils;
+import ${package}.webapp.system.WebAppEnvProp;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.web.context.WebApplicationContext;

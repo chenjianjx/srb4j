@@ -1,4 +1,4 @@
-package com.github.chenjianjx.srb4jfullsample.impl.biz.common;
+package ${package}.impl.biz.common;
 
 import com.google.common.base.Function;
 import org.apache.commons.lang3.builder.ToStringBuilder;

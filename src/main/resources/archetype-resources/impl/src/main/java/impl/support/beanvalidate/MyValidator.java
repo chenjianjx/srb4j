@@ -1,4 +1,4 @@
-package com.github.chenjianjx.srb4jfullsample.impl.support.beanvalidate;
+package ${package}.impl.support.beanvalidate;
 
 /*
  * JBoss, Home of Professional Open Source

@@ -1,4 +1,4 @@
-package com.github.chenjianjx.srb4jfullsample.intf.bo.staffuser;
+package ${package}.intf.bo.staffuser;
 
 import org.junit.Test;
 

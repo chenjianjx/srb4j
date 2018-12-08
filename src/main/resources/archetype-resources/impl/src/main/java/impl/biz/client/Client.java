@@ -1,4 +1,4 @@
-package com.github.chenjianjx.srb4jfullsample.impl.biz.client;
+package ${package}.impl.biz.client;
 
 import java.util.Arrays;
 import java.util.List;

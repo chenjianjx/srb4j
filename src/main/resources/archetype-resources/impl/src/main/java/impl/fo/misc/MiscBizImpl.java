@@ -1,13 +1,13 @@
-package com.github.chenjianjx.srb4jfullsample.impl.fo.misc;
+package ${package}.impl.fo.misc;
 
 import javax.annotation.Resource;
 
 import org.springframework.stereotype.Service;
-import com.github.chenjianjx.srb4jfullsample.impl.biz.auth.AccessToken;
-import com.github.chenjianjx.srb4jfullsample.impl.biz.auth.AccessTokenRepo;
-import com.github.chenjianjx.srb4jfullsample.utils.lang.MyLangUtils;
-import com.github.chenjianjx.srb4jfullsample.intf.fo.auth.FoAccessToken;
-import com.github.chenjianjx.srb4jfullsample.intf.fo.misc.MiscBiz;
+import ${package}.impl.biz.auth.AccessToken;
+import ${package}.impl.biz.auth.AccessTokenRepo;
+import ${package}.utils.lang.MyLangUtils;
+import ${package}.intf.fo.auth.FoAccessToken;
+import ${package}.intf.fo.misc.MiscBiz;
 
 /**
  * 

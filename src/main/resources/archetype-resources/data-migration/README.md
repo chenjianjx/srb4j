@@ -27,5 +27,5 @@ mvn clean package flyway:migrate  # You won't need "initialize" because "mvn cle
 # To generate a password for a staff user
 
 ````
-mvn clean package exec:java -Dexec.mainClass="com.github.chenjianjx.srb4jfullsample.datagen.StaffUserPasswordGenerator"
+mvn clean package exec:java -Dexec.mainClass="${package}.datagen.StaffUserPasswordGenerator"
 ````

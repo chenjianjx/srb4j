@@ -1,4 +1,4 @@
-package com.github.chenjianjx.srb4jfullsample.webapp.bo.portal.support;
+package ${package}.webapp.bo.portal.support;
 
 /**
  * put all paths in a single class for each locating of code based on an url

@@ -1,5 +1,5 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-<%@ page import="com.github.chenjianjx.srb4jfullsample.webapp.bo.portal.support.BoSessionHelper" %>
+<%@ page import="${package}.webapp.bo.portal.support.BoSessionHelper" %>
 
 <%
     pageContext.setAttribute("alert", BoSessionHelper.removeFlashScopeAlert(session));

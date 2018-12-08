@@ -1,4 +1,4 @@
-package com.github.chenjianjx.srb4jfullsample.impl.support.beanvalidate;
+package ${package}.impl.support.beanvalidate;
 
 import org.apache.commons.lang3.StringUtils;
 import org.apache.commons.lang3.builder.ToStringBuilder;

@@ -1,15 +1,15 @@
-package com.github.chenjianjx.srb4jfullsample.impl.bo.staffuser;
+package ${package}.impl.bo.staffuser;
 
-import com.github.chenjianjx.srb4jfullsample.impl.biz.staff.StaffUser;
-import com.github.chenjianjx.srb4jfullsample.impl.biz.staff.StaffUserRepo;
-import com.github.chenjianjx.srb4jfullsample.impl.bo.common.BoManagerImplBase;
-import com.github.chenjianjx.srb4jfullsample.impl.support.beanvalidate.MyValidator;
-import com.github.chenjianjx.srb4jfullsample.impl.support.beanvalidate.ValidationError;
-import com.github.chenjianjx.srb4jfullsample.intf.bo.basic.BoConstants;
-import com.github.chenjianjx.srb4jfullsample.intf.bo.basic.BoResponse;
-import com.github.chenjianjx.srb4jfullsample.intf.bo.staffuser.BoChangePasswordRequest;
-import com.github.chenjianjx.srb4jfullsample.intf.bo.staffuser.BoStaffUserManager;
-import com.github.chenjianjx.srb4jfullsample.utils.lang.MyCodecUtils;
+import ${package}.impl.biz.staff.StaffUser;
+import ${package}.impl.biz.staff.StaffUserRepo;
+import ${package}.impl.bo.common.BoManagerImplBase;
+import ${package}.impl.support.beanvalidate.MyValidator;
+import ${package}.impl.support.beanvalidate.ValidationError;
+import ${package}.intf.bo.basic.BoConstants;
+import ${package}.intf.bo.basic.BoResponse;
+import ${package}.intf.bo.staffuser.BoChangePasswordRequest;
+import ${package}.intf.bo.staffuser.BoStaffUserManager;
+import ${package}.utils.lang.MyCodecUtils;
 import com.google.common.collect.ImmutableMap;
 import org.springframework.stereotype.Service;
 

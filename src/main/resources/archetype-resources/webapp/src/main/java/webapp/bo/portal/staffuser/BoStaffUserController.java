@@ -1,16 +1,16 @@
-package com.github.chenjianjx.srb4jfullsample.webapp.bo.portal.staffuser;
+package ${package}.webapp.bo.portal.staffuser;
 
 
-import com.github.chenjianjx.srb4jfullsample.intf.bo.basic.BoConstants;
-import com.github.chenjianjx.srb4jfullsample.intf.bo.basic.BoResponse;
-import com.github.chenjianjx.srb4jfullsample.intf.bo.staffuser.BoChangePasswordRequest;
-import com.github.chenjianjx.srb4jfullsample.intf.bo.staffuser.BoStaffUserManager;
-import com.github.chenjianjx.srb4jfullsample.intf.fo.basic.ErrorResult;
-import com.github.chenjianjx.srb4jfullsample.webapp.bo.portal.support.BoMvcModel;
-import com.github.chenjianjx.srb4jfullsample.webapp.bo.portal.support.BoPortalAlert.BoAlertType;
-import com.github.chenjianjx.srb4jfullsample.webapp.bo.portal.support.BoSessionHelper;
-import com.github.chenjianjx.srb4jfullsample.webapp.bo.portal.support.BoSessionStaffUser;
-import com.github.chenjianjx.srb4jfullsample.webapp.bo.portal.support.BoUrlHelper;
+import ${package}.intf.bo.basic.BoConstants;
+import ${package}.intf.bo.basic.BoResponse;
+import ${package}.intf.bo.staffuser.BoChangePasswordRequest;
+import ${package}.intf.bo.staffuser.BoStaffUserManager;
+import ${package}.intf.fo.basic.ErrorResult;
+import ${package}.webapp.bo.portal.support.BoMvcModel;
+import ${package}.webapp.bo.portal.support.BoPortalAlert.BoAlertType;
+import ${package}.webapp.bo.portal.support.BoSessionHelper;
+import ${package}.webapp.bo.portal.support.BoSessionStaffUser;
+import ${package}.webapp.bo.portal.support.BoUrlHelper;
 import org.apache.commons.lang3.StringUtils;
 import org.glassfish.jersey.server.mvc.Viewable;
 import org.springframework.stereotype.Controller;
@@ -31,9 +31,9 @@ import java.net.URISyntaxException;
 import java.util.LinkedHashMap;
 import java.util.Map;
 
-import static com.github.chenjianjx.srb4jfullsample.webapp.bo.portal.support.BoResourcePaths.CHANGE_PASSWORD;
-import static com.github.chenjianjx.srb4jfullsample.webapp.bo.portal.support.BoResourcePaths.DASHBOARD;
-import static com.github.chenjianjx.srb4jfullsample.webapp.bo.portal.support.BoSessionHelper.getSessionStaffUserId;
+import static ${package}.webapp.bo.portal.support.BoResourcePaths.CHANGE_PASSWORD;
+import static ${package}.webapp.bo.portal.support.BoResourcePaths.DASHBOARD;
+import static ${package}.webapp.bo.portal.support.BoSessionHelper.getSessionStaffUserId;
 
 @Path("/")
 @Controller

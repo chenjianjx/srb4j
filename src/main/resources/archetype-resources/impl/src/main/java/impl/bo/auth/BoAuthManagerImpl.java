@@ -1,15 +1,15 @@
-package com.github.chenjianjx.srb4jfullsample.impl.bo.auth;
+package ${package}.impl.bo.auth;
 
-import com.github.chenjianjx.srb4jfullsample.impl.biz.staff.StaffUser;
-import com.github.chenjianjx.srb4jfullsample.impl.biz.staff.StaffUserRepo;
-import com.github.chenjianjx.srb4jfullsample.impl.support.beanvalidate.MyValidator;
-import com.github.chenjianjx.srb4jfullsample.impl.support.beanvalidate.ValidationError;
-import com.github.chenjianjx.srb4jfullsample.intf.bo.auth.BoAuthManager;
-import com.github.chenjianjx.srb4jfullsample.intf.bo.auth.BoLoginRequest;
-import com.github.chenjianjx.srb4jfullsample.intf.bo.auth.BoLoginResult;
-import com.github.chenjianjx.srb4jfullsample.intf.bo.basic.BoConstants;
-import com.github.chenjianjx.srb4jfullsample.intf.bo.basic.BoResponse;
-import com.github.chenjianjx.srb4jfullsample.utils.lang.MyCodecUtils;
+import ${package}.impl.biz.staff.StaffUser;
+import ${package}.impl.biz.staff.StaffUserRepo;
+import ${package}.impl.support.beanvalidate.MyValidator;
+import ${package}.impl.support.beanvalidate.ValidationError;
+import ${package}.intf.bo.auth.BoAuthManager;
+import ${package}.intf.bo.auth.BoLoginRequest;
+import ${package}.intf.bo.auth.BoLoginResult;
+import ${package}.intf.bo.basic.BoConstants;
+import ${package}.intf.bo.basic.BoResponse;
+import ${package}.utils.lang.MyCodecUtils;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;

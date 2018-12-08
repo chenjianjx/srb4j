@@ -1,8 +1,8 @@
-package com.github.chenjianjx.srb4jfullsample.impl.biz.auth;
+package ${package}.impl.biz.auth;
 
 import java.util.Calendar;
 
-import com.github.chenjianjx.srb4jfullsample.impl.biz.common.EntityBase;
+import ${package}.impl.biz.common.EntityBase;
 
 /**
  * 

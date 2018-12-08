@@ -1,4 +1,4 @@
-package com.github.chenjianjx.srb4jfullsample.webapp.infrahelper.rest.spring;
+package ${package}.webapp.infrahelper.rest.spring;
 
 import org.springframework.beans.factory.BeanCreationException;
 import org.springframework.web.context.ContextLoaderListener;

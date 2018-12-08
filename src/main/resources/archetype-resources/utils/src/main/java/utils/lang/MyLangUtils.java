@@ -1,4 +1,4 @@
-package com.github.chenjianjx.srb4jfullsample.utils.lang;
+package ${package}.utils.lang;
 
 import org.apache.commons.beanutils.PropertyUtils;
 import org.apache.commons.lang3.StringUtils;

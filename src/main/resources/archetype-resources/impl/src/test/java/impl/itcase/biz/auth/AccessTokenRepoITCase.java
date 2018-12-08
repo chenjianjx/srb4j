@@ -1,9 +1,9 @@
-package com.github.chenjianjx.srb4jfullsample.impl.itcase.biz.auth;
+package ${package}.impl.itcase.biz.auth;
 
-import com.github.chenjianjx.srb4jfullsample.impl.biz.auth.AccessToken;
-import com.github.chenjianjx.srb4jfullsample.impl.biz.auth.AccessTokenRepo;
-import com.github.chenjianjx.srb4jfullsample.impl.itcase.BaseITCase;
-import com.github.chenjianjx.srb4jfullsample.utils.lang.MyLangUtils;
+import ${package}.impl.biz.auth.AccessToken;
+import ${package}.impl.biz.auth.AccessTokenRepo;
+import ${package}.impl.itcase.BaseITCase;
+import ${package}.utils.lang.MyLangUtils;
 import org.apache.commons.lang3.RandomStringUtils;
 import org.junit.Assert;
 import org.junit.Test;

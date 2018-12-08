@@ -1,7 +1,7 @@
-package com.github.chenjianjx.srb4jfullsample.webapp.bo.portal.support;
+package ${package}.webapp.bo.portal.support;
 
 import com.fasterxml.jackson.jaxrs.json.JacksonJaxbJsonProvider;
-import com.github.chenjianjx.srb4jfullsample.webapp.bo.portal.BpPackageAnchor;
+import ${package}.webapp.bo.portal.BpPackageAnchor;
 import org.glassfish.jersey.server.ResourceConfig;
 import org.glassfish.jersey.server.mvc.jsp.JspMvcFeature;
 

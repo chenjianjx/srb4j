@@ -1,8 +1,8 @@
-package com.github.chenjianjx.srb4jfullsample.impl.itcase.util.infrahelp.beanvalidae;
+package ${package}.impl.itcase.util.infrahelp.beanvalidae;
 
-import com.github.chenjianjx.srb4jfullsample.impl.itcase.BaseITCase;
-import com.github.chenjianjx.srb4jfullsample.impl.support.beanvalidate.MyValidator;
-import com.github.chenjianjx.srb4jfullsample.impl.support.beanvalidate.ValidationError;
+import ${package}.impl.itcase.BaseITCase;
+import ${package}.impl.support.beanvalidate.MyValidator;
+import ${package}.impl.support.beanvalidate.ValidationError;
 import org.junit.Assert;
 import org.junit.Test;
 import org.junit.runner.RunWith;

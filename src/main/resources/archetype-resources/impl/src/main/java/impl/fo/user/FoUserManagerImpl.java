@@ -1,14 +1,14 @@
-package com.github.chenjianjx.srb4jfullsample.impl.fo.user;
+package ${package}.impl.fo.user;
 
-import com.github.chenjianjx.srb4jfullsample.impl.biz.user.*;
-import com.github.chenjianjx.srb4jfullsample.impl.fo.common.FoManagerImplBase;
-import com.github.chenjianjx.srb4jfullsample.impl.support.beanvalidate.MyValidator;
-import com.github.chenjianjx.srb4jfullsample.impl.support.beanvalidate.ValidationError;
-import com.github.chenjianjx.srb4jfullsample.intf.fo.basic.FoConstants;
-import com.github.chenjianjx.srb4jfullsample.intf.fo.basic.FoResponse;
-import com.github.chenjianjx.srb4jfullsample.intf.fo.user.*;
-import com.github.chenjianjx.srb4jfullsample.utils.lang.MyCodecUtils;
-import com.github.chenjianjx.srb4jfullsample.utils.lang.MyLangUtils;
+import ${package}.impl.biz.user.*;
+import ${package}.impl.fo.common.FoManagerImplBase;
+import ${package}.impl.support.beanvalidate.MyValidator;
+import ${package}.impl.support.beanvalidate.ValidationError;
+import ${package}.intf.fo.basic.FoConstants;
+import ${package}.intf.fo.basic.FoResponse;
+import ${package}.intf.fo.user.*;
+import ${package}.utils.lang.MyCodecUtils;
+import ${package}.utils.lang.MyLangUtils;
 import org.apache.commons.lang3.StringUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -16,9 +16,9 @@ import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
 
-import static com.github.chenjianjx.srb4jfullsample.impl.common.ImplHelper.generateRandomDigitCode;
-import static com.github.chenjianjx.srb4jfullsample.impl.common.ImplHelper.pleaseSocialLoginTip;
-import static com.github.chenjianjx.srb4jfullsample.intf.fo.basic.FoConstants.NULL_REQUEST_BEAN_TIP;
+import static ${package}.impl.common.ImplHelper.generateRandomDigitCode;
+import static ${package}.impl.common.ImplHelper.pleaseSocialLoginTip;
+import static ${package}.intf.fo.basic.FoConstants.NULL_REQUEST_BEAN_TIP;
 
 /**
  * @author chenjianjx@gmail.com

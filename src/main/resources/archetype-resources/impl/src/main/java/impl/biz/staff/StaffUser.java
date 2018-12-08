@@ -1,6 +1,6 @@
-package com.github.chenjianjx.srb4jfullsample.impl.biz.staff;
+package ${package}.impl.biz.staff;
 
-import com.github.chenjianjx.srb4jfullsample.impl.biz.common.EntityBase;
+import ${package}.impl.biz.common.EntityBase;
 
 import java.io.Serializable;
 import java.util.Calendar;

@@ -1,4 +1,4 @@
-package com.github.chenjianjx.srb4jfullsample.webapp.fo.rest;
+package ${package}.webapp.fo.rest;
 
 /**
  * just a hook to locate the package

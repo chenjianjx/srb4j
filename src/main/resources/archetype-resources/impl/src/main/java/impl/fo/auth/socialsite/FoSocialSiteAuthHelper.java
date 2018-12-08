@@ -1,4 +1,4 @@
-package com.github.chenjianjx.srb4jfullsample.impl.fo.auth.socialsite;
+package ${package}.impl.fo.auth.socialsite;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -8,10 +8,10 @@ import javax.annotation.Resource;
 
 import org.springframework.stereotype.Service;
 
-import com.github.chenjianjx.srb4jfullsample.impl.biz.user.User;
-import com.github.chenjianjx.srb4jfullsample.utils.lang.MyDuplet;
-import com.github.chenjianjx.srb4jfullsample.intf.fo.auth.FoAuthTokenResult;
-import com.github.chenjianjx.srb4jfullsample.intf.fo.basic.FoResponse;
+import ${package}.impl.biz.user.User;
+import ${package}.utils.lang.MyDuplet;
+import ${package}.intf.fo.auth.FoAuthTokenResult;
+import ${package}.intf.fo.basic.FoResponse;
 
 /**
  * To get something from social site's token or auth code

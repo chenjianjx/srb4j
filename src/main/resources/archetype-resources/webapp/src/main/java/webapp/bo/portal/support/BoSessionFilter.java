@@ -1,4 +1,4 @@
-package com.github.chenjianjx.srb4jfullsample.webapp.bo.portal.support;
+package ${package}.webapp.bo.portal.support;
 
 
 import javax.servlet.Filter;
@@ -13,9 +13,9 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
-import static com.github.chenjianjx.srb4jfullsample.webapp.bo.portal.support.BoResourcePaths.CHANGE_PASSWORD;
-import static com.github.chenjianjx.srb4jfullsample.webapp.bo.portal.support.BoResourcePaths.LOGIN;
-import static com.github.chenjianjx.srb4jfullsample.webapp.bo.portal.support.BoResourcePaths.LOGOUT;
+import static ${package}.webapp.bo.portal.support.BoResourcePaths.CHANGE_PASSWORD;
+import static ${package}.webapp.bo.portal.support.BoResourcePaths.LOGIN;
+import static ${package}.webapp.bo.portal.support.BoResourcePaths.LOGOUT;
 
 public class BoSessionFilter implements Filter {
 

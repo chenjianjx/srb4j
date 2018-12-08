@@ -1,4 +1,4 @@
-package com.github.chenjianjx.srb4jfullsample.utils.lang;
+package ${package}.utils.lang;
 
 
 import org.junit.Test;

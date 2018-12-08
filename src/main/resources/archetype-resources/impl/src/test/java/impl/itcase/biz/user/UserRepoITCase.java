@@ -1,8 +1,8 @@
-package com.github.chenjianjx.srb4jfullsample.impl.itcase.biz.user;
+package ${package}.impl.itcase.biz.user;
 
-import com.github.chenjianjx.srb4jfullsample.impl.biz.user.User;
-import com.github.chenjianjx.srb4jfullsample.impl.biz.user.UserRepo;
-import com.github.chenjianjx.srb4jfullsample.impl.itcase.BaseITCase;
+import ${package}.impl.biz.user.User;
+import ${package}.impl.biz.user.UserRepo;
+import ${package}.impl.itcase.BaseITCase;
 import org.junit.Assert;
 import org.junit.Test;
 import org.junit.runner.RunWith;

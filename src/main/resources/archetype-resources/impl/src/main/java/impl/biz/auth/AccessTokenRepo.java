@@ -1,4 +1,4 @@
-package com.github.chenjianjx.srb4jfullsample.impl.biz.auth;
+package ${package}.impl.biz.auth;
 
 import java.sql.Timestamp;
 

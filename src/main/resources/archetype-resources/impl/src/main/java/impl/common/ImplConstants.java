@@ -1,4 +1,4 @@
-package com.github.chenjianjx.srb4jfullsample.impl.common;
+package ${package}.impl.common;
 
 
 /**

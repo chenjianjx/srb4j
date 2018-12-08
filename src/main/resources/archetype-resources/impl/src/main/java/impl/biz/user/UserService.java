@@ -1,10 +1,10 @@
-package com.github.chenjianjx.srb4jfullsample.impl.biz.user;
+package ${package}.impl.biz.user;
 
-import com.github.chenjianjx.srb4jfullsample.impl.support.config.AppProperties;
-import com.github.chenjianjx.srb4jfullsample.impl.support.mail.MailEngine;
-import com.github.chenjianjx.srb4jfullsample.intf.fo.basic.FoConstants;
-import com.github.chenjianjx.srb4jfullsample.utils.lang.MyCodecUtils;
-import com.github.chenjianjx.srb4jfullsample.utils.lang.MyLangUtils;
+import ${package}.impl.support.config.AppProperties;
+import ${package}.impl.support.mail.MailEngine;
+import ${package}.intf.fo.basic.FoConstants;
+import ${package}.utils.lang.MyCodecUtils;
+import ${package}.utils.lang.MyLangUtils;
 import org.springframework.mail.SimpleMailMessage;
 import org.springframework.stereotype.Service;
 
@@ -13,8 +13,8 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.UUID;
 
-import static com.github.chenjianjx.srb4jfullsample.intf.fo.basic.FoConstants.FORGET_PASSWORD_VERIFY_CODE_LIFESPAN;
-import static com.github.chenjianjx.srb4jfullsample.utils.lang.MyLangUtils.toUtf8Bytes;
+import static ${package}.intf.fo.basic.FoConstants.FORGET_PASSWORD_VERIFY_CODE_LIFESPAN;
+import static ${package}.utils.lang.MyLangUtils.toUtf8Bytes;
 
 /**
  * Created by chenjianjx@gmail.com on 4/11/18.

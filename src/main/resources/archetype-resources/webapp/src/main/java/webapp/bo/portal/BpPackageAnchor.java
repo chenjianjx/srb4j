@@ -1,4 +1,4 @@
-package com.github.chenjianjx.srb4jfullsample.webapp.bo.portal;
+package ${package}.webapp.bo.portal;
 
 /**
  * just a hook to locate the package

@@ -1,16 +1,16 @@
-package com.github.chenjianjx.srb4jfullsample.webapp.fo.rest.user;
+package ${package}.webapp.fo.rest.user;
 
-import com.github.chenjianjx.srb4jfullsample.intf.fo.basic.ErrorResult;
-import com.github.chenjianjx.srb4jfullsample.intf.fo.basic.FoResponse;
-import com.github.chenjianjx.srb4jfullsample.intf.fo.user.FoChangePasswordRequest;
-import com.github.chenjianjx.srb4jfullsample.intf.fo.user.FoGenForgetPasswordVerifyCodeRequest;
-import com.github.chenjianjx.srb4jfullsample.intf.fo.user.FoResetPasswordRequest;
-import com.github.chenjianjx.srb4jfullsample.intf.fo.user.FoUser;
-import com.github.chenjianjx.srb4jfullsample.intf.fo.user.FoUserManager;
-import com.github.chenjianjx.srb4jfullsample.intf.fo.user.FoValidateForgetPasswordVerifyCodeRequest;
-import com.github.chenjianjx.srb4jfullsample.webapp.fo.rest.support.FoResourceBase;
-import com.github.chenjianjx.srb4jfullsample.webapp.fo.rest.support.FoRestUtils;
-import com.github.chenjianjx.srb4jfullsample.webapp.system.WebAppEnvProp;
+import ${package}.intf.fo.basic.ErrorResult;
+import ${package}.intf.fo.basic.FoResponse;
+import ${package}.intf.fo.user.FoChangePasswordRequest;
+import ${package}.intf.fo.user.FoGenForgetPasswordVerifyCodeRequest;
+import ${package}.intf.fo.user.FoResetPasswordRequest;
+import ${package}.intf.fo.user.FoUser;
+import ${package}.intf.fo.user.FoUserManager;
+import ${package}.intf.fo.user.FoValidateForgetPasswordVerifyCodeRequest;
+import ${package}.webapp.fo.rest.support.FoResourceBase;
+import ${package}.webapp.fo.rest.support.FoRestUtils;
+import ${package}.webapp.system.WebAppEnvProp;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiImplicitParam;
 import io.swagger.annotations.ApiImplicitParams;
@@ -32,14 +32,14 @@ import javax.ws.rs.core.Context;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 
-import static com.github.chenjianjx.srb4jfullsample.intf.fo.basic.FoConstants.ACCESS_TOKEN_HEADER_DEFAULT;
-import static com.github.chenjianjx.srb4jfullsample.intf.fo.basic.FoConstants.ACCESS_TOKEN_HEADER_KEY;
-import static com.github.chenjianjx.srb4jfullsample.intf.fo.basic.FoConstants.BIZ_ERR_TIP;
-import static com.github.chenjianjx.srb4jfullsample.intf.fo.basic.FoConstants.EMAIL_VERIFICATION_DIGEST_PARAM_NAME;
-import static com.github.chenjianjx.srb4jfullsample.intf.fo.basic.FoConstants.FO_SC_BIZ_ERROR;
-import static com.github.chenjianjx.srb4jfullsample.intf.fo.basic.FoConstants.OAUTH2_ACCESS_TOKEN_NAME_TIP;
-import static com.github.chenjianjx.srb4jfullsample.intf.fo.basic.FoConstants.OK_TIP;
-import static com.github.chenjianjx.srb4jfullsample.intf.fo.basic.FoConstants.PATH_EMAIL_VERIFICATION_PROCESS_VERIFY;
+import static ${package}.intf.fo.basic.FoConstants.ACCESS_TOKEN_HEADER_DEFAULT;
+import static ${package}.intf.fo.basic.FoConstants.ACCESS_TOKEN_HEADER_KEY;
+import static ${package}.intf.fo.basic.FoConstants.BIZ_ERR_TIP;
+import static ${package}.intf.fo.basic.FoConstants.EMAIL_VERIFICATION_DIGEST_PARAM_NAME;
+import static ${package}.intf.fo.basic.FoConstants.FO_SC_BIZ_ERROR;
+import static ${package}.intf.fo.basic.FoConstants.OAUTH2_ACCESS_TOKEN_NAME_TIP;
+import static ${package}.intf.fo.basic.FoConstants.OK_TIP;
+import static ${package}.intf.fo.basic.FoConstants.PATH_EMAIL_VERIFICATION_PROCESS_VERIFY;
 import static javax.servlet.http.HttpServletResponse.SC_OK;
 
 /**

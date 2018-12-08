@@ -4,19 +4,19 @@
            http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.2.xsd">
 
 
-    <context:component-scan base-package="com.github.chenjianjx.srb4jfullsample.impl"/>
+    <context:component-scan base-package="${package}.impl"/>
 
 
     <bean id="dataSource" destroy-method="close"
           class="org.apache.commons.dbcp.BasicDataSource">
         <property name="driverClassName" value="com.mysql.jdbc.Driver"/>
-        <property name="url" value="#{T(com.github.chenjianjx.srb4jfullsample.impl.itcase.BaseITCase).MYSQL_JDBC_URL}"/>
+        <property name="url" value="#{T(${package}.impl.itcase.BaseITCase).MYSQL_JDBC_URL}"/>
         <property name="username" value="root"/>
         <property name="password"
-                  value="#{T(com.github.chenjianjx.srb4jfullsample.impl.itcase.BaseITCase).MYSQL_ROOT_PASSWORD}"/>
+                  value="#{T(${package}.impl.itcase.BaseITCase).MYSQL_ROOT_PASSWORD}"/>
     </bean>
 
-    <bean id="mailSender" class="com.github.chenjianjx.srb4jfullsample.impl.itcase.support.mail.DummyMailSender"/>
+    <bean id="mailSender" class="${package}.impl.itcase.support.mail.DummyMailSender"/>
 
 
     <import resource="classpath*:spring/spring-impl.xml"/>

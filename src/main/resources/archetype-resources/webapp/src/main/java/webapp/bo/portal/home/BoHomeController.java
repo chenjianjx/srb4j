@@ -1,7 +1,7 @@
-package com.github.chenjianjx.srb4jfullsample.webapp.bo.portal.home;
+package ${package}.webapp.bo.portal.home;
 
-import com.github.chenjianjx.srb4jfullsample.webapp.bo.portal.support.BoMvcModel;
-import com.github.chenjianjx.srb4jfullsample.webapp.bo.portal.support.BoResourcePaths;
+import ${package}.webapp.bo.portal.support.BoMvcModel;
+import ${package}.webapp.bo.portal.support.BoResourcePaths;
 import org.glassfish.jersey.server.mvc.Viewable;
 import org.springframework.stereotype.Controller;
 

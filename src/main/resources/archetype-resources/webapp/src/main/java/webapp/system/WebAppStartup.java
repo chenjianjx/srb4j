@@ -15,15 +15,15 @@
 //  ========================================================================
 //
 
-package com.github.chenjianjx.srb4jfullsample.webapp.system;
+package ${package}.webapp.system;
 
-import com.github.chenjianjx.srb4jfullsample.datamigration.MigrationRunner;
-import com.github.chenjianjx.srb4jfullsample.webapp.bo.portal.support.BoPortalApplication;
-import com.github.chenjianjx.srb4jfullsample.webapp.bo.portal.support.BoSessionFilter;
-import com.github.chenjianjx.srb4jfullsample.webapp.fo.rest.support.FoRestApplication;
-import com.github.chenjianjx.srb4jfullsample.webapp.fo.rest.support.FoSwaggerJaxrsConfig;
-import com.github.chenjianjx.srb4jfullsample.webapp.infrahelper.rest.spring.ExitOnInitializationErrorContextLoaderListener;
-import com.github.chenjianjx.srb4jfullsample.webapp.root.FoRestDocServlet;
+import ${package}.datamigration.MigrationRunner;
+import ${package}.webapp.bo.portal.support.BoPortalApplication;
+import ${package}.webapp.bo.portal.support.BoSessionFilter;
+import ${package}.webapp.fo.rest.support.FoRestApplication;
+import ${package}.webapp.fo.rest.support.FoSwaggerJaxrsConfig;
+import ${package}.webapp.infrahelper.rest.spring.ExitOnInitializationErrorContextLoaderListener;
+import ${package}.webapp.root.FoRestDocServlet;
 import com.opensymphony.sitemesh.webapp.SiteMeshFilter;
 import org.apache.tomcat.util.scan.StandardJarScanner;
 import org.eclipse.jetty.apache.jsp.JettyJasperInitializer;

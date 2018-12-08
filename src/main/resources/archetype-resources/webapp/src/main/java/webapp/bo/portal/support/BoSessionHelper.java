@@ -1,7 +1,7 @@
-package com.github.chenjianjx.srb4jfullsample.webapp.bo.portal.support;
+package ${package}.webapp.bo.portal.support;
 
 
-import com.github.chenjianjx.srb4jfullsample.webapp.bo.portal.support.BoPortalAlert.BoAlertType;
+import ${package}.webapp.bo.portal.support.BoPortalAlert.BoAlertType;
 
 import javax.servlet.http.HttpSession;
 

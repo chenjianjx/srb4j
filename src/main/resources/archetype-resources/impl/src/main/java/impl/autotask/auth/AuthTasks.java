@@ -1,4 +1,4 @@
-package com.github.chenjianjx.srb4jfullsample.impl.autotask.auth;
+package ${package}.impl.autotask.auth;
 
 import static org.apache.commons.lang3.time.DateFormatUtils.format;
 
@@ -11,9 +11,9 @@ import javax.annotation.Resource;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Component;
-import com.github.chenjianjx.srb4jfullsample.impl.biz.auth.AccessTokenRepo;
-import com.github.chenjianjx.srb4jfullsample.impl.common.ImplConstants;
-import com.github.chenjianjx.srb4jfullsample.utils.lang.MyLangUtils;
+import ${package}.impl.biz.auth.AccessTokenRepo;
+import ${package}.impl.common.ImplConstants;
+import ${package}.utils.lang.MyLangUtils;
 
 /**
  * auto tasks for auth module

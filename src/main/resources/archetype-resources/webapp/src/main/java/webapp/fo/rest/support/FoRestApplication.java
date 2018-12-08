@@ -1,7 +1,7 @@
-package com.github.chenjianjx.srb4jfullsample.webapp.fo.rest.support;
+package ${package}.webapp.fo.rest.support;
 
 import com.fasterxml.jackson.jaxrs.json.JacksonJaxbJsonProvider;
-import com.github.chenjianjx.srb4jfullsample.webapp.fo.rest.FrPackageAnchor;
+import ${package}.webapp.fo.rest.FrPackageAnchor;
 import org.glassfish.jersey.server.ResourceConfig;
 
 /**

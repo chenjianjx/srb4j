@@ -1,11 +1,11 @@
-package com.github.chenjianjx.srb4jfullsample.impl.biz.auth;
+package ${package}.impl.biz.auth;
 
-import com.github.chenjianjx.srb4jfullsample.impl.biz.user.User;
-import com.github.chenjianjx.srb4jfullsample.impl.support.config.AppProperties;
-import com.github.chenjianjx.srb4jfullsample.impl.support.mail.MailEngine;
-import com.github.chenjianjx.srb4jfullsample.utils.lang.MyCodecUtils;
-import com.github.chenjianjx.srb4jfullsample.utils.lang.MyLangUtils;
-import com.github.chenjianjx.srb4jfullsample.intf.fo.basic.FoConstants;
+import ${package}.impl.biz.user.User;
+import ${package}.impl.support.config.AppProperties;
+import ${package}.impl.support.mail.MailEngine;
+import ${package}.utils.lang.MyCodecUtils;
+import ${package}.utils.lang.MyLangUtils;
+import ${package}.intf.fo.basic.FoConstants;
 import org.springframework.mail.SimpleMailMessage;
 import org.springframework.stereotype.Service;
 
@@ -16,8 +16,8 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.UUID;
 
-import static com.github.chenjianjx.srb4jfullsample.utils.lang.MyLangUtils.toUtf8Bytes;
-import static com.github.chenjianjx.srb4jfullsample.intf.fo.basic.FoConstants.RANDOM_LOGIN_CODE_LIFESPAN;
+import static ${package}.utils.lang.MyLangUtils.toUtf8Bytes;
+import static ${package}.intf.fo.basic.FoConstants.RANDOM_LOGIN_CODE_LIFESPAN;
 
 /**
  * @author chenjianjx@gmail.com

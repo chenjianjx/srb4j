@@ -1,4 +1,4 @@
-package com.github.chenjianjx.srb4jfullsample.webapp.infrahelper.rest;
+package ${package}.webapp.infrahelper.rest;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletRequestWrapper;

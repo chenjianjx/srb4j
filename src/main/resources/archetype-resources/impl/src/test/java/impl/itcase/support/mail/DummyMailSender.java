@@ -1,4 +1,4 @@
-package com.github.chenjianjx.srb4jfullsample.impl.itcase.support.mail;
+package ${package}.impl.itcase.support.mail;
 
 
 import org.slf4j.Logger;

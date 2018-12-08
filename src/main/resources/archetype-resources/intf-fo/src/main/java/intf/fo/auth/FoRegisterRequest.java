@@ -1,4 +1,4 @@
-package com.github.chenjianjx.srb4jfullsample.intf.fo.auth;
+package ${package}.intf.fo.auth;
 
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
@@ -8,7 +8,7 @@ import javax.validation.constraints.Pattern;
 
 import org.apache.commons.lang3.builder.ToStringBuilder;
 import org.apache.commons.lang3.builder.ToStringStyle;
-import com.github.chenjianjx.srb4jfullsample.intf.fo.basic.FoConstants;
+import ${package}.intf.fo.basic.FoConstants;
 
 /**
  * 

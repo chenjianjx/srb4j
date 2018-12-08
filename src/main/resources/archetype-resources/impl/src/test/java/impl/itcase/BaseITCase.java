@@ -1,6 +1,6 @@
-package com.github.chenjianjx.srb4jfullsample.impl.itcase;
+package ${package}.impl.itcase;
 
-import com.github.chenjianjx.srb4jfullsample.datamigration.MigrationRunner;
+import ${package}.datamigration.MigrationRunner;
 import com.spotify.docker.client.DefaultDockerClient;
 import com.spotify.docker.client.DockerClient;
 import com.spotify.docker.client.DockerClient.ListContainersParam;

@@ -1,6 +1,6 @@
-package com.github.chenjianjx.srb4jfullsample.intf.bo.basic;
+package ${package}.intf.bo.basic;
 
-import com.github.chenjianjx.srb4jfullsample.intf.fo.basic.FoConstants;
+import ${package}.intf.fo.basic.FoConstants;
 
 /**
  * Since the error codes are similar, why not just inherit the front side of class?
