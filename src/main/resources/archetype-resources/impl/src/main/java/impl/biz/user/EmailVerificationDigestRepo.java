@@ -1,3 +1,4 @@
+#set($hashtag = '#')
 package ${package}.impl.biz.user;
 
 import org.apache.ibatis.annotations.Delete;
@@ -24,19 +25,19 @@ public interface EmailVerificationDigestRepo {
 	 * @param digest
 	 */
 	@Insert("insert into EmailVerificationDigest(digestStr, userId, expiresAt, createdBy) "
-			+ "values (#{digestStr},  #{userId}, #{expiresAt}, #{createdBy})")
+			+ "values (${hashtag}{digestStr},  ${hashtag}{userId}, ${hashtag}{expiresAt}, ${hashtag}{createdBy})")
 	@SelectKey(statement = "select last_insert_id() as id", keyProperty = "id", keyColumn = "id", before = false, resultType = long.class)
 	long saveNewDigest(EmailVerificationDigest digest);
 
-	@Select("select * from EmailVerificationDigest where  userId = #{userId}")
+	@Select("select * from EmailVerificationDigest where  userId = ${hashtag}{userId}")
 	EmailVerificationDigest getByUserId(long userId);
 
-	@Delete("delete from EmailVerificationDigest where  userId = #{userId}")
+	@Delete("delete from EmailVerificationDigest where  userId = ${hashtag}{userId}")
 	void deleteByUserId(long userId);
 
-	@Delete("delete from EmailVerificationDigest where  expiresAt < #{timestamp}")
+	@Delete("delete from EmailVerificationDigest where  expiresAt < ${hashtag}{timestamp}")
 	int deleteDigestsExpiresBefore(Timestamp timestamp);
 
-	@Select("select * from EmailVerificationDigest where  digestStr = #{digestStr}")
+	@Select("select * from EmailVerificationDigest where  digestStr = ${hashtag}{digestStr}")
 	EmailVerificationDigest getByDigestStr(String digestStr);
 }

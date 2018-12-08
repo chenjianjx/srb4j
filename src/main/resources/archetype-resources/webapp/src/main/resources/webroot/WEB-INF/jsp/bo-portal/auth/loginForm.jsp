@@ -28,7 +28,7 @@
 
     <div class="container">
       <div class="card card-login mx-auto mt-5">
-        <div class="card-header">Srb4jfullsample Back Office</div>
+        <div class="card-header">${artifactIdCamelCase} Back Office</div>
         <div class="card-body">
 
           <form action="/bo/portal/login" method="post" class="needs-validation" novalidate>

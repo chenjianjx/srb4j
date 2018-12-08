@@ -1,3 +1,4 @@
+#set($hashtag = '#')
 package ${package}.impl.biz.auth;
 
 import java.sql.Timestamp;
@@ -24,17 +25,17 @@ public interface RandomLoginCodeRepo {
 	 * @param code
 	 */
 	@Insert("insert into RandomLoginCode(codeStr, userId, expiresAt, createdBy) "
-			+ "values (#{codeStr},  #{userId}, #{expiresAt}, #{createdBy})")
+			+ "values (${hashtag}{codeStr},  ${hashtag}{userId}, ${hashtag}{expiresAt}, ${hashtag}{createdBy})")
 	@SelectKey(statement = "select last_insert_id() as id", keyProperty = "id", keyColumn = "id", before = false, resultType = long.class)
 	public long saveNewCode(RandomLoginCode code);
 
-	@Select("select * from RandomLoginCode where  userId = #{userId}")
+	@Select("select * from RandomLoginCode where  userId = ${hashtag}{userId}")
 	public RandomLoginCode getByUserId(long userId);
 
-	@Delete("delete from RandomLoginCode where  userId = #{userId}")
+	@Delete("delete from RandomLoginCode where  userId = ${hashtag}{userId}")
 	public void deleteByUserId(long userId);
 
-	@Delete("delete from RandomLoginCode where  expiresAt < #{timestamp}")
+	@Delete("delete from RandomLoginCode where  expiresAt < ${hashtag}{timestamp}")
 	public int deleteCodesExpiresBefore(Timestamp timestamp);
 
 }

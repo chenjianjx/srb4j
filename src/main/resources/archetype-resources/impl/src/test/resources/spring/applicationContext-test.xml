@@ -1,3 +1,4 @@
+#set($hashtag = '#')
 <beans xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
        xmlns="http://www.springframework.org/schema/beans" xmlns:context="http://www.springframework.org/schema/context"
        xsi:schemaLocation="http://www.springframework.org/schema/beans   http://www.springframework.org/schema/beans/spring-beans-4.2.xsd
@@ -10,10 +11,10 @@
     <bean id="dataSource" destroy-method="close"
           class="org.apache.commons.dbcp.BasicDataSource">
         <property name="driverClassName" value="com.mysql.jdbc.Driver"/>
-        <property name="url" value="#{T(${package}.impl.itcase.BaseITCase).MYSQL_JDBC_URL}"/>
+        <property name="url" value="${hashtag}{T(${package}.impl.itcase.BaseITCase).MYSQL_JDBC_URL}"/>
         <property name="username" value="root"/>
         <property name="password"
-                  value="#{T(${package}.impl.itcase.BaseITCase).MYSQL_ROOT_PASSWORD}"/>
+                  value="${hashtag}{T(${package}.impl.itcase.BaseITCase).MYSQL_ROOT_PASSWORD}"/>
     </bean>
 
     <bean id="mailSender" class="${package}.impl.itcase.support.mail.DummyMailSender"/>

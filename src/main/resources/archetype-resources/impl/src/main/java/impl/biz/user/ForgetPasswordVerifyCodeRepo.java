@@ -1,3 +1,4 @@
+#set($hashtag = '#')
 package ${package}.impl.biz.user;
 
 import org.apache.ibatis.annotations.Delete;
@@ -24,17 +25,17 @@ public interface ForgetPasswordVerifyCodeRepo {
 	 * @param code
 	 */
 	@Insert("insert into ForgetPasswordVerifyCode(codeStr, userId, expiresAt, createdBy) "
-			+ "values (#{codeStr},  #{userId}, #{expiresAt}, #{createdBy})")
+			+ "values (${hashtag}{codeStr},  ${hashtag}{userId}, ${hashtag}{expiresAt}, ${hashtag}{createdBy})")
 	@SelectKey(statement = "select last_insert_id() as id", keyProperty = "id", keyColumn = "id", before = false, resultType = long.class)
 	public long saveNewCode(ForgetPasswordVerifyCode code);
 
-	@Select("select * from ForgetPasswordVerifyCode where  userId = #{userId}")
+	@Select("select * from ForgetPasswordVerifyCode where  userId = ${hashtag}{userId}")
 	public ForgetPasswordVerifyCode getByUserId(long userId);
 
-	@Delete("delete from ForgetPasswordVerifyCode where  userId = #{userId}")
+	@Delete("delete from ForgetPasswordVerifyCode where  userId = ${hashtag}{userId}")
 	public void deleteByUserId(long userId);
 
-	@Delete("delete from ForgetPasswordVerifyCode where  expiresAt < #{timestamp}")
+	@Delete("delete from ForgetPasswordVerifyCode where  expiresAt < ${hashtag}{timestamp}")
 	public int deleteCodesExpiresBefore(Timestamp timestamp);
 
 }

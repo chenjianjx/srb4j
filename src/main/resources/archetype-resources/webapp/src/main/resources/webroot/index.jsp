@@ -2,12 +2,12 @@
 <html>
 <head>
     <meta charset="UTF-8">
-    <title>Srb4jfullsample Homepage</title>
+    <title>${artifactIdCamelCase} Homepage</title>
 </head>
 
 <body>
 
-    <h1>Srb4jfullsample RESTFul Backend</h1>
+    <h1>${artifactIdCamelCase} RESTFul Backend</h1>
 
 <div>
     <ul>
