@@ -7,7 +7,7 @@ It can collaborate with __html clients__, __mobile clients__ and other types of 
 
 __With Srb4j you can launch a restful backend in several minutes.__ 
 
-__Checkout a demo client right away__ at http://srb4jclient.chenjianjx.com:8000/ , or install an __Android__ client on https://github.com/chenjianjx/Srb4jAndroidClient, or download a __desktop__ client on https://github.com/chenjianjx/srb4j-desktop-client .
+__Checkout a demo client right away__ at https://srb4jclient.chenjianjx.com/ , or install an __Android__ client on https://github.com/chenjianjx/Srb4jAndroidClient, or download a __desktop__ client on https://github.com/chenjianjx/srb4j-desktop-client .
 
 __You can also see its out-of-box RESTFul APIs [here](https://srb4jdemo.chenjianjx.com/fo-rest-doc) .__
 
@@ -27,11 +27,12 @@ Table of Contents
 
 1. Registration/login based on standard OAuth2 password flow (access tokens, refresh tokens, etc.)
 2. Social account login support (Google,Facebook...) 
-3. Password resetting and random code login  
+3. Forget password flow and random code login  
 4. [Swagger](http://swagger.io/)-based API document generation and client stub generation
-5. Popular J2EE Stack: JAX-RS + Spring + MyBatis + MySQL
-6. Modularized structure design enforcing loose coupling between components
-7. An out-of-box back office web portal
+5. Deployeble as a uber jar, based on embedded Jetty
+6. Robust J2EE Stack: JAX-RS + Spring + MyBatis + MySQL
+7. An out-of-box back office portal
+
 
 # Prerequisites
 1. JDK 8+
@@ -49,15 +50,15 @@ Table of Contents
 cd /path/to/your/workspace
 
 mvn -X org.apache.maven.plugins:maven-archetype-plugin:3.0.0:generate  \
--DarchetypeGroupId=com.github.chenjianjx -DarchetypeArtifactId=srb4j -DarchetypeVersion=2.0.0 \
+-DarchetypeGroupId=com.github.chenjianjx -DarchetypeArtifactId=srb4j -DarchetypeVersion=3.0.0 \
 -DgroupId=your.groupId  \
--DartifactId=yourArtifactid \
+-DartifactId=yourArtifactId \
 -Dpackage=your.pkg.name \
 -Dversion=1.0-SNAPSHOT 
 
 ```
 
-### Create a MySQL database and its tables
+### Setup database and configure db credentials
 
 Create a db and a user
 
@@ -67,48 +68,32 @@ mysql> create user 'your_user'@'localhost' identified by 'your_password';
 mysql> grant all privileges on yourdb.* to 'your_user'@'localhost' with grant option;	
 ```
 
+Update db credentials for the system 
+```bash
+vi yourArtifactId/webapp/src/main/resources/config/app.override.dev.properties 
+#You can hard code the credentials for now. A safer way will be told later. 
+```
+
 Create tables
 ```bash
-cd /some/dir
-# Download this url manually if you are using windows
-wget https://raw.githubusercontent.com\
-/chenjianjx/srb4j/master/src/main/resources/archetype-resources/doc/sql/ddl.sql 
-```
-```SQL
-mysql> use yourdb;
-mysql> source /some/dir/ddl.sql;
-```  
-
-### Setup Env-specific properties 
-```bash
-mkdir ~/yourArtifactId  #For windows, replace "~" with your user's home directory
-cd ~/yourArtifactId
-#Download this file manually and rename it to app.properties if you are using windows
-wget https://raw.githubusercontent.com\
-/chenjianjx/srb4j/master/src/main/resources/archetype-resources/doc/app.properties.sample -O app.properties  
-
+cd yourArtifactId/data-migration
+mvn clean package flyway:migrate
 ```
 
-Then edit app.properties according to your environment.
-```bash
-vi app.properties
-```
  
 ### Build the Java project 
 ```bash
-cd /path/to/your/workspace/yourArtifactid
+cd /path/to/your/workspace/yourArtifactId
 
 mvn clean install
 
-cd webapp
-
-mvn jetty:run -Djetty.port=yourPort
+java -jar webapp/target/yourArtifactId-webapp-1.0-SNAPSHOT-shaded.jar
 
 ```
 
 ### Verify the installation
 
-Open http://locahost:yourPort in a browser to verify the startup
+Open http://locahost:8080 in a browser to verify the startup
 
 
 # Quick Start for Client-Side Developers 
