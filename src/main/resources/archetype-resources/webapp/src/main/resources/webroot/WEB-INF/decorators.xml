@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<decorators defaultdir="/decorators">
+    <excludes>
+        <pattern>/bo-assets/*</pattern>
+        <pattern>/bo/portal/login</pattern>
+        <pattern>*.ico</pattern>
+    </excludes>
+    <decorator name="bo" page="/WEB-INF/jsp/bo-portal/decorator/decorator.jsp">
+        <pattern>/*</pattern>
+    </decorator>
+
+</decorators>

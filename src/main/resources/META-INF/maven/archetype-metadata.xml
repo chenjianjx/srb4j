@@ -12,6 +12,7 @@
 			<directory></directory>
 			<includes>
 				<include>pom.xml</include>
+				<include>.gitignore</include>
 			</includes>
 		</fileSet>
 	</fileSets>
@@ -33,7 +34,7 @@
 					<directory>src/test/resources</directory>
 				</fileSet>
 				<fileSet filtered="true" encoding="UTF-8">
-					<directory>.</directory>
+					<directory></directory>
 					<includes>
 						<include>README.md</include>
 					</includes>
@@ -49,6 +50,9 @@
 				</fileSet>
 				<fileSet filtered="true" encoding="UTF-8">
 					<directory>src/main/resources</directory>
+					<excludes>
+						<exclude></exclude>
+					</excludes>
 				</fileSet>
 				<fileSet filtered="true" packaged="true" encoding="UTF-8">
 					<directory>src/test/java</directory>
@@ -57,7 +61,7 @@
 					<directory>src/test/resources</directory>
 				</fileSet>
 				<fileSet filtered="true" encoding="UTF-8">
-					<directory>.</directory>
+					<directory></directory>
 					<includes>
 						<include>README.md</include>
 					</includes>
@@ -81,7 +85,7 @@
 					<directory>src/test/resources</directory>
 				</fileSet>
 				<fileSet filtered="true" encoding="UTF-8">
-					<directory>.</directory>
+					<directory></directory>
 					<includes>
 						<include>README.md</include>
 					</includes>
@@ -104,7 +108,7 @@
 					<directory>src/test/resources</directory>
 				</fileSet>
 				<fileSet filtered="true" encoding="UTF-8">
-					<directory>.</directory>
+					<directory></directory>
 					<includes>
 						<include>README.md</include>
 					</includes>
@@ -127,7 +131,7 @@
 					<directory>src/test/resources</directory>
 				</fileSet>
 				<fileSet filtered="true" encoding="UTF-8">
-					<directory>.</directory>
+					<directory></directory>
 					<includes>
 						<include>README.md</include>
 					</includes>
@@ -143,7 +147,7 @@
 				<fileSet filtered="true" encoding="UTF-8">
 					<directory>src/main/resources</directory>
 					<excludes>
-						<exclude>webroot/bo-assets</exclude>
+						<exclude>webroot/bo-assets/**</exclude>
 					</excludes>
 				</fileSet>
 				<fileSet filtered="false" encoding="UTF-8">
@@ -156,7 +160,7 @@
 					<directory>src/test/resources</directory>
 				</fileSet>
 				<fileSet filtered="true" encoding="UTF-8">
-					<directory>.</directory>
+					<directory></directory>
 					<includes>
 						<include>README.md</include>
 					</includes>
