@@ -1,17 +1,15 @@
 package ${package}.webapp.fo.rest.support;
 
+import ${package}.webapp.fo.rest.FrPackageAnchor;
+import ${package}.webapp.system.WebAppEnvProp;
 import io.swagger.jaxrs.config.BeanConfig;
-
-import java.io.IOException;
+import org.apache.commons.io.IOUtils;
+import org.springframework.web.context.WebApplicationContext;
+import org.springframework.web.context.support.WebApplicationContextUtils;
 
 import javax.servlet.ServletConfig;
 import javax.servlet.http.HttpServlet;
-import org.apache.commons.io.IOUtils;
-import org.apache.commons.lang.StringUtils;
-import org.springframework.web.context.WebApplicationContext;
-import org.springframework.web.context.support.WebApplicationContextUtils;
-import ${package}.webapp.fo.rest.FrPlaceholder;
-import ${package}.webapp.infrahelper.WebAppEnvProp;
+import java.io.IOException;
 
 /**
  * 
@@ -35,11 +33,8 @@ public class FoSwaggerJaxrsConfig extends HttpServlet {
 				.getRequiredWebApplicationContext(getServletContext());
 		WebAppEnvProp props = ctx.getBean(WebAppEnvProp.class);
 
-		if (!props.isEnableSwagger()) {
-			return;
-		}
-
-		String basePath = getResourceBasePath(servletConfig, props);
+		String contextPath = servletConfig.getServletContext().getContextPath();
+		String basePath = FoRestUtils.getResourceBasePath(props, contextPath);
 		BeanConfig swaggerConfig = new BeanConfig();
 
 		String scheme = null;
@@ -59,43 +54,23 @@ public class FoSwaggerJaxrsConfig extends HttpServlet {
 			}
 		}
 
-		String title = "Your Backend System's Name (Please change me by editing " + this.getClass().getSimpleName() + ".java";
-		String email = "your-backend-developer@some-org.com";
+		String title = "${rootArtifactId}";
+		String email = "${rootArtifactId}@gmail.com";
 		String desc = getDesc();
 
 		swaggerConfig.setSchemes(new String[] { scheme });
 		swaggerConfig.setTitle(title);
-		swaggerConfig.setVersion("Your Version Number");
-		swaggerConfig.setDescription(desc.toString());
+		swaggerConfig.setVersion("1.0-SNAPSHOT");
+		swaggerConfig.setDescription(desc);
 
 		swaggerConfig.setContact(email);
 		swaggerConfig.setHost(host);
 		swaggerConfig.setBasePath(basePath);
 		swaggerConfig.setPrettyPrint(true);
-		swaggerConfig.setResourcePackage(FrPlaceholder.class.getPackage()
+		swaggerConfig.setResourcePackage(FrPackageAnchor.class.getPackage()
 				.getName());
 		swaggerConfig.setScan(true);
 
-	}
-
-	/**
-	 * will not end with "/"
-	 * 
-	 * @param servletConfig
-	 * @param props
-	 * @return
-	 */
-	public static String getResourceBasePath(ServletConfig servletConfig,
-			WebAppEnvProp props) {
-		String contextPath = servletConfig.getServletContext().getContextPath();
-		String schemeAndHost = props.getSchemeAndHost();
-		String afterHost = StringUtils.replace(contextPath + "/fo/rest", "//",
-				"/");
-		if (afterHost.startsWith("/")) {
-			afterHost = afterHost.substring(1);
-		}
-		String url = schemeAndHost + afterHost;
-		return url;
 	}
 
 

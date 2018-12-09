@@ -5,7 +5,7 @@ import javax.annotation.Resource;
 import org.springframework.stereotype.Service;
 import ${package}.impl.biz.auth.AccessToken;
 import ${package}.impl.biz.auth.AccessTokenRepo;
-import ${package}.impl.util.tools.lang.MyLangUtils;
+import ${package}.utils.lang.MyLangUtils;
 import ${package}.intf.fo.auth.FoAccessToken;
 import ${package}.intf.fo.misc.MiscBiz;
 

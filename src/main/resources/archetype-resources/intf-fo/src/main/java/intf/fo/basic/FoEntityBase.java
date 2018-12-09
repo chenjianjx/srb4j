@@ -4,8 +4,8 @@ import io.swagger.annotations.ApiModelProperty;
 
 import java.util.Calendar;
 
-import org.apache.commons.lang.builder.ToStringBuilder;
-import org.apache.commons.lang.builder.ToStringStyle;
+import org.apache.commons.lang3.builder.ToStringBuilder;
+import org.apache.commons.lang3.builder.ToStringStyle;
 
 /**
  * A mirror object of a biz entity, used on application layer or above. It is

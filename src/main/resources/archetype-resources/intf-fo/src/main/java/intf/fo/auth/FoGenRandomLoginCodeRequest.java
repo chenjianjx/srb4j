@@ -5,8 +5,8 @@ import io.swagger.annotations.ApiModelProperty;
 
 import javax.validation.constraints.NotNull;
 
-import org.apache.commons.lang.builder.ToStringBuilder;
-import org.apache.commons.lang.builder.ToStringStyle;
+import org.apache.commons.lang3.builder.ToStringBuilder;
+import org.apache.commons.lang3.builder.ToStringStyle;
 
 /**
  * 
@@ -16,8 +16,8 @@ import org.apache.commons.lang.builder.ToStringStyle;
 @ApiModel(value = "GenRandomLoginCodeRequest", description = "generate random login code")
 public class FoGenRandomLoginCodeRequest {
 
-	@NotNull
-	@ApiModelProperty(value = "the user's email email", required = true)
+	@NotNull(message = "Please input email")
+	@ApiModelProperty(value = "the user's email", required = true)
 	private String email;
 
 	public String getEmail() {

@@ -1,43 +1,43 @@
 package ${package}.impl.itcase.util.infrahelp.beanvalidae;
 
-import java.util.List;
-
-import javax.annotation.Resource;
-import javax.validation.constraints.NotNull;
-
+import ${package}.impl.itcase.BaseITCase;
+import ${package}.impl.support.beanvalidate.MyValidator;
+import ${package}.impl.support.beanvalidate.ValidationError;
 import org.junit.Assert;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.test.context.ContextConfiguration;
-import ${package}.impl.itcase.support.MySpringJunit4ClassRunner;
-import ${package}.impl.util.infrahelp.beanvalidae.MyValidator;
+import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
+
+import javax.annotation.Resource;
+import javax.validation.constraints.NotNull;
 
 /**
  * 
  * @author chenjianjx@gmail.com
  *
  */
-@RunWith(MySpringJunit4ClassRunner.class)
+@RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(locations = { "/spring/applicationContext-test.xml" })
-public class MyBeanValidatorITCase {
+public class MyBeanValidatorITCase extends BaseITCase {
 
 	@Resource
 	MyValidator myBeanValidator;
 
 	@Test
 	public void validateBean_NullBean() {
-		List<String> errors = myBeanValidator.validateBean(null, "bean-null");
-		Assert.assertEquals(1, errors.size());
-		Assert.assertTrue(errors.contains("bean-null"));
+		ValidationError errorResult = myBeanValidator.validateBean(null, "bean-null");
+		Assert.assertTrue(errorResult.hasErrors());
+		Assert.assertTrue(errorResult.getNonFieldError().equals("bean-null"));
 	}
 
 	@Test
 	public void validateBean_InvalidProp() {
 		Mb mb = new Mb();
-		List<String> errors = myBeanValidator.validateBean(mb, "bean-null");
-		Assert.assertEquals(2, errors.size());
-		Assert.assertTrue(errors.contains("email-null"));
-		Assert.assertTrue(errors.contains("password-null"));
+		ValidationError errorResult = myBeanValidator.validateBean(mb, "bean-null");
+		Assert.assertEquals(2, errorResult.getFieldErrors().size());
+		Assert.assertEquals("email-null", errorResult.getFieldErrors().get("email"));
+		Assert.assertEquals("password-null", errorResult.getFieldErrors().get("password"));
 	}
 
 	@Test
@@ -45,8 +45,8 @@ public class MyBeanValidatorITCase {
 		Mb mb = new Mb();
 		mb.email = "hi@hi.com";
 		mb.password = "heyya";
-		List<String> errors = myBeanValidator.validateBean(mb, "bean-null");
-		Assert.assertEquals(0, errors.size());
+		ValidationError errorResult = myBeanValidator.validateBean(mb, "bean-null");
+		Assert.assertFalse(errorResult.hasErrors());
 
 	}
 

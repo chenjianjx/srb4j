@@ -2,8 +2,9 @@ package ${package}.intf.fo.auth;
 
 import javax.validation.constraints.NotNull;
 
-import org.apache.commons.lang.builder.ToStringBuilder;
-import org.apache.commons.lang.builder.ToStringStyle;
+import io.swagger.annotations.ApiModelProperty;
+import org.apache.commons.lang3.builder.ToStringBuilder;
+import org.apache.commons.lang3.builder.ToStringStyle;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
@@ -17,9 +18,11 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 public class FoLocalLoginRequest {
 
 	@NotNull(message = "Please input email.")
+	@ApiModelProperty(required = true)
 	private String email;
 
 	@NotNull(message = "Please input password.")
+	@ApiModelProperty(required = true)
 	private String password;
 
 	private Boolean longSession;

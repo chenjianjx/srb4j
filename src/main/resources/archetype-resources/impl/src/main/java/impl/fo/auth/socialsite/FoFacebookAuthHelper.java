@@ -1,23 +1,25 @@
+#set($dollar = '$')
 package ${package}.impl.fo.auth.socialsite;
 
-import org.apache.commons.lang.StringUtils;
-import org.springframework.beans.factory.annotation.Value;
-import org.springframework.stereotype.Service;
-
 import ${package}.impl.biz.client.Client;
-import ${package}.impl.util.tools.lang.MyDuplet;
+import ${package}.utils.lang.MyDuplet;
 import ${package}.intf.fo.auth.FoAuthTokenResult;
 import ${package}.intf.fo.basic.FoConstants;
 import ${package}.intf.fo.basic.FoResponse;
 import com.github.scribejava.apis.FacebookApi;
 import com.github.scribejava.core.builder.ServiceBuilder;
-import com.github.scribejava.core.model.Token;
-import com.github.scribejava.core.model.Verifier;
+import com.github.scribejava.core.model.OAuth2AccessToken;
 import com.github.scribejava.core.oauth.OAuth20Service;
 import com.restfb.DefaultFacebookClient;
 import com.restfb.FacebookClient;
 import com.restfb.Parameter;
 import com.restfb.Version;
+import org.apache.commons.lang3.StringUtils;
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.stereotype.Service;
+
+import java.io.IOException;
+import java.util.concurrent.ExecutionException;
 
 /**
  * 
@@ -30,12 +32,12 @@ public class FoFacebookAuthHelper implements FoSocialSiteAuthHelper {
 	private String facebookClientId;
 	private String facebookClientSecret;
 
-	@Value("${facebookClientId}")
+	@Value("${dollar}{facebookClientId}")
 	public void setFacebookClientId(String facebookClientId) {
 		this.facebookClientId = StringUtils.trimToNull(facebookClientId);
 	}
 
-	@Value("${facebookClientSecret}")
+	@Value("${dollar}{facebookClientSecret}")
 	public void setFacebookClientSecret(String facebookClientSecret) {
 		this.facebookClientSecret = StringUtils
 				.trimToNull(facebookClientSecret);
@@ -93,12 +95,17 @@ public class FoFacebookAuthHelper implements FoSocialSiteAuthHelper {
 		}
 
 		// exchange the code for token
-		final OAuth20Service service = new ServiceBuilder()
-				.apiKey(facebookClientId).apiSecret(facebookClientSecret)
+		final OAuth20Service service = new ServiceBuilder(facebookClientId)
+				.apiSecret(facebookClientSecret)
 				.scope("email").callback(redirectUri)
 				.build(FacebookApi.instance());
-		Token facebookTokenObj = service.getAccessToken(new Verifier(authCode));
-		String token = facebookTokenObj.getToken();
+		OAuth2AccessToken facebookTokenObj = null;
+		try {
+			facebookTokenObj = service.getAccessToken(authCode);
+		} catch (IOException|InterruptedException|ExecutionException e) {
+			throw new RuntimeException(e);
+		}
+		String token = facebookTokenObj.getAccessToken();
 		// get email by token
 		return this.getEmailFromToken(token, clientType);
 

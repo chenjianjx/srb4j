@@ -9,17 +9,66 @@
 
 	<fileSets>
 		<fileSet filtered="true" encoding="UTF-8">
-			<directory>doc</directory>
-		</fileSet>
-		<fileSet filtered="true" encoding="UTF-8">
 			<directory></directory>
 			<includes>
 				<include>pom.xml</include>
+				<include>.gitignore</include>
 			</includes>
 		</fileSet>
 	</fileSets>
 
 	<modules>
+		<module id="${rootArtifactId}-data-migration" dir="data-migration"
+				name="Data Migration">
+			<fileSets>
+				<fileSet filtered="true" packaged="true" encoding="UTF-8">
+					<directory>src/main/java</directory>
+				</fileSet>
+				<fileSet filtered="true" encoding="UTF-8">
+					<directory>src/main/resources</directory>
+				</fileSet>
+				<fileSet filtered="true" packaged="true" encoding="UTF-8">
+					<directory>src/test/java</directory>
+				</fileSet>
+				<fileSet filtered="true" encoding="UTF-8">
+					<directory>src/test/resources</directory>
+				</fileSet>
+				<fileSet filtered="true" encoding="UTF-8">
+					<directory></directory>
+					<includes>
+						<include>README.md</include>
+					</includes>
+				</fileSet>
+			</fileSets>
+		</module>
+
+		<module id="${rootArtifactId}-impl" dir="impl"
+				name="Implementation for all Interfaces">
+			<fileSets>
+				<fileSet filtered="true" packaged="true" encoding="UTF-8">
+					<directory>src/main/java</directory>
+				</fileSet>
+				<fileSet filtered="true" encoding="UTF-8">
+					<directory>src/main/resources</directory>
+					<excludes>
+						<exclude></exclude>
+					</excludes>
+				</fileSet>
+				<fileSet filtered="true" packaged="true" encoding="UTF-8">
+					<directory>src/test/java</directory>
+				</fileSet>
+				<fileSet filtered="true" encoding="UTF-8">
+					<directory>src/test/resources</directory>
+				</fileSet>
+				<fileSet filtered="true" encoding="UTF-8">
+					<directory></directory>
+					<includes>
+						<include>README.md</include>
+					</includes>
+				</fileSet>
+			</fileSets>
+		</module>
+
 		<module id="${rootArtifactId}-intf-fo" dir="intf-fo"
 			name="Front End Interfaces">
 			<fileSets>
@@ -34,6 +83,12 @@
 				</fileSet>
 				<fileSet filtered="true" encoding="UTF-8">
 					<directory>src/test/resources</directory>
+				</fileSet>
+				<fileSet filtered="true" encoding="UTF-8">
+					<directory></directory>
+					<includes>
+						<include>README.md</include>
+					</includes>
 				</fileSet>
 			</fileSets>
 		</module>
@@ -52,11 +107,16 @@
 				<fileSet filtered="true" encoding="UTF-8">
 					<directory>src/test/resources</directory>
 				</fileSet>
+				<fileSet filtered="true" encoding="UTF-8">
+					<directory></directory>
+					<includes>
+						<include>README.md</include>
+					</includes>
+				</fileSet>
 			</fileSets>
 		</module>
- 
-		<module id="${rootArtifactId}-impl" dir="impl"
-			name="Implementation for all Interfaces">
+
+		<module id="${rootArtifactId}-utils" dir="utils" name="Utils">
 			<fileSets>
 				<fileSet filtered="true" packaged="true" encoding="UTF-8">
 					<directory>src/main/java</directory>
@@ -70,8 +130,15 @@
 				<fileSet filtered="true" encoding="UTF-8">
 					<directory>src/test/resources</directory>
 				</fileSet>
+				<fileSet filtered="true" encoding="UTF-8">
+					<directory></directory>
+					<includes>
+						<include>README.md</include>
+					</includes>
+				</fileSet>
 			</fileSets>
 		</module>
+
 		<module id="${rootArtifactId}-webapp" dir="webapp" name="Webapp">
 			<fileSets>
 				<fileSet filtered="true" packaged="true" encoding="UTF-8">
@@ -79,6 +146,12 @@
 				</fileSet>
 				<fileSet filtered="true" encoding="UTF-8">
 					<directory>src/main/resources</directory>
+					<excludes>
+						<exclude>webroot/bo-assets/**</exclude>
+					</excludes>
+				</fileSet>
+				<fileSet filtered="false" encoding="UTF-8">
+					<directory>src/main/resources/webroot/bo-assets</directory>
 				</fileSet>
 				<fileSet filtered="true" packaged="true" encoding="UTF-8">
 					<directory>src/test/java</directory>
@@ -87,34 +160,14 @@
 					<directory>src/test/resources</directory>
 				</fileSet>
 				<fileSet filtered="true" encoding="UTF-8">
-					<directory>src/main/webapp</directory>
-				</fileSet>
-			</fileSets>
-		</module>
-		<module id="${rootArtifactId}-demo-client" dir="demo-client"
-			name="Demo Client">
-			<fileSets>
-				<fileSet filtered="true" packaged="true" encoding="UTF-8">
-					<directory>src/main/java</directory>
-				</fileSet>
-				<fileSet filtered="true" encoding="UTF-8">
-					<directory>src/main/resources</directory>
-				</fileSet>
-				<fileSet filtered="true" packaged="true" encoding="UTF-8">
-					<directory>src/test/java</directory>
-				</fileSet>
-				<fileSet filtered="true" encoding="UTF-8">
-					<directory>src/test/resources</directory>
-				</fileSet>
-				<fileSet filtered="true" encoding="UTF-8">
-					<directory>.</directory>
+					<directory></directory>
 					<includes>
-						<include>README.me</include>
+						<include>README.md</include>
 					</includes>
 				</fileSet>
 			</fileSets>
 		</module>
-	</modules>
 
+	</modules>
 
 </archetype-descriptor>

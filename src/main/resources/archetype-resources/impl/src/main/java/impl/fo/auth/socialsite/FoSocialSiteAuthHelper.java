@@ -9,7 +9,7 @@ import javax.annotation.Resource;
 import org.springframework.stereotype.Service;
 
 import ${package}.impl.biz.user.User;
-import ${package}.impl.util.tools.lang.MyDuplet;
+import ${package}.utils.lang.MyDuplet;
 import ${package}.intf.fo.auth.FoAuthTokenResult;
 import ${package}.intf.fo.basic.FoResponse;
 

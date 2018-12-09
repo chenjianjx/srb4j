@@ -1,21 +1,20 @@
 package ${package}.webapp.root;
 
-import java.io.IOException;
-import java.io.StringWriter;
+import ${package}.webapp.fo.rest.support.FoRestUtils;
+import ${package}.webapp.system.WebAppEnvProp;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.springframework.web.context.WebApplicationContext;
+import org.springframework.web.context.support.WebApplicationContextUtils;
+import org.swagger2html.Swagger2Html;
 
 import javax.servlet.ServletConfig;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
-import org.springframework.web.context.WebApplicationContext;
-import org.springframework.web.context.support.WebApplicationContextUtils;
-import ${package}.webapp.fo.rest.support.FoSwaggerJaxrsConfig;
-import ${package}.webapp.infrahelper.WebAppEnvProp;
-import org.swagger2html.Swagger2Html;
+import java.io.IOException;
+import java.io.StringWriter;
 
 /**
  * 
@@ -38,20 +37,13 @@ public class FoRestDocServlet extends HttpServlet {
 		WebApplicationContext ctx = WebApplicationContextUtils
 				.getRequiredWebApplicationContext(getServletContext());
 		props = ctx.getBean(WebAppEnvProp.class);
-		swaggerUrl = FoSwaggerJaxrsConfig.getResourceBasePath(servletConfig,
-				props) + "/swagger.json";
+		String contextPath = servletConfig.getServletContext().getContextPath();
+		swaggerUrl = FoRestUtils.getResourceBasePath(props, contextPath) + "/swagger.json";
 	}
 
 	@Override
 	protected void service(HttpServletRequest request, HttpServletResponse resp)
 			throws ServletException, IOException {
-
-		if (!props.isEnableSwagger()) {
-			resp.getWriter()
-					.println(
-							"The doc has been disabled because swagger has been disabled.");
-			return;
-		}
 
 		if (restDoc == null) {
 			restDoc = genDoc(request);

@@ -8,6 +8,8 @@ import javax.servlet.http.HttpServletResponse;
 import javax.ws.rs.container.ContainerRequestContext;
 import javax.ws.rs.core.Response;
 
+import ${package}.webapp.system.WebAppEnvProp;
+import org.apache.commons.lang3.StringUtils;
 import org.apache.oltu.oauth2.common.OAuth;
 import org.apache.oltu.oauth2.common.error.OAuthError.ResourceResponse;
 import org.apache.oltu.oauth2.common.exception.OAuthSystemException;
@@ -79,5 +81,16 @@ public class FoRestUtils {
 			return Response.status(statusCodeIfErr).entity(foResponse.getErr())
 					.build();
 		}
+	}
+
+	public static String getResourceBasePath(WebAppEnvProp props, String contextPath) {
+		String schemeAndHost = props.getSchemeAndHost();
+		String afterHost = StringUtils.replace(contextPath + "/fo/rest", "//",
+				"/");
+		if (afterHost.startsWith("/")) {
+			afterHost = afterHost.substring(1);
+		}
+		String url = schemeAndHost + afterHost;
+		return url;
 	}
 }

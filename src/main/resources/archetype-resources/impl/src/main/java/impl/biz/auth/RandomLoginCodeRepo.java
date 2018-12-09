@@ -1,3 +1,4 @@
+#set($hashtag = '#')
 package ${package}.impl.biz.auth;
 
 import java.sql.Timestamp;
@@ -14,20 +15,19 @@ import org.springframework.stereotype.Repository;
  *
  */
 
-#set($hashtag = '#')
 
 @Repository
 public interface RandomLoginCodeRepo {
 
 	/**
-	 * save new code; if the user has already the code, overwrite it
+	 * save new code
 	 * 
 	 * @param code
 	 */
-	@Insert("insert into RandomLoginCode(codeStr, userId, expiresAt,createdAt, createdBy) "
-			+ "values (${hashtag}{codeStr},  ${hashtag}{userId}, ${hashtag}{expiresAt}, ${hashtag}{createdAt}, ${hashtag}{createdBy})")
+	@Insert("insert into RandomLoginCode(codeStr, userId, expiresAt, createdBy) "
+			+ "values (${hashtag}{codeStr},  ${hashtag}{userId}, ${hashtag}{expiresAt}, ${hashtag}{createdBy})")
 	@SelectKey(statement = "select last_insert_id() as id", keyProperty = "id", keyColumn = "id", before = false, resultType = long.class)
-	public void saveNewCode(RandomLoginCode code);
+	public long saveNewCode(RandomLoginCode code);
 
 	@Select("select * from RandomLoginCode where  userId = ${hashtag}{userId}")
 	public RandomLoginCode getByUserId(long userId);

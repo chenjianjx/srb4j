@@ -1,69 +1,83 @@
 package ${package}.impl.itcase.biz.auth;
 
-import java.util.GregorianCalendar;
-
-import javax.annotation.Resource;
-
+import ${package}.impl.biz.auth.RandomLoginCode;
+import ${package}.impl.biz.auth.RandomLoginCodeRepo;
+import ${package}.impl.itcase.BaseITCase;
+import ${package}.utils.lang.MyLangUtils;
 import org.junit.Assert;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.dao.DuplicateKeyException;
 import org.springframework.test.context.ContextConfiguration;
-import ${package}.impl.biz.auth.RandomLoginCode;
-import ${package}.impl.biz.auth.RandomLoginCodeRepo;
-import ${package}.impl.itcase.support.MySpringJunit4ClassRunner;
+import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
+
+import javax.annotation.Resource;
+import java.util.GregorianCalendar;
 
 /**
- * 
  * @author chenjianjx@gmail.com
- *
  */
-@RunWith(MySpringJunit4ClassRunner.class)
-@ContextConfiguration(locations = { "/spring/applicationContext-test.xml" })
-public class RandomLoginCodeRepoITCase {
+@RunWith(SpringJUnit4ClassRunner.class)
+@ContextConfiguration(locations = {"/spring/applicationContext-test.xml"})
+public class RandomLoginCodeRepoITCase extends BaseITCase {
 
-	@Resource
-	RandomLoginCodeRepo repo;
+    @Resource
+    RandomLoginCodeRepo repo;
 
-	@Test
-	public void crudTest() throws Exception {
-		// insert
-		long userId = System.currentTimeMillis();
+    @Test
+    public void crudTest() throws Exception {
 
-		String codeStr = "test-code-" + System.currentTimeMillis();
-		RandomLoginCode t = buildCode(userId, codeStr);
-		repo.saveNewCode(t);
-		Assert.assertNotNull(t.getId());
-		Assert.assertNotNull(t.getCreatedAt());
-		System.out.println(t);
+        RandomLoginCode forInsert = new RandomLoginCode();
 
-		// get by userId
-		t = repo.getByUserId(userId);
-		Assert.assertNotNull(t);
+        forInsert.setCodeStr("someCode");
+        forInsert.setUserId(1l);
+        forInsert.setExpiresAt(MyLangUtils.newCalendar(1l));
 
-		// delete by userId
-		repo.deleteByUserId(userId);
-		t = repo.getByUserId(userId);
-		Assert.assertNull(t);
-	}
+        forInsert.setCreatedBy("someCreatedBy");
+        forInsert.setUpdatedAt(new GregorianCalendar());
+        forInsert.setUpdatedBy("someUpdatedBy");
 
-	@Test(expected = DuplicateKeyException.class)
-	public void duplicateTest() throws Exception {
-		long userId = System.currentTimeMillis();
-		RandomLoginCode t1 = buildCode(userId, "code1");
-		RandomLoginCode t2 = buildCode(userId, "code2");
-		repo.saveNewCode(t1);
-		repo.saveNewCode(t2);
-	}
+        //save
+        long codeId = repo.saveNewCode(forInsert);
+        Assert.assertTrue(codeId > 0);
 
-	private RandomLoginCode buildCode(long userId, String codeStr) {
-		RandomLoginCode t = new RandomLoginCode();
-		t.setCodeStr(codeStr);
-		t.setUserId(userId);
-		t.setExpiresAt(new GregorianCalendar());
-		t.setCreatedAt(new GregorianCalendar());
-		t.setCreatedBy("some-man");
-		return t;
-	}
+
+        //retrieve it
+        RandomLoginCode postInsert = repo.getByUserId(1l);
+        System.out.println("postInsert: " + postInsert);
+
+        Assert.assertEquals(codeId, postInsert.getId());
+        Assert.assertEquals("someCode", postInsert.getCodeStr());
+        Assert.assertEquals(1l, postInsert.getUserId());
+        Assert.assertEquals(MyLangUtils.newCalendar(1l), postInsert.getExpiresAt());
+
+        Assert.assertNotNull(postInsert.getCreatedAt());
+        Assert.assertEquals("someCreatedBy", postInsert.getCreatedBy());
+        Assert.assertNull(postInsert.getUpdatedAt());  //ignored during inserting
+        Assert.assertNull(postInsert.getUpdatedBy());  //ignored during inserting
+
+        //delete
+        repo.deleteByUserId(1l);
+        Assert.assertNull(repo.getByUserId(1l));
+    }
+
+    @Test(expected = DuplicateKeyException.class)
+    public void duplicateUserTest() throws Exception {
+        long userId = System.currentTimeMillis();
+        RandomLoginCode t1 = buildCode(userId, "code1");
+        RandomLoginCode t2 = buildCode(userId, "code2");
+        repo.saveNewCode(t1);
+        repo.saveNewCode(t2);
+    }
+
+    private RandomLoginCode buildCode(long userId, String codeStr) {
+        RandomLoginCode t = new RandomLoginCode();
+        t.setCodeStr(codeStr);
+        t.setUserId(userId);
+        t.setExpiresAt(new GregorianCalendar());
+        t.setCreatedAt(new GregorianCalendar());
+        t.setCreatedBy("some-man");
+        return t;
+    }
 
 }

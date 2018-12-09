@@ -7,7 +7,7 @@ It can collaborate with __html clients__, __mobile clients__ and other types of 
 
 __With Srb4j you can launch a restful backend in several minutes.__ 
 
-__Checkout a demo client right away__ at http://srb4jclient.chenjianjx.com:8000/ , or install an __Android__ client on https://github.com/chenjianjx/Srb4jAndroidClient, or download a __desktop__ client on https://github.com/chenjianjx/srb4j-desktop-client .
+__Checkout a demo client right away__ at https://srb4jclient.chenjianjx.com/ , or install an __Android__ client on https://github.com/chenjianjx/Srb4jAndroidClient, or download a __desktop__ client on https://github.com/chenjianjx/srb4j-desktop-client .
 
 __You can also see its out-of-box RESTFul APIs [here](https://srb4jdemo.chenjianjx.com/fo-rest-doc) .__
 
@@ -16,48 +16,53 @@ Table of Contents
 =================
   * [Summary of Features](#summary-of-features)
   * [Prerequisites](#prerequisites)
-  * [Quick Start for Backend Developers](#quick-start-for-backend-developers)
-  * [Quick Start for Client\-Side Developers](#quick-start-for-client-side-developers)
-  * [Things the Backend Developers should Know](#things-the-backend-developers-should-know)
+  * [Quick Start in Dev Env](#quick-start-in-dev-env)
+  * [Quick Start for Client-Side Developers](#quick-start-for-client-side-developers)
+  * [DDL/DML migration](#ddldml-migration)
+  * [PaaS Cloud Integration](#paas-cloud-integration)
+  * [Development of Backend](#development-of-backend)
   * [Social Login Integration](#social-login-integration)
   * [API Documentation and Client Stub Generation and Online Testing](#api-documentation-and-client-stub-generation-and-online-testing)
-  * [The Back Office](#the-back-office)
+  * [The Back Office Portal](#the-back-office-portal)
 
 # Summary of Features
 
 1. Registration/login based on standard OAuth2 password flow (access tokens, refresh tokens, etc.)
 2. Social account login support (Google,Facebook...) 
-3. Password resetting and random code login  
+3. Forget password flow and random code login  
 4. [Swagger](http://swagger.io/)-based API document generation and client stub generation
-5. Popular J2EE Stack: JAX-RS + Spring + MyBatis + MySQL
-6. Modularized structure design enforcing loose coupling between components
-7. An out-of-box back office web portal
+5. Built as a uber jar, instead of a war file
+6. Managed SQL migration which can be done automatically during system startup, or run manually with Maven
+7. PaaS friendly (e.g. AWS Beanstalk)
+8. Robust J2EE Stack: JAX-RS + Spring + MyBatis + MySQL
+9. An out-of-box back office portal
+
 
 # Prerequisites
-1. JDK 7+
-2. Servlet 3.0+ Container such as Tomcat 7
-3. MySQL Server
+1. JDK 8+
+2. Maven 3.1+
+3. MySQL Server 5.7+
 
 
 <!-- toc -->
 
-# Quick Start for Backend Developers
+# Quick Start in Dev Env
 
 ### Generate a Java project
 
 ```bash
 cd /path/to/your/workspace
 
-mvn -X org.apache.maven.plugins:maven-archetype-plugin:2.4:generate  \
--DarchetypeGroupId=com.github.chenjianjx -DarchetypeArtifactId=srb4j -DarchetypeVersion=2.0.0 \
+mvn -X org.apache.maven.plugins:maven-archetype-plugin:3.0.0:generate  \
+-DarchetypeGroupId=com.github.chenjianjx -DarchetypeArtifactId=srb4j -DarchetypeVersion=3.0.0 \
 -DgroupId=your.groupId  \
--DartifactId=yourArtifactid \
+-DartifactId=yourArtifactId \
 -Dpackage=your.pkg.name \
 -Dversion=1.0-SNAPSHOT 
 
 ```
 
-### Create a MySQL database and its tables
+### Setup database and configure db credentials
 
 Create a db and a user
 
@@ -67,48 +72,75 @@ mysql> create user 'your_user'@'localhost' identified by 'your_password';
 mysql> grant all privileges on yourdb.* to 'your_user'@'localhost' with grant option;	
 ```
 
+Update db credentials for the system 
+```bash
+vi yourArtifactId/webapp/src/main/resources/config/app.override.dev.properties 
+#You can hard code the credentials for now. A safer way will be told later. 
+```
+
 Create tables
 ```bash
-cd /some/dir
-# Download this url manually if you are using windows
-wget https://raw.githubusercontent.com\
-/chenjianjx/srb4j/master/src/main/resources/archetype-resources/doc/sql/ddl.sql 
-```
-```SQL
-mysql> use yourdb;
-mysql> source /some/dir/ddl.sql;
-```  
-
-### Setup Env-specific properties 
-```bash
-mkdir ~/yourArtifactId  #For windows, replace "~" with your user's home directory
-cd ~/yourArtifactId
-#Download this file manually and rename it to app.properties if you are using windows
-wget https://raw.githubusercontent.com\
-/chenjianjx/srb4j/master/src/main/resources/archetype-resources/doc/app.properties.sample -O app.properties  
-
+cd yourArtifactId
+mvn clean install -DskipTests
+cd data-migration
+mvn initialize flyway:migrate 
 ```
 
-Then edit app.properties according to your environment.
-```bash
-vi app.properties
-```
  
 ### Build the Java project 
 ```bash
-cd /path/to/your/workspace/yourArtifactid
+cd /path/to/your/workspace/yourArtifactId
 
-mvn clean install
+mvn clean install -DskipTests
 
-cd webapp
-
-mvn jetty:run -Djetty.port=yourPort
+java -jar webapp/target/yourArtifactId-webapp-1.0-SNAPSHOT-shaded.jar
 
 ```
 
 ### Verify the installation
 
-Open http://locahost:yourPort in a browser to verify the startup
+Open 
+* http://localhost:8080
+* http://localhost:8080/health to check database conection
+
+# Run the backend in QA/PROD/Other Environments
+* Decide your environment name, such as "qa". 
+* Set the environment name as env prop. The key is "yourArtifactId_environment"
+````
+export yourArtifactId_environment="qa"
+````
+If you don't do this, the default environment is "dev" 
+* Create "app.override.qa.properties" under "webapp/src/main/resources/config", and edit the env-specific properties according to "app.properties"
+** They system will read "app.properties" first, and then "app.override.qa.properties" to override. So you don't have to create a duplicate entry in "app.override.qa.properties" if you are not going to override that property
+** A value can be a hardcoded one, or the value of an environment variable. The suggested strategy is to put as many properties in the properties file as possible, and only define sensitive information as environment variables. 
+** By default, the db's username/password is got from env variables, as you can see on "app.properties": 
+````
+dbUsername=${env:yourArtifactId_dbUsername}
+dbPassword=${env:yourArtifactId_dbPassword}
+````
+So what you need to do is 
+````
+export yourArtifactId_dbUsername="your_user"
+export yourArtifactId_dbPassword="your_password"
+````
+* Let SQL Migration be Done Automatically during System Startup
+
+Go to "app.override.qa.properties" and add 
+````
+dataMigrationOnStartup=true
+````
+
+* Build the artifact
+````
+mvn clean install -DskipTests
+````
+And you will get a uber jar like  "webapp/target/yourArtifactId-webapp-1.0-SNAPSHOT-shaded.jar".  
+
+* Deploy the artifact
+Upload the built uber jar to your target machine and run 
+````
+java -jar yourArtifactId-webapp-1.0-SNAPSHOT-shaded.jar
+````
 
 
 # Quick Start for Client-Side Developers 
@@ -284,28 +316,29 @@ Unirest.post("http://localhost:8080/fo/rest/bbs/posts/delete")
 
 Check out more code [here](https://github.com/chenjianjx/srb4j-desktop-client) or [here](https://github.com/chenjianjx/Srb4jAndroidClient) . 
 
+# DDL/DML migration
+Let the system take care of SQL migraiton for you.  Srb4j uses [flyway](https://flywaydb.org/) to do this. Flyway won't re-run SQLs that have been run before.  So don't worry. 
+* Go to "data-migration/src/main/resources/data-migration-flyway-sql", and add a new SQL file
+* In "dev" environment, "dataMigrationOnStartup" is by default false. So you should run the sql manually.  
+````
+cd data-migration
+mvn clean package flyway:migrate
+````
+* In other environments, if "dataMigrationOnStartup" is set as true, the system will automatically run the SQL when the system starts up. 
 
-# Things the Backend Developers should Know
+# PaaS Cloud Integration
+Here we use AWS Beanstalk as an example. 
+* Make sure "dataMigrationOnStartup=true" in your "app.override.xxx.properties", unless you prefer to run the sql manually. 
+* Configure environment variables in Beanstalk's web console, such as environment name, RDS db username/password and smtp credentials.
+* (If you want) On the load balancer configuration page, you can add "https://your-backend/health" as the health check endpoint (The handler is HealthCheckServlet.java) 
+* Build your artifact, upload to Beanstalk and trigger a deployment. 
+
+# Development of Backend
 
 ## User Model
 
 1. Every user has a "source" property to indicate where this user is from. "local" means the user registers here, "facebook" means the user is created when he logged into the backend with a facebook account.
 2. source + email make up of a username, the business key.
-
-## Create a business module 
-
-A business module called "bbs" is already there to demonstrate how to develop biz logic in srb4j. You can create your own by referring to "bbs" code files:  
-
-1. Table 'Post' in ddl.sql
-2. Biz entity and repository(DAO) classes in package 'yourpackage.impl.biz.bbs' 
-3. App-layer beans and managers in package 'yourpackage.intf.fo.bbs' and  'yourpackage.impl.fo.bbs'
-4. RESTFul Resources in package 'yourpackage.webapp.fo.rest.bbs'  
-
-
-Notes:
- 
-1. You can delete package 'yourpackage.impl.biz.bbs' if you don't it any more.
-2. For layers and maven artifacts in srb4j, see below.  
 
 ## The code organization
 
@@ -316,8 +349,6 @@ Notes:
 * Notes:
   * Front End:   Encapsulate use case-specific logic from business services. The users are common users such customers.
   * Back Office: Encapsulate use case-specific logic from business services. The users are administrators, staff and so on.
-
-
 
 * And you get these maven projects: 
 
@@ -353,18 +384,25 @@ Thanks to [swagger](http://swagger.io/), you can have a WSDL-like API document o
 
 Srb4j has embedded swagger support. The document endpoint is http://your-backend/fo/rest/swagger.json . If you know swagger well, you know what to do.
 
-If you just want to see a download-able API doc, check http://your-backend/fo-rest-doc , which is generated by [swagger2html] (https://github.com/chenjianjx/swagger2html).    
+If you just want to see a download-able API doc, check http://your-backend/fo-rest-doc , which is generated by [swagger2html](https://github.com/chenjianjx/swagger2html).    
 
-It may be vulnerable to expose the API doc or testing-web-ui in a PROD system. You can disable swagger (and the API doc) by editing app.properties and restart:  
+
+# The Back Office Portal
+You can log into the back office to manage some data such as a list of users.  
+
+* To enable the protal, go to "app.override.xxx.properties" and set
 ````
-enableSwagger=false
-```` 
+enableBackOfficePortal=true
+````
 
-# The Back Office
+* To let someone login, you must generate a StaffUser record for him or her: 
+````
+cd data-migration
+mvn clean package exec:java -Dexec.mainClass="your.pkg.name.datagen.StaffUserPasswordGenerator"
+````
+With the username/password they can then go to http://your-backend/bo/portal/login  . They'll have to change the password after first logging in, so the password generator won't be able to log in with the original password. 
 
-The back office code is just a way to demonstrate how a back office web portal can interact with the app layer. It enforces the code organization so that back-office code is separated from front end code. 
-
-If you don't need the back office web portal, please delete the following content: 
- 
-* BoAllInOneServlet.java
-* Its occurrence in web.xml
+* Development
+* The portal is based on Jersey MVC + JSP + Twitter Bootstrap
+* Users of the portal are called "StaffUser", which has nothing to do with front-end "User"s.  Different entity class, different table. 
+* No Role/Permission infrastructure. You must do it yourself if necessary. 

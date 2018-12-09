@@ -28,6 +28,11 @@ public class User extends EntityBase implements Serializable {
 	private String email;
 
 	/**
+	 * has the email been verified ?
+	 */
+	private boolean emailVerified;
+
+	/**
 	 * where the user is from
 	 */
 	private String source;
@@ -82,7 +87,7 @@ public class User extends EntityBase implements Serializable {
 	}
 
 	/**
-	 * you don't have to call this method. this is for some reflection-based
+	 * you don't call this method. this is for some reflection-based
 	 * framework to call.
 	 * 
 	 * @param principal
@@ -91,4 +96,15 @@ public class User extends EntityBase implements Serializable {
 		// do nothing
 	}
 
+	public boolean isEmailVerified() {
+		return emailVerified;
+	}
+
+	public void setEmailVerified(boolean emailVerified) {
+		this.emailVerified = emailVerified;
+	}
+
+	public boolean isLocal() {
+		return SOURCE_LOCAL.equals(this.source);
+	}
 }

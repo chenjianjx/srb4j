@@ -1,8 +1,7 @@
-### Your backend's description, such as:
 
   * Authentication Notes:    
     * The authentication is based on OAuth 2.0 Password flow, plus OpenId verification if an open account is involved.  
-    * If the user forgets password, the client can generate a random login code sent to their email box.      
+    * If the user forgets password, the client can start a typical "forget password" flow, or ask the server to generate a random login code.      
 
   * Response codes and corresponding data structure
     * Status Code = 200

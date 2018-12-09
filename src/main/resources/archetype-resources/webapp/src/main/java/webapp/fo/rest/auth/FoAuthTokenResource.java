@@ -1,5 +1,53 @@
 package ${package}.webapp.fo.rest.auth;
 
+import ${package}.intf.fo.auth.FoAuthManager;
+import ${package}.intf.fo.auth.FoAuthTokenResult;
+import ${package}.intf.fo.auth.FoGenRandomLoginCodeRequest;
+import ${package}.intf.fo.auth.FoLocalLoginRequest;
+import ${package}.intf.fo.auth.FoRandomCodeLoginRequest;
+import ${package}.intf.fo.auth.FoRefreshTokenRequest;
+import ${package}.intf.fo.auth.FoRegisterRequest;
+import ${package}.intf.fo.auth.FoSocialAuthCodeLoginRequest;
+import ${package}.intf.fo.auth.FoSocialLoginByTokenRequest;
+import ${package}.intf.fo.basic.FoConstants;
+import ${package}.intf.fo.basic.ErrorResult;
+import ${package}.intf.fo.basic.FoResponse;
+import ${package}.webapp.fo.rest.support.FoResourceBase;
+import ${package}.webapp.fo.rest.support.FoRestUtils;
+import ${package}.webapp.infrahelper.rest.OAuth2RequestWrapper;
+import io.swagger.annotations.Api;
+import io.swagger.annotations.ApiImplicitParam;
+import io.swagger.annotations.ApiImplicitParams;
+import io.swagger.annotations.ApiOperation;
+import io.swagger.annotations.ApiParam;
+import io.swagger.annotations.ApiResponse;
+import io.swagger.annotations.ApiResponses;
+import org.apache.commons.lang3.StringUtils;
+import org.apache.oltu.oauth2.as.request.OAuthUnauthenticatedTokenRequest;
+import org.apache.oltu.oauth2.as.response.OAuthASResponse;
+import org.apache.oltu.oauth2.common.OAuth;
+import org.apache.oltu.oauth2.common.error.OAuthError;
+import org.apache.oltu.oauth2.common.exception.OAuthProblemException;
+import org.apache.oltu.oauth2.common.exception.OAuthSystemException;
+import org.apache.oltu.oauth2.common.message.OAuthResponse;
+import org.apache.oltu.oauth2.common.message.types.GrantType;
+import org.springframework.stereotype.Controller;
+
+import javax.annotation.Resource;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import javax.ws.rs.Consumes;
+import javax.ws.rs.GET;
+import javax.ws.rs.POST;
+import javax.ws.rs.Path;
+import javax.ws.rs.PathParam;
+import javax.ws.rs.Produces;
+import javax.ws.rs.container.ContainerRequestContext;
+import javax.ws.rs.core.Context;
+import javax.ws.rs.core.MediaType;
+import javax.ws.rs.core.MultivaluedMap;
+import javax.ws.rs.core.Response;
+
 import static ${package}.intf.fo.basic.FoConstants.ACCESS_TOKEN_HEADER_DEFAULT;
 import static ${package}.intf.fo.basic.FoConstants.ACCESS_TOKEN_HEADER_KEY;
 import static ${package}.intf.fo.basic.FoConstants.BIZ_ERR_TIP;
@@ -22,55 +70,6 @@ import static ${package}.intf.fo.basic.FoConstants.SOCIAL_LOGIN_SOURCE_TIP;
 import static ${package}.intf.fo.basic.FoConstants.SOCIAL_SITE_SOURCE_PARAM;
 import static javax.servlet.http.HttpServletResponse.SC_BAD_REQUEST;
 import static javax.servlet.http.HttpServletResponse.SC_OK;
-import io.swagger.annotations.Api;
-import io.swagger.annotations.ApiImplicitParam;
-import io.swagger.annotations.ApiImplicitParams;
-import io.swagger.annotations.ApiOperation;
-import io.swagger.annotations.ApiParam;
-import io.swagger.annotations.ApiResponse;
-import io.swagger.annotations.ApiResponses;
-
-import javax.annotation.Resource;
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
-import javax.ws.rs.Consumes;
-import javax.ws.rs.GET;
-import javax.ws.rs.POST;
-import javax.ws.rs.Path;
-import javax.ws.rs.PathParam;
-import javax.ws.rs.Produces;
-import javax.ws.rs.container.ContainerRequestContext;
-import javax.ws.rs.core.Context;
-import javax.ws.rs.core.MediaType;
-import javax.ws.rs.core.MultivaluedMap;
-import javax.ws.rs.core.Response;
-
-import org.apache.commons.lang.StringUtils;
-import org.apache.oltu.oauth2.as.request.OAuthUnauthenticatedTokenRequest;
-import org.apache.oltu.oauth2.as.response.OAuthASResponse;
-import org.apache.oltu.oauth2.common.OAuth;
-import org.apache.oltu.oauth2.common.error.OAuthError;
-import org.apache.oltu.oauth2.common.exception.OAuthProblemException;
-import org.apache.oltu.oauth2.common.exception.OAuthSystemException;
-import org.apache.oltu.oauth2.common.message.OAuthResponse;
-import org.apache.oltu.oauth2.common.message.types.GrantType;
-import org.springframework.stereotype.Service;
-
-import ${package}.intf.fo.auth.FoAuthManager;
-import ${package}.intf.fo.auth.FoAuthTokenResult;
-import ${package}.intf.fo.auth.FoGenRandomLoginCodeRequest;
-import ${package}.intf.fo.auth.FoLocalLoginRequest;
-import ${package}.intf.fo.auth.FoRandomCodeLoginRequest;
-import ${package}.intf.fo.auth.FoRefreshTokenRequest;
-import ${package}.intf.fo.auth.FoRegisterRequest;
-import ${package}.intf.fo.auth.FoSocialAuthCodeLoginRequest;
-import ${package}.intf.fo.auth.FoSocialLoginByTokenRequest;
-import ${package}.intf.fo.basic.FoConstants;
-import ${package}.intf.fo.basic.FoErrorResult;
-import ${package}.intf.fo.basic.FoResponse;
-import ${package}.webapp.fo.rest.support.FoResourceBase;
-import ${package}.webapp.fo.rest.support.FoRestUtils;
-import ${package}.webapp.infrahelper.rest.OAuth2RequestWrapper;
 
 /**
  * rest resource for authentication
@@ -78,7 +77,7 @@ import ${package}.webapp.infrahelper.rest.OAuth2RequestWrapper;
  * @author chenjianjx@gmail.com
  *
  */
-@Service
+@Controller
 @Path("/token")
 @Api(value = "/token")
 @Produces(MediaType.APPLICATION_JSON)
@@ -101,7 +100,7 @@ public class FoAuthTokenResource extends FoResourceBase {
 			@ApiImplicitParam(name = LONG_SESSION_PARAM, value = LONG_SESSION_TIP, required = true, dataType = "boolean", paramType = "form") })
 	@ApiResponses(value = {
 			@ApiResponse(code = SC_OK, message = OK_TIP, response = FoAuthTokenResult.class),
-			@ApiResponse(code = SC_BAD_REQUEST, message = OAUTH2_TOKEN_ENDPOINT_ERR_TIP, response = FoErrorResult.class) })
+			@ApiResponse(code = SC_BAD_REQUEST, message = OAUTH2_TOKEN_ENDPOINT_ERR_TIP, response = ErrorResult.class) })
 	public Response localLogin(@Context HttpServletRequest rawRequest,
 			MultivaluedMap<String, String> form) throws OAuthSystemException {
 
@@ -143,7 +142,7 @@ public class FoAuthTokenResource extends FoResourceBase {
 			@ApiImplicitParam(name = LONG_SESSION_PARAM, value = LONG_SESSION_TIP, required = true, dataType = "boolean", paramType = "form") })
 	@ApiResponses(value = {
 			@ApiResponse(code = SC_OK, message = OK_TIP, response = FoAuthTokenResult.class),
-			@ApiResponse(code = SC_BAD_REQUEST, message = OAUTH2_TOKEN_ENDPOINT_ERR_TIP, response = FoErrorResult.class) })
+			@ApiResponse(code = SC_BAD_REQUEST, message = OAUTH2_TOKEN_ENDPOINT_ERR_TIP, response = ErrorResult.class) })
 	public Response socialLoginByToken(
 			@Context HttpServletRequest rawRequest,
 			final @ApiParam(required = true, value = SOCIAL_LOGIN_SOURCE_TIP + "For google, plaease pass the id token; for facebook, please pass the access token") @PathParam(SOCIAL_SITE_SOURCE_PARAM) String source,
@@ -196,7 +195,7 @@ public class FoAuthTokenResource extends FoResourceBase {
 					+ "4. For facebook + web, it is a url of your html client", required = true, dataType = "string", paramType = "form") })
 	@ApiResponses(value = {
 			@ApiResponse(code = SC_OK, message = OK_TIP, response = FoAuthTokenResult.class),
-			@ApiResponse(code = SC_BAD_REQUEST, message = OAUTH2_TOKEN_ENDPOINT_ERR_TIP, response = FoErrorResult.class) })
+			@ApiResponse(code = SC_BAD_REQUEST, message = OAUTH2_TOKEN_ENDPOINT_ERR_TIP, response = ErrorResult.class) })
 	public Response socialLoginByAuthCode(
 			@Context HttpServletRequest rawRequest,
 			final @ApiParam(required = true, value = SOCIAL_LOGIN_SOURCE_TIP) @PathParam(SOCIAL_SITE_SOURCE_PARAM) String source,
@@ -241,7 +240,7 @@ public class FoAuthTokenResource extends FoResourceBase {
 			@ApiImplicitParam(name = "password", value = "The random login code", required = true, dataType = "string", paramType = "form") })
 	@ApiResponses(value = {
 			@ApiResponse(code = SC_OK, message = OK_TIP, response = FoAuthTokenResult.class),
-			@ApiResponse(code = SC_BAD_REQUEST, message = OAUTH2_TOKEN_ENDPOINT_ERR_TIP, response = FoErrorResult.class) })
+			@ApiResponse(code = SC_BAD_REQUEST, message = OAUTH2_TOKEN_ENDPOINT_ERR_TIP, response = ErrorResult.class) })
 	public Response localRandomCodeLogin(
 			@Context HttpServletRequest rawRequest,
 			MultivaluedMap<String, String> form) throws OAuthSystemException {
@@ -277,7 +276,7 @@ public class FoAuthTokenResource extends FoResourceBase {
 			@ApiImplicitParam(name = "password", value = "password", required = true, dataType = "string", paramType = "form") })
 	@ApiResponses(value = {
 			@ApiResponse(code = SC_OK, message = OK_TIP, response = FoAuthTokenResult.class),
-			@ApiResponse(code = SC_BAD_REQUEST, message = OAUTH2_TOKEN_ENDPOINT_ERR_TIP, response = FoErrorResult.class) })
+			@ApiResponse(code = SC_BAD_REQUEST, message = OAUTH2_TOKEN_ENDPOINT_ERR_TIP, response = ErrorResult.class) })
 	public Response localRegister(@Context HttpServletRequest rawRequest,
 			MultivaluedMap<String, String> form) throws OAuthSystemException {
 
@@ -310,7 +309,7 @@ public class FoAuthTokenResource extends FoResourceBase {
 		Long userId = getUserId(context);
 		if (userId == null) {
 			FoResponse<Void> foResponse = FoResponse.userErrResponse(
-					FoConstants.FEC_NOT_LOGIN_YET, "You have not login yet");
+					FoConstants.FEC_NOT_LOGIN_YET, "You have not login yet", null);
 			return FoRestUtils.fromFoResponse(foResponse, context);
 		} else {
 			return FoRestUtils
@@ -328,7 +327,7 @@ public class FoAuthTokenResource extends FoResourceBase {
 			@ApiImplicitParam(name = "refresh_token", value = "The refresh token", required = true, dataType = "string", paramType = "form") })
 	@ApiResponses(value = {
 			@ApiResponse(code = SC_OK, message = OK_TIP, response = FoAuthTokenResult.class),
-			@ApiResponse(code = SC_BAD_REQUEST, message = OAUTH2_TOKEN_ENDPOINT_ERR_TIP, response = FoErrorResult.class) })
+			@ApiResponse(code = SC_BAD_REQUEST, message = OAUTH2_TOKEN_ENDPOINT_ERR_TIP, response = ErrorResult.class) })
 	public Response refreshToken(@Context HttpServletRequest rawRequest,
 			MultivaluedMap<String, String> form) throws OAuthSystemException {
 
@@ -346,7 +345,7 @@ public class FoAuthTokenResource extends FoResourceBase {
 			return Response.status(res.getResponseStatus())
 					.entity(res.getBody()).build();
 		}
-		OAuthResponse oltuResponse = null;
+		OAuthResponse oltuResponse;
 
 		/*
 		 * the following fields will not be null since they have been validated
@@ -389,7 +388,7 @@ public class FoAuthTokenResource extends FoResourceBase {
 	@ApiOperation(value = "generate a random login code")
 	@ApiResponses(value = {
 			@ApiResponse(code = SC_OK, message = OK_TIP, response = Void.class),
-			@ApiResponse(code = FO_SC_BIZ_ERROR, message = BIZ_ERR_TIP, response = FoErrorResult.class) })
+			@ApiResponse(code = FO_SC_BIZ_ERROR, message = BIZ_ERR_TIP, response = ErrorResult.class) })
 	public Response randomLoginCode(@Context ContainerRequestContext context,
 			FoGenRandomLoginCodeRequest request) {
 		FoResponse<Void> foResponse = foAuthManager
@@ -455,7 +454,7 @@ public class FoAuthTokenResource extends FoResourceBase {
 		}
 	}
 
-	private static interface AppLayerAuthCommand {
+	private interface AppLayerAuthCommand {
 		FoResponse<FoAuthTokenResult> doAuth(HttpServletRequest servletRequest,
 				OAuthUnauthenticatedTokenRequest oltuRequest);
 	}

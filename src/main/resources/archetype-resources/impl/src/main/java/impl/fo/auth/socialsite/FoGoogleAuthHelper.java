@@ -1,23 +1,14 @@
+#set($dollar = '$')
 package ${package}.impl.fo.auth.socialsite;
 
-import java.io.IOException;
-import java.security.GeneralSecurityException;
-import java.util.Arrays;
-
-import org.apache.commons.lang.StringUtils;
-import org.apache.http.NoHttpResponseException;
-import org.springframework.beans.factory.annotation.Value;
-import org.springframework.stereotype.Service;
-
 import ${package}.impl.biz.client.Client;
-import ${package}.impl.util.tools.lang.MyDuplet;
+import ${package}.utils.lang.MyDuplet;
 import ${package}.intf.fo.auth.FoAuthTokenResult;
 import ${package}.intf.fo.basic.FoConstants;
 import ${package}.intf.fo.basic.FoResponse;
 import com.github.scribejava.apis.GoogleApi20;
-import com.github.scribejava.apis.google.GoogleToken;
+import com.github.scribejava.apis.openid.OpenIdOAuth2AccessToken;
 import com.github.scribejava.core.builder.ServiceBuilder;
-import com.github.scribejava.core.model.Verifier;
 import com.github.scribejava.core.oauth.OAuth20Service;
 import com.google.api.client.googleapis.auth.oauth2.GoogleIdToken;
 import com.google.api.client.googleapis.auth.oauth2.GoogleIdTokenVerifier;
@@ -25,6 +16,15 @@ import com.google.api.client.http.HttpTransport;
 import com.google.api.client.http.apache.ApacheHttpTransport;
 import com.google.api.client.json.JsonFactory;
 import com.google.api.client.json.jackson2.JacksonFactory;
+import org.apache.commons.lang3.StringUtils;
+import org.apache.http.NoHttpResponseException;
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.stereotype.Service;
+
+import java.io.IOException;
+import java.security.GeneralSecurityException;
+import java.util.Arrays;
+import java.util.concurrent.ExecutionException;
 
 /**
  * 
@@ -122,7 +122,7 @@ public class FoGoogleAuthHelper implements FoSocialSiteAuthHelper {
 		} catch (NoHttpResponseException e) {
 			FoResponse<FoAuthTokenResult> errResp = FoResponse.userErrResponse(
 					FoConstants.FEC_ERR_BUT_CAN_RETRY,
-					"Google didn't response. Please try again.");
+					"Google didn't response. Please try again.", null);
 			return MyDuplet.newInstance(null, errResp);
 		} catch (IOException e) {
 			throw new RuntimeException(e);
@@ -157,34 +157,38 @@ public class FoGoogleAuthHelper implements FoSocialSiteAuthHelper {
 		}
 
 		// exchange the code for token
-		final OAuth20Service service = new ServiceBuilder().apiKey(clientId)
+		final OAuth20Service service = new ServiceBuilder(clientId)
 				.apiSecret(clientSecret).scope("email").callback(redirectUri)
 				.build(GoogleApi20.instance());
-		GoogleToken googleTokenObj = (GoogleToken) service
-				.getAccessToken(new Verifier(authCode));
+		OpenIdOAuth2AccessToken googleTokenObj;
+		try {
+			googleTokenObj = (OpenIdOAuth2AccessToken)service.getAccessToken(authCode);
+		} catch (IOException|InterruptedException|ExecutionException e) {
+			throw new RuntimeException(e);
+		}
 		String idToken = googleTokenObj.getOpenIdToken();
 		// get email by token
 		return this.getEmailFromToken(idToken, clientType);
 
 	}
 
-	@Value("${googleWebClientId}")
+	@Value("${dollar}{googleWebClientId}")
 	public void setGoogleWebClientId(String googleWebClientId) {
 		this.googleWebClientId = StringUtils.trimToNull(googleWebClientId);
 	}
 
-	@Value("${googleWebClientSecret}")
+	@Value("${dollar}{googleWebClientSecret}")
 	public void setGoogleWebClientSecret(String googleWebClientSecret) {
 		this.googleWebClientSecret = StringUtils
 				.trimToNull(googleWebClientSecret);
 	}
 
-	@Value("${googleClientId}")
+	@Value("${dollar}{googleClientId}")
 	public void setGoogleClientId(String googleClientId) {
 		this.googleClientId = StringUtils.trimToNull(googleClientId);
 	}
 
-	@Value("${googleClientSecret}")
+	@Value("${dollar}{googleClientSecret}")
 	public void setGoogleClientSecret(String googleClientSecret) {
 		this.googleClientSecret = StringUtils.trimToNull(googleClientSecret);
 	}

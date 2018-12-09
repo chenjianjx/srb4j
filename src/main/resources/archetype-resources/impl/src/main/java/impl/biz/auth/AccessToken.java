@@ -16,7 +16,7 @@ public class AccessToken extends EntityBase {
 	private long userId;
 
 	/**
-	 * units: second. This doesn't serve as the criteria for expiry
+	 * unit: second. This doesn't serve as the criteria for expiry
 	 */
 	private long lifespan;
 

@@ -86,7 +86,7 @@ public class MailEngine {
 	 * @param model
 	 *            a map containing key/value pairs
 	 */
-	private void sendMessage(SimpleMailMessage msg, String templateName,
+	public void sendMessage(SimpleMailMessage msg, String templateName,
 			Map<String, Object> model) throws MailException {
 
 		Template template = templateFactory.getTemplate(templateName);

@@ -1,6 +1,6 @@
 package ${package}.impl.autotask.auth;
 
-import static org.apache.commons.lang.time.DateFormatUtils.format;
+import static org.apache.commons.lang3.time.DateFormatUtils.format;
 
 import java.util.Timer;
 import java.util.TimerTask;
@@ -13,7 +13,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Component;
 import ${package}.impl.biz.auth.AccessTokenRepo;
 import ${package}.impl.common.ImplConstants;
-import ${package}.impl.util.tools.lang.MyLangUtils;
+import ${package}.utils.lang.MyLangUtils;
 
 /**
  * auto tasks for auth module
@@ -41,8 +41,7 @@ public class AuthTasks {
 	}
 
 	private class StaleTokenScavengerTask extends TimerTask {
-
-		//You have these hours to refres an expired token
+		
 		private static final int HOURS = 8;
 
 		@Override
@@ -50,7 +49,7 @@ public class AuthTasks {
 			long someTimeAgo = System.currentTimeMillis() - 3600 * 1000 * HOURS;
 			String dataStr = toDateStr(someTimeAgo);
 			autoTaskLogger
-					.info("Going to revoke stale acess tokens expired before "
+					.info("Going to revoke stale access tokens expired before "
 							+ dataStr);
 			int numOfRows = accessTokenRepo
 					.deleteTokensExpiresBefore(new java.sql.Timestamp(

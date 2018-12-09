@@ -10,7 +10,7 @@
 	</parent>
 
 
-	<artifactId>${artifactId}</artifactId>
+	<artifactId>${rootArtifactId}-intf-fo</artifactId>
 	<packaging>jar</packaging>
 
 	<dependencies>
@@ -19,12 +19,12 @@
 			<groupId>io.swagger</groupId>
 			<artifactId>swagger-jersey2-jaxrs</artifactId>
 		</dependency>
+        <dependency>
+            <groupId>junit</groupId>
+            <artifactId>junit</artifactId>
+			<scope>test</scope>
+        </dependency>
 
-		<dependency>
-			<groupId>commons-lang</groupId>
-			<artifactId>commons-lang</artifactId>
-		</dependency>
-
-	</dependencies>
+    </dependencies>
 
 </project>

@@ -1,20 +1,16 @@
 package ${package}.webapp.fo.rest.support;
 
+import com.fasterxml.jackson.jaxrs.json.JacksonJaxbJsonProvider;
+import ${package}.webapp.fo.rest.FrPackageAnchor;
 import org.glassfish.jersey.server.ResourceConfig;
 
-import com.fasterxml.jackson.jaxrs.json.JacksonJaxbJsonProvider;
-
 /**
- * This class is introduced to avoid problems as mentioned <a href=
- * "http://stackoverflow.com/questions/5833147/jersey-jackson-exception-problem-with-exceptionmapper"
- * >here</a>
- * 
  * @author chenjianjx@gmail.com
- *
  */
 public class FoRestApplication extends ResourceConfig {
 
-	public FoRestApplication() {
-		register(JacksonJaxbJsonProvider.class);
-	}
+    public FoRestApplication() {
+        register(JacksonJaxbJsonProvider.class);
+        packages("io.swagger.jaxrs.listing", FrPackageAnchor.class.getPackage().getName());
+    }
 }

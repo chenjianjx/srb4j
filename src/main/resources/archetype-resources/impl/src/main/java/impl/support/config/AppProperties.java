@@ -1,7 +1,8 @@
+#set($dollar = '$')
 package ${package}.impl.support.config;
 
-import org.apache.commons.lang.builder.ToStringBuilder;
-import org.apache.commons.lang.builder.ToStringStyle;
+import org.apache.commons.lang3.builder.ToStringBuilder;
+import org.apache.commons.lang3.builder.ToStringStyle;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
@@ -26,12 +27,12 @@ public class AppProperties {
 		return orgSupportEmail;
 	}
 
-	@Value("${orgSupportDesk}")
+	@Value("${dollar}{orgSupportDesk}")
 	public void setOrgSupportDesk(String orgSupportDesk) {
 		this.orgSupportDesk = trimToNull(orgSupportDesk, "Unknown Support Desk");
 	}
 
-	@Value("${orgSupportEmail}")
+	@Value("${dollar}{orgSupportEmail}")
 	public void setOrgSupportEmail(String orgSupportEmail) {
 		this.orgSupportEmail = trimToNull(orgSupportEmail,
 				"unkown@support.email");
