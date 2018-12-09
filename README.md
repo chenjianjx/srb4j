@@ -17,7 +17,7 @@ Table of Contents
   * [Summary of Features](#summary-of-features)
   * [Prerequisites](#prerequisites)
   * [Quick Start in Dev Env](#quick-start-in-dev-env)
-  * [Quick Start for Client-Side Developers](#quick-start-for-client\-side developers)
+  * [Quick Start for Client-Side Developers](#quick-start-for-client-side-developers)
   * [DDL/DML migration](#ddldml-migration)
   * [PaaS Cloud Integration](#paas-cloud-integration)
   * [Development of Backend](#development-of-backend)
