@@ -82,7 +82,7 @@ Create tables
 ```bash
 cd yourArtifactId
 mvn clean install -DskipTests
-cd yourArtifactId/data-migration
+cd data-migration
 mvn initialize flyway:migrate 
 ```
 
@@ -91,7 +91,7 @@ mvn initialize flyway:migrate
 ```bash
 cd /path/to/your/workspace/yourArtifactId
 
-mvn clean install
+mvn clean install -DskipTests
 
 java -jar webapp/target/yourArtifactId-webapp-1.0-SNAPSHOT-shaded.jar
 
@@ -99,13 +99,15 @@ java -jar webapp/target/yourArtifactId-webapp-1.0-SNAPSHOT-shaded.jar
 
 ### Verify the installation
 
-Open http://locahost:8080 in a browser
+Open 
+* http://localhost:8080
+* http://localhost:8080/health to check database conection
 
 # Run the backend in QA/PROD/Other Environments
 * Decide your environment name, such as "qa". 
 * Set the environment name as env prop. The key is "yourArtifactId_environment"
 ````
-export yourArtifactId_environment="production"
+export yourArtifactId_environment="qa"
 ````
 If you don't do this, the default environment is "dev" 
 * Create "app.override.qa.properties" under "webapp/src/main/resources/config", and edit the env-specific properties according to "app.properties"
@@ -127,7 +129,6 @@ Go to "app.override.qa.properties" and add
 ````
 dataMigrationOnStartup=true
 ````
-Then the SQLs will be run automatically when you deploy the application. 
 
 * Build the artifact
 ````
@@ -391,7 +392,7 @@ You can log into the back office to manage some data such as a list of users.
 
 * To enable the protal, go to "app.override.xxx.properties" and set
 ````
-enableBackOfficePortal=false
+enableBackOfficePortal=true
 ````
 
 * To let someone login, you must generate a StaffUser record for him or her: 
