@@ -16,12 +16,14 @@ Table of Contents
 =================
   * [Summary of Features](#summary-of-features)
   * [Prerequisites](#prerequisites)
-  * [Quick Start for Backend Developers](#quick-start-for-backend-developers)
-  * [Quick Start for Client\-Side Developers](#quick-start-for-client-side-developers)
-  * [Things the Backend Developers should Know](#things-the-backend-developers-should-know)
+  * [Quick Start in Dev Env](#quick-start-in-dev-env)
+  * [Quick Start for Client-Side Developers](#quick-start-for-client\-side developers)
+  * [DDL/DML migration](#ddldml-migration)
+  * [PaaS Cloud Integration](#paas-cloud-integration)
+  * [Development of Backend](#development-of-backend)
   * [Social Login Integration](#social-login-integration)
   * [API Documentation and Client Stub Generation and Online Testing](#api-documentation-and-client-stub-generation-and-online-testing)
-  * [The Back Office](#the-back-office)
+  * [The Back Office Portal](#the-back-office-portal)
 
 # Summary of Features
 
