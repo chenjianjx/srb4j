@@ -4,7 +4,7 @@
 	<groupId>com.github.chenjianjx</groupId>
 	<artifactId>srb4j</artifactId>
 	<name>Simple RESTFul Backend for Java</name>
-	<version>3.0.0-SNAPSHOT</version>
+	<version>3.0.0</version>
 	<description>The archetype to generate code simple restful backend in Java</description>
 	<url>https://github.com/chenjianjx/srb4j</url>
 
