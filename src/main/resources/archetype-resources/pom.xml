@@ -402,7 +402,14 @@
                 <artifactId>scribejava-apis</artifactId>
                 <version>6.0.0</version>
             </dependency>
-            
+
+            <dependency>
+                <groupId>${groupId}</groupId>
+                <artifactId>freebencher</artifactId>
+                <version>2.0.0</version>
+                <scope>test</scope>
+            </dependency>
+
             <dependency>
                 <groupId>com.mashape.unirest</groupId>
                 <artifactId>unirest-java</artifactId>

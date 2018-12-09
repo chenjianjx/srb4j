@@ -181,8 +181,9 @@
 		</dependency>
 
 		<dependency>
-			<groupId>${groupId}</groupId>
-			<artifactId>swagger2html</artifactId>
+			<!--anchor of swagger2html-->
+                <groupId>com.github.chenjianjx</groupId>
+                <artifactId>swagger2html</artifactId>
 		</dependency>
 
 		<dependency>
