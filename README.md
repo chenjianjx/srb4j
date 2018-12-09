@@ -80,8 +80,10 @@ vi yourArtifactId/webapp/src/main/resources/config/app.override.dev.properties
 
 Create tables
 ```bash
+cd yourArtifactId
+mvn clean install -DskipTests
 cd yourArtifactId/data-migration
-mvn clean package flyway:migrate
+mvn initialize flyway:migrate 
 ```
 
  
