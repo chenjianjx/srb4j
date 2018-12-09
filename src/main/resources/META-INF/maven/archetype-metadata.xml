@@ -35,7 +35,7 @@
 				<fileSet filtered="true" encoding="UTF-8">
 					<directory>.</directory>
 					<includes>
-						<include>README.me</include>
+						<include>README.md</include>
 					</includes>
 				</fileSet>
 			</fileSets>
@@ -59,7 +59,7 @@
 				<fileSet filtered="true" encoding="UTF-8">
 					<directory>.</directory>
 					<includes>
-						<include>README.me</include>
+						<include>README.md</include>
 					</includes>
 				</fileSet>
 			</fileSets>
@@ -83,7 +83,7 @@
 				<fileSet filtered="true" encoding="UTF-8">
 					<directory>.</directory>
 					<includes>
-						<include>README.me</include>
+						<include>README.md</include>
 					</includes>
 				</fileSet>
 			</fileSets>
@@ -106,7 +106,7 @@
 				<fileSet filtered="true" encoding="UTF-8">
 					<directory>.</directory>
 					<includes>
-						<include>README.me</include>
+						<include>README.md</include>
 					</includes>
 				</fileSet>
 			</fileSets>
@@ -129,7 +129,7 @@
 				<fileSet filtered="true" encoding="UTF-8">
 					<directory>.</directory>
 					<includes>
-						<include>README.me</include>
+						<include>README.md</include>
 					</includes>
 				</fileSet>
 			</fileSets>
@@ -142,6 +142,12 @@
 				</fileSet>
 				<fileSet filtered="true" encoding="UTF-8">
 					<directory>src/main/resources</directory>
+					<excludes>
+						<exclude>webroot/bo-assets</exclude>
+					</excludes>
+				</fileSet>
+				<fileSet filtered="false" encoding="UTF-8">
+					<directory>src/main/resources/webroot/bo-assets</directory>
 				</fileSet>
 				<fileSet filtered="true" packaged="true" encoding="UTF-8">
 					<directory>src/test/java</directory>
@@ -152,20 +158,12 @@
 				<fileSet filtered="true" encoding="UTF-8">
 					<directory>.</directory>
 					<includes>
-						<include>README.me</include>
+						<include>README.md</include>
 					</includes>
 				</fileSet>
 			</fileSets>
 		</module>
 
 	</modules>
-
-	<!-- https://stackoverflow.com/a/28614586/301447 -->
-	<requiredProperties>
-		<requiredProperty key="artifactIdCamelCase">
-			<defaultValue>${artifactId.replaceAll("^a|-a", "A").replaceAll("^b|-b", "B").replaceAll("^c|-c", "C").replaceAll("^d|-d", "D").replaceAll("^e|-e", "E").replaceAll("^f|-f", "F").replaceAll("^g|-g", "G").replaceAll("^h|-h", "H").replaceAll("^i|-i", "I").replaceAll("^j|-j", "J").replaceAll("^k|-k", "K").replaceAll("^l|-l", "L").replaceAll("^m|-m", "M").replaceAll("^n|-n", "N").replaceAll("^o|-o", "O").replaceAll("^p|-p", "P").replaceAll("^q|-q", "Q").replaceAll("^r|-r", "R").replaceAll("^s|-s", "S").replaceAll("^t|-t", "T").replaceAll("^u|-u", "U").replaceAll("^v|-v", "V").replaceAll("^w|-w", "W").replaceAll("^x|-x", "X").replaceAll("^y|-y", "Y").replaceAll("^z|-z", "Z")}</defaultValue>
-		</requiredProperty>
-	</requiredProperties>
-
 
 </archetype-descriptor>

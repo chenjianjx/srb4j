@@ -7,7 +7,7 @@
             <div class="copyright text-center my-auto">
               <jsp:useBean id="now" class="java.util.Date" />
               <fmt:formatDate var="year" value="${now}" pattern="yyyy" />
-              <span>Copyright @ ${artifactIdCamelCase} ${year}</span>
+              <span>Copyright @ Srb4jfullsample ${year}</span>
             </div>
           </div>
         </footer>
