@@ -29,9 +29,11 @@ Table of Contents
 2. Social account login support (Google,Facebook...) 
 3. Forget password flow and random code login  
 4. [Swagger](http://swagger.io/)-based API document generation and client stub generation
-5. Deployeble as a uber jar, based on embedded Jetty
-6. Robust J2EE Stack: JAX-RS + Spring + MyBatis + MySQL
-7. An out-of-box back office portal
+5. Built as a uber jar, instead of a war file
+6. Managed SQL migration which can be done automatically during system startup, or run manually with Maven
+7. PaaS friendly (e.g. AWS Beanstalk)
+8. Robust J2EE Stack: JAX-RS + Spring + MyBatis + MySQL
+9. An out-of-box back office portal
 
 
 # Prerequisites
@@ -42,7 +44,7 @@ Table of Contents
 
 <!-- toc -->
 
-# Quick Start for Backend Developers
+# Quick Start in Dev Env
 
 ### Generate a Java project
 
@@ -93,7 +95,47 @@ java -jar webapp/target/yourArtifactId-webapp-1.0-SNAPSHOT-shaded.jar
 
 ### Verify the installation
 
-Open http://locahost:8080 in a browser to verify the startup
+Open http://locahost:8080 in a browser
+
+# Run the backend in QA/PROD/Other Environments
+* Decide your environment name, such as "qa". 
+* Set the environment name as env prop. The key is "yourArtifactId_environment"
+````
+export yourArtifactId_environment="production"
+````
+If you don't do this, the default environment is "dev" 
+* Create "app.override.qa.properties" under "webapp/src/main/resources/config", and edit the env-specific properties according to "app.properties"
+** They system will read "app.properties" first, and then "app.override.qa.properties" to override. So you don't have to create a duplicate entry in "app.override.qa.properties" if you are not going to override that property
+** A value can be a hardcoded one, or the value of an environment variable. The suggested strategy is to put as many properties in the properties file as possible, and only define sensitive information as environment variables. 
+** By default, the db's username/password is got from env variables, as you can see on "app.properties": 
+````
+dbUsername=${env:yourArtifactId_dbUsername}
+dbPassword=${env:yourArtifactId_dbPassword}
+````
+So what you need to do is 
+````
+export yourArtifactId_dbUsername="your_user"
+export yourArtifactId_dbPassword="your_password"
+````
+* Let SQL Migration be Done Automatically during System Startup
+
+Go to "app.override.qa.properties" and add 
+````
+dataMigrationOnStartup=true
+````
+Then the SQLs will be run automatically when you deploy the application. 
+
+* Build the artifact
+````
+mvn clean install -DskipTests
+````
+And you will get a uber jar like  "webapp/target/yourArtifactId-webapp-1.0-SNAPSHOT-shaded.jar".  
+
+* Deploy the artifact
+Upload the built uber jar to your target machine and run 
+````
+java -jar yourArtifactId-webapp-1.0-SNAPSHOT-shaded.jar
+````
 
 
 # Quick Start for Client-Side Developers 
@@ -269,47 +311,29 @@ Unirest.post("http://localhost:8080/fo/rest/bbs/posts/delete")
 
 Check out more code [here](https://github.com/chenjianjx/srb4j-desktop-client) or [here](https://github.com/chenjianjx/Srb4jAndroidClient) . 
 
-# Running the backend in QA/PROD and other Environments
-* Decide your environment name, such as "qa"
-* Set the environment name as env prop. The key is "yourArtifactId_environment"
+# DDL/DML migration
+Let the system take care of SQL migraiton for you.  Srb4j uses [flyway](https://flywaydb.org/) to do this. Flyway won't re-run SQLs that have been run before.  So don't worry. 
+* Go to "data-migration/src/main/resources/data-migration-flyway-sql", and add a new SQL file
+* In "dev" environment, "dataMigrationOnStartup" is by default false. So you should run the sql manually.  
 ````
-export yourArtifactId_environment="production"
+cd data-migration
+mvn clean package flyway:migrate
 ````
-* Create "app.override.qa.properties" under "webapp/src/main/resources/config", and edit the env-specific properties according to "app.properties"
-** They system will read "app.properties" first, and then "app.override.qa.properties" to override. So you don't have to create a duplicate entry in "app.qa.properties" if you are not going to override that property
-** A value can be a hardcoded one, or the value of an environment variable. By default, the db's username/password is got from env variables, as you can see on "app.properties": 
-````
-dbUsername=${env:yourArtifactId_dbUsername}
-dbPassword=${env:yourArtifactId_dbPassword}
-````
-So what you need to do is 
-````
-export yourArtifactId_dbUsername="your_user"
-export yourArtifactId_dbPassword="your_password"
-````
+* In other environments, if "dataMigrationOnStartup" is set as true, the system will automatically run the SQL when the system starts up. 
 
+# PaaS Cloud Integration
+Here we use AWS Beanstalk as an example. 
+* Make sure "dataMigrationOnStartup=true" in your "app.override.xxx.properties", unless you prefer to run the sql manually. 
+* Configure environment variables in Beanstalk's web console, such as environment name, RDS db username/password and smtp credentials.
+* (If you want) On the load balancer configuration page, you can add "https://your-backend/health" as the health check endpoint (The handler is HealthCheckServlet.java) 
+* Build your artifact, upload to Beanstalk and trigger a deployment. 
 
-# Things the Backend Developers should Know
+# Development of Backend
 
 ## User Model
 
 1. Every user has a "source" property to indicate where this user is from. "local" means the user registers here, "facebook" means the user is created when he logged into the backend with a facebook account.
 2. source + email make up of a username, the business key.
-
-## Create a business module 
-
-A business module called "bbs" is already there to demonstrate how to develop biz logic in srb4j. You can create your own by referring to "bbs" code files:  
-
-1. Table 'Post' in ddl.sql
-2. Biz entity and repository(DAO) classes in package 'yourpackage.impl.biz.bbs' 
-3. App-layer beans and managers in package 'yourpackage.intf.fo.bbs' and  'yourpackage.impl.fo.bbs'
-4. RESTFul Resources in package 'yourpackage.webapp.fo.rest.bbs'  
-
-
-Notes:
- 
-1. You can delete package 'yourpackage.impl.biz.bbs' if you don't it any more.
-2. For layers and maven artifacts in srb4j, see below.  
 
 ## The code organization
 
@@ -320,8 +344,6 @@ Notes:
 * Notes:
   * Front End:   Encapsulate use case-specific logic from business services. The users are common users such customers.
   * Back Office: Encapsulate use case-specific logic from business services. The users are administrators, staff and so on.
-
-
 
 * And you get these maven projects: 
 
@@ -360,11 +382,22 @@ Srb4j has embedded swagger support. The document endpoint is http://your-backend
 If you just want to see a download-able API doc, check http://your-backend/fo-rest-doc , which is generated by [swagger2html](https://github.com/chenjianjx/swagger2html).    
 
 
-# The Back Office
+# The Back Office Portal
+You can log into the back office to manage some data such as a list of users.  
 
-The back office code is just a way to demonstrate how a back office web portal can interact with the app layer. It enforces the code organization so that back-office code is separated from front end code. 
+* To enable the protal, go to "app.override.xxx.properties" and set
+````
+enableBackOfficePortal=false
+````
 
-If you don't need the back office web portal, please delete the following content: 
- 
-* BoAllInOneServlet.java
-* Its occurrence in web.xml
+* To let someone login, you must generate a StaffUser record for him or her: 
+````
+cd data-migration
+mvn clean package exec:java -Dexec.mainClass="your.pkg.name.datagen.StaffUserPasswordGenerator"
+````
+With the username/password they can then go to http://your-backend/bo/portal/login  . They'll have to change the password after first logging in, so the password generator won't be able to log in with the original password. 
+
+* Development
+* The portal is based on Jersey MVC + JSP + Twitter Bootstrap
+* Users of the portal are called "StaffUser", which has nothing to do with front-end "User"s.  Different entity class, different table. 
+* No Role/Permission infrastructure. You must do it yourself if necessary. 
