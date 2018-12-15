@@ -329,7 +329,14 @@ mvn clean package flyway:migrate
 # PaaS Cloud Integration
 Here we use AWS Beanstalk as an example. 
 * Make sure "dataMigrationOnStartup=true" in your "app.override.xxx.properties", unless you prefer to run the sql manually. 
-* Configure environment variables in Beanstalk's web console, such as environment name, RDS db username/password and smtp credentials.
+* Configure environment variables in Beanstalk's web console, such as environment name, RDS db username/password and smtp credentials. To make your life easier, you can set the following db credentials in your "app.override.xxx.properties"
+````
+dbHost=${env:RDS_HOSTNAME}
+dbPort=${env:RDS_PORT}
+dbSchema=${env:RDS_DB_NAME}
+dbUsername=${env:RDS_USERNAME}
+dbPassword=${env:RDS_PASSWORD}
+````
 * (If you want) On the load balancer configuration page, you can add "https://your-backend/health" as the health check endpoint (The handler is HealthCheckServlet.java) 
 * Build your artifact, upload to Beanstalk and trigger a deployment. 
 
