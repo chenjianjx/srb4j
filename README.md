@@ -31,7 +31,7 @@ Table of Contents
 2. Social account login support (Google,Facebook...) 
 3. Forget password flow and random code login  
 4. [Swagger](http://swagger.io/)-based API document generation and client stub generation
-5. Built as a uber jar, instead of a war file
+5. Built as an uber jar, instead of a war file
 6. Managed SQL migration which can be done automatically during system startup, or run manually with Maven
 7. PaaS friendly (e.g. AWS Beanstalk)
 8. Robust J2EE Stack: JAX-RS + Spring + MyBatis + MySQL
