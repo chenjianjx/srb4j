@@ -364,7 +364,7 @@ dbPassword=${env:RDS_PASSWORD}
 * Notes 
   * "webapp" has "runtime" dependency on "impl"
   * "intf.bo" depends on "intf.fo" since back office users also need common-user perspectives.
-  * Check full explanation [here](http://www.chenjianjx.com/myblog/entry/layering-in-java-webapps-final)   
+  * Check full explanation [here](http://www.chenjianjx.com/layering-in-java-webapps-my-final-version/)   
 
 # Social Login Integration
 
