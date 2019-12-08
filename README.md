@@ -7,10 +7,6 @@ It can collaborate with __html clients__, __mobile clients__ and other types of 
 
 __With Srb4j you can launch a restful backend in several minutes.__ 
 
-__Checkout a demo client right away__ at https://srb4jclient.chenjianjx.com/ , or install an __Android__ client on https://github.com/chenjianjx/Srb4jAndroidClient, or download a __desktop__ client on https://github.com/chenjianjx/srb4j-desktop-client .
-
-__You can also see its out-of-box RESTFul APIs [here](https://srb4jdemo.chenjianjx.com/fo-rest-doc) .__
-
 
 Table of Contents
 =================
